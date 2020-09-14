@@ -1,0 +1,45 @@
+voici une petite factorisation et optimisation ressource
+[14:32]
+DÉBUT
+    Tab=["annanas","arbre","bois","bras","dans","danse","de","dehors","fenetre","feuille","porte","soleil"]
+    REQUÊTE "Entrez le mot recherché : " , mot
+    i=1
+    isPresent="false"
+   TantQUe i < capacite(Tab)+1  Faire
+        SI Tab[i]=mot ALORS
+            ECRIRE "le mot "+ mot +" se trouve dans le dictionnaire"
+            i=capacite(Tab)+1
+            isPresent="true"
+        FinSI
+        i=i+1
+    FINTantQue
+    SI isPresent="false" ALORS
+           ECRIRE "le mot "+ mot +" NE se trouve PAS dans le dictionnaire"
+    finSI
+
+FIN
+NOUVEAU
+[14:35]
+avec qq commentaire pour expliquer
+[14:35]
+\ Module principal
+DÉBUT
+    Tab=["annanas","arbre","bois","bras","dans","danse","de","dehors","fenetre","feuille","porte","soleil"]
+    REQUÊTE "Entrez le mot recherché : " , mot
+    i=1
+    isPresent="false"
+   TantQUe i < capacite(Tab)+1  Faire
+        SI Tab[i]=mot ALORS
+            ECRIRE "le mot "+ mot +" se trouve dans le dictionnaire"
+            i=capacite(Tab)+1 \ permet de sortir de la boucle avant car on a trouver le mot
+            isPresent="true"   \ permet d'éviter l'affichage du message ne se trouve pas
+        FinSI
+        i=i+1    \incrémentation de la boucle et ainsi éviter une boucle infinie
+    FINTantQue
+
+\ le code suivant permet d'afficher NE se TRouve pas si Pas trouver
+    SI isPresent="false" ALORS
+           ECRIRE "le mot "+ mot +" NE se trouve PAS dans le dictionnaire"
+    finSI
+
+FIN

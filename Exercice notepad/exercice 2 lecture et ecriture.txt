@@ -1,0 +1,6 @@
+Exercice 2.1
+
+Le programme va afficher :
+231
+462
+
