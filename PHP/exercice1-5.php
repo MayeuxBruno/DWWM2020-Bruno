@@ -3,4 +3,4 @@ $a=5;
 $b=2;
 $b=$a;
 $a=$b;
-echo "a = ".$a." b = ".$b;
+echo "Les valeurs sont a = ".$a." b = ".$b;
