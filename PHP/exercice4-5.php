@@ -9,7 +9,7 @@ do{
 
 /******* Teste du genre ***********/
 do{
-    $genre=strtolower(readline("Entrez le sexe de la personne (h/f) :"));
+    $genre=strtolower(readline("Entrez le genre de la personne (h/f) :"));
     if (($genre!="h")and($genre!="f")){
         echo"Le sexe n'est pas correcte\n";
     }

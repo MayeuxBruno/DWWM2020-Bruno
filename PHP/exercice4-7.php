@@ -1,4 +1,6 @@
 <?php
+
+/*****************Saisie et controle des entrées ***************/
 do{
     $age=readline("Entrez l'age du conducteur :  ");
     if($age<18){
@@ -27,17 +29,21 @@ do{
     }
 }while($presence<0);
 
-$bonus=0;
+/************* Calcul du malus afin de définir le tarif **********/
+$malus=0;
 if(($age<25)){
-    $bonus+=1;
+    $malus+=1;
 }
 if($permis<2){
-    $bonus+=1;
+    $malus+=1;
 }
-$bonus+=$accident;
+$malus+=$accident;
 
-
-switch ($bonus){
+if (($presence>1)&&($malus<3)){
+    $malus-=1;
+}
+switch ($malus){
+    case -1:
     case 0:
          echo"Vous bénéficiez du tarif vert";
     break;
