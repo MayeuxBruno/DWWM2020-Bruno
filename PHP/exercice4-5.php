@@ -15,22 +15,13 @@ do{
     }
 }while (($genre!="h")and($genre!="f"));
 
-if ($genre=="h"){
-    if ($age>20){
-            echo"L'habitant est imposable"; 
-    }
-    else{
-            echo"L'habitant est non imposable";
-    }
+if ((($genre=="h")&&($age>20))||(($genre=="f")&&($age>18)&&($age<35)))
+{
+    echo"L'habitant est imposable";
 }
-else if ($genre="f"){
-    if (($age>18)and($age<35)){
-        echo"L'habitant est imposable";
-    }
-    else{
-        echo"L'habitant est non imposable";
-    }
+else
+{
+    echo"L'habitant n'est pas imposable";
 }
-
 
 

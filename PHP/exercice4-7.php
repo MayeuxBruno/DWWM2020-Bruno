@@ -44,6 +44,8 @@ if (($presence>1)&&($malus<3)){
 }
 switch ($malus){
     case -1:
+        echo"Vous bénéficiez du tarif bleu";
+    break;
     case 0:
          echo"Vous bénéficiez du tarif vert";
     break;
