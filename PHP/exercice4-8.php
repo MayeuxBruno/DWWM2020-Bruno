@@ -23,29 +23,45 @@ do{
 
 if ((($annee>0)&&(($jour>0))&&(($jour<=31))&&(($mois>0))&&($mois<=12)))
 {
-    if (($mois==4)||($mois==6)||($mois==9)||($mois==11))
+    if ((($mois==4)||($mois==6)||($mois==9)||($mois==11))&&($jour>30))
     {
-        echo($jour>30)?"date non valide:":"";
-    }else
-        {
+        $date="ko";
+    }
+    else
+    {
         if ($mois==2){
             if ($jour<=28)
             {
-                echo"date valide si non bissextile";
-            }else 
-                 {
-                 if (($jour==29)&&!(($annee%4!=0)||(($annee%4==0)&&($annee%100==0)&&($annee%400==0)))
-                    {
-                            echo"date valide";
-                    }
+                $date="ok";
+            }
+            else 
+            {
+                if (($jour==29)&&(($annee%400==0)||(($annee%4==0)&&($annee%100!=0))))
+                {
+                            $date="ok";
+                }
+                else{
+                    $date="ko";
+                }
+
+            }        
             
         }
-        else{
-            echo"date valide";
+        else
+        {
+            $date="ok";
         }   
     }
    
 }
 else {
-    echo"date non valide";
+    $date="ko";
+}
+if($date=="ok")
+{
+    echo"La date ".$jour."-".$mois."-".$annee." existe.";
+}
+else
+{
+    echo"La date ".$jour."-".$mois."-".$annee." n'existe pas.";
 }
