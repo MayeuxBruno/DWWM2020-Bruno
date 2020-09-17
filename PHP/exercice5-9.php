@@ -30,6 +30,8 @@ do
 while((!is_integer($prix*1))||($donne<$total));
 $rendu=$donne-$total;
 echo"La somme à rendre est de : ".$rendu." Euros\n";
+
+/** Calcul du rendu de monnaie **/
 while ($rendu>0)
 {
     if($rendu>=10)
