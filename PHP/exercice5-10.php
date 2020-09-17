@@ -1,39 +1,36 @@
 <?php
-$facPart=$facJoue=$facDif=1;
-/**** Controle de la saisie des données ****/
-do
-{
-    do
-    {
-        $partant=readline("Entrez le nombre de chevaux partants : ");
-    }
-    while(!is_numeric($partant));
-} 
-while((!is_integer($partant*1))||($partant<=0));
-do
-{
-    do
-    {
-        $joue=readline("Entrez le nombre de chevaux joués : ");
-    }
-    while(!is_numeric($joue));
-} 
-while((!is_integer($joue*1))||($joue>$partant)||($joue<=0));
-    
-/*** Calcule des factorielles ***/
 
-for ($i=1;$i<=$partant;$i++)
+/**** Controle de la saisie d'un entien positif avec intitule ****/
+function saisieEntierPhrase($phrase)
 {
-    $facPart*=$i;
-    if($i<=$joue)
+    do
     {
-        $facJoue*=$i;
-    }
-    if($i<=($partant-$joue))
-    {
-        $facDif*=$i;
-    }
+        do
+        {
+            $nombre=readline($phrase);
+        }while(!is_numeric($nombre));
+    }while((!is_integer($nombre*1))||($nombre<=0));
+    return $nombre;
 }
-/**** calcul et affichage des probabilités ****/
-echo "Dans l'ordre, 1 chance sur ".$facPart/$facDif." de gagner.\n";
-echo "Dans le désordre 1 chance sur ".($facPart/($facJoue*$facDif))." de gagner.\n";
+
+function factorielle($nombre)
+{
+    $facto=1;
+    for($i=1;$i<=$nombre;$i++)
+    {
+        $facto*=$i;
+    }
+    return $facto;
+}
+
+$partant=saisieEntierPhrase("Entrez le nombre de chevaux partants : ");
+
+/* saisie du nombre de chevaux joués et verifie qu'il n'est pas supérieur au
+** nombre de chevaux partants*/
+do
+{
+    $joue=saisieEntierPhrase("Entrez le nombre de chevaux joués :  ");
+}while($joue>$partant);
+
+echo "Dans l'ordre, 1 chance sur ".factorielle($partant)/factorielle($partant-$joue)." de gagner.\n";
+echo "Dans le désordre 1 chance sur ".(factorielle($partant)/(factorielle($joue)*factorielle($partant-$joue)))." de gagner.";

@@ -10,5 +10,7 @@ $fact=1;
 for($i=1;$i<=$nb;$i++)
 {
     $fact=$fact*$i;
+    echo$i;
+    echo($i!=$nb)?"x":"=";
 }
 echo$fact;
