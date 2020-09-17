@@ -1,5 +1,5 @@
 <?php
-$total=0;
+$total=$dix=$cinq=$un=0;
 /** Controle de la saisie des prix **/
 do
 {
@@ -29,27 +29,29 @@ do
 } 
 while((!is_integer($prix*1))||($donne<$total));
 $rendu=$donne-$total;
+echo"La somme à rendre est de : ".$rendu." Euros\n";
 while ($rendu>0)
 {
     if($rendu>=10)
     {
-        echo"10 Euros\n";
+        $dix++;
         $rendu-=10;
     }
     else
     {
         if($rendu>=5)
         {
-            echo"5 Euros\n";
+            $cinq++;
             $rendu-=5;
         }
         else
         {
             if ($rendu>=1)
             {
-                echo"1 Euro\n";
+                $un++;
                 $rendu-=1;
             }
         }
     }
 }
+echo"La somme rendue est de : \n".$dix." billet(s) de 10€ \n".$cinq." billet(s) de 5€ \n".$un." pièce(s) de 1€";
