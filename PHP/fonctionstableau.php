@@ -1,6 +1,7 @@
 <?php
 
-/**** Controle de la saisie d'un entien positif avec intitule ****/
+/**** Controle de la saisie d'un entien avec intitule ****/
+/******    passé en paramètre par $phrase   **************/
 function saisieEntierPhrase($phrase)
 {
     do
@@ -9,7 +10,7 @@ function saisieEntierPhrase($phrase)
         {
             $nombre=readline($phrase);
         }while(!is_numeric($nombre));
-    }while((!is_integer($nombre*1))||($nombre<=0));
+    }while(!is_integer($nombre*1));
     return $nombre;
 }
 
@@ -17,19 +18,15 @@ function saisieEntierPhrase($phrase)
  * avec la taille non définie ****/
 
  function creTableau()
- {
-     $i=0;
+ {  
      do
      {
-         do{
-             do{
-                $valeur=readline("Entrez une valeur : ");
-             }while(!is_numeric($valeur));
-         }while(!is_int($valeur*1));
-         $table[$i]=$valeur;
-         $i++;
-    }while($valeur!=0);
-    unset($table[$i-1]); // Supprime la valeur 0 (arret de saisie)
+        $valeur=saisieEntierPhrase("Entrez une valeur : ");
+        if ($valeur!=0)
+        {
+            $table[]=$valeur;
+        }
+     }while($valeur!=0);
     return $table;
      
  }
@@ -41,13 +38,7 @@ function saisieEntierPhrase($phrase)
  {
      for($i=0;$i<$taille;$i++)
      {
-         do
-         {
-            do{
-                $valeur=readline("Entrez une valeur : ");
-            }while(!is_numeric($valeur));
-         }while(!is_int($valeur*1));
-         $table[$i]=$valeur;
+         $table[]=saisieEntierPhrase("Entrez une valeur : ");
      }
      return $table;
  }
@@ -57,7 +48,7 @@ function saisieEntierPhrase($phrase)
 
  function lectureTableau($table)
  {  
-     echo "/n";
+     echo "\n";
      for($i=0;$i<count($table);$i++)
      {
          echo $table[$i]."\t";
@@ -91,6 +82,39 @@ function saisieEntierPhrase($phrase)
     return $moyenne;
  }
 
+ /*** Retourne le nombre d'éléments négatives et positives *
+ *** sous forme d'un tableau ( avec les veleur négatives à l'indice0
+ *** et les valeurs positives à l'indice 1 ), d'un tableau entré par $ table*/
+
+ function posNeg($table)
+ {
+     $pos=array(0,0);
+     for($i=0;$i<count($table);$i++)
+     {
+            if($table[$i]<0)
+            {
+                $pos[0]++;
+            }
+            if($table[$i]>0)
+            {
+                $pos[1]++;
+            }
+     }
+     return $pos;
+ }
+
  $tableau=creTableau();
  lectureTableau($tableau);
- echo moyTableau($tableau);
+ 
+ /*** Calcule et retourne la somme des éléments d'un tableau **
+  *** passé en paramètre $table et retourne la somme *****/
+
+ function sommeTableau($table)
+ {
+     $somme=0;
+     for($i=0;i<count($table);$i++)
+     {
+        $somme+=$table[$i];
+     }
+     return $somme;
+ }
