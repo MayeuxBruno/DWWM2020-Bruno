@@ -140,7 +140,7 @@ function maxTableau($table)
  function sommeTableau($table)
  {
      $somme=0;
-     for($i=0;i<count($table);$i++)
+     for($i=0;$i<count($table);$i++)
      {
         $somme+=$table[$i];
      }

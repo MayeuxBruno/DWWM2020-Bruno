@@ -1,22 +1,17 @@
 <?php
 include "fonctionstableau.php";
 
-/*** Fonction qui calcul le schroupf ****/
-function schtroumpf($table1,$table2)
-{
-    $schtroupf=0;
-    for($i=0;$i<count($table2);$i++)
-    {
-        for($j=0;$j<count($table1);$j++)
-        {
-            $schtroupf+=($table1[$j]*$table2[$i]);
-        }
-    }
-    return $schtroupf;
-}
-
+$schtroumpf=0;
 echo "Saisie du tableau 1 : \n";
 $tableau1=creTableau();
 echo "Saisie du tableau 2 : \n";
 $tableau2=creTableau();
-echo "Le schtroupf est de ".schtroumpf($tableau1,$tableau2);
+
+for($i=0;$i<count($tableau2);$i++)
+{
+        for($j=0;$j<count($tableau1);$j++)
+        {
+            $schtroumpf+=($tableau1[$j]*$tableau2[$i]);
+        }
+}    
+echo "Le schtroupf est de ".$schtroumpf;
