@@ -82,7 +82,7 @@ function saisieTableauPhrase($taille,$phrase)
      echo "\n";
  }
 
-/****** Retourne la valeur maximale et d'un tableau enté en paramètre * 
+/****** Retourne la valeur maximale et d'un tableau entrée en paramètre * 
  **** sous forme d'un tableau valeur à l'indice 0 et la 
  **** clé à l'indice 1           */
 function maxTableau($table)
@@ -178,5 +178,40 @@ function incrementElementTableau($table)
     return $table;
 }
 
+/****** Effectue un tri à bulles du tableau entré 
+ ***       en paramètre $table              ******/
+function triAbulles($table)
+{
+    $permut=1;
+    while ($permut==1)
+    {
+        $permut=0;
+        for ($i=0;$i<(count($table))-1;$i++)
+        {
+            if($table[$i]<$table[$i+1])
+            {
+                $temp=$table[$i];
+                $table[$i]=$table[$i+1];
+                $table[$i+1]=$temp;
+                $permut=1;
+            } 
+        }
+    }
+    return $table;    
+}
 
+function triInsertion($table)
+{
+    for ($i=0;$i<count($table);$i++)
+    {
+        for ($j=$i;$j<count($table);$j++)
+        {
+            if ($table[$i]<$table[$j])
+                $temp=$table[$i];
+                $table[$i]=$table[$j];
+                $table[$j]=$temp;
+        }
+    }
+    return $table;
+}
 
