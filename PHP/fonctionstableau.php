@@ -14,9 +14,17 @@ function saisieEntierPhrase($phrase)
     return $nombre;
 }
 
-/***** creation de tableau  *****
- * avec la taille non définie ****/
 
+/****************************************************************************************
+ ***                        Crétation et lecture de tableaux                          ***
+ ****************************************************************************************/
+
+
+ /*******************************************************
+ ***  creation de tableau avec la taille non définie  ***
+ ***  retourne un $tableau. Cette fonction nécessite  ***
+ ***  la fonction saisieEntierPhrase pour fonctionner ***
+ ********************************************************/
  function creTableau()
  {  
      do
@@ -28,12 +36,13 @@ function saisieEntierPhrase($phrase)
         }
      }while($valeur!=0);
     return $table;
-     
  }
 
-
-/**** creation de tableau  ****** 
- *         avec la taille défine**/
+/****************************************************************
+ *** creation de tableau avec la taille définie en paramètre  ***
+ *** $taille et retourne un tableau. Cette fonction necessite ***
+ ***      la fonction saisieEntierPhrase pour fonctionner     ***
+ ****************************************************************/
 
  function saisieTableau($taille)
  {
@@ -44,9 +53,14 @@ function saisieEntierPhrase($phrase)
      return $table;
  }
 
- /**** creation de tableau  ****** 
- * avec la taille défine et intitulé modifiable**/
-
+/****************************************************************
+ *** creation de tableau avec la taille définie en paramètre  ***
+ *** $taille ainsi que l'intitulé pour la demande de saisie   ***
+ ***   de l'utilisateur $phrase et retourne un tableau.       ***
+ ***  Cette fonction necessite la fonction saisieEntierPhrase ***
+ ***                   pour fonctionner                       ***
+ ****************************************************************/
+ 
 function saisieTableauPhrase($taille,$phrase)
 {
     for($i=0;$i<$taille;$i++)
@@ -56,8 +70,10 @@ function saisieTableauPhrase($taille,$phrase)
     return $table;
 }
 
- /***** Affichage de tableau  **
- *     avec une boucle for    **/
+/******************************************************
+ ***  Affiche le tableau entré en paramètre $table  ***
+ ***           fonctionne en boucle for             ***
+ ******************************************************/
 
  function lectureTableau($table)
  {  
@@ -69,9 +85,11 @@ function saisieTableauPhrase($taille,$phrase)
      echo "\n";
  }
 
- /***** Affichage de tableau  **
- *    avec une boucle foreach  */
-
+ /******************************************************
+ ***  Affiche le tableau entré en paramètre $table  ***
+ ***         fonctionne en boucle foreach           ***
+ ******************************************************/
+ 
  function afficheTableau($table)
  {
      echo "\n";
@@ -81,6 +99,70 @@ function saisieTableauPhrase($taille,$phrase)
      }
      echo "\n";
  }
+
+ /****************************************************************************************
+ ***                               Tris de tableaux                                    ***
+ ****************************************************************************************/
+
+/******************************************************
+ ***  Effectue le tri à bulles du tableau passé en  ***
+ ***                 paramètre $table               ***
+ ******************************************************/
+
+ function triAbulles($table)
+{
+    $permut=1;
+    while ($permut==1)
+    {
+        $permut=0;
+        for ($i=0;$i<(count($table))-1;$i++)
+        {
+            if($table[$i]<$table[$i+1])
+            {
+                $temp=$table[$i];
+                $table[$i]=$table[$i+1];
+                $table[$i+1]=$temp;
+                $permut=1;
+            } 
+        }
+    }
+    return $table;    
+}
+
+/******************************************************
+ ***    Effectue le tri par insertion du tableau    *** 
+ ***           passé en paramètre $table            ***
+ ******************************************************/
+
+function triInsertion($table)
+{
+    $flag=0;
+    for ($i=0;$i<(count($table)-1);$i++)
+    {
+        $valeurMin=$table[$i];
+        for ($j=$i+1;$j<count($table);$j++)
+        {
+            if ($table[$j]<$valeurMin)
+            {
+                $valeurMin=$table[$j];
+                $index=$j;
+                $flag=1;
+                
+            }
+        }
+        if ($flag==1)
+        {
+            $temp=$table[$i];
+            $table[$i]=$valeurMin;
+            $table[$index]=$temp;
+            $flag=0;
+        }
+    }
+    return $table;
+}
+
+
+
 
 /****** Retourne la valeur maximale et d'un tableau entrée en paramètre * 
  **** sous forme d'un tableau valeur à l'indice 0 et la 
@@ -97,6 +179,24 @@ function maxTableau($table)
         }
     }
     return $max;
+}
+
+/****** Retourne la valeur minimale d'un tableau entrée en paramètre avec son index de début * 
+ **** sous forme d'un tableau valeur à l'indice 0 et la 
+ **** clé à l'indice 1           */
+function minTableau($table,$index)
+{
+    $min[0]=$table[$index];
+    for($i=$index;$i<count($table);$i++)
+    {
+        if ($table[$i]<$min[0])
+        {
+            $min[0]=$table[$i];
+            $min[1]=$i;
+        }
+    }
+    return $min;
+
 }
 
  /***** Calcule la moyenne d'un   **
@@ -178,40 +278,5 @@ function incrementElementTableau($table)
     return $table;
 }
 
-/****** Effectue un tri à bulles du tableau entré 
- ***       en paramètre $table              ******/
-function triAbulles($table)
-{
-    $permut=1;
-    while ($permut==1)
-    {
-        $permut=0;
-        for ($i=0;$i<(count($table))-1;$i++)
-        {
-            if($table[$i]<$table[$i+1])
-            {
-                $temp=$table[$i];
-                $table[$i]=$table[$i+1];
-                $table[$i+1]=$temp;
-                $permut=1;
-            } 
-        }
-    }
-    return $table;    
-}
 
-function triInsertion($table)
-{
-    for ($i=0;$i<count($table);$i++)
-    {
-        for ($j=$i;$j<count($table);$j++)
-        {
-            if ($table[$i]<$table[$j])
-                $temp=$table[$i];
-                $table[$i]=$table[$j];
-                $table[$j]=$temp;
-        }
-    }
-    return $table;
-}
 
