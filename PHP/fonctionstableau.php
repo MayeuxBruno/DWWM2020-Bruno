@@ -1,7 +1,9 @@
 <?php
-
-/**** Controle de la saisie d'un entien avec intitule ****/
-/******    passé en paramètre par $phrase   **************/
+/******************************************************** 
+*** Controle de la saisie d'un entier avecl'intitule  ***
+***pour la saisie de l'utilisateur passé en paramètre ***
+***      par $phrase et retourne l'entier saisi       ***
+********************************************************/
 function saisieEntierPhrase($phrase)
 {
     do
@@ -15,9 +17,11 @@ function saisieEntierPhrase($phrase)
 }
 
 
+
 /****************************************************************************************
  ***                        Crétation et lecture de tableaux                          ***
  ****************************************************************************************/
+
 
 
  /*******************************************************
@@ -100,15 +104,16 @@ function saisieTableauPhrase($taille,$phrase)
      echo "\n";
  }
 
+
  /****************************************************************************************
  ***                               Tris de tableaux                                    ***
  ****************************************************************************************/
+
 
 /******************************************************
  ***  Effectue le tri à bulles du tableau passé en  ***
  ***                 paramètre $table               ***
  ******************************************************/
-
  function triAbulles($table)
 {
     $permut=1;
@@ -162,9 +167,84 @@ function triInsertion($table)
 }
 
 
+/****************************************************************************************
+ ***                          Calculs sur les tableaux                                ***
+ ****************************************************************************************/
 
 
-/****** Retourne la valeur maximale et d'un tableau entrée en paramètre * 
+ /*********************************************************
+***      Calcule la moyenne d'un tableau entré en       ***
+*** paramètre $table et retourne un entier contenant la ***
+***           moyenne des valeurs de ce tableau         ***
+**********************************************************/
+function moyTableau($table)
+{
+   $moyenne=0;
+   foreach($table as $valeur)
+   {
+        $moyenne=$moyenne+$valeur;
+   } 
+   $moyenne=$moyenne/count($table);
+   return $moyenne;
+}
+
+/**********************************************************
+***   Calcule et retourne la somme des éléments d'un    ***
+***   tableau passé en paramètre $table et retourne     ***
+***                      la somme                       ***
+**********************************************************/
+
+  function sommeTableau($table)
+  {
+      $somme=0;
+      for($i=0;$i<count($table);$i++)
+      {
+         $somme+=$table[$i];
+      }
+      return $somme;
+  }
+
+/********************************************************* 
+***    Calcule la somme élément par élément de deux    ***
+*** tableaux passés en paramètres ($table1 et $table2) ***
+***    et retourne un tableau contenant le résultat    ***
+*********************************************************/
+
+function addTableaux($table1,$table2)
+{
+    if(count($table1)>=count($table2)){
+        $table3=$table1;
+        $count=count($table2);
+    }
+    else
+    {
+        $table3=$table2;
+        $count=count($table1);
+    }
+    for ($i=0;$i<$count;$i++)
+    {
+        $table3[$i]=$table1[$i]+$table2[$i];
+    }
+    return $table3;
+}
+/********************************************************* 
+***     Incrémente les éléments d'un tableau passé     *** 
+***     en paramètre $table et retourne le tableau     ***
+*********************************************************/
+
+function incrementElementTableau($table)
+{
+    for($i=0;$i<count($table);$i++)
+    {
+        $table[$i]+=1;
+    }
+    return $table;
+}
+
+
+
+ /***************************************************************** 
+ ****** Retourne la valeur maximale et d'un tableau entrée en paramètre * 
  **** sous forme d'un tableau valeur à l'indice 0 et la 
  **** clé à l'indice 1           */
 function maxTableau($table)
@@ -180,6 +260,7 @@ function maxTableau($table)
     }
     return $max;
 }
+
 
 /****** Retourne la valeur minimale d'un tableau entrée en paramètre avec son index de début * 
  **** sous forme d'un tableau valeur à l'indice 0 et la 
@@ -199,18 +280,7 @@ function minTableau($table,$index)
 
 }
 
- /***** Calcule la moyenne d'un   **
- *      tableau d'entiers          */
- function moyTableau($table)
- {
-    $moyenne=0;
-    foreach($table as $valeur)
-    {
-         $moyenne=$moyenne+$valeur;
-    } 
-    $moyenne=$moyenne/count($table);
-    return $moyenne;
- }
+ 
 
  /*** Retourne le nombre d'éléments négatives et positives *
  *** sous forme d'un tableau ( avec les veleur négatives à l'indice0
@@ -232,51 +302,6 @@ function minTableau($table,$index)
      }
      return $pos;
  }
-
- 
- /*** Calcule et retourne la somme des éléments d'un tableau **
-  *** passé en paramètre $table et retourne la somme *****/
-
- function sommeTableau($table)
- {
-     $somme=0;
-     for($i=0;$i<count($table);$i++)
-     {
-        $somme+=$table[$i];
-     }
-     return $somme;
- }
-
- /*** Calcule la somme de deux tableaux passés en paramètres ($table1 et $table2) 
- *** élément par élément et, retourne un tableau avec le résultat *********/
-
-function addTableaux($table1,$table2)
-{
-    if(count($table1)>=count($table2)){
-        $table3=$table1;
-        $count=count($table2);
-    }
-    else
-    {
-        $table3=$table2;
-        $count=count($table1);
-    }
-    for ($i=0;$i<$count;$i++)
-    {
-        $table3[$i]=$table1[$i]+$table2[$i];
-    }
-    return $table3;
-}
-
-/***** Incrémente les éléments d'un tableau entré en paramètre $table */
-function incrementElementTableau($table)
-{
-    for($i=0;$i<count($table);$i++)
-    {
-        $table[$i]+=1;
-    }
-    return $table;
-}
 
 
 
