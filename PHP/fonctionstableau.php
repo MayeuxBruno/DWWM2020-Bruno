@@ -31,6 +31,7 @@ function saisieEntierPhrase($phrase)
      
  }
 
+
 /**** creation de tableau  ****** 
  *         avec la taille défine**/
 
@@ -42,6 +43,18 @@ function saisieEntierPhrase($phrase)
      }
      return $table;
  }
+
+ /**** creation de tableau  ****** 
+ * avec la taille défine et intitulé modifiable**/
+
+function saisieTableauPhrase($taille,$phrase)
+{
+    for($i=0;$i<$taille;$i++)
+    {
+        $table[]=saisieEntierPhrase($phrase);
+    }
+    return $table;
+}
 
  /***** Affichage de tableau  **
  *     avec une boucle for    **/

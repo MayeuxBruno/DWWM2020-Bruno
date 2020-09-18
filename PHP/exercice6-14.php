@@ -1,6 +1,6 @@
 <?php
 $moyenne=0;
-
+$bonneNote=0;
 /**** Controle de la saisie d'un entien positif avec intitule ****/
 function saisieEntierPhrase($phrase)
 {
@@ -26,4 +26,14 @@ for ($i=0;$i<$nbNotes;$i++)
     $moyenne+=$tab[$i];
 }
 
-echo "La moyenne de classe est de : ".$moyenne/$nbNotes;
+$moyenne=$moyenne/$nbNotes;
+
+for ($i=0;$i<count($tab);$i++)
+{
+    if ($tab[$i]>$moyenne)
+    {
+        $bonneNote++;
+    }
+}
+
+echo "Il y'a ".$bonneNote." au dessus de la moyenne de classe.";

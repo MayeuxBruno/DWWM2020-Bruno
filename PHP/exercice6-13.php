@@ -26,5 +26,4 @@ for($i=0;$i<$nbVal;$i++)
         $pos=$i;
     }
 }
-echo"Le tableau de valeurs saisies est : '".(implode($tab,"','"))."'\n";
 echo"La valeur maxi est ".$max." saisie en position ".($pos+1);
