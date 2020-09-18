@@ -241,7 +241,55 @@ function incrementElementTableau($table)
     return $table;
 }
 
+/****************************************************************************************
+ ***                          Manipulation des tableaux                               ***
+ ****************************************************************************************/
 
+
+/********************************************************* 
+***      Inverse les éléments d'un tableau passé       *** 
+***     en paramètre $table et retourne le tableau     ***
+*********************************************************/
+function inverseTableau($table)
+{   
+    for ($i=0;$i<intdiv(count($table),2);$i++)
+    {
+        $j=(count($table)-1-$i);
+        $temp=$table[$j];
+        $table[$j]=$table[$i];
+        $table[$i]=$temp;
+    }
+    return $table;
+}
+
+/******************************************************** 
+*** Supprime un éléments passé en paramètre $element  ***
+***     d'un tableau passé en paramètre $table et     ***
+***               retourne le tableau                 ***
+*********************************************************/
+
+function supElementTableau($table,$element)
+{
+    $flag=$i=0;
+    do
+    {
+        if($table[$i]==$element)
+        {
+            $index=$i;
+            $flag=1;
+        }
+        $i++;
+    }while(($i<count($table))&&($flag!=1));
+    if ($flag==0)
+    {
+        echo "La valeur à supprimer est intouvable...";
+    }
+    else 
+    {
+        unset($table[$index]);
+    }
+    return $table;
+}
 
  /***************************************************************** 
  ****** Retourne la valeur maximale et d'un tableau entrée en paramètre * 
