@@ -21,7 +21,7 @@ function saisieEntierPhrase($phrase)
  {  
      do
      {
-        $valeur=saisieEntierPhrase("Entrez une valeur : ");
+        $valeur=saisieEntierPhrase("Entrez une valeur ( 0 pour stopper la saisie) : ");
         if ($valeur!=0)
         {
             $table[]=$valeur;
@@ -31,7 +31,7 @@ function saisieEntierPhrase($phrase)
      
  }
 
- /**** creation de tableau  ****** 
+/**** creation de tableau  ****** 
  *         avec la taille défine**/
 
  function saisieTableau($taille)
@@ -69,6 +69,23 @@ function saisieEntierPhrase($phrase)
      echo "\n";
  }
 
+/****** Retourne la valeur maximale et d'un tableau enté en paramètre * 
+ **** sous forme d'un tableau valeur à l'indice 0 et la 
+ **** clé à l'indice 1           */
+function maxTableau($table)
+{
+    $max=array(0,0);
+    for($i=0;$i<count($table);$i++)
+    {
+        if ($table[$i]>$max[0])
+        {
+            $max[0]=$table[$i];
+            $max[1]=$i+1;
+        }
+    }
+    return $max;
+}
+
  /***** Calcule la moyenne d'un   **
  *      tableau d'entiers          */
  function moyTableau($table)
@@ -103,8 +120,6 @@ function saisieEntierPhrase($phrase)
      return $pos;
  }
 
- $tableau=creTableau();
- lectureTableau($tableau);
  
  /*** Calcule et retourne la somme des éléments d'un tableau **
   *** passé en paramètre $table et retourne la somme *****/
@@ -118,3 +133,37 @@ function saisieEntierPhrase($phrase)
      }
      return $somme;
  }
+
+ /*** Calcule la somme de deux tableaux passés en paramètres ($table1 et $table2) 
+ *** élément par élément et, retourne un tableau avec le résultat *********/
+
+function addTableaux($table1,$table2)
+{
+    if(count($table1)>=count($table2)){
+        $table3=$table1;
+        $count=count($table2);
+    }
+    else
+    {
+        $table3=$table2;
+        $count=count($table1);
+    }
+    for ($i=0;$i<$count;$i++)
+    {
+        $table3[$i]=$table1[$i]+$table2[$i];
+    }
+    return $table3;
+}
+
+/***** Incrémente les éléments d'un tableau entré en paramètre $table */
+function incrementElementTableau($table)
+{
+    for($i=0;$i<count($table);$i++)
+    {
+        $table[$i]+=1;
+    }
+    return $table;
+}
+
+
+
