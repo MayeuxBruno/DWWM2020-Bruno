@@ -1,21 +1,21 @@
 <?php
+
 /******************************************************** 
 *** Controle de la saisie d'un entier avecl'intitule  ***
 ***pour la saisie de l'utilisateur passé en paramètre ***
 ***      par $phrase et retourne l'entier saisi       ***
 ********************************************************/
-function saisieEntierPhrase($phrase)
+function saisieChainePhrase($phrase)
 {
     do
     {
         do
         {
-            $nombre=readline($phrase);
+            $chaine=readline($phrase);
         }while(!is_numeric($nombre));
     }while(!is_integer($nombre*1));
-    return $nombre;
+    return $chaine;
 }
-
 
 
 /****************************************************************************************
@@ -164,6 +164,39 @@ function triInsertion($table)
         }
     }
     return $table;
+}
+
+/********************************************************
+ *** Effectue une recherche dichotomique d'un élément ***     
+ ***   passé en paramètre $element dans le tableau    *** 
+ ***  passé en paramètre $table et retourne un entier ***
+ ***     1->élément trouvé, 0->élément non trouvé     ***
+ ********************************************************/
+
+function rechercheDicho($element,$table)
+{
+    $trouve=$debut=0;
+    $fin=count($table);
+    do
+    {
+        $milieu=intdiv($debut+$fin,2);
+        if ($table[$milieu]==$element)
+        {
+            $trouve=1;
+        }
+        else
+        {
+            if ($element<$table[$milieu])
+            {
+               $fin=$milieu-1;
+            }
+            else
+            {    
+               $debut=$milieu+1;
+            }
+        }
+    }while (($trouve==0) && ($debut<= $fin));
+    return $trouve;
 }
 
 
