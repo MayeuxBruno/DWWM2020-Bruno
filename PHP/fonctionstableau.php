@@ -157,9 +157,8 @@ function triInsertion($table)
         }
         if ($flag==1)
         {
-            $temp=$table[$i];
+            $table[$index]=$table[$i];
             $table[$i]=$valeurMin;
-            $table[$index]=$temp;
             $flag=0;
         }
     }

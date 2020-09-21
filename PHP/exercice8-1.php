@@ -1,11 +1,13 @@
 <?php
 
+// rempli le tableau de 0
 for($indy=0;$indy<13;$indy++)
 {
-    for($inx=0;$indx<6;$indx++)
+    for($indx=0;$indx<6;$indx++)
     {
-    
-        $tab[$indx]=0;
+        $tab[$indx][$indy]=0;
+        echo $tab[$indx][$indy]." ";
     }
-
+    echo "\n";
 }
+
