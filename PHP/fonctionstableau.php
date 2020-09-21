@@ -5,16 +5,16 @@
 ***pour la saisie de l'utilisateur passé en paramètre ***
 ***      par $phrase et retourne l'entier saisi       ***
 ********************************************************/
-function saisieChainePhrase($phrase)
+function saisieEntierPhrase($phrase)
 {
     do
     {
         do
         {
-            $chaine=readline($phrase);
+            $nombre=readline($phrase);
         }while(!is_numeric($nombre));
     }while(!is_integer($nombre*1));
-    return $chaine;
+    return $nombre;
 }
 
 
@@ -176,7 +176,7 @@ function triInsertion($table)
 function rechercheDicho($element,$table)
 {
     $trouve=$debut=0;
-    $fin=count($table);
+    $fin=count($table)-1;
     do
     {
         $milieu=intdiv($debut+$fin,2);
@@ -272,6 +272,26 @@ function incrementElementTableau($table)
         $table[$i]+=1;
     }
     return $table;
+}
+
+/*********************************************************
+ ***    Indique si les éléments du tableau passé en    ***
+ *** paramètre $table sont consécutifs. Retourne 1 si  ***
+ ***         ils sont consécutis sinon 0               ***
+ ********************************************************/
+function isConsecutif($table)
+{
+    $flag=1;
+    $i=0;
+    while (($flag==1)&&($i<count($table)-1))
+    {
+        if(($table[$i+1]!=$table[$i]+1)&&($table[$i]!=$table[$i+1]+1))
+        {
+            $flag=0;
+        }
+        $i++;
+    }
+    return $flag;
 }
 
 /****************************************************************************************
