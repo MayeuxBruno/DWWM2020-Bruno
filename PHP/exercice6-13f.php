@@ -8,7 +8,7 @@ for($i=0;$i<count($tableau);$i++)
     if($tableau[$i]>$max)
     {
         $max=$tableau[$i];
-        $index=$i+1;
+        $position=$i+1;
     }
 }
-echo "La valeur maximale du tableau est de ".$max." située à la position ".$index;
+echo "La valeur maximale du tableau est de ".$max." située à la position ".$position;

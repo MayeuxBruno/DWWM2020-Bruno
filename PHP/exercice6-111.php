@@ -2,16 +2,20 @@
 include "fonctionstableau.php";
 
 $schtroumpf=0;
+
+// Saisie des 2 tableaux
 echo "Saisie du tableau 1 : \n";
 $tableau1=creTableau();
 echo "Saisie du tableau 2 : \n";
 $tableau2=creTableau();
 
-for($i=0;$i<count($tableau2);$i++)
+// calcul du Schtroumpf
+for($indTab2=0;$indTab2<count($tableau2);$indTab2++)
 {
-        for($j=0;$j<count($tableau1);$j++)
+        for($indTab1=0;$indTab1<count($tableau1);$indTab1++)
         {
-            $schtroumpf+=($tableau1[$j]*$tableau2[$i]);
+            $schtroumpf+=($tableau1[$indTab1]*$tableau2[$indTab2]);
         }
 }    
-echo "Le schtroupf est de ".$schtroumpf;
+
+echo "Le schtroumpf est de ".$schtroumpf;

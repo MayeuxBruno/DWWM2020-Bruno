@@ -215,7 +215,7 @@ function moyTableau($table)
    $moyenne=0;
    foreach($table as $valeur)
    {
-        $moyenne=$moyenne+$valeur;
+        $moyenne+=$valeur;
    } 
    $moyenne=$moyenne/count($table);
    return $moyenne;
@@ -382,31 +382,3 @@ function minTableau($table,$index)
     return $min;
 
 }
-
- 
-/************************************************************ 
- *** Retourne le nombre d'éléments négatives et positives ***
- *** sous forme d'un tableau ( avec les valeurs négatives ***
- *** à l'indice0 et les valeurs positives à l'indice 1 ), ***
- ***        d'un tableau entré en paramètre par $ table   ***
- ***********************************************************/
-
- function posNeg($table)
- {
-     $pos=array(0,0);
-     for($i=0;$i<count($table);$i++)
-     {
-            if($table[$i]<0)
-            {
-                $pos[0]++;
-            }
-            if($table[$i]>0)
-            {
-                $pos[1]++;
-            }
-     }
-     return $pos;
- }
-
-
-

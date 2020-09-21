@@ -6,7 +6,7 @@ $bonneNote=0;
 
 $nbNotes=saisieEntierPhrase("Entrez le nombre de notes à saisir : ");
 $tableau=saisieTableauPhrase($nbNotes,"Entrez une note : ");
-$moyenne=moyTableau($tableau);
+$moyenne=array_sum($tableau)/count($tableau);
 
 for ($i=0;$i<count($tableau);$i++)
 {
