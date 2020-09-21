@@ -205,22 +205,6 @@ function rechercheDicho($element,$table)
  ****************************************************************************************/
 
 
- /*********************************************************
-***      Calcule la moyenne d'un tableau entré en       ***
-*** paramètre $table et retourne un entier contenant la ***
-***           moyenne des valeurs de ce tableau         ***
-**********************************************************/
-function moyTableau($table)
-{
-   $moyenne=0;
-   foreach($table as $valeur)
-   {
-        $moyenne+=$valeur;
-   } 
-   $moyenne=$moyenne/count($table);
-   return $moyenne;
-}
-
 /**********************************************************
 ***   Calcule et retourne la somme des éléments d'un    ***
 ***   tableau passé en paramètre $table et retourne     ***
