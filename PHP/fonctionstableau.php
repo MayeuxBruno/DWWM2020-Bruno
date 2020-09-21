@@ -363,10 +363,11 @@ function maxTableau($table)
     return $max;
 }
 
-
-/****** Retourne la valeur minimale d'un tableau entrée en paramètre avec son index de début * 
- **** sous forme d'un tableau valeur à l'indice 0 et la 
- **** clé à l'indice 1           */
+/*****************************************************************
+ ***    Retourne la valeur minimale d'un tableau entrée en     ***
+ *** paramètre avec son index de début sous forme d'un tableau ***
+ ***   valeur à l'indice 0 et la clé à l'indice 1              ***
+*****************************************************************/
 function minTableau($table,$index)
 {
     $min[0]=$table[$index];
