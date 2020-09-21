@@ -9,16 +9,6 @@ do
 }while($nb <= 0);
 
 $tableau=saisieTableau($nb);
+$result=posNeg($tableau);
 
-for($i=0;$i<count($tableau);$i++)
-{
-   if($tableau[$i]<0)
-    {
-        $negatif++;
-    }
-    if($tableau[$i]>0)
-    {
-        $positif++;
-    }
-}
-echo "il y a ".$negatif." valeurs negatives et ".$positif." valeurs positives";
+echo "il y a ".$result[0]." valeur(s) negative(s) et ".$result[1]." valeur(s) positive(s)";

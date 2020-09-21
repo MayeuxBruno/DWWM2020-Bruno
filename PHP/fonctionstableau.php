@@ -383,10 +383,12 @@ function minTableau($table,$index)
 }
 
  
-
- /*** Retourne le nombre d'éléments négatives et positives *
- *** sous forme d'un tableau ( avec les veleur négatives à l'indice0
- *** et les valeurs positives à l'indice 1 ), d'un tableau entré par $ table*/
+/************************************************************ 
+ *** Retourne le nombre d'éléments négatives et positives ***
+ *** sous forme d'un tableau ( avec les valeurs négatives ***
+ *** à l'indice0 et les valeurs positives à l'indice 1 ), ***
+ ***        d'un tableau entré en paramètre par $ table   ***
+ ***********************************************************/
 
  function posNeg($table)
  {
