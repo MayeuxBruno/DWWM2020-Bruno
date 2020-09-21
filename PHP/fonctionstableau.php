@@ -344,10 +344,11 @@ function supElementTableau($table,$element)
     return $table;
 }
 
- /***************************************************************** 
- ****** Retourne la valeur maximale et d'un tableau entrée en paramètre * 
- **** sous forme d'un tableau valeur à l'indice 0 et la 
- **** clé à l'indice 1           */
+ /*************************************************************
+ ***   Retourne la valeur maximale et d'un tableau entrée   *** 
+ ***    en paramètre sous forme d'un tableau valeur à       ***
+ ***         l'indice 0 et la clé à l'indice 1              ***
+ *************************************************************/
 function maxTableau($table)
 {
     $max=array(0,0);
