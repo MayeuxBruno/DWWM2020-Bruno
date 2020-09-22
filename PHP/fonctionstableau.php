@@ -84,7 +84,7 @@ function saisieTableauPhrase($taille,$phrase)
      echo "\n";
      for($i=0;$i<count($table);$i++)
      {
-         echo $table[$i]."\t";
+         echo $table[$i]." ";
      }
      echo "\n";
  }
@@ -141,7 +141,7 @@ function lectureTableauDouble($table)
         $permut=0;
         for ($i=0;$i<(count($table))-1;$i++)
         {
-            if($table[$i]<$table[$i+1])
+            if($table[$i]>$table[$i+1])
             {
                 $temp=$table[$i];
                 $table[$i]=$table[$i+1];
@@ -149,6 +149,7 @@ function lectureTableauDouble($table)
                 $permut=1;
             } 
         }
+        lectureTableau($table);
     }
     return $table;    
 }
@@ -277,25 +278,7 @@ function incrementElementTableau($table)
     return $table;
 }
 
-/*********************************************************
- ***    Indique si les éléments du tableau passé en    ***
- *** paramètre $table sont consécutifs. Retourne 1 si  ***
- ***         ils sont consécutis sinon 0               ***
- ********************************************************/
-function isConsecutif($table)
-{
-    $flag=1;
-    $i=0;
-    while (($flag==1)&&($i<count($table)-1))
-    {
-        if(($table[$i+1]!=$table[$i]+1)&&($table[$i]!=$table[$i+1]+1))
-        {
-            $flag=0;
-        }
-        $i++;
-    }
-    return $flag;
-}
+
 
 /****************************************************************************************
  ***                          Manipulation des tableaux                               ***
@@ -318,34 +301,6 @@ function inverseTableau($table)
     return $table;
 }
 
-/******************************************************** 
-*** Supprime un éléments passé en paramètre $element  ***
-***     d'un tableau passé en paramètre $table et     ***
-***               retourne le tableau                 ***
-*********************************************************/
-
-function supElementTableau($table,$element)
-{
-    $flag=$i=0;
-    do
-    {
-        if($table[$i]==$element)
-        {
-            $index=$i;
-            $flag=1;
-        }
-        $i++;
-    }while(($i<count($table))&&($flag!=1));
-    if ($flag==0)
-    {
-        echo "La valeur à supprimer est intouvable...";
-    }
-    else 
-    {
-        unset($table[$index]);
-    }
-    return $table;
-}
 
  /*************************************************************
  ***   Retourne la valeur maximale et d'un tableau entrée   *** 

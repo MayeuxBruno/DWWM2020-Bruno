@@ -1,10 +1,40 @@
 <?php
-include "fonctionstableau.php";
-$consecutif=1;
+require "fonctionstableau.php";
+$flag=1;
+$i=0;
 
 $tableau=creTableau();
-$consecutif=isConsecutif($tableau);
-if ($consecutif==0)
+
+if ($tableau[$i+1]==$tableau[$i]+1)
+{
+    $sens="c";
+}
+else 
+{
+    $sens="d";
+}
+echo $sens;
+while (($flag==1)&&($i<count($tableau)-1))
+{
+    
+    if($sens=="c")
+    {
+        if($tableau[$i+1]!=$tableau[$i]+1)
+        {
+            $flag=0;
+        }
+    }
+    else
+    {
+        if($tableau[$i+1]!=$tableau[$i]-1)
+        {
+            $flag=0;
+        }
+    }
+    $i++;
+}
+
+if ($flag==0)
 {
     echo "Les éléments du tableau ne sont pas consécutifs";
 }
