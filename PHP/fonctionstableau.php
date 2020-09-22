@@ -285,22 +285,6 @@ function incrementElementTableau($table)
  ****************************************************************************************/
 
 
-/********************************************************* 
-***      Inverse les éléments d'un tableau passé       *** 
-***     en paramètre $table et retourne le tableau     ***
-*********************************************************/
-function inverseTableau($table)
-{   
-    for ($i=0;$i<intdiv(count($table),2);$i++)
-    {
-        $j=(count($table)-1-$i);
-        $temp=$table[$j];
-        $table[$j]=$table[$i];
-        $table[$i]=$temp;
-    }
-    return $table;
-}
-
 
  /*************************************************************
  ***   Retourne la valeur maximale et d'un tableau entrée   *** 
