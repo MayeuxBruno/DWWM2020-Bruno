@@ -1,6 +1,6 @@
 <?php
 
-include "fonctionstableau.php";
+require "fonctionstableau.php";
 
 $bonneNote=0;
 

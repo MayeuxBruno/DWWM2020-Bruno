@@ -89,6 +89,25 @@ function saisieTableauPhrase($taille,$phrase)
      echo "\n";
  }
 
+/******************************************************
+ ***  Affiche le tableau à deux dimensions entré    ***
+ *** en paramètre $table fonctionne en boucle for   ***
+ ******************************************************/
+
+function lectureTableauDouble($table)
+{  
+    for ($i=0;$i<count($table);$i++)
+    {
+        for ($j=0;$j<count($table[$i]);$j++)
+        {
+            echo $table[$i][$j]."\t";
+        }
+        echo"\n";
+    }
+    echo"\n";
+}
+
+
  /******************************************************
  ***  Affiche le tableau entré en paramètre $table  ***
  ***         fonctionne en boucle foreach           ***
@@ -145,6 +164,7 @@ function triInsertion($table)
     for ($i=0;$i<(count($table)-1);$i++)
     {
         $valeurMin=$table[$i];
+        $index=$i;
         for ($j=$i+1;$j<count($table);$j++)
         {
             if ($table[$j]<$valeurMin)

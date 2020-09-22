@@ -1,5 +1,5 @@
 <?php
-include "fonctionstableau.php";
+require "fonctionstableau.php";
 
 $schtroumpf=0;
 
@@ -18,4 +18,4 @@ for($indTab2=0;$indTab2<count($tableau2);$indTab2++)
         }
 }    
 
-echo "Le schtroumpf est de ".$schtroumpf;
+echo "Le schtroumpf est de ".$schtroumpf."\n";

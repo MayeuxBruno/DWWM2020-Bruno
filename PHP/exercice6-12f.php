@@ -1,6 +1,7 @@
 <?php
 
-include "fonctionstableau.php";
+require "fonctionstableau.php";
 
 $tableau1=cretableau();
-afficheTableau(incrementElementTableau($tableau1));
+$tableau2=incrementElementTableau($tableau1);
+afficheTableau($tableau2);

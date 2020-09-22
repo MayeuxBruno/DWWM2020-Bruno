@@ -1,6 +1,7 @@
 <?php
 
-include"fonctionstableau.php";
+require "fonctionstableau.php";
+
 $positif=$negatif=0;
 
 do
@@ -10,16 +11,15 @@ do
 
 $tableau=saisieTableau($nb);
 
-for($i=0;$i<count($tableau);$i++)
+foreach ($tableau as $elt)
 {
-       if($tableau[$i]<0)
+       if($elt<0)
        {
            $negatif++;
        }
-       if($tableau[$i]>=0)
+       else
        {
            $positif++;
        }
 }
-
 echo "il y a ".$negatif." valeur(s) negative(s) et ".$positif." valeur(s) positive(s)";
