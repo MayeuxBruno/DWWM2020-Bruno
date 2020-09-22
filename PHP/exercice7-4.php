@@ -1,5 +1,5 @@
 <?php
-include "fonctionstableau.php";
+require "fonctionstableau.php";
 
 $tableau=creTableau();
 afficheTableau($tableau);
