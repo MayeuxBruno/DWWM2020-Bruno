@@ -9,7 +9,7 @@ $mot=readline("Entrez le mot à rechercher dans le dictionnaire : ");
 
 $fin=count($dico)-1;
 
-while (($trouve==0) && ($debut<= $fin))
+while (($trouve==0) && ($debut<= $fin))   
 {
     $milieu=intdiv($debut+$fin,2);
     if ($dico[$milieu]==$mot)
