@@ -61,14 +61,26 @@ function testerLettre($lettre,$tab,$depart)
         }
     }
     return $result;*/
-    $tab=array_slice($tab,$depart);
-    $trouve=array_search($lettre,$tab);
-    if ($trouve!=false)
+   
+    
+    var_dump($tab);
+    if (count($tab)==0)
     {
-        $result=array_merge($result,testerLettre($lettre,$tab,$trouve));
+        return 0;
+    }
+    else
+    {
+        $trouve=array_search($lettre,$tab);
+        echo "Valeur de trouve $trouve";
+        $tab=array_slice($tab,$depart);
+        $resulat[]=$trouve;
+        var_dump($tab);
+        $sous_resultat=testerLettre($lettre,$tab,$trouve+1);
+        echo $sous_resultat;
+        return $resultat;
+      
     }
 
-    return $result;
 }
 
  
@@ -207,3 +219,5 @@ function DessinerPendu($nbErreur)
                     break;
         }
 }
+
+
