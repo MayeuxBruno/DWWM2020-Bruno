@@ -11,6 +11,7 @@
  */
 function afficherTableau($t)
 {
+    echo "\n\n";
     foreach($t as $car)
     {
         echo $car." ";
@@ -51,7 +52,6 @@ function testerLettre($lettre,$tab,$depart)
 {
     $tabrech=array_slice($tab,$depart);
     $pos=array_search($lettre,$tabrech);
-    var_dump($tabrech);
     if($pos===false)
     {
         return [];
@@ -62,7 +62,6 @@ function testerLettre($lettre,$tab,$depart)
         return array_merge($reponse,testerLettre($lettre,$tab,$pos+$depart+1));
     }  
 }
-
  
  /**
   * Modifie le tableau passé en paramètre en affectant
@@ -109,7 +108,7 @@ function ajouterLesLettres($lettre,$tab,$listePosition)
  */
 function afficherMauvaisesLettres($listeLettres)
 {
-    echo "Les lettres non présentes sont ";
+    echo "\n Les lettres non présentes sont ";
     $taille=count($listeLettres);
     for($i=0;$i<$taille;$i++)
     {
@@ -228,6 +227,7 @@ function DessinerPendu($nbErreur)
         }
 }
 
+
 /**
  * Renvoi un mot chisis au hasard dans la liste de mots
  * 
@@ -235,8 +235,59 @@ function DessinerPendu($nbErreur)
  */
 function choisirMot()
 {
+    $dico=creer_dico();
+    $mot=$dico[(rand(0,count($dico)-1))];
     return $mot;
 }
+
+
+/**
+ * Demande une lettre à l'utilisateur, elle vérifie que le 
+ * caractère saisie est une lettre et le renvoi en majuscule
+ * 
+ * @return string retourne la lettre saisie par l'utilisateur
+ */
+function demanderLettre()
+{
+    do
+    {
+        $lettre=readline("Entrez une lettre : ");
+    }while(!IntlChar::isalpha($lettre));
+    return strtoupper($lettre);
+
+}
+
+/**
+ * Indique si la partie est terminée
+ * Retourne 1 si gagné, -1 si perdu, 0 si la partie continue  
+ * 
+ * @param integer $nberreur nombre d'erreurs
+ * @param array   $tab  tableau contenant le mot composé
+ * 
+ * @return integer résultat de la partie
+ */
+function testerGagner($nberreur,$tab)
+{
+    if(in_array("_",$tab))
+    {
+        if ($nberreur>=9)
+        {
+            return -1;
+        }
+        else
+        {
+            return 0;
+        }
+
+    }
+    else
+    {
+        return 1;
+    }
+}
+
+
+
 /**
  * Cette fonction contient le dictionnaire
  */
