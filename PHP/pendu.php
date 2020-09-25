@@ -1,45 +1,58 @@
 <?php
 require "fonctionspendu.php";
-$nberreurs=0;
+$nberreurs=0;       
+$indexmauvltrs=0;   // index le tableau de la liste des mauvaises lettres 
+$mauvaiseslettres=array();
 
+// selection et codage automatique du mot 
 $mot=choisirMot();
 $motcode=coderMot($mot);
 
-for($i=0;$i<strlen($mot);$i++)
-{
-    $tabmotcode[$i]=$mot[$i];
-}
+// conversion du mot en tableau 
+$tabmotcode = str_split($mot);
+
 do
 {
-    //echo $mot;
     afficherTableau($motcode);
+    echo"\n Il vous reste ".(8-$nberreurs)." chances.\n\n";
     $lettre=demanderLettre();
     $position=testerLettre($lettre,$tabmotcode,0);
     if($position!=[])
     {
         $motcode=ajouterLesLettres($lettre,$motcode,$position);
-        afficherTableau($motcode);
     }
     else
     {
-    
-        $mauvaiseslettres[$nberreurs]=$lettre;
+        // verifie que la mauvaise lettre n'a pas deja été donnée
+        if(!in_array($lettre,$mauvaiseslettres)) 
+        {
+            $mauvaiseslettres[$indexmauvltrs]=$lettre;
+            $indexmauvltrs++;
+        }
         $nberreurs++;
         dessinerPendu($nberreurs);
     }
-    if($nberreurs>=1)
+    $gagne=testerGagner($nberreurs,$motcode);
+
+    // affichage de la liste de mauvaises lettres si la partie n'est pas terminée
+    // et que le joueur à déja donné des mauvaises lettres
+    if(((count($mauvaiseslettres))!=0)&&($gagne==0))
     {
         afficherMauvaisesLettres($mauvaiseslettres);
     }
-    $gagne=testerGagner($nberreurs,$motcode);
 }while($gagne==0);
+
+// affichage du mot et du résultat de la partie 
+
+afficherTableau($tabmotcode);
+
 if($gagne==1)
 {
-    echo "\n La partie est gagnée";
+    
+    echo "\n******* La partie est gagnée *******\n\n";
 }
 else
 {
-    echo "\n La partie est perdue"; 
-    echo "\n Le mot à trouver était ".$mot;
+    echo "\n La partie est perdue !!!!!!"; 
 }
 

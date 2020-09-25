@@ -11,7 +11,7 @@
  */
 function afficherTableau($t)
 {
-    echo "\n\n";
+    echo "\n\n  ";
     foreach($t as $car)
     {
         echo $car." ";
@@ -249,9 +249,10 @@ function choisirMot()
  */
 function demanderLettre()
 {
+    echo"\n\n";
     do
     {
-        $lettre=readline("Entrez une lettre : ");
+        $lettre=readline(" Entrez une lettre : ");
     }while(!IntlChar::isalpha($lettre));
     return strtoupper($lettre);
 
@@ -270,13 +271,13 @@ function testerGagner($nberreur,$tab)
 {
     if(in_array("_",$tab))
     {
-        if ($nberreur>=9)
+        if ($nberreur<8)
         {
-            return -1;
+            return 0;
         }
         else
         {
-            return 0;
+            return -1;
         }
 
     }
