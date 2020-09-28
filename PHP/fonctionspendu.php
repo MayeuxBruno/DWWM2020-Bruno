@@ -121,6 +121,7 @@ function afficherMauvaisesLettres($listeLettres)
             echo $listeLettres[$i].",";
         }
     }
+    echo"\n";
 }
 
 /**
@@ -235,6 +236,7 @@ function DessinerPendu($nbErreur)
  */
 function choisirMot()
 {
+    srand(time());
     $dico=creer_dico();
     $mot=$dico[(rand(0,count($dico)-1))];
     return $mot;
@@ -249,7 +251,7 @@ function choisirMot()
  */
 function demanderLettre()
 {
-    echo"\n\n";
+    echo"\n";
     do
     {
         $lettre=readline(" Entrez une lettre : ");
