@@ -98,11 +98,23 @@ function ajouterUneLettre($lettre,$tab,$position)
  */
 function ajouterLesLettres($lettre,$tab,$listePosition)
 {
+    /*
     // affiche les lettres doubles en meme temps
     foreach($listePosition as $index)
     {
         $tab=ajouterUneLettre($lettre,$tab,$index);
+    }*/
+    $positionProvi=array();
+    foreach ($listePosition as $index)
+    {
+        if($tab[$index]=="_")
+        {
+            $positionProvi[]=$index;
+        }
+        
     }
+    $alea=array_rand($positionProvi);
+    $tab=ajouterUneLettre($lettre,$tab,$positionProvi[$alea]);
     return $tab;
 }
 
@@ -1060,4 +1072,7 @@ function creer_dico()
     return $tabMots;
 }
 
-
+$tab=array("_","O","_","_","O","_","O");
+$position=array(1,3,4,6);
+$tab=ajouterLesLettres("O",$tab,$position);
+var_dump($tab);

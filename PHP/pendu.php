@@ -10,6 +10,7 @@ do{
 
     // selection et codage automatique du mot 
     $motAt=choisirMot();
+    echo $motAt."\n";
 
     
     
@@ -37,7 +38,7 @@ do{
         }
         
         $lettre=demanderLettre($lettresaisie);
-        $lettresaisie[]=$lettre;
+        //$lettresaisie[]=$lettre;
         $position=testerLettre($lettre,$tabmotcode,0);
 
         if($position!=[])  // Si la lettre se trouve dans le mot
