@@ -30,10 +30,9 @@ do{
         afficherTableau($motcode);
         echo"\n Il vous reste ".(8-$nberreurs)." chances.\n";
 
-        // affichage de la liste de mauvaises lettres si la partie n'est pas terminée
-        // et que le joueur à déja donné des mauvaises lettres
+        // affichage de la liste de mauvaises lettres si le joueur à donné des mauvaises lettres
 
-        if(((count($mauvaiseslettres))!=0)&&($gagne==0))
+        if(!empty($mauvaiseslettres))
         {
             afficherMauvaisesLettres($mauvaiseslettres);
         }
@@ -54,11 +53,7 @@ do{
             }
             $nberreurs++;
         }
-        $gagne=testerGagner($nberreurs,$motcode);
-
-        // affichage de la liste de mauvaises lettres si la partie n'est pas terminée
-        // et que le joueur à déja donné des mauvaises lettres
-        
+        $gagne=testerGagner($nberreurs,$motcode);   
     }while($gagne==0);
 
     // affichage du mot du pendu et du résultat de la partie 
