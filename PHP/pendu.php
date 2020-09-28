@@ -5,11 +5,12 @@ function lancerPartie()
 do{
     $nberreurs=0;        
     $mauvaiseslettres=array();
+    $lettresaisie=array();
 
     // selection et codage automatique du mot 
     $motAt=choisirMot();
 
-    $motcode=coderMot($motAt);
+    
     
     // conversion du mot en tableau 
     $tabmotcode = str_split($motAt);
@@ -19,11 +20,8 @@ do{
         $difficulte=readline("Entrez un niveau de difficulté 1 ou 2 : ");
     }while(($difficulte!=1)&&($difficulte!=2));
     
-    if ($difficulte==1) // si difficulté=1 affiche la première et la dernière lettre
-    {
-        $motcode[0]=$tabmotcode[0];
-        $motcode[count($motcode)-1]=$tabmotcode[count($motcode)-1];
-    }
+    $motcode=coderMot($motAt,$difficulte);
+    
     do
     {
         dessinerPendu($nberreurs);
@@ -37,7 +35,9 @@ do{
             afficherMauvaisesLettres($mauvaiseslettres);
         }
         
-        $lettre=demanderLettre();
+        $lettre=demanderLettre($lettresaisie);
+        $lettresaisie[]=$lettre;
+        var_dump($lettresaisie);
         $position=testerLettre($lettre,$tabmotcode,0);
 
         if($position!=[])  // Si la lettre se trouve dans le mot

@@ -29,11 +29,16 @@ function afficherTableau($t)
  * @return array Retourne le tableau contenant le mot codé
  * 
  */
-function coderMot($mot)
+function coderMot($mot,$difficulte)
 {
     for($i=0;$i<strlen($mot);$i++)
     {
         $tab[]="_";
+    }
+    if ($difficulte==1) // si difficulté=1 affiche la première et la dernière lettre
+    {
+        $tab[0]=$mot[0];
+        $tab[1]=$mot[1];
     }
     return $tab;
 }
@@ -250,15 +255,27 @@ function choisirMot()
  * 
  * @return string retourne la lettre saisie par l'utilisateur
  */
-function demanderLettre()
+/*function demanderLettre()
 {
     echo"\n";
     do
     {
-        $lettre=readline(" Entrez une lettre : ");
-    }while(!IntlChar::isalpha($lettre));
-    return strtoupper($lettre);
-
+        do
+        {
+            $lettre=strtoupper(readline(" Entrez une lettre : "));
+        }while(!IntlChar::isalpha($lettre));
+    return ($lettre);
+}*/
+function demanderLettre($lettresaisie)
+{
+    echo"\n";
+        do
+        {
+            $lettre=strtoupper(readline(" Entrez une lettre : "));
+        }while(!IntlChar::isalpha($lettre));
+        $present=in_array($lettre,$lettresaisie);
+        echo $present;
+    return ($lettre);
 }
 
 /**
