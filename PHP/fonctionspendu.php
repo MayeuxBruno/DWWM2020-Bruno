@@ -93,6 +93,7 @@ function ajouterUneLettre($lettre,$tab,$position)
  */
 function ajouterLesLettres($lettre,$tab,$listePosition)
 {
+    // affiche les lettres doubles en meme temps
     foreach($listePosition as $index)
     {
         $tab=ajouterUneLettre($lettre,$tab,$index);
