@@ -6,6 +6,7 @@ do{
     $nberreurs=0;        
     $mauvaiseslettres=array();
     $lettresaisie=array();
+    $nberreurmax=8;
 
     // selection et codage automatique du mot 
     $motAt=choisirMot();
@@ -37,7 +38,6 @@ do{
         
         $lettre=demanderLettre($lettresaisie);
         $lettresaisie[]=$lettre;
-        var_dump($lettresaisie);
         $position=testerLettre($lettre,$tabmotcode,0);
 
         if($position!=[])  // Si la lettre se trouve dans le mot
@@ -58,15 +58,17 @@ do{
 
     // affichage du mot du pendu et du résultat de la partie 
     dessinerPendu($nberreurs);
-    afficherTableau($tabmotcode);
+    //afficherTableau($tabmotcode);
 
     if($gagne==1)
     {
         echo "\n******* La partie est gagnée *******\n\n";
+        echo "Le mot été $motAt";
     }
     else
     {
-        echo "\n******* La partie est perdue !!!!!! *******"; 
+        echo "\n******* La partie est perdue !!!!!! *******\n\n";
+        echo "Le mot été $motAt"; 
     }
     echo "\n\n";
 

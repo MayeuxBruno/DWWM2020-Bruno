@@ -269,12 +269,18 @@ function choisirMot()
 function demanderLettre($lettresaisie)
 {
     echo"\n";
+    do
+    {   
         do
         {
-            $lettre=strtoupper(readline(" Entrez une lettre : "));
+            $lettre=strtoupper(readline("Entrez une lettre : "));
         }while(!IntlChar::isalpha($lettre));
         $present=in_array($lettre,$lettresaisie);
-        echo $present;
+        if ($present==1)
+        {
+            echo "\n La lettre $lettre a déjà été saisie !!! \n\n "; 
+        }
+    }while($present==1);
     return ($lettre);
 }
 
