@@ -936,7 +936,6 @@ function ajouterUneLettre($lettre, $tab, $pos)
  */
 function ajouterLesLettres($val, $tab, $tabpos, $niveau)
 {
-    echo "ajouter lettre";
     switch ($niveau)
     {
         case 1:
@@ -944,7 +943,6 @@ function ajouterLesLettres($val, $tab, $tabpos, $niveau)
                 {
                 $tab = ajouterUneLettre($val, $tab, $tabpos[$i]);
             }
-            echo "case 1";
             return $tab;
         case 2:
         case 4:
