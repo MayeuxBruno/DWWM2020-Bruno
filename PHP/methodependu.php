@@ -960,6 +960,10 @@ function ajouterLesLettres($val, $tab, $tabpos, $niveau)
             return -1; // plus de place pour la lettre
         case 3:
             // on place les lettres aléatoirement
+            $test1=testerLettre($val,$tab,0);
+            $test2=testerLettre($val,$tabpos,0);
+            $pos=array_diff($test1,$test2);
+
     }
     return -1;
 }
