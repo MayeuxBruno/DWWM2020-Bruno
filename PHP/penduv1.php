@@ -936,6 +936,7 @@ function ajouterUneLettre($lettre, $tab, $pos)
  */
 function ajouterLesLettres($val, $tab, $tabpos, $niveau)
 {
+    echo "ajouter lettre";
     switch ($niveau)
     {
         case 1:
@@ -943,6 +944,7 @@ function ajouterLesLettres($val, $tab, $tabpos, $niveau)
                 {
                 $tab = ajouterUneLettre($val, $tab, $tabpos[$i]);
             }
+            echo "case 1";
             return $tab;
         case 2:
         case 4:
@@ -959,11 +961,23 @@ function ajouterLesLettres($val, $tab, $tabpos, $niveau)
             }
             return -1; // plus de place pour la lettre
         case 3:
+            echo "case3";
             // on place les lettres aléatoirement
-            $test1=testerLettre($val,$tab,0);
-            $test2=testerLettre($val,$tabpos,0);
-            $pos=array_diff($test1,$test2);
-
+            $test=testerLettre($val,$tab,0);
+            $pos=array_diff($tabpos,$test);
+            if(!empty($pos))
+            {
+                $posetudie=array_rand($pos);
+                if ($tab[$pos[$posetudie]]!=$val)
+                {
+                    $tab = ajouterUneLettre($val, $tab, $pos[$posetudie]);
+                    return $tab;
+                }
+            }
+            else
+            {
+                return -1;
+            }
     }
     return -1;
 }
