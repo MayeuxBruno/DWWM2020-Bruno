@@ -1,8 +1,4 @@
 <?php
-require "fonctionspendu.php";
-
-
-
-
+require "methodespendu.php";
 
 lancerPartie();
