@@ -966,11 +966,8 @@ function ajouterLesLettres($val, $tab, $tabpos, $niveau)
             if(!empty($pos))
             {
                 $posetudie=array_rand($pos);
-                if ($tab[$pos[$posetudie]]!=$val)
-                {
-                    $tab = ajouterUneLettre($val, $tab, $pos[$posetudie]);
-                    return $tab;
-                }
+                $tab = ajouterUneLettre($val, $tab, $pos[$posetudie]);
+                return $tab;
             }
             else
             {
