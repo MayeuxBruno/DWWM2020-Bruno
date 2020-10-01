@@ -35,7 +35,7 @@ function creationTableau($lig, $col)
  * @param array $plateau
  * @return void
  */
-function afficheTableau($plateau)
+function afficheTableau($plateau,$jeu)
 {
     echo "\n";
     $nbCol = count($plateau[0]);
@@ -55,27 +55,36 @@ function afficheTableau($plateau)
         {
             $ligneSuperieure .= "________";
         }
-        $ligneIntermediaire .= "_______|";
-    }
+            $ligneIntermediaire .= "_______|";
+        }
 
     //Affiche ligne par ligne
     for ($i = 0; $i < count($plateau); $i++)
     {
         if ($i == 0) //haut du tableau
         {
-            echo $titre . "\n\t ";
-            //ligne supérieur du tableau
-            echo $ligneSuperieure . "\n";
+                echo $titre . "\n\t ";
+                //ligne supérieur du tableau
+                echo $ligneSuperieure . "\n";
         }
         else //Centre du tableau
         {
-            //ligne intermédiaire
+                //ligne intermédiaire
 
-            echo $ligneIntermediaire . "\n";
+                echo $ligneIntermediaire . "\n";
         }
         //affichage du numéro de la ligne
-        $chiffre = $i + 1;
-        echo "    " . $chiffre;
+        //******Puissance4 ------Modofocation de l'affichage */
+        if($jeu=='m') 
+        {
+            $chiffre = $i + 1;
+            echo "    " . $chiffre;
+        }
+        else
+        {
+            echo "    ";
+        }
+        /***** Fin Modif *****/
         //affichage des élément du tableau
         for ($j = 0; $j < $nbCol; $j++)
         {
@@ -84,8 +93,7 @@ function afficheTableau($plateau)
         echo "\t|\n\t|";
     }
     //bas du tableau
-    echo $ligneIntermediaire . "\n";
-
+    echo $ligneIntermediaire . "\n";    
 }
 /**
  * methode qui demande à l'utilisateur le symbole associé à chaque joueur. La méthode renvoi un tableau de symboles, le 1er joueur correspond à la case 0 et ainsi de suite
@@ -139,6 +147,41 @@ function joueurSuivant($nbJoueur, $joueurEnCours)
     return $joueurSuivant; // Joueur suivant
 }
 
+
+/**
+ * Détermine la prochaine case vide de la colonne entrée en paramètre.
+ *
+ * @param int     $plateau
+ * @param int     $numColonne
+ * @return array  retourne le tableau de coordonnée ou -1 si colonne pleine    
+ */
+function trouverCase($plateau,$numCol)
+{
+    $i=count($plateau[$numCol])-1;
+    $trouve=0;
+    while (($i>=0)&&($trouve==0))
+    {
+        if($plateau[$numCol][$i]=='.')
+        {
+            $numLigne=$i;
+            $trouve=1;        
+        }
+        $i--;
+    }
+    if ($trouve==1)
+    {
+        $tabCord[0]=$numLigne;
+        $tabCord[1]=$numCol;
+        return $tabCord;
+    }
+    else
+    {
+        return -1;
+    }
+  
+}
+
+
 /**
  * converti les coordonnées A3 en [3,0].
  * Les lettres représentent les colonnes. L'utilisateur peut saisir 4B pour [4,1]
@@ -147,41 +190,50 @@ function joueurSuivant($nbJoueur, $joueurEnCours)
  * @param string $coordonnee
  * @return void
  */
-function conversionPosition($coordonnee)
+function conversionPosition($coordonnee,$jeu)
 {
     $coordonnee = strtoupper($coordonnee);
-    if (ctype_alpha($coordonnee[0])) //La lettre est en premier
+    if($jeu=='m')
     {
+        if (ctype_alpha($coordonnee[0])) //La lettre est en premier
+        {
 
-        $alpha = $coordonnee[0];
-        $numCol = ord($alpha) - ord("A");
-        if (strlen($coordonnee) == 3) // Ligne a 2 digits
-        {
-            $chiffre = 10 * $coordonnee[1] + $coordonnee[2]; // on transforme [1,5] en 15
+            $alpha = $coordonnee[0];
+            $numCol = ord($alpha) - ord("A");
+            if (strlen($coordonnee) == 3) // Ligne a 2 digits
+            {
+                $chiffre = 10 * $coordonnee[1] + $coordonnee[2]; // on transforme [1,5] en 15
+            }
+            else
+            {
+                $chiffre = $coordonnee[1];
+            }
         }
-        else
+        else // La lettre est en dernier
         {
-            $chiffre = $coordonnee[1];
+            $longueur = strlen($coordonnee);
+            $alpha = $coordonnee[$longueur - 1];
+            $numCol = ord($alpha) - ord("A");
+
+            if ($longueur == 3)
+            {
+                $chiffre = 10 * $coordonnee[0] + $coordonnee[1];
+            }
+            else
+            {
+                $chiffre = $coordonnee[0];
+            }
         }
+        $tabCord[0] = $chiffre - 1;
+        $tabCord[1] = $numCol;
+        return $tabCord;
     }
-    else // La lettre est en dernier
+    else
     {
-        $longueur = strlen($coordonnee);
-        $alpha = $coordonnee[$longueur - 1];
-        $numCol = ord($alpha) - ord("A");
-
-        if ($longueur == 3)
-        {
-            $chiffre = 10 * $coordonnee[0] + $coordonnee[1];
-        }
-        else
-        {
-            $chiffre = $coordonnee[0];
-        }
+        $numCol = ord($coordonnee) - ord("A");
+        return $numCol;
     }
-    $tabCord[0] = $chiffre - 1;
-    $tabCord[1] = $numCol;
-    return $tabCord;
+    
 }
 /**
  * demande à l'utilisateur la case dans laquelle il veut jouer, vérifie que cette case appartient bien au tableau, vérifie que la case du plateau est vide pour cette position
@@ -189,30 +241,48 @@ function conversionPosition($coordonnee)
  * @param array $plateau
  * @return array
  */
-function selectionPosition($plateau, $symbole)
+function selectionPosition($plateau,$symbole,$jeu)
 {
-    do
+    if($jeu=='m')
     {
-        do//boucle pour verifier si les position existe dans le plateau
+        do
         {
-
-            do//boucle pour verifier la position du caractere alpha au debut ou a la fin de la chaine de caractere
+            do//boucle pour verifier si les position existe dans le plateau
             {
+                    do//boucle pour verifier la position du caractere alpha au debut ou a la fin de la chaine de caractere
+                    {
 
-                do// boucle pour la saisie et verifier si la chaine est bien alpha numerique de 2 ou 3 caractères
+                        do// boucle pour la saisie et verifier si la chaine est bien alpha numerique de 2 ou 3 caractères
+                        {
+
+                            $chaine = readline("$symbole veuillez saisir la position de votre pion: ");
+
+                        } while (strlen($chaine) > 3 || strlen($chaine) == 1 || !ctype_alnum($chaine));
+                    } while (!(ctype_alpha($chaine[0]) xor ctype_alpha($chaine[strlen($chaine) - 1])));
+
+                    $positions = conversionPosition($chaine,$jeu);
+                    $lig = $positions[0];
+                    $col = $positions[1];
+            } while ($lig >= count($plateau) || $col >= count($plateau[0]));
+        } while ($plateau[$lig][$col] != '.');
+    }
+    else
+    {
+        do
+        {
+            do
+            {    
+                do// boucle pour la saisie et verifier si la chaine est bien alpha
                 {
+                    $saisie = readline("$symbole veuillez saisir la colonne à jouer : ");
+                } while (strlen($saisie) > 1 || !ctype_alnum($saisie));
+                
+                $col=conversionPosition($saisie,$jeu);   
+            }while(($col >= count($plateau)));
+            $positions=trouverCase($plateau,$col);
+        }while($positions[0]==-1);
+    }
 
-                    $chaine = readline("$symbole veuillez saisir la position de votre pion: ");
-
-                } while (strlen($chaine) > 3 || strlen($chaine) == 1 || !ctype_alnum($chaine));
-            } while (!(ctype_alpha($chaine[0]) xor ctype_alpha($chaine[strlen($chaine) - 1])));
-
-            $positions = conversionPosition($chaine);
-            $lig = $positions[0];
-            $col = $positions[1];
-
-        } while ($lig >= count($plateau) || $col >= count($plateau[0]));
-    } while ($plateau[$lig][$col] != '.');
     return $positions;
 }
 
@@ -375,4 +445,12 @@ function plateauPlein($plateau)
     return true;
 }
 
-lancerPartie();
+//lancerPartie();
+
+$tab=array(['.','.','x','x'],['x','x','x','x'],['.','.','.','.'],['.','.','.','.']);
+//afficheTableau($tab,'p');
+//$case=trouverCase($tab,1);
+//var_dump($case);
+//$tab=conversionPosition('H',p);
+$pos=selectionPosition($tab,'P','p');
+var_dump($pos);
