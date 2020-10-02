@@ -313,7 +313,7 @@ function compteAlignes($plateau, $positions, $directionX, $directionY, $symbole)
 {
     //on determine les nouvelles coordonnées
     $positionSuivanteX = $positions[0] + $directionX;
-    $positionSuivanteY = $positions[1] + $directionY;
+    $positionSuivanteY = $positions[1] + $directionY; 
     // on déplace la position actuelle
     $positions[0] = $positionSuivanteX;
     $positions[1] = $positionSuivanteY;
@@ -461,19 +461,6 @@ function plateauPlein($plateau,$jeu)
 
 //lancerPartie();
 
-//$tab=array(['.','p','p','d'],['p','p','p','x'],['p','p','p','p'],['p','p','p','p'],['p','p','p','p']);
-//echo count($tab);
-//afficheTableau($tab,'p');
-//$case=trouverCase($tab,0);
-//var_dump($case);
-//$tab=conversionPosition('H',p);
-//$pos=selectionPosition($tab,'P','p');
-//var_dump(trouverCase($tab,0));
-//var_dump(trouverCase($tab,1));
-//var_dump(trouverCase($tab,2));
-//var_dump(trouverCase($tab,3));
-
-//$plein=plateauPlein($tab,"p");
-//var_dump($case);
-lancerPartie();
-//echo count($tab[0]);
+$tab=array(['p','.','p','d'],['p','p','p','x'],['p','p','p','p'],['p','p','p','p'],['p','p','p','p']);
+var_dump(in_array('.',$tab[0]));
+//lancerPartie();
