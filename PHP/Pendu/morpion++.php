@@ -157,28 +157,24 @@ function joueurSuivant($nbJoueur, $joueurEnCours)
  */
 function trouverCase($plateau,$numCol)
 {
-    $i=count($plateau[$numCol])-1;
-    $trouve=0;
-    while (($i>=0)&&($trouve==0))
+    $i=count($plateau)-1;
+    $trouve=FALSE;
+    while($i>=0 && $trouve==FALSE)
     {
-        if($plateau[$numCol][$i]=='.')
+        if($plateau[$i][$numCol]=='.')
         {
-            $numLigne=$i;
-            $trouve=1;        
+            $numLigne=$i;   
+            $trouve=TRUE;  
         }
         $i--;
     }
-    if ($trouve==1)
+    if ($trouve==TRUE)
     {
         $tabCord[0]=$numLigne;
         $tabCord[1]=$numCol;
         return $tabCord;
     }
-    else
-    {
-        return -1;
-    }
-  
+    return -1;
 }
 
 
@@ -275,12 +271,15 @@ function selectionPosition($plateau,$symbole,$jeu)
                 do// boucle pour la saisie et verifier si la chaine est bien alpha
                 {
                     $saisie = readline("$symbole veuillez saisir la colonne à jouer : ");
+                    echo"A\n";
                 } while (strlen($saisie) > 1 || !ctype_alnum($saisie));
                 
-                $col=conversionPosition($saisie,$jeu);   
-            }while(($col >= count($plateau)));
+                $col=conversionPosition($saisie,$jeu);  
+                echo "B\n" ;
+            }while(($col > count($plateau)));
+            echo"C\n";
             $positions=trouverCase($plateau,$col);
-        }while($positions[0]==-1);
+        }while($positions==-1);
     }
 
     return $positions;
@@ -344,7 +343,7 @@ function compteAlignes($plateau, $positions, $directionX, $directionY, $symbole)
  * @param char $symbole
  * @return void
  */
-function testerGagne($plateau, $alignementPourGagner, $positions, $symbole)
+function testerGagne($plateau, $alignementPourGagner, $positions, $symbole,$jeu)
 {
     //X = Lignes Y = Colonnes
     $sommeLigne = compteAlignes($plateau, $positions, 1, 0, $symbole) + compteAlignes($plateau, $positions, -1, 0, $symbole) + 1; //Demande à compteAlignes de compter l'alignement sur la ligne, j'ajoute +1 puisqu'il ne compte pas le dernier symbole ajouté
@@ -355,7 +354,7 @@ function testerGagne($plateau, $alignementPourGagner, $positions, $symbole)
     {
         return 1; //Si l'une des variables est égale ou supérieure au nombre de symbole qu'il faut pour gagner, la partie s'arrête, et le joueur gagne
     }
-    else if (plateauPlein($plateau))
+    else if (plateauPlein($plateau,$jeu))
     {
         return -1; //Sinon si le plateau est plein, la partie s'arrête, il n'y a aucun vainqueur
     }
@@ -373,8 +372,9 @@ function testerGagne($plateau, $alignementPourGagner, $positions, $symbole)
 function lancerPartie()
 {
     //msg de bienvenue
-    echo "\n\n\t\t*****\tBIENVENUE AU MORPION\t*****\t\t\n\n";
+    echo "\n\n\t\t*****\tBIENVENUE DANS LE JEU MORPION / PUISSANCE 4\t*****\t\t\n\n";
     //initialisation
+    $jeu=strtolower(readline("A quel Jeu souhaitez vous jouer ( m -> morpion / p-> puissance 4 ) : \n"));
     do
     {
 
@@ -410,10 +410,10 @@ function lancerPartie()
     {
         $joueurEnCours = joueurSuivant($nbUser, $joueurEnCours);
         echo "C'est au joueur " . $symboles[$joueurEnCours] . " de jouer \n";
-        afficheTableau($plateau);
-        $positions = selectionPosition($plateau, $symboles[$joueurEnCours]);
+        afficheTableau($plateau,$jeu);
+        $positions = selectionPosition($plateau, $symboles[$joueurEnCours],$jeu);
         $plateau = remplirTableau($plateau, $symboles[$joueurEnCours], $positions);
-        $testGagner = testerGagne($plateau, $alignementPourGagner, $positions, $symboles[$joueurEnCours]);
+        $testGagner = testerGagne($plateau, $alignementPourGagner, $positions, $symboles[$joueurEnCours],$jeu);
         echo chr(27) . chr(91) . 'H' . chr(27) . chr(91) . 'J'; //permet de vider l'écran
     } while ($testGagner == 0);
     if ($testGagner == 1)
@@ -424,7 +424,7 @@ function lancerPartie()
     {
         echo "Personne ne gagne";
     }
-    afficheTableau($plateau);
+    afficheTableau($plateau,$jeu);
 }
 
 /**
@@ -433,24 +433,47 @@ function lancerPartie()
  * @param array $plateau
  * @return bool
  */
-function plateauPlein($plateau)
+function plateauPlein($plateau,$jeu)
 {
-    for ($i = 0; $i < count($plateau); $i++)
+    if($jeu=="m")
     {
-        if (in_array(".", $plateau[$i]))
+        for ($i = 0; $i < count($plateau); $i++)
         {
-            return false;
+            if (in_array(".", $plateau[$i]))
+            {
+                return false;
+            }
         }
+        return true;
     }
-    return true;
+    else
+    {
+        for($i=0;$i<count($plateau);$i++)
+        {
+            if (trouverCase($plateau,$i)!=-1)
+            {
+                return FALSE;
+            }
+        }
+        return TRUE;
+    }
 }
 
 //lancerPartie();
 
-$tab=array(['.','.','x','x'],['x','x','x','x'],['.','.','.','.'],['.','.','.','.']);
+//$tab=array(['.','p','p','d'],['p','p','p','x'],['p','p','p','p'],['p','p','p','p'],['p','p','p','p']);
+//echo count($tab);
 //afficheTableau($tab,'p');
-//$case=trouverCase($tab,1);
+//$case=trouverCase($tab,0);
 //var_dump($case);
 //$tab=conversionPosition('H',p);
-$pos=selectionPosition($tab,'P','p');
-var_dump($pos);
+//$pos=selectionPosition($tab,'P','p');
+//var_dump(trouverCase($tab,0));
+//var_dump(trouverCase($tab,1));
+//var_dump(trouverCase($tab,2));
+//var_dump(trouverCase($tab,3));
+
+//$plein=plateauPlein($tab,"p");
+//var_dump($case);
+lancerPartie();
+//echo count($tab[0]);
