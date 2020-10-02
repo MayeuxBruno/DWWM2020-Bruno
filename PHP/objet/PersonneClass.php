@@ -96,8 +96,9 @@ Class Personne
     }
 }
 
-$p1=new Personne ("Fupont","Toto",20,"H");
+$p1=new Personne ();
 $p2=new Personne ("Dupont","Toto",20,"H");
 //echo $p1->toString();
 //echo $p2->toString();
 echo $p1->compareTo($p2);
+var_dump($p1);
