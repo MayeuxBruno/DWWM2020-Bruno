@@ -10,13 +10,12 @@ Class Voiture
 
     //Constructeur
 
-    public function __construct(/*$marque,$modele,$immat,$km*/)
+    public function __construct($marque,$modele,$immat,$km)
     {
-        /*$this->setMarque($marque);
+        $this->setMarque($marque);
         $this->setModele($modele);
         $this->setImmat($immat);
-        $this->setKm($km);*/
-        parrent::__construct();
+        $this->setKm($km);
     }
 
     //Assesseurs
