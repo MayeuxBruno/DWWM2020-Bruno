@@ -7,13 +7,12 @@ Class Rectangle
     private $_largeur;
 
     //Assesseurs
-
     public function getLongueur()
     {
         return $this->_longueur;
     }
 
-    public function setLongueur($_longueur)
+    public function setLongueur(Int $_longueur)
     {
         $this->_longueur = $_longueur;
     }
@@ -23,18 +22,34 @@ Class Rectangle
         return $this->_largeur;
     }
 
-    public function setLargeur($_largeur)
+    public function setLargeur(Int $_largeur)
     {
         $this->_largeur = $_largeur;
     }
 
+
     //Constructeur
-    public function __construct(int $long,int $larg)
+    public function __construct(array $options = [])
     {
-        $this->setLongueur($long);
-        $this->setLargeur($larg);
+        if (!empty($options)) // empty : renvoi vrai si le tableau est vide
+        {
+            $this->hydrate($options);
+        }
+    }
+    
+    public function hydrate($data)
+    {
+        foreach ($data as $key => $value)
+        {
+            $methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
+            if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
+            {
+                $this->$methode($value);
+             }
+        }
     }
 
+    
     //Autres méthodes
     public function perimetre()
     {
@@ -48,15 +63,11 @@ Class Rectangle
 
     public function estCarre()
     {
-        if ($this->getLongueur()==$this->getLargeur())
-        {
-            return "Il s'agit d'un carré";            
-        }
-        return "Il ne s'agit pas d'un carré";
+        return ($this->getLongueur()==$this->getLargeur()?"Il s'agit d'un carré":"Il ne s'agit pas d'un carré");
     }
 
     public function toString()
     {
-        echo "Longeur : ".$this->getLongueur()." - Largeur : ".$this->getLargeur()." - Périmètre : ".$this->perimetre()." - Aire : ".$this->aire()." - ".$this->estCarre()."\n";
+        return "Longeur : ".$this->getLongueur()." - Largeur : ".$this->getLargeur()." - Périmètre : ".$this->perimetre()." - Aire : ".$this->aire()." - ".$this->estCarre()."\n";
     }
 }
