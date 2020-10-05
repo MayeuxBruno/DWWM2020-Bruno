@@ -60,6 +60,9 @@ Class Famille
 
     public function toString()
     {
-        return "*** Père ***\n\nNom : ".$this->getPere()->getNom()."\nPrenom : ".$this->getPere()->getPrenom()."\nAge : ".$this->getPere()->getAge();
+        $pere= "\n\n*** Père ***\nNom : ".$this->getPere()->getNom()."\nPrenom : ".$this->getPere()->getPrenom()."\nAge : ".$this->getPere()->getAge();
+        $mere= "\n\n*** Mère ***\nNom : ".$this->getMere()->getNom()."\nPrenom : ".$this->getMere()->getPrenom()."\nAge : ".$this->getMere()->getAge();
+        $voiture= "\n\n*** Véhicule ***\nMarque : ".$this->getVoiture()->getMarque()."\nModèle : ".$this->getVoiture()->getModele()."\nImmatriculation : ".$this->getVoiture()->getImmat()."\nKilomètrage : ".$this->getVoiture()->getKm()."\n";
+        return ($pere.$mere.$voiture);
     }
 }
