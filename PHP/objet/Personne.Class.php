@@ -7,16 +7,25 @@ Class Personne
     private $_prenom;
     private $_age;
     private $_genre;
-    private $_voiture;
 
-    //Assesseurs
-    public function __construct($nom,$prenom,$age,$genre,Voiture $v)
+    //Constructeur
+    public function __construct(array $options = [])
     {
-        $this->setNom($nom);
-        $this->setPrenom($prenom);
-        $this->setAge($age);
-        $this->setGenre($genre);
-        $this->setVoiture($v)
+        if (!empty($options)) // empty : renvoi vrai si le tableau est vide
+        {
+            $this->hydrate($options);
+        }
+    }
+    public function hydrate($data)
+    {
+        foreach ($data as $key => $value)
+        {
+            $methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
+            if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
+            {
+                $this->$methode($value);
+            }
+        }
     }
 
     //Getters
@@ -40,10 +49,6 @@ Class Personne
         return $this->_genre;
     }
 
-    public function getVoiture()
-    {
-        return $this->_voiture;
-    }
 
 
     //Setters
@@ -66,12 +71,6 @@ Class Personne
     {
         $this->_genre=strtoupper($genre);
     }
-
-    public function setVoiture($v)
-    {
-        $this->_voiture = $v;
-    }
-
     
 
     //Autres méthodes
@@ -108,8 +107,5 @@ Class Personne
             }
         }
         return 0;
-    }
-
-   
-    
+    } 
 }

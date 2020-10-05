@@ -10,12 +10,23 @@ Class Voiture
 
     //Constructeur
 
-    public function __construct($marque,$modele,$immat,$km)
+    public function __construct(array $options = [])
     {
-        $this->setMarque($marque);
-        $this->setModele($modele);
-        $this->setImmat($immat);
-        $this->setKm($km);
+        if (!empty($options)) // empty : renvoi vrai si le tableau est vide
+        {
+            $this->hydrate($options);
+        }
+    }
+    public function hydrate($data)
+    {
+        foreach ($data as $key => $value)
+        {
+            $methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
+            if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
+            {
+                $this->$methode($value);
+            }
+        }
     }
 
     //Assesseurs
