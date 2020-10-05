@@ -1,0 +1,6 @@
+Les fichiers contenant les snippets sont placée dans :
+
+C:\Users\59011-95-\AppData\Roaming\Code\User\snippets
+
+pour créer les snippets :
+snippet generator

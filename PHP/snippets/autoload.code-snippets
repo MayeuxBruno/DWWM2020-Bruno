@@ -1,0 +1,15 @@
+{
+	"Charge automatiquement les class": {
+ 	"scope": "php",
+ 	"prefix": "autoload",
+ 	"body": [
+		"function ChargerClasse($$classe)"
+		"{"
+		"\trequire $$classe.\".Class.php\";"
+		"}"
+		"spl_autoload_register(\"ChargerClasse\");"
+		"$0"
+		 	],
+		 	"description": "charge automatiquement les classes concernées"
+	}
+}
