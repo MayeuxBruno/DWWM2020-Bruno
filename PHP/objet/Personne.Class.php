@@ -7,14 +7,16 @@ Class Personne
     private $_prenom;
     private $_age;
     private $_genre;
+    private $_voiture;
 
     //Assesseurs
-    public function __construct($nom,$prenom,$age,$genre)
+    public function __construct($nom,$prenom,$age,$genre,Voiture $v)
     {
         $this->setNom($nom);
         $this->setPrenom($prenom);
         $this->setAge($age);
         $this->setGenre($genre);
+        $this->setVoiture($v)
     }
 
     //Getters
@@ -38,6 +40,12 @@ Class Personne
         return $this->_genre;
     }
 
+    public function getVoiture()
+    {
+        return $this->_voiture;
+    }
+
+
     //Setters
     public function setNom(String $nom)
     {
@@ -58,6 +66,13 @@ Class Personne
     {
         $this->_genre=strtoupper($genre);
     }
+
+    public function setVoiture($v)
+    {
+        $this->_voiture = $v;
+    }
+
+    
 
     //Autres méthodes
     public function toString()
@@ -94,11 +109,7 @@ Class Personne
         }
         return 0;
     }
-}
 
-$p1=new Personne ();
-$p2=new Personne ("Dupont","Toto",20,"H");
-//echo $p1->toString();
-//echo $p2->toString();
-echo $p1->compareTo($p2);
-var_dump($p1);
+   
+    
+}
