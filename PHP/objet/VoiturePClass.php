@@ -68,7 +68,6 @@ Class Personne
 
 
 $v1= new Voiture("renault","clio","an-896-gt",200000);
-
 $toto = new Personne("Truc","toto",new DateTimeN("1979-03-06"),$v1);
 var_dump($toto);
-//var_dump($date);
+$toto->toString();
