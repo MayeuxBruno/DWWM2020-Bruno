@@ -1,17 +1,15 @@
 <?php
 
-class Agence
+class Enfant
 {
 
     /*****************Attributs***************** */
     private $_nom;
-    private $_adresse;
-    private $_codePostal;
-    private $_ville;
-    private $_restauration;
+    private $_prenom;
+    private $_dateDeNaissance;
 
     /*****************Accesseurs***************** */
-    
+
     public function getNom()
     {
         return $this->_nom;
@@ -22,44 +20,24 @@ class Agence
         $this->_nom = ucfirst($nom);
     }
 
-    public function getAdresse()
+    public function getPrenom()
     {
-        return $this->_adresse;
+        return $this->_prenom;
     }
 
-    public function setAdresse(String $adresse)
+    public function setPrenom(String $prenom)
     {
-        $this->_adresse = $adresse;
+        $this->_prenom = ucfirst($prenom);
     }
 
-    public function getCodePostal()
+    public function getDateDeNaissance()
     {
-        return $this->_codePostal;
+        return $this->_dateDeNaissance;
     }
 
-    public function setCodePostal(Int $codePostal)
+    public function setDateDeNaissance(DateTime $dateDeNaissance)
     {
-        $this->_codePostal = $codePostal;
-    }
-
-    public function getVille()
-    {
-        return $this->_ville;
-    }
-
-    public function setVille(String $ville)
-    {
-        $this->_ville = ucfirst($ville);
-    }
-
-    public function getRestauration()
-    {
-        return $this->_restauration;
-    }
-
-    public function setRestauration(String $restauration)
-    {
-        $this->_restauration = $restauration;
+        $this->_dateDeNaissance = $dateDeNaissance;
     }
     
     /*****************Constructeur***************** */
@@ -92,19 +70,8 @@ class Agence
      */
     public function toString()
     {
-        $reponse= "Nom :\t\t\t".$this->_nom."\nAdresse:\t\t".$this->_adresse."\nCode postal :\t\t".$this->_codePostal."\nVille :\t\t\t".$this->_ville."\nRestauration :\t\t".$this->_restauration;
-        return $reponse;
-    }
-
-    /**
-     * Renvoi le mode de restauration de l'agence
-     *
-     * @param void
-     * @return String mode de restauration restaurant ou ticket
-     */
-    public function restauration()
-    {
-        return $this->getRestauration();
+        $reponse = "*** Enfant ***\nNom : ".$this->getNom()."\nPrenom : ".$this->getPrenom()."\Date de Naissance : ".$this->getDateDeNaissance()->format('j - m - Y');
+        return "";
     }
 
     /**
@@ -117,8 +84,6 @@ class Agence
     {
         return true;
     }
-
-    
     /**
      * Compare 2 objets
      * Renvoi 1 si le 1er est >
@@ -133,7 +98,6 @@ class Agence
     {
         return 0;
     }
-
 
     
 }

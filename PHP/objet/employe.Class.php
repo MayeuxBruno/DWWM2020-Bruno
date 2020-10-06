@@ -169,7 +169,7 @@ class Employe
      */
     public function toString()
     {
-        $reponse="\n** Fiche Employé **\nNom :\t\t\t".$this->getNom()."\nPrénom :\t\t".$this->getPrenom()."\nDate d'embauche :\t".$this->getDateEmbauche()->format('j - m - Y')."\nFonction :\t\t".$this->getFonction()."\nSalaire Brut Annuel :   ".$this->getSalaireBrutAnnuel()." K€"."\nService :\t\t".$this->getService()."\n";
+        $reponse="\n** Fiche Employé **\nNom :\t\t\t".$this->getNom()."\nPrénom :\t\t".$this->getPrenom()."\nAgence :\n".$this->getAgence()->toString()."\nDate d'embauche :\t".$this->getDateEmbauche()->format('j - m - Y')."\nFonction :\t\t".$this->getFonction()."\nSalaire Brut Annuel :   ".$this->getSalaireBrutAnnuel()." K€"."\nService :\t\t".$this->getService()."\n";
         return $reponse;
     }
 
@@ -199,11 +199,84 @@ class Employe
         return 0;
     }
 
-   
+    /**
+     * Compare 2 objets sur le nom et le prénom
+     * Renvoi 1 si le 1er est >
+     *        0 si ils sont égaux
+     *        -1 si le 1er est <
+     *
+     * @param [type] $obj1
+     * @param [type] $obj2
+     * @return void
+     */
+    public static function compareToNomPrenom($obj1, $obj2)
+    {
+        if ($obj1->getNom() < $obj2->getNom())
+        {
+            return -1;
+        }
+        else if ($obj1->getNom() > $obj2->getNom())
+        {
+            return 1;
+        }
+        else if ($obj1->getPrenom() < $obj2->getPrenom())
+        {
+            return -1;
+        }
+        else if ($obj1->getPrenom() > $obj2->getPrenom())
+        {
+            return 1;
+        }
 
-    
+        return 0;
+    }
+    /**
+     * Compare 2 objets sur le nom et le prénom
+     * Renvoi 1 si le 1er est >
+     *        0 si ils sont égaux
+     *        -1 si le 1er est <
+     *
+     * @param [type] $obj1
+     * @param [type] $obj2
+     * @return void
+     */
+    public static function compareToServiceNomPrenom($obj1, $obj2)
+    {
+        if ($obj1->getService() < $obj2->getService())
+        {
+            return -1;
+        }
+        else if ($obj1->getService() > $obj2->getService())
+        {
+            return 1;
+        }
+        else
+        {
+            return self::compareToNomPrenom($obj1, $obj2);
+        }
+    }
 
-    
+    /**
+     * Renvoi la masse salariale de l'employé
+     *
+     * @return Int retourne la masse salariale de l'employe
+     */
+    public function masseSalariale()
+    {
+        return $this->getSalaireBrutAnnuel()*1000+ $this->prime();
+    }
 
-    
+     /**
+     * Indique si l'employé peux bénéficier des chèques vacances
+     *
+     * @return Boolean 1 si l'employé peu en bénéficier si non 0 
+     */
+    public function chequeVacance()
+    {
+        if($this->anciennete()>=1)
+        {   
+           return 1;
+        }
+        return 0;
+    }
 }
