@@ -6,10 +6,12 @@ class Employe
     /*****************Attributs***************** */
     private $_nom;
     private $_prenom;
+    private $_agence;
     private $_dateEmbauche;
     private $_fonction;
     private $_salaireBrutAnnuel;
     private $_service;
+    private static $_compteur=0;
 
     /*****************Accesseurs***************** */
 
@@ -20,7 +22,7 @@ class Employe
 
     public function setNom($nom)
     {
-        $this->_nom = $nom;
+        $this->_nom = ucfirst($nom);
     }
 
     public function getPrenom()
@@ -30,7 +32,7 @@ class Employe
 
     public function setPrenom($prenom)
     {
-        $this->_prenom = $prenom;
+        $this->_prenom = ucfirst($prenom);
     }
 
     public function getDateEmbauche()
@@ -73,6 +75,25 @@ class Employe
         $this->_service = $service;
     }
 
+    public static function getCompteur()
+    {
+        return self::$_compteur;
+    }
+
+    public static function setCompteur($compteur)
+    {
+        self::$_compteur = $compteur;
+    }
+
+    public function getAgence()
+    {
+        return $this->_agence;
+    }
+
+    public function setAgence(Agence $agence)
+    {
+        $this->_agence = $agence;
+    }
     
     /*****************Constructeur***************** */
 
@@ -82,6 +103,7 @@ class Employe
         {
             $this->hydrate($options);
         }
+            Self::$_compteur ++;
     }
     public function hydrate($data)
     {
@@ -111,13 +133,33 @@ class Employe
     }
 
      /**
-     * Calcul la prime de l'emplyé (5% du brut) et (2% du brut pour chaque année d'ancienneté)
+     * Calcul la prime sur salaire de l'emplyé (5% du brut)
      *
-     * @return Int prime à verser à l'employé.
+     * @return Double prime à verser à l'employé.
      */
-    public function calculePrime()
+    private function primeSalaire()
     {
-        return "" ;
+        return ($this->getSalaireBrutAnnuel()*1000*0.05);
+    }
+
+    /**
+     * Calcul la prime d'ancienneté de l'emplyé (2% du brut pour chaque année d'ancienneté)
+     *
+     * @return Double prime à verser à l'employé.
+     */
+    private function primeAnciennete()
+    {
+        return (($this->getSalaireBrutAnnuel()*1000*0.02)*$this->anciennete()) ;
+    }
+
+     /**
+     * Calcul la prime d'ancienneté de l'emplyé (2% du brut pour chaque année d'ancienneté)
+     *
+     * @return Double prime à verser à l'employé.
+     */
+    public function prime()
+    {
+        return $this->primeSalaire()+$this->primeAnciennete();
     }
 
     /**
@@ -127,7 +169,8 @@ class Employe
      */
     public function toString()
     {
-        return "";
+        $reponse="\n** Fiche Employé **\nNom :\t\t\t".$this->getNom()."\nPrénom :\t\t".$this->getPrenom()."\nDate d'embauche :\t".$this->getDateEmbauche()->format('j - m - Y')."\nFonction :\t\t".$this->getFonction()."\nSalaire Brut Annuel :   ".$this->getSalaireBrutAnnuel()." K€"."\nService :\t\t".$this->getService()."\n";
+        return $reponse;
     }
 
     /**
@@ -152,10 +195,15 @@ class Employe
      */
     public static function compareTo($obj1, $obj2)
     {
+    
         return 0;
     }
 
    
+
+    
+
+    
 
     
 }
