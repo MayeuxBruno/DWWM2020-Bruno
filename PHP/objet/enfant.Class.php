@@ -63,6 +63,19 @@ class Enfant
 
     /*****************Autres Méthodes***************** */
     
+     /**
+     * Renvoi l'age de l'enfant
+     *
+     * @param void
+     * @return Integer  age de l'enfant
+     */
+    public function age()
+    {
+        $dateActuelle = new DateTime('now');
+        $dateNaissance=$this->getDateDeNaissance();
+        $age=$dateNaissance->diff($dateActuelle);
+        return ($age->format('%y')*1);
+    }
     /**
      * Transforme l'objet en chaine de caractères
      *
@@ -70,7 +83,7 @@ class Enfant
      */
     public function toString()
     {
-        $reponse = "*** Enfant ***\nNom : ".$this->getNom()."\nPrenom : ".$this->getPrenom()."\Date de Naissance : ".$this->getDateDeNaissance()->format('j - m - Y');
+        $reponse = "*** Enfant ***\nNom : ".$this->getNom()."\nPrenom : ".$this->getPrenom()."\nDate de Naissance : ".$this->getDateDeNaissance()->format('j - m - Y');
         return $reponse;
     }
 

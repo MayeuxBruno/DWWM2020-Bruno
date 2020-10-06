@@ -11,9 +11,20 @@ class Employe
     private $_fonction;
     private $_salaireBrutAnnuel;
     private $_service;
+    private $_enfant;
     private static $_compteur=0;
 
     /*****************Accesseurs***************** */
+
+    public function setEnfant(Array $enf)
+    {
+        $this->_enfant=$enf;
+    }
+
+    public function getEnfant()
+    {
+        return $this->_enfant;
+    }
 
     public function getNom()
     {
@@ -278,5 +289,60 @@ class Employe
            return 1;
         }
         return 0;
+    }
+
+    /**
+     * Détermine si l'employé peux bénéficier de chèques de noel
+     * 
+     * @return booleen TRUE si il peux en beneficier si non FALSE 
+     */
+    public function chequeNoel()
+    {
+        $tabenfant=$this->getEnfant();
+        if(!empty($tabenfant))
+        {
+            foreach($tabenfant as $elt)
+            {
+                if (($elt->age())<=18)
+                {
+                    return TRUE;
+                }
+            }
+        }
+        return FALSE;
+    }
+    /**
+     * Détermine la somme à remettre en chèque de noel en fonction
+     * de l'age et du nombre d'enfants
+     * @return Array contenant en index 0 la somme des chèques de 20€
+     *                         en index 1 la somme des chèques de 30€
+     *                         en index 2 la somme des chèques de 50€  
+     */
+    public function montantChequeNoel()
+    {
+        $cheque=["20€"=>0,"30€"=>0,"50€"=>0];
+        $tabenfant=$this->getEnfant();
+        if(!empty($tabenfant))
+        {
+            foreach($tabenfant as $elt)
+            {
+                if (($elt->age())<10)
+                {
+                    $cheque["20€"]++;
+                }
+                else 
+                {
+                    if(($elt->age())<15)
+                    {
+                        $cheque["30€"]++;
+                    }
+                    else if($elt->age()<18)
+                    {
+                        $cheque["50€"]++;
+                    }    
+                }
+            }
+        }
+        return $cheque;
     }
 }
