@@ -182,7 +182,7 @@ class Employe
     {
         if(!empty($this->getEnfant()))
         {
-            $message="\n\n\t*** Enfant ***\n";
+            $message="\n\n\t*** Enfant(s) ***\n";
             foreach($this->getEnfant() as $elt)
             {
                 $message.=$elt->toString();
@@ -207,28 +207,13 @@ class Employe
      * Renvoi si l'employe bénéficie d'un restaurant ou si il 
      * doit recevoir des tickets repas.
      * 
-     * @return string
+     * @return string "Tickets" ou "Restaurant"
      */
     public function repas()
     {
         return $this->getAgence()->restauration();
     }
 
-    /**
-     * Compare 2 objets
-     * Renvoi 1 si le 1er est >
-     *        0 si ils sont égaux
-     *        -1 si le 1er est <
-     *
-     * @param [type] obj1
-     * @param [type] obj2
-     * @return void
-     */
-    public static function compareTo($obj1, $obj2)
-    {
-    
-        return 0;
-    }
 
     /**
      * Compare 2 objets sur le nom et le prénom

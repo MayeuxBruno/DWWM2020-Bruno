@@ -10,13 +10,13 @@ $agence1=new Agence (["nom"=>"Agence 1","adresse"=>"115 avenue foch","codePostal
 $agence2=new Agence (["nom"=>"Agence 2","adresse"=>"15 rue de gironde","codePostal"=>"62000","ville"=>"Arras","restauration"=>"tickets"]);
 
 
-$enfant[] = new Enfant(["nom"=>"Verron","prenom"=>"Pierre","dateDeNaissance"=>new DateTime('12-11-2018')]);
-$enfant[] = new Enfant(["nom"=>"Verron","prenom"=>"Emeline","dateDeNaissance"=>new DateTime('01-10-2006')]);
-$enfant[] = new Enfant(["nom"=>"Verron","prenom"=>"Chloe","dateDeNaissance"=>new DateTime('01-10-2003')]);
+$enfant[] = new Enfant(["nom"=>"Verron","prenom"=>"Pierre","dateDeNaissance"=>new DateTime('12-11-2000')]);
+$enfant[] = new Enfant(["nom"=>"Verron","prenom"=>"Emeline","dateDeNaissance"=>new DateTime('01-10-2000')]);
+$enfant[] = new Enfant(["nom"=>"Verron","prenom"=>"Chloe","dateDeNaissance"=>new DateTime('01-10-2000')]);
 
 $employe100=new Employe (["nom"=>"Verron","prenom"=>"Marc","agence"=>$agence1,"dateEmbauche"=>new DateTime("01-12-2017"),"fonction"=>"comptable","salaireBrutAnnuel"=>25,"service"=>"maintenance","enfant"=>$enfant]);
 
-$listeEmployes[]=new Employe (["nom"=>"Dupont","prenom"=>"Marc","agence"=>$agence1,"dateEmbauche"=>new DateTime("01-12-2017"),"fonction"=>"comptable","salaireBrutAnnuel"=>25,"service"=>"maintenance","enfant"=>$enfant1]);
+$listeEmployes[]=new Employe (["nom"=>"Dupont","prenom"=>"Marc","agence"=>$agence1,"dateEmbauche"=>new DateTime("01-12-2017"),"fonction"=>"comptable","salaireBrutAnnuel"=>25,"service"=>"maintenance","enfant"=>$enfant]);
 $listeEmployes[]=new Employe (["nom"=>"veron","prenom"=>"Sebastien","agence"=>$agence1,"dateEmbauche"=>new DateTime("10-11-2019"),"fonction"=>"plombier","salaireBrutAnnuel"=>18,"service"=>"conduite"]);
 $listeEmployes[]=new Employe (["nom"=>"Girot","prenom"=>"Alexandre","agence"=>$agence2,"dateEmbauche"=>new DateTime("01-12-2016"),"fonction"=>"electricien","salaireBrutAnnuel"=>20,"service"=>"maintenance"]);
 $listeEmployes[]=new Employe (["nom"=>"Blarel","prenom"=>"Etienne","agence"=>$agence2,"dateEmbauche"=>new DateTime("01-12-2015"),"fonction"=>"drh","salaireBrutAnnuel"=>28,"service"=>"rh"]);
