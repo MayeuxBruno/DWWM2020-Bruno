@@ -173,6 +173,25 @@ class Employe
         return $this->primeSalaire()+$this->primeAnciennete();
     }
 
+     /**
+     * Permet l'affichage de la liste des enfants de l'employé.
+     *
+     * @return String Liste des enfants.
+     */
+    public function afficheEnfant()
+    {
+        if(!empty($this->getEnfant()))
+        {
+            $message="\n\n\t*** Enfant ***\n";
+            foreach($this->getEnfant() as $elt)
+            {
+                $message.=$elt->toString();
+            }
+            return $message;
+        }
+        return " ";
+    }
+
     /**
      * Transforme l'objet en chaine de caractères
      *
@@ -180,20 +199,21 @@ class Employe
      */
     public function toString()
     {
-        $reponse="\n** Fiche Employé **\nNom :\t\t\t".$this->getNom()."\nPrénom :\t\t".$this->getPrenom()."\nAgence :\n".$this->getAgence()->toString()."\nDate d'embauche :\t".$this->getDateEmbauche()->format('j - m - Y')."\nFonction :\t\t".$this->getFonction()."\nSalaire Brut Annuel :   ".$this->getSalaireBrutAnnuel()." K€"."\nService :\t\t".$this->getService()."\n";
+        $reponse="\n****** Fiche Employé ******\nNom :\t\t\t".$this->getNom()."\nPrénom :\t\t".$this->getPrenom().$this->getAgence()->toString()."\n\nDate d'embauche :\t".$this->getDateEmbauche()->format('j - m - Y')."\nFonction :\t\t".$this->getFonction()."\nSalaire Brut Annuel :   ".$this->getSalaireBrutAnnuel()." K€"."\nService :\t\t".$this->getService().$this->afficheEnfant()."\n\n****************************\n\n";
         return $reponse;
     }
 
     /**
-     * Renvoi vrai si l'objet en paramètre est égal à l'objet appelant
-     *
-     * @param [type] obj
-     * @return bool
+     * Renvoi si l'employe bénéficie d'un restaurant ou si il 
+     * doit recevoir des tickets repas.
+     * 
+     * @return string
      */
-    public function equalsTo($obj)
+    public function repas()
     {
-        return true;
+        return $this->getAgence()->restauration();
     }
+
     /**
      * Compare 2 objets
      * Renvoi 1 si le 1er est >
@@ -286,9 +306,9 @@ class Employe
     {
         if($this->anciennete()>=1)
         {   
-           return 1;
+           return TRUE;
         }
-        return 0;
+        return FALSE;
     }
 
     /**
@@ -311,6 +331,7 @@ class Employe
         }
         return FALSE;
     }
+
     /**
      * Détermine la somme à remettre en chèque de noel en fonction
      * de l'age et du nombre d'enfants
@@ -321,26 +342,22 @@ class Employe
     public function montantChequeNoel()
     {
         $cheque=["20€"=>0,"30€"=>0,"50€"=>0];
-        $tabenfant=$this->getEnfant();
-        if(!empty($tabenfant))
+        foreach($this->getEnfant() as $elt)
         {
-            foreach($tabenfant as $elt)
+            if (($elt->age())<10)
             {
-                if (($elt->age())<10)
+                $cheque["20€"]++;
+            }
+            else 
+            {
+                if(($elt->age())<15)
                 {
-                    $cheque["20€"]++;
+                    $cheque["30€"]++;
                 }
-                else 
+                else if($elt->age()<18)
                 {
-                    if(($elt->age())<15)
-                    {
-                        $cheque["30€"]++;
-                    }
-                    else if($elt->age()<18)
-                    {
-                        $cheque["50€"]++;
-                    }    
-                }
+                    $cheque["50€"]++;
+                }    
             }
         }
         return $cheque;

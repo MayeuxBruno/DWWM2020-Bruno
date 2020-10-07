@@ -9,19 +9,22 @@ spl_autoload_register("ChargerClasse");
 $agence1=new Agence (["nom"=>"Agence 1","adresse"=>"115 avenue foch","codePostal"=>"59480","ville"=>"Dunkerque","restauration"=>"restaurant"]);
 $agence2=new Agence (["nom"=>"Agence 2","adresse"=>"15 rue de gironde","codePostal"=>"62000","ville"=>"Arras","restauration"=>"tickets"]);
 
-$enfant[] = new Enfant(["nom"=>"Verron","prenom"=>"Pierre","dateDeNaissance"=>new DateTime('12-11-2000')]);
-$enfant[] = new Enfant(["nom"=>"Verron","prenom"=>"Emeline","dateDeNaissance"=>new DateTime('01-10-2000')]);
-$employe100=new Employe (["nom"=>"Dupont","prenom"=>"Marc","agence"=>$agence1,"dateEmbauche"=>new DateTime("01-12-2017"),"fonction"=>"comptable","salaireBrutAnnuel"=>25,"service"=>"maintenance","enfant"=>$enfant]);
 
-//$listeEmployes[]=new Employe (["nom"=>"Dupont","prenom"=>"Marc","agence"=>$agence1,"dateEmbauche"=>new DateTime("01-12-2017"),"fonction"=>"comptable","salaireBrutAnnuel"=>25,"service"=>"maintenance","enfant"=>$enfant1]);
-//$listeEmployes[]=new Employe (["nom"=>"veron","prenom"=>"Sebastien","agence"=>$agence1,"dateEmbauche"=>new DateTime("10-11-2019"),"fonction"=>"plombier","salaireBrutAnnuel"=>18,"service"=>"conduite"]);
-//$listeEmployes[]=new Employe (["nom"=>"Girot","prenom"=>"Alexandre","agence"=>$agence2,"dateEmbauche"=>new DateTime("01-12-2016"),"fonction"=>"electricien","salaireBrutAnnuel"=>20,"service"=>"maintenance"]);
-//$listeEmployes[]=new Employe (["nom"=>"Blarel","prenom"=>"Etienne","agence"=>$agence2,"dateEmbauche"=>new DateTime("01-12-2015"),"fonction"=>"drh","salaireBrutAnnuel"=>28,"service"=>"rh"]);
-//$listeEmployes[]=new Employe (["nom"=>"Dupont","prenom"=>"Yves","agence"=>$agence1,"dateEmbauche"=>new DateTime("01-12-2006"),"fonction"=>"electricien","salaireBrutAnnuel"=>20,"service"=>"maintenance"]);
-//$listeEmployes[]=new Employe (["nom"=>"Dupont","prenom"=>"Nicolas","agence"=>$agence1,"dateEmbauche"=>new DateTime("01-12-2007"),"fonction"=>"electricien","salaireBrutAnnuel"=>20,"service"=>"maintenance"]);
+$enfant[] = new Enfant(["nom"=>"Verron","prenom"=>"Pierre","dateDeNaissance"=>new DateTime('12-11-2018')]);
+$enfant[] = new Enfant(["nom"=>"Verron","prenom"=>"Emeline","dateDeNaissance"=>new DateTime('01-10-2006')]);
+$enfant[] = new Enfant(["nom"=>"Verron","prenom"=>"Chloe","dateDeNaissance"=>new DateTime('01-10-2003')]);
+
+$employe100=new Employe (["nom"=>"Verron","prenom"=>"Marc","agence"=>$agence1,"dateEmbauche"=>new DateTime("01-12-2017"),"fonction"=>"comptable","salaireBrutAnnuel"=>25,"service"=>"maintenance","enfant"=>$enfant]);
+
+$listeEmployes[]=new Employe (["nom"=>"Dupont","prenom"=>"Marc","agence"=>$agence1,"dateEmbauche"=>new DateTime("01-12-2017"),"fonction"=>"comptable","salaireBrutAnnuel"=>25,"service"=>"maintenance","enfant"=>$enfant1]);
+$listeEmployes[]=new Employe (["nom"=>"veron","prenom"=>"Sebastien","agence"=>$agence1,"dateEmbauche"=>new DateTime("10-11-2019"),"fonction"=>"plombier","salaireBrutAnnuel"=>18,"service"=>"conduite"]);
+$listeEmployes[]=new Employe (["nom"=>"Girot","prenom"=>"Alexandre","agence"=>$agence2,"dateEmbauche"=>new DateTime("01-12-2016"),"fonction"=>"electricien","salaireBrutAnnuel"=>20,"service"=>"maintenance"]);
+$listeEmployes[]=new Employe (["nom"=>"Blarel","prenom"=>"Etienne","agence"=>$agence2,"dateEmbauche"=>new DateTime("01-12-2015"),"fonction"=>"drh","salaireBrutAnnuel"=>28,"service"=>"rh"]);
+$listeEmployes[]=new Employe (["nom"=>"Dupont","prenom"=>"Yves","agence"=>$agence1,"dateEmbauche"=>new DateTime("01-12-2006"),"fonction"=>"electricien","salaireBrutAnnuel"=>20,"service"=>"maintenance"]);
+$listeEmployes[]=new Employe (["nom"=>"Dupont","prenom"=>"Nicolas","agence"=>$agence1,"dateEmbauche"=>new DateTime("01-12-2007"),"fonction"=>"electricien","salaireBrutAnnuel"=>20,"service"=>"maintenance"]);
 
 
-//echo "L'employer recevre la somme de ".$employe100->chequeNoel()." € en chèque de noel";
+
 /********************************* Envoi l'ordre de virement à la banque ************************* */
 $dateActuelle=new DateTime ('now');
 $datePrime=(new DateTime())->setDate($dateActuelle->format('Y'),9,30);
@@ -70,6 +73,7 @@ else
 
 
 //echo $enfant1->toString();
+echo $employe100->toString();
 
 /******* Calcul des cheques de noel ***** */
 if ($employe100->chequeNoel())
@@ -81,9 +85,9 @@ if ($employe100->chequeNoel())
     }while (($rep!='o')&&($rep!='n'));
     if($rep=='o')
     {
-        echo "\n L'employé recevra : \n";
-        $cheque=$employe100->montantChequeNoel();
-        foreach ($cheque as $key => $value){
+        echo "\nL'employé recevra : \n";
+        foreach ($employe100->montantChequeNoel() as $key => $value)
+        {
             if ($value!=0)
             {
                 echo $value." chèques de ".$key."\n";
@@ -95,3 +99,5 @@ else
 {
     echo "L'employé ne peux pas bénéficier des chèques de noel";
 }
+
+//echo $employe100->repas();

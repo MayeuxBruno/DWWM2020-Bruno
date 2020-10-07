@@ -92,7 +92,7 @@ class Agence
      */
     public function toString()
     {
-        $reponse= "Nom :\t\t\t".$this->_nom."\nAdresse:\t\t".$this->_adresse."\nCode postal :\t\t".$this->_codePostal."\nVille :\t\t\t".$this->_ville."\nRestauration :\t\t".$this->_restauration;
+        $reponse= "\n\n\t*** Agence ***\n\nNom :\t\t\t".$this->_nom."\nAdresse:\t\t".$this->_adresse."\nCode postal :\t\t".$this->_codePostal."\nVille :\t\t\t".$this->_ville."\nRestauration :\t\t".$this->_restauration;
         return $reponse;
     }
 
@@ -106,34 +106,4 @@ class Agence
     {
         return $this->getRestauration();
     }
-
-    /**
-     * Renvoi vrai si l'objet en paramètre est égal à l'objet appelant
-     *
-     * @param [type] obj
-     * @return bool
-     */
-    public function equalsTo($obj)
-    {
-        return true;
-    }
-
-    
-    /**
-     * Compare 2 objets
-     * Renvoi 1 si le 1er est >
-     *        0 si ils sont égaux
-     *        -1 si le 1er est <
-     *
-     * @param [type] obj1
-     * @param [type] obj2
-     * @return void
-     */
-    public static function compareTo($obj1, $obj2)
-    {
-        return 0;
-    }
-
-
-    
 }

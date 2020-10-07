@@ -83,34 +83,7 @@ class Enfant
      */
     public function toString()
     {
-        $reponse = "*** Enfant ***\nNom : ".$this->getNom()."\nPrenom : ".$this->getPrenom()."\nDate de Naissance : ".$this->getDateDeNaissance()->format('j - m - Y');
+        $reponse = "\nNom :\t\t\t".$this->getNom()."\nPrenom :\t\t".$this->getPrenom()."\nDate de Naissance :\t".$this->getDateDeNaissance()->format('j - m - Y')."\n";
         return $reponse;
     }
-
-    /**
-     * Renvoi vrai si l'objet en paramètre est égal à l'objet appelant
-     *
-     * @param [type] obj
-     * @return bool
-     */
-    public function equalsTo($obj)
-    {
-        return true;
-    }
-    /**
-     * Compare 2 objets
-     * Renvoi 1 si le 1er est >
-     *        0 si ils sont égaux
-     *        -1 si le 1er est <
-     *
-     * @param [type] obj1
-     * @param [type] obj2
-     * @return void
-     */
-    public static function compareTo($obj1, $obj2)
-    {
-        return 0;
-    }
-
-    
 }
