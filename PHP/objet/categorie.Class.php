@@ -73,7 +73,10 @@ class Categorie
 	*/
 	public static function compareTo(Categorie $c1, Categorie $c2)
 	{		
-		if()
-		return
+		if($c1->getLibelle()==$c2->getLibelle())
+		{
+			return TRUE;
+		}
+		return FALSE;
 	}
 }
