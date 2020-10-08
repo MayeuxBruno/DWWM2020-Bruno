@@ -62,7 +62,7 @@ class Produit
 		return $this->_dateValidite;
 	}
 
-	public function setDateValidite($dateValidite)
+	public function setDateValidite(DateTime $dateValidite)
 	{
 		$this->_dateValidite=$dateValidite;
 	}
@@ -119,6 +119,16 @@ class Produit
 		}
 	}
 
+	private function renvoiLieuDeStockage()
+	{
+		$rep="";
+		foreach($this->getLieuStockage() as $elt)
+		{
+				$rep.=$elt->toString();
+		}
+		return $rep;
+	}
+
 	/*****************Autres Méthodes***************** */
 
 	/**
@@ -128,14 +138,11 @@ class Produit
 	*/
 	public function toString()
 	{
-		$rep="****** Produit *******\nNuméro : ".$this->getNumero()
+		$rep="\n****** Produit *******\nNuméro : ".$this->getNumero()
 			."\nDésignation : ".$this->getDesignation()."\nCouleur : ".$this->getCouleur()
 			."\nDate de validité : ".$this->getDateValidite()->format('j-m-Y')
-			."\n\n** Catégorie **".$this->getCategorie()->toString()."\n** Lieu de Stockage ** \n";
-			foreach($this->getLieuStockage() as $elt)
-			{
-				$rep.=$elt->toString();
-			}
+			."\nCatégorie : ".$this->getCategorie()."\n\n** Lieu de Stockage ** \n"
+			.$this->renvoiLieuDeStockage()."\n";
 		return $rep;
 	}
 
@@ -154,6 +161,22 @@ class Produit
 			return TRUE;
 		}
 		return FALSE;
+
+		// 
+		return ($dateActuel>$this->getDateValidite());
+	}
+
+	/**
+	* Ajoute un nouveau lieu de stockage à la liste des
+	* des lieux de stockage du produit.
+	*
+	* @return Boleen TRUE si le produit est périmé si non FALSE
+	*/
+	public function entreeEnStock( lieuDeStockage $lieu )
+	{		
+		$lieux=$this->getLieuStockage();
+		$lieux.=$lieu;
+		$this->setLieuStockage($lieux);
 	}
 
 	/**
@@ -167,4 +190,8 @@ class Produit
 		return $prixTtc;
 	}
 
+	public static function compareTo( Produit $p1,Produit $p2 )
+	{
+
+	}
 }

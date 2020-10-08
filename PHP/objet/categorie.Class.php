@@ -71,7 +71,9 @@ class Categorie
 	*
 	* @return String
 	*/
-	public function equalsTo($obj)
-	{		return;
+	public static function compareTo(Categorie $c1, Categorie $c2)
+	{		
+		if()
+		return
 	}
 }

@@ -7,6 +7,7 @@ class LieuDeStockage
 
 	private $_entrepot;
 	private $_zone;
+	private $_ville;
 
 	/***************** Accesseurs ***************** */
 
@@ -31,6 +32,15 @@ class LieuDeStockage
 		$this->_zone=$zone;
 	}
 
+	public function getVille()
+	{
+		return $this->_ville;
+	}
+
+	public function setVille($ville)
+	{
+		$this->_ville = $ville;
+	}
 	/*****************Constructeur***************** */
 
 	public function __construct(array $options = [])
@@ -61,7 +71,7 @@ class LieuDeStockage
 	*/
 	public function toString()
 	{
-		return "\nNuméro d'entrepot :".$this->getEntrepot()."\nZone :".$this->getZone()."\n";
+		return "\nNuméro d'entrepot :".$this->getEntrepot()."\nZone :".$this->getZone()."\nVille : ".$this->getVille()."\n";
 	}
 
 	/*****************Autres Méthodes***************** */
@@ -74,4 +84,6 @@ class LieuDeStockage
 	public function equalsTo($obj)
 	{		return;
 	}
+
+	
 }
