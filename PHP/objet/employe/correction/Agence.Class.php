@@ -2,7 +2,7 @@
 
 class Agence
 {
-
+  
     /*****************Attributs***************** */
     private $_nom;
     private $_adresse;
@@ -11,15 +11,15 @@ class Agence
     private $_restauration;
 
     /*****************Accesseurs***************** */
-    
+
     public function getNom()
     {
         return $this->_nom;
     }
 
-    public function setNom(String $nom)
+    public function setNom($nom)
     {
-        $this->_nom = ucfirst($nom);
+        $this->_nom = $nom;
     }
 
     public function getAdresse()
@@ -27,7 +27,7 @@ class Agence
         return $this->_adresse;
     }
 
-    public function setAdresse(String $adresse)
+    public function setAdresse($adresse)
     {
         $this->_adresse = $adresse;
     }
@@ -37,7 +37,7 @@ class Agence
         return $this->_codePostal;
     }
 
-    public function setCodePostal(Int $codePostal)
+    public function setCodePostal($codePostal)
     {
         $this->_codePostal = $codePostal;
     }
@@ -47,9 +47,9 @@ class Agence
         return $this->_ville;
     }
 
-    public function setVille(String $ville)
+    public function setVille($ville)
     {
-        $this->_ville = ucfirst($ville);
+        $this->_ville = $ville;
     }
 
     public function getRestauration()
@@ -57,7 +57,7 @@ class Agence
         return $this->_restauration;
     }
 
-    public function setRestauration(String $restauration)
+    public function setRestauration($restauration)
     {
         $this->_restauration = $restauration;
     }
@@ -92,18 +92,34 @@ class Agence
      */
     public function toString()
     {
-        $reponse= "\n\n\t*** Agence ***\n\nNom :\t\t\t".$this->_nom."\nAdresse:\t\t".$this->_adresse."\nCode postal :\t\t".$this->_codePostal."\nVille :\t\t\t".$this->_ville."\nRestauration :\t\t".$this->_restauration;
-        return $reponse;
+        return "Nom :" . $this->getNom() . "\nAdresse :" . $this->getAdresse()."\nCode postal : " . $this->getCodePostal()."\nVille : " . $this->getVille(). "\nRestauration :" . $this->getRestauration();
+
     }
 
     /**
-     * Renvoi le mode de restauration de l'agence
+     * Renvoi vrai si l'objet en paramètre est égal à l'objet appelant
      *
-     * @param void
-     * @return String mode de restauration restaurant ou ticket
+     * @param [type] obj
+     * @return bool
      */
-    public function restauration()
+    public function equalsTo($obj)
     {
-        return $this->getRestauration();
+        return true;
     }
+    /**
+     * Compare 2 objets
+     * Renvoi 1 si le 1er est >
+     *        0 si ils sont égaux
+     *        -1 si le 1er est <
+     *
+     * @param [type] $obj1
+     * @param [type] $obj2
+     * @return void
+     */
+    public static function compareTo($obj1, $obj2)
+    {
+        return 0;
+    }
+
+    
 }

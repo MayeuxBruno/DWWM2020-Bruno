@@ -1,45 +1,30 @@
 <?php
-
-class Enfant
+class Triangle
 {
 
     /*****************Attributs***************** */
-    private $_nom;
-    private $_prenom;
-    private $_dateDeNaissance;
+    private $_base;
+    private $_hauteur;
 
     /*****************Accesseurs***************** */
-
-    public function getNom()
+    public function getBase()
     {
-        return $this->_nom;
+        return $this->_base;
     }
 
-    public function setNom(String $nom)
+    public function setBase($base)
     {
-        $this->_nom = ucfirst($nom);
+        $this->_base = $base;
+    }
+    public function getHauteur()
+    {
+        return $this->_hauteur;
     }
 
-    public function getPrenom()
+    public function setHauteur($hauteur)
     {
-        return $this->_prenom;
-    }
-
-    public function setPrenom(String $prenom)
-    {
-        $this->_prenom = ucfirst($prenom);
-    }
-
-    public function getDateDeNaissance()
-    {
-        return $this->_dateDeNaissance;
-    }
-
-    public function setDateDeNaissance(DateTime $dateDeNaissance)
-    {
-        $this->_dateDeNaissance = $dateDeNaissance;
-    }
-    
+        $this->_hauteur = $hauteur;
+    }    
     /*****************Constructeur***************** */
 
     public function __construct(array $options = [])
@@ -70,14 +55,13 @@ class Enfant
      */
     public function toString()
     {
-        $reponse = "*** Enfant ***\nNom : ".$this->getNom()."\nPrenom : ".$this->getPrenom()."\Date de Naissance : ".$this->getDateDeNaissance()->format('j - m - Y');
-        return "";
+        return "Base : ".$this->getBase().", Hauteur : ".$this->getHauteur().", Perimetre : ".$this->perimetre(). " Aire : ".$this->aire();
     }
 
     /**
      * Renvoi vrai si l'objet en paramètre est égal à l'objet appelant
      *
-     * @param [type] obj
+     * @param [type] $obj
      * @return bool
      */
     public function equalsTo($obj)
@@ -90,14 +74,23 @@ class Enfant
      *        0 si ils sont égaux
      *        -1 si le 1er est <
      *
-     * @param [type] obj1
-     * @param [type] obj2
+     * @param [type] $obj1
+     * @param [type] $obj2
      * @return void
      */
     public static function compareTo($obj1, $obj2)
     {
         return 0;
     }
-
+    public function perimetre()
+    {
+        $c = sqrt(pow($this->getBase(), 2) + pow($this->getHauteur(), 2));
+        $perimetre = $this->getBase() +$this->getHauteur() + $c;
+        return $perimetre;
+    }
+    public function aire()
+    {
+        return $this->getBase() * $this->getHauteur() /2; 
+    }
     
 }
