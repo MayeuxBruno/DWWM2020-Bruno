@@ -1,9 +1,5 @@
 <?php
 
-/****
- * Générateur de classe prenant en charge l'héritage
- * 09-10-2020
- */
 function genereEntete($nom,$mere,$fichier,$herit)
 {
     $entete='<?php'."\n\nclass $nom ";
@@ -177,7 +173,7 @@ for($i=1;$i<=$nbAttributs;$i++)
     $attribut[]=$attSaisie;
 }
 // Genere le nom et ouvre le fichier contenant la classe
-$nomFichier=ucfirst($nomClasse).".Class.php";
+$nomFichier=strtolower($nomClasse).".Class.php";
 $fp=fopen($nomFichier,"w");
 
 // Affichage de l'entête du fichier

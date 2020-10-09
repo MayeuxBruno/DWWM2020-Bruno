@@ -1,41 +1,42 @@
 <?php
 
-class o extends Mum
+class Employe extends Personne
 {
 
 	/*****************Attributs***************** */
 
-	private $_nom;
-	private $_prenom;
+	private $_matricule;
+	private $_agence;
 
 	/***************** Accesseurs ***************** */
 
 
-	public function getNom()
+	public function getMatricule()
 	{
-		return $this->_nom;
+		return $this->_matricule;
 	}
 
-	public function setNom($nom)
+	public function setMatricule($matricule)
 	{
-		$this->_nom=$nom;
+		$this->_matricule=$matricule;
 	}
 
-	public function getPrenom()
+	public function getAgence()
 	{
-		return $this->_prenom;
+		return $this->_agence;
 	}
 
-	public function setPrenom($prenom)
+	public function setAgence($agence)
 	{
-		$this->_prenom=$prenom;
+		$this->_agence=$agence;
 	}
 
 	/*****************Constructeur***************** */
 
 	public function __construct(array $options = [])
 	{
- 		 if (!empty($options)) // empty : renvoi vrai si le tableau est vide
+ 		parent::__construct($options);
+		if (!empty($options)) // empty : renvoi vrai si le tableau est vide
 		{
 			$this->hydrate($options);
 		}
@@ -61,7 +62,7 @@ class o extends Mum
 	*/
 	public function toString()
 	{
-		return "\n\tNom : ".$this->getNom()."\n\tPrenom : ".$this->getPrenom()."\n";
+		return "\n\tMatricule : ".$this->getMatricule()."\n\tAgence : ".$this->getAgence()."\n";
 	}
 
 

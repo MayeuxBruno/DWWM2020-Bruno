@@ -1,21 +1,18 @@
 <?php
 
-
-function remplirTableauAlea()
+function remplirTableau()
 {
-    $ligne = readline("Ligne : ");
-    $colonne = readline("Colonne : ");
-    for ($i = 0; $i < $ligne; $i++)
+    for ($i = 0; $i <= 5; $i++)
     {
-        for ($j = 0; $j < $colonne; $j++)
+        for ($j = 0; $j <=5; $j++)
         {
-            $t[$i][$j] = rand(0, 10);
+            $t[$i][$j] = 0;
         }
     }
     return $t;
 }
 
-function afficheTableau2Dim($t)
+function afficheTableau($t)
 {
     echo "\n";
     $nbCol = count($t[0]);
@@ -42,9 +39,8 @@ function afficheTableau2Dim($t)
     {
         if ($i == 0) //haut du tableau
         {
-            echo $titre . "\n\t ";
             //ligne supérieur du tableau
-            echo $ligneSuperieure."\n";
+            echo "\t ".$ligneSuperieure."\n";
         }
         else //Centre du tableau
         {
@@ -52,9 +48,7 @@ function afficheTableau2Dim($t)
 
             echo $ligneIntermediaire . "\n";
         }
-        //affichage du numéro de la ligne
-        $chiffre = $i + 1;
-        echo "    " . $chiffre;
+        
         //affichage des élément du tableau
         for ($j = 0; $j < $nbCol; $j++)
         {
@@ -67,5 +61,5 @@ function afficheTableau2Dim($t)
 
 }
 
-$tab = remplirTableauAlea();
-afficheTableau2Dim($tab);
+$t=remplirTableau();
+afficheTableau($t);
