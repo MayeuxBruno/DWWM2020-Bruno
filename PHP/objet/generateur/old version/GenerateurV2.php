@@ -135,24 +135,19 @@ function genereSetters($tabAtt,$nbAtt,$fichier)
 
 /**
  * Méthode qui crée l'affichage de la méthode toString() de la classe
- * Prend en paramètre le tableau d'attribut le nombre d'attributs et le fichier 
+ * Prend en paramètre le tableau d'attribut et le fichier 
  * dans lequel on crée la classe
  * 
  * @param Array  $tabAtt
- * @param Integer $nbAtt
  * @param Resousce $fichier
  * @return Void
  */
-function genereToString($tabAt,$nbAtt,$fichier,$herit)
+function genereToString($tabAt,$fichier)
 {
     $rep="";
-    if ($herit==1)
+    foreach ($tabAt as $elt)
     {
-        $rep.='parent::toString().';
-    }
-    for ($i=0;$i<$nbAtt;$i++)
-    {
-        $rep.='"'.ucfirst($tabAt[$i]).' : ".$this->get'.ucfirst($tabAt[$i]).'().';
+        $rep.='"\n\t'.ucfirst($elt).' : "'.'.$this->get'.ucfirst($elt).'().';
     }
     $rep.='"\n"';
     $toStr="\n\t/*****************Autres Méthodes***************** */\n\n".
@@ -303,7 +298,7 @@ genereSetters($tabAttribut,$nbAttributs,$fp);
 // Affichage du constructeur
 genereConstruct($fp,$heritage);
 // Affichage la fonction toString
-genereToString($tabAttribut,$nbAttributs,$fp,$heritage);
+genereToString($tabAttribut,$fp);
 // Affichage la fonction equalsTo
 genereEqualsTo($fp);
 // Affiche la fonction CompareTo
