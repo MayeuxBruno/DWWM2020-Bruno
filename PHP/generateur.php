@@ -124,7 +124,7 @@ function genereSetters($tabAtt,$nbAtt,$fichier)
                   "\n\t{".
                   "\n\t\treturn ".'self::$_'.$tabAtt[$i].";\n".  
                   "\t}\n".
-                  "\n\t".'public static function set'.ucfirst($tabAtt[$i])."($".$tabAtt[$i].")".
+                  "\n\t".'public function set'.ucfirst($tabAtt[$i])."($".$tabAtt[$i].")".
                   "\n\t{".
                   "\n\t\t".'self::$_'.$tabAtt[$i].'=$'.$tabAtt[$i].';'."\n".  
                   "\t}\n";
