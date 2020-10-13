@@ -5,19 +5,19 @@ class MonstreDifficile extends MonstreFacile
 
 	/*****************Attributs***************** */
 
-	private static $_compteur;
+	private static $_nombreDifficile=0;
 
 	/***************** Accesseurs ***************** */
 
 
-	public static function getCompteur()
+	public static function getnombreDifficile()
 	{
-		return self::$_compteur;
+		return self::$_nombreDifficile;
 	}
 
-	public static function setCompteur($compteur)
+	public static function setNombreDifficile($nbDifficile)
 	{
-		self::$_compteur=$compteur;
+		self::$_nombreDifficile=$nbDifficile;
 	}
 
 	/*****************Constructeur***************** */
@@ -29,7 +29,6 @@ class MonstreDifficile extends MonstreFacile
 		{
 			$this->hydrate($options);
 		}
-		self::setCompteur(self::getCompteur()+1);
 	}
 	public function hydrate($data)
 	{
@@ -81,6 +80,7 @@ class MonstreDifficile extends MonstreFacile
 		else
 		{
 			$this->setEstVivant(FALSE);
+			self::setNombreDifficile(self::getNombreDifficile()+1);
 			$joueur->subitDegats(0);
 		}
 		$result=['Monstre'=>$lanceMonstre,'Joueur'=>$lanceJoueur];

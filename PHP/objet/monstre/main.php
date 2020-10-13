@@ -22,44 +22,17 @@ function genereMonstre()
     return new MonstreDifficile (['estVivant'=>TRUE]);
 }
 
-$de=new De ();
-
-$joueur1 = new Joueur (['ptsDeVie'=>50]);
+$joueur1 = new Joueur (['nom'=>"Joe",'ptsDeVie'=>50]);
 $monstre = genereMonstre();
 
-do
+while ($joueur1->estEnVie())
 {
-    if (!$monstre->getEstVivant()) // Si le monstre est vivant
-    { 
-        $monstre = new MonstreFacile (['estVivant'=>TRUE]);
-        
-    }
-    foreach ($joueur1->attaque($monstre) as $key=>$value )
-    {
-        echo "Le ".$key." attaque : ".$value."\t";
-        
-    }
-    echo "\n".$joueur1->getPtsDeVie()."\n";
-    if ($monstre->getEstVivant()) // Si le monstre est vivant
-    {
-        foreach ($monstre->attaque($joueur1) as $key=>$value )
-        {
-            echo "Le ".$key." attaque : ".$value."\t";
-        }
-        echo "\n".$joueur1->getPtsDeVie()."\n";
-    }
-    else 
-    {
-        $monstre = genereMonstre();
-    }
-}while($joueur1->getPtsDeVie()>0);
+    $joueur1->attaque($monstre);
+}
 
-$facile=MonstreFacile::getCompteur()-MonstreDifficile::getCompteur();
-echo "\nfacile : ".MonstreFacile::getCompteur();
-echo "\ndifficile : ".MonstreDifficile::getCompteur();
 echo "Dommage vous êtes mort.....\n";
-echo "Cela dit vous avez tué ". $facile
-    ." Monstres Faciles et ".MonstreDifficile::getCompteur()." Difficiles";
+echo "Cela dit vous avez tué ".MonstreFacile::getNombreFacile()
+    ." Monstres Faciles et ".MonstreDifficile::getNombreDifficile()." Difficiles";
 
 
     

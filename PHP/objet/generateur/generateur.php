@@ -107,28 +107,27 @@ function genereSetters($tabAtt,$nbAtt,$fichier)
     $get="\n\t/***************** Accesseurs ***************** */\n\n";
     for($i=0;$i<count($tabAtt);$i++)
     {
-        if ($i<$nbAtt)    
+        if ($i<$nbAtt)   
         {
-            $get.="\n\t".'public function get'.ucfirst($tabAtt[$i])."()".
-                  "\n\t{".
-                  "\n\t\treturn ".'$this->_'.$tabAtt[$i].";\n".  
-                  "\t}\n".
-                  "\n\t".'public function set'.ucfirst($tabAtt[$i])."($".$tabAtt[$i].")".
-                  "\n\t{".
-                  "\n\t\t".'$this->_'.$tabAtt[$i].'=$'.$tabAtt[$i].';'."\n".  
-                  "\t}\n";
+           $affg = "\n\t\treturn ".'$this->_'.$tabAtt[$i].";\n";
+           $affs ="\n\t\t".'$this->_'.$tabAtt[$i].'=$'.$tabAtt[$i].';'."\n";
+           $pub="public function";
         }
         else    // Si attributs statics
         {
-            $get.="\n\t".'public static function get'.ucfirst($tabAtt[$i])."()".
-                  "\n\t{".
-                  "\n\t\treturn ".'self::$_'.$tabAtt[$i].";\n".  
-                  "\t}\n".
-                  "\n\t".'public static function set'.ucfirst($tabAtt[$i])."($".$tabAtt[$i].")".
-                  "\n\t{".
-                  "\n\t\t".'self::$_'.$tabAtt[$i].'=$'.$tabAtt[$i].';'."\n".  
-                  "\t}\n";
+            $affg = "\n\t\treturn ".'self::$_'.$tabAtt[$i].";\n";
+            $affs = "\n\t\t".'self::$_'.$tabAtt[$i].'=$'.$tabAtt[$i].';'."\n";
+            $pub = "public static function";
         }
+
+        $get.="\n\t".$pub.' get'.ucfirst($tabAtt[$i])."()".
+              "\n\t{".
+              $affg.  
+              "\t}\n".
+              "\n\t".$pub.' set'.ucfirst($tabAtt[$i])."($".$tabAtt[$i].")".
+              "\n\t{".
+              $affs.  
+              "\t}\n";
     }
     fputs($fichier,$get);
 }
@@ -258,7 +257,13 @@ function getAttribut($attribut,$invite)
 } 
 /********************* FIN DES FONCTIONS**************************** */
 
+
 // Saisies de l'utilisateur
+// Saisie du chemin dans lequel le fichier classe doit etre placé
+do
+{
+    $chemin=readline("Entrez le chemin du projet :");
+}while(ctype_alnum($chemin));
 //Saisie du nom de la classe et vérifie que le format est alphanumerique
 do
 {
@@ -287,11 +292,13 @@ if ($isHeritage=='o')
 $tabAttribut=[];
 $tabAttribut=getAttribut($tabAttribut,"Entrez le nombre d'attributs : ");
 $nbAttributs=count($tabAttribut);  // On stock le nombre d'attributs dans le tableau
+
 // Saisie des attribut statics
 $tabAttribut=getAttribut($tabAttribut,"Entrez le nombre d'attributs static : ");
 
 // Genere le nom et ouvre le fichier contenant la classe
-$nomFichier=$nomClasse.".Class.php";
+$nomFichier = $chemin."\\";
+$nomFichier.=$nomClasse.".Class.php";
 $fp=fopen($nomFichier,"w");
 
 // Affichage de l'entête du fichier

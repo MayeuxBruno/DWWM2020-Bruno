@@ -4,11 +4,20 @@ class Joueur
 {
 
 	/*****************Attributs***************** */
-
+	private $_nom;
 	private $_ptsDeVie;
 
 	/***************** Accesseurs ***************** */
 
+	public function getNom()
+	{
+		return $this->_nom;
+	}
+
+	public function setNom($nom)
+	{
+		$this->_nom = $nom;
+	}
 
 	public function getPtsDeVie()
 	{
@@ -82,7 +91,6 @@ class Joueur
 		if ($lanceJoueur>=$lanceMonstre)
 		{
 			$monstre->setEstVivant(FALSE);
-			$this->subitDegats(0);
 		}
 		else
 		{
@@ -108,9 +116,7 @@ class Joueur
 				$this->setPtsDeVie($this->getPtsDeVie()-$degats);
 			}
 		}
-		else
-		{
-			$this->setPtsDeVie($this->getPtsDeVie()+1);
-		}
 	}
+
+
 }
