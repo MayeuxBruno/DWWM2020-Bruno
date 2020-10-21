@@ -50,7 +50,7 @@ K) Afficher le nombre moyen d articles par client et par date.
     SELECT `dateCommande`,`idClient`,ROUND(AVG(`quantiteCommande`),2) AS `Nb Moyen d'article` FROM`commandes` GROUP BY `idClient`,`dateCommande`
 
 L) Afficher le nombre de commandes par jour.
-    SELECT `dateCommande`,SUM(`quantiteCommande`) AS `Total Qauntite Commande` FROM `commandes` GROUP BY `dateCommande`
+    SELECT `dateCommande`,COUNT(*) AS `Total Qauntite Commande` FROM `commandes` GROUP BY `dateCommande`
 
 M) Afficher le nombre de clients dans la table.
     SELECT COUNT(*) AS `Nbr de clients` FROM `clients`
