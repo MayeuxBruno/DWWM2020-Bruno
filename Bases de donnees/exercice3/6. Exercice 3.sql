@@ -22,10 +22,19 @@ SELECT `note` FROM `avoir_note` INNER JOIN `etudiants` ON avoir_note.idEtudiant=
 
 
 E) Le nom des étudiants qui partagent une ou plusieurs notes avec « LUC DUPONT ».
+SELECT DISTINCT(CONCAT(`nomEtudiant`," ",`prenomEtudiant`)),`note` 
+FROM `etudiants` 
+INNER JOIN `avoir_note` ON avoir_note.idEtudiant=etudiants.idEtudiant 
+WHERE `note`="20"
 
+SELECT `note`FROM avoir_note INNER JOIN etudiants ON avoir_note.idEtudiant=etudiants.idEtudiant WHERE `nomEtudiant`="DUPONT" AND `prenomEtudiant`="Luc"
 
 F) Ajoutez une colonne HOBBY à la table ETUDIANT. Cette colonne est de type chaine sur 20 caractères.
 Par défaut le HOBBY est mis à SPORT. 
+ALTER TABLE etudiants
+ADD COLUMN HOBBY varchar(20) DEFAULT "Sport" 
+
+
 G) Ajouter à la table ETUDIANT une colonne NEWCOL de type INTEGER (vérifier en affichant la
 structure de la table) puis la supprimer (vérifier de nouveau la suppression).
 H) Vérifiez que PREnomEtudiant peut ne pas avoir de contenu puis indiquez que la colonne PREnomEtudiant
