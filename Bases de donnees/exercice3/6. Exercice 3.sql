@@ -13,32 +13,36 @@ B) Les noms et notes des étudiants qui ont,à l''épreuve 4, une note supérieu
 
 C) Le nom des étudiants qui ont obtenu un 12 ou plus.
  SELECT DISTINCT(CONCAT(`nomEtudiant`," ",`prenomEtudiant`)) FROM `avoir_note` INNER JOIN `etudiants` ON avoir_note.idEtudiant=etudiants.idEtudiant WHERE `note`>=12
- SELECT DISTINCT(CONCAT(`nomEtudiant`," ",`prenomEtudiant`)) FROM `etudiants` INNER JOIN `avoir_note` ON avoir_note.idEtudiant=etudiants.idEtudiant WHERE `note`>=12
+ OK -> SELECT DISTINCT(CONCAT(`nomEtudiant`," ",`prenomEtudiant`)) FROM `etudiants` INNER JOIN `avoir_note` ON avoir_note.idEtudiant=etudiants.idEtudiant WHERE `note`>=12
 
 
 D)Le nom des étudiants qui ont dans l''épreuve 4 une note supérieure à celle obtenue par « LUC DUPONT »(à cette même épreuve).
-
-SELECT `note` FROM `avoir_note` INNER JOIN `etudiants` ON avoir_note.idEtudiant=etudiants.idEtudiant WHERE `nomEtudiant`="DUPONT" AND `prenomETudiant`="Luc" AND `idEpreuve`="4"
+SELECT DISTINCT(CONCAT(`nomEtudiant`," ",`prenomEtudiant`)) FROM `etudiants` INNER JOIN `avoir_note` ON avoir_note.idEtudiant=etudiants.idEtudiant 
+WHERE `idEpreuve`="4" AND `note`>(SELECT `note` FROM `avoir_note` INNER JOIN `etudiants` ON avoir_note.idEtudiant=etudiants.idEtudiant 
+WHERE `nomEtudiant`="DUPONT" AND `prenomETudiant`="Luc" AND `idEpreuve`="4")
 
 
 E) Le nom des étudiants qui partagent une ou plusieurs notes avec « LUC DUPONT ».
-SELECT DISTINCT(CONCAT(`nomEtudiant`," ",`prenomEtudiant`)),`note` 
+
+SELECT DISTINCT(CONCAT(`nomEtudiant`," ",`prenomEtudiant`)) AS `Nom Etudiant` 
 FROM `etudiants` 
 INNER JOIN `avoir_note` ON avoir_note.idEtudiant=etudiants.idEtudiant 
-WHERE `note`="20"
-
-SELECT `note`FROM avoir_note INNER JOIN etudiants ON avoir_note.idEtudiant=etudiants.idEtudiant WHERE `nomEtudiant`="DUPONT" AND `prenomEtudiant`="Luc"
+WHERE NOT (`nomEtudiant`="DUPONT" AND `prenomEtudiant`="LUC") AND `note` IN (
+  SELECT `note`FROM avoir_note INNER JOIN etudiants ON avoir_note.idEtudiant=etudiants.idEtudiant WHERE `nomEtudiant`="DUPONT" AND `prenomEtudiant`="Luc"
+)
 
 F) Ajoutez une colonne HOBBY à la table ETUDIANT. Cette colonne est de type chaine sur 20 caractères.
 Par défaut le HOBBY est mis à SPORT. 
 ALTER TABLE etudiants
 ADD COLUMN HOBBY varchar(20) DEFAULT "Sport" 
 
-
 G) Ajouter à la table ETUDIANT une colonne NEWCOL de type INTEGER (vérifier en affichant la
 structure de la table) puis la supprimer (vérifier de nouveau la suppression).
+
+
 H) Vérifiez que PREnomEtudiant peut ne pas avoir de contenu puis indiquez que la colonne PREnomEtudiant
 doit obligatoirement avoir une valeur. Vérifiez sur la description de la table.
+
 I)Insérez les enregistrements suivants: 7, 'interro écrite',9,1,'21-oct-96',1 dans EPREUVE 
 1,7,10
 2,7,08
