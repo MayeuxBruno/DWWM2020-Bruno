@@ -38,7 +38,11 @@ ADD COLUMN HOBBY varchar(20) DEFAULT "Sport"
 
 G) Ajouter à la table ETUDIANT une colonne NEWCOL de type INTEGER (vérifier en affichant la
 structure de la table) puis la supprimer (vérifier de nouveau la suppression).
+ALTER TABLE etudiants
+ADD COLUMN NEWCOL integer 
 
+ALTER TABLE etudiants
+DROP COLUMN NEWCOL 
 
 H) Vérifiez que PREnomEtudiant peut ne pas avoir de contenu puis indiquez que la colonne PREnomEtudiant
 doit obligatoirement avoir une valeur. Vérifiez sur la description de la table.
