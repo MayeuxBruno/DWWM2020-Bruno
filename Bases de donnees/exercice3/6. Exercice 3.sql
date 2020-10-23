@@ -89,8 +89,10 @@ O) DEWA a manqué l''épreuve 4. Vu son niveau, on décide de lui créer une ent
 attribuant la moyenne des notes obtenues à cette épreuve par ses collègues*0.9. Attention, la requête doit
 intégrer le nom de l''étudiant (et non chercher à repérer le numéro avant de la taper.)
 
-
-INSERT INTO `avoir_note`(`idAvoirNote`, `idEtudiant`, `idEpreuve`, `note`) VALUES (NULL,'17','4',(SELECT AVG(`note`) from `avoir_note` AS a WHERE `idEpreuve`=4))
+INSERT INTO `avoir_note`(`idAvoirNote`, `idEtudiant`, `idEpreuve`, `note`) 
+VALUES (NULL,(SELECT `idEtudiant` FROM etudiants WHERE `nomEtudiant`="DEWA"),'4',(SELECT AVG(`note`) from `avoir_note` AS a WHERE `idEpreuve`=4)*0.9)
 
 P)Insérez un nouvel étudiant dont vous ne connaissez que le numéro, le nom, le prénom, le hobby et
-l'année: 25, 'DARTE','REMY','SCULPTURE',1.
+l''année: 25, 'DARTE','REMY','SCULPTURE',1.
+
+INSERT INTO `etudiants`(`idEtudiant`, `nomEtudiant`, `prenomEtudiant`, `anneeEtudiant`, `HOBBY`) VALUES ("25","darte","remy","1","Sculpture")
