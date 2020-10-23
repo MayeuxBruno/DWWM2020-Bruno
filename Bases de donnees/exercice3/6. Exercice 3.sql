@@ -8,16 +8,15 @@ A)Les noms des étudiants nés avant l''étudiant « JULES LECLERCQ »
  WHERE `dateNaissanceEtudiant` <( SELECT `dateNaissanceEtudiant` FROM `etudiants` WHERE `nomEtudiant` = "Leclercq" AND `prenomEtudiant` = "Jules" )
 
 B) Les noms et notes des étudiants qui ont,à l''épreuve 4, une note supérieure à la moyenne de cette épreuve.
-
  SELECT `nomEtudiant`,`prenomEtudiant`,`note` FROM `avoir_note` INNER JOIN `etudiants` ON avoir_note.idEtudiant=etudiants.idEtudiant WHERE `idEpreuve`="4" AND `note`>(SELECT ROUND(AVG(`note`),2) AS `Moyenne Epreuve 4`FROM avoir_note WHERE `idEpreuve`="4")
-
+ 
 C) Le nom des étudiants qui ont obtenu un 12 ou plus.
- OK -> SELECT DISTINCT(CONCAT(`nomEtudiant`," ",`prenomEtudiant`)) FROM `avoir_note` INNER JOIN `etudiants` ON avoir_note.idEtudiant=etudiants.idEtudiant WHERE `note`>=12
- SELECT DISTINCT(CONCAT(`nomEtudiant`," ",`prenomEtudiant`)) FROM `etudiants` INNER JOIN `avoir_note` ON avoir_note.idEtudiant=etudiants.idEtudiant WHERE `note`>=12
+ SELECT DISTINCT(CONCAT(`nomEtudiant`," ",`prenomEtudiant`)) FROM `avoir_note` INNER JOIN `etudiants` ON avoir_note.idEtudiant=etudiants.idEtudiant WHERE `note`>=12
+ OK->SELECT DISTINCT(CONCAT(`nomEtudiant`," ",`prenomEtudiant`)),`note` FROM `etudiants` INNER JOIN `avoir_note` ON avoir_note.idEtudiant=etudiants.idEtudiant WHERE `note`>=12
 
 
 D)Le nom des étudiants qui ont dans l''épreuve 4 une note supérieure à celle obtenue par « LUC DUPONT »(à cette même épreuve).
-SELECT DISTINCT(CONCAT(`nomEtudiant`," ",`prenomEtudiant`)) FROM `etudiants` INNER JOIN `avoir_note` ON avoir_note.idEtudiant=etudiants.idEtudiant 
+SELECT CONCAT(`nomEtudiant`," ",`prenomEtudiant`),`note` FROM `etudiants` INNER JOIN `avoir_note` ON avoir_note.idEtudiant=etudiants.idEtudiant 
 WHERE `idEpreuve`="4" AND `note`>(SELECT `note` FROM `avoir_note` INNER JOIN `etudiants` ON avoir_note.idEtudiant=etudiants.idEtudiant 
 WHERE `nomEtudiant`="DUPONT" AND `prenomETudiant`="Luc" AND `idEpreuve`="4")
 
@@ -83,12 +82,15 @@ UPDATE `avoir_note`
 INNER JOIN `etudiants` ON avoir_note.idEtudiant=etudiants.idEtudiant 
 INNER JOIN `epreuves` ON avoir_note.idEpreuve=epreuves.idEpreuve 
 INNER JOIN `matieres` ON epreuves.idMatiereEpreuve=matieres.idmatiere
-SET `note`=`note`-3  
+SET `note`=`note`-3
 WHERE `nomMatiere`="BD" AND `nomEtudiant`="marke"
 
 O) DEWA a manqué l''épreuve 4. Vu son niveau, on décide de lui créer une entrée dans AVOIR_NOTE en lui
 attribuant la moyenne des notes obtenues à cette épreuve par ses collègues*0.9. Attention, la requête doit
 intégrer le nom de l''étudiant (et non chercher à repérer le numéro avant de la taper.)
+
+
+INSERT INTO `avoir_note`(`idAvoirNote`, `idEtudiant`, `idEpreuve`, `note`) VALUES (NULL,'17','4',(SELECT `note` from `avoir_note` WHERE `idEtudiant`="2" `idEpreuve`="4"))
 
 P)Insérez un nouvel étudiant dont vous ne connaissez que le numéro, le nom, le prénom, le hobby et
 l'année: 25, 'DARTE','REMY','SCULPTURE',1.
