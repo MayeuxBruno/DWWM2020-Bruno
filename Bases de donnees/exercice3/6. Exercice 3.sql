@@ -90,7 +90,7 @@ attribuant la moyenne des notes obtenues à cette épreuve par ses collègues*0.
 intégrer le nom de l''étudiant (et non chercher à repérer le numéro avant de la taper.)
 
 
-INSERT INTO `avoir_note`(`idAvoirNote`, `idEtudiant`, `idEpreuve`, `note`) VALUES (NULL,'17','4',(SELECT `note` from `avoir_note` WHERE `idEtudiant`="2" `idEpreuve`="4"))
+INSERT INTO `avoir_note`(`idAvoirNote`, `idEtudiant`, `idEpreuve`, `note`) VALUES (NULL,'17','4',(SELECT AVG(`note`) from `avoir_note` AS a WHERE `idEpreuve`=4))
 
 P)Insérez un nouvel étudiant dont vous ne connaissez que le numéro, le nom, le prénom, le hobby et
 l'année: 25, 'DARTE','REMY','SCULPTURE',1.
