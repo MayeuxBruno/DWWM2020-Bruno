@@ -5,7 +5,7 @@ Creation de la vue etudiantsNotes
 
 CREATE VIEW etudiantsNotes AS 
 SELECT etudiants.*, avoir_note.idAvoirNote, avoir_note.idEpreuve, avoir_note.note
-FROM  etudiants INNER JOIN avoir_note ON etudiants.idEtudiant = avoir_note.idEtudiant
+FROM  etudiants LEFT JOIN avoir_note ON etudiants.idEtudiant = avoir_note.idEtudiant
 
 A)Les noms des étudiants nés avant l''étudiant « JULES LECLERCQ »
  
