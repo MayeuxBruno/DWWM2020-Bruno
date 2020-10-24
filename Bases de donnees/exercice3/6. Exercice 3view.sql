@@ -10,21 +10,36 @@ FROM  etudiants LEFT JOIN avoir_note ON etudiants.idEtudiant = avoir_note.idEtud
 A)Les noms des étudiants nés avant l''étudiant « JULES LECLERCQ »
  
 SELECT
-    CONCAT(`nomEtudiant`, " ", `prenomEtudiant`),
+    DISTINCT(CONCAT(`nomEtudiant`, " ", `prenomEtudiant`)),
     `dateNaissanceEtudiant`
 FROM
     etudiantsnotes
 WHERE
     `dateNaissanceEtudiant` <(
     SELECT
-        `dateNaissanceEtudiant`
+        DISTINCT(`dateNaissanceEtudiant`)
     FROM
         etudiantsnotes
     WHERE `nomEtudiant`="leclercq" AND `prenomEtudiant`="jules")
 
-B) Les noms et notes des étudiants qui ont,à l'épreuve 4, une note supérieure à la moyenne de cette épreuve.
+B) Les noms et notes des étudiants qui ont,à l''épreuve 4, une note supérieure à la moyenne de cette épreuve.
+
+SELECT CONCAT(`nomEtudiant`," ",`prenomEtudiant`) AS `Nom Etudiant`
+FROM etudiantsnotes
+WHERE `idEpreuve`=4 AND `note`> (SELECT AVG(note) FROM etudiantsnotes WHERE idEpreuve=4)
+
 C) Le nom des étudiants qui ont obtenu un 12 ou plus.
-D)Le nom des étudiants qui ont dans l'épreuve 4 une note supérieure à celle obtenue par « LUC DUPONT »(à cette même épreuve).
+
+SELECT DISTINCT(CONCAT(`nomEtudiant`," ",`prenomEtudiant`)) AS `Nom Etudiant`
+FROM etudiantsnotes
+WHERE `note`>=12
+
+D)Le nom des étudiants qui ont dans l''épreuve 4 une note supérieure à celle obtenue par « LUC DUPONT »(à cette même épreuve).
+
+SELECT CONCAT(`nomEtudiant`," ",`prenomEtudiant`) AS `Nom Etudiant`
+FROM etudiantsnotes
+WHERE `idEpreuve`=4 AND `note`> (SELECT note FROM etudiantsnotes WHERE idEpreuve=4 AND `nomEtudiant`="dupont" AND `prenomEtudiant`="luc")
+
 E) Le nom des étudiants qui partagent une ou plusieurs notes avec « LUC DUPONT ».
 
 
