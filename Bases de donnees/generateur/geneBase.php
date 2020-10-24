@@ -98,10 +98,8 @@ do
              }while(!ctype_alnum($attSaisie));
             
              $tab[$i-1][]=$attSaisie;
-            
-             do{
-                $typeSaisie=strtolower(readline("Entrez le type de l'attribut $j : "));
-            }while(!ctype_alnum($typeSaisie));
+        
+            $typeSaisie=strtolower(readline("Entrez le type de l'attribut $j : "));
             $tab[$i-1][]=$typeSaisie;
          }
      }
@@ -111,7 +109,7 @@ do
 }while($isTable=='o');
 
 // Genere le nom et ouvre le fichier contenant la classe
-//var_dump($tab);
+
 $fp=fopen($nomBase.".sql","w");
 
 // Affichage de l'entête du fichier
@@ -120,29 +118,3 @@ afficheEntete($nomBase,$fp);
 afficheTable($tab,$fp);
 
 fclose($fp);
-
-
-// $cons="\n\t/*****************Constructeur***************** */\n\n".
-/* "\t".'public function __construct(array $options = [])'."\n".
- "\t{\n ";
-if ($herit==1)
-{
-$cons.="\t\tparent::__construct(".'$options'.");\n";
-}        
-$cons.="\t\tif (!empty(".'$options'.")) // empty : renvoi vrai si le tableau est vide\n".
-  "\t\t{\n".
-  "\t\t\t".'$this->hydrate($options);'."\n".
-  "\t\t}\n".  
-  "\t}\n".
-  "\t".'public function hydrate($data)'."\n".
-  "\t{\n ".
-  "\t\t".'foreach ($data as $key => $value)'."\n".
-  "\t\t{\n ".
-  "\t\t\t".'$methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule'."\n". 
-  "\t\t\t".'if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe'."\n". 
-  "\t\t\t{\n".
-  "\t\t\t\t".'$this->$methode($value);'."\n".
-  "\t\t\t}\n".
-  "\t\t}\n".
-  "\t}\n";
-*/
