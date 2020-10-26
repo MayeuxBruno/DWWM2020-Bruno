@@ -101,8 +101,23 @@
 15- SELECT init FROM (SELECT init ,COUNT(*) as somme FROM (SELECT LEFT(`nom`,1) as init FROM `employe`) as i GROUP BY init) as e WHERE somme>=3 
 
 16.Rechercher le salaire maximum et le salaire minimum parmi tous les salariés et l écart entre les deux.
+
+16 - SELECT MAX(salaire) as "Salaire maximum", MIN(salaire)as "Salaire minimum", (max(salaire)-min(salaire)) as "Ecart entre les deux"
+from employe
+
 17.Rechercher le nombre de titres différents. 
+
+17 -SELECT COUNT(DISTINCT titre) as "Nombre de titres différents"
+FROM employe
+
 18.Pour chaque titre, compter le nombre d employés possédant ce titre. 
+
+18 -SELECT COUNT(noemp) as "Nb Employe",`titre`
+FROM employe
+GROUP BY `titre`
+
 19.Pour chaquenom dedépartement,afficher le nom du département et lenombre d employés.
+
+19 - SELECT 
 20.Rechercher les titres et la moyenne des salaires par titre dont la moyenne est supérieure à la moyenne des salaires des Représentants.
 21.Rechercher le nombre de salaires renseignés et le nombre de taux de commission renseignés
