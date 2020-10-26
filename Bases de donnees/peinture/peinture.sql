@@ -1,7 +1,7 @@
 #------------------------------------------------------------
 #        Script MySQL.
 #------------------------------------------------------------
-DROP DATABASE peinture IF EXISTS;
+DROP DATABASE IF EXISTS peinture;
 CREATE DATABASE peinture;
 USE peinture; 
 
@@ -65,10 +65,10 @@ CREATE TABLE Factures(
 #------------------------------------------------------------
 
 CREATE TABLE achete(
+        idAchete        Int NOT NULL Auto_increment PRIMARY KEY,
         idProduit       Int NOT NULL ,
         idClient        Int NOT NULL ,
         quantiteAchetee Double NOT NULL
-	,CONSTRAINT achete_PK PRIMARY KEY (idProduit,idClient)
 )ENGINE=InnoDB;
 
 
@@ -77,16 +77,15 @@ CREATE TABLE achete(
 #------------------------------------------------------------
 
 CREATE TABLE contient(
+        idContient       Int NOT NULL Auto_increment PRIMARY KEY,
         idFacture        Int NOT NULL ,
         idProduit        Int NOT NULL ,
         quantiteFacturee Double NOT NULL
-	,CONSTRAINT contient_PK PRIMARY KEY (idFacture,idProduit)
-
-	,CONSTRAINT contient_Factures_FK FOREIGN KEY (idFacture) REFERENCES Factures(idFacture)
-	,CONSTRAINT contient_Produits0_FK FOREIGN KEY (idProduit) REFERENCES Produits(idProduit)
 )ENGINE=InnoDB;
 
 ALTER TABLE Produits ADD CONSTRAINT FK_Produits_UnitesDeMesure FOREIGN KEY (idUnite) REFERENCES UnitesDeMesure(idUnite);
-ALTER TABLE Factures ADD CONSTRAINT FK_Factures_Clients FOREIGN KEY (idClient) REFERENCES Clients(idClient)
-ALTER TABLE achete ADD CONSTRAINT FK_achete_Produits FOREIGN KEY (idProduit) REFERENCES Produits(idProduit)
-ALTER TABLE achete ADD CONSTRAINT FK_achete_Clients FOREIGN KEY (idClient) REFERENCES Clients(idClient)
+ALTER TABLE Factures ADD CONSTRAINT FK_Factures_Clients FOREIGN KEY (idClient) REFERENCES Clients(idClient);
+ALTER TABLE achete ADD CONSTRAINT FK_achete_Produits FOREIGN KEY (idProduit) REFERENCES Produits(idProduit);
+ALTER TABLE achete ADD CONSTRAINT FK_achete_Clients FOREIGN KEY (idClient) REFERENCES Clients(idClient);
+ALTER TABLE contient ADD CONSTRAINT FK_contient_Factures FOREIGN KEY (idFacture) REFERENCES Factures(idFacture);
+ALTER TABLE contient ADD CONSTRAINT FK_contient_Produits FOREIGN KEY (idProduit) REFERENCES Produits(idProduit);
