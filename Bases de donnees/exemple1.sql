@@ -51,11 +51,11 @@
     WHERE `tauxcom` IS NOT NULL
 27- SELECT `nom`,`salaire`,`tauxcom`,ROUND(((`tauxcom`/100)*`salaire`),2) AS `comission` FROM `employe`
     WHERE `tauxcom` IS NOT NULL
-    ORDER BY `comission`
+    ORDER BY `tauxcom`
 28- SELECT CONCAT(`nom`," ",`prenom`) AS `Nom Employe` FROM `employe`
 29- SELECT SUBSTRING(`nom`,1,5) FROM `employe`
 30- SELECT `nom`,LOCATE("r",`nom`) AS `rang` FROM `employe`
-31- SELECT `nom`,UPPER (`nom`) AS `Majuscule`,LOWER (`nom`) AS `Minuscule` FROM `etudiant`
+31- SELECT `nom`,UPPER (`nom`) AS `Majuscule`,LOWER (`nom`) AS `Minuscule` FROM `employe`
     WHERE `nom`="Vrante"
 32- SELECT `nom`,LENGTH(`nom`) AS `Nb Caracteres` from `employes`
 
