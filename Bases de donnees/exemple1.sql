@@ -27,6 +27,7 @@
     WHERE `nom` LIKE "%n"
 17- SELECT `nom` from `employe`
     WHERE `nom` LIKE "__u%"
+17- SELECT `nom` FROM `employe` WHERE SUBSTRING(`nom`,3,1)="u"
 18- SELECT `salaire`,`nom` from `employe`
     WHERE `nodep`=41 
     ORDER BY `salaire`
