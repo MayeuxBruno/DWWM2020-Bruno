@@ -64,16 +64,42 @@
      AND  salaire = (SELECT `salaire` FROM `employe` WHERE `nom`="Fairent")
 
 11.Rechercher le numéro de département, le nom du département, le nom des employés, en affichant aussi les départements dans lesquels il n y a personne, classés par nuéro de département.
-11 - SELECT `nodep`,dept.nom,employe.nom FROM `employe`
-     RIGHT JOIN dept ON employe.nodep =dept.nodept
+
+11 - SELECT `nodept`,dept.nom,employe.nom FROM `dept`
+     LEFT JOIN employe ON employe.nodep =dept.nodept
      ORDER BY `nodep`
+
+ 11- SELECT employe.nodep as "Numero dep employe", dept.nom as "nom departement", employe.nom as "nom employe"
+    FROM employe RIGHT JOIN dept ON employe.nodep = dept.nodept
+    ORDER BY employe.nodep;
 
 12.Calculer le nombre d employés de chaque titre.
 
+12 - SELECT `titre`, COUNT(*) AS `Total`
+     FROM employe
+     GROUP BY `titre`
+     ORDER BY `total`
 
 13.Calculer la moyenne des salaires et leur somme, par région.
+
+13 - SELECT `noregion`, AVG(`salaire`) AS `Moyenne`, SUM(`salaire`) AS `Somme`
+     FROM employe
+     INNER JOIN dept ON employe.nodep=dept.nodept
+     GROUP BY `noregion`
+
 14.Afficher les numéros des départements ayant au moins 3 employés
+
+14- SELECT nodep, COUNT(*)
+    FROM employe
+    GROUP BY nodep
+    HAVING COUNT(*) >= 3
+
+14- SELECT nodep FROM employe GROUP BY nodep HAVING COUNT(nodep)>2
+
 15.Afficher les lettres qui sont l initiale d au moins trois employés.
+
+15- SELECT init FROM (SELECT init ,COUNT(*) as somme FROM (SELECT LEFT(`nom`,1) as init FROM `employe`) as i GROUP BY init) as e WHERE somme>=3 
+
 16.Rechercher le salaire maximum et le salaire minimum parmi tous les salariés et l écart entre les deux.
 17.Rechercher le nombre de titres différents. 
 18.Pour chaque titre, compter le nombre d employés possédant ce titre. 
