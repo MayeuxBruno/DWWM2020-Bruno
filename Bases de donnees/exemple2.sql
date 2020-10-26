@@ -19,8 +19,8 @@
 4.Rechercher le nom et le salaire des employés qui gagnent plus que leur patron, et le nom et le salaire de leur patron
 
 4 - SELECT `nom` AS "Nom Employé", `salaire` AS "Salaire Employé", 
-    (SELECT `nom` FROM employe WHERE `titre`="président")AS "Nom Supérieur", 
-    (SELECT `salaire` FROM employe WHERE `titre`="président")AS "Salaire supérieur" 
+    (SELECT `nom` FROM employe WHERE `titre`="président") AS "Nom Supérieur", 
+    (SELECT `salaire` FROM employe WHERE `titre`="président") AS "Salaire supérieur" 
     FROM `employe` 
     WHERE `salaire` >(SELECT `salaire` FROM employe WHERE `titre`="président") 
 
@@ -35,22 +35,42 @@
 6 -  SELECT `nom`,`salaire` 
      FROM `employe`
      WHERE `salaire` > ANY (SELECT `salaire` FROM `employe` WHERE `nodep`="31")
+     ORDER BY nodep,salaire
 
 7.Rechercher le nom, le salaire et le numéro de département des employés qui gagnent plus que tous les employés du département 31, classés par numéro de département et salaire. 
 
 7 -  SELECT `nom`,`salaire` 
      FROM `employe`
      WHERE `salaire` > (SELECT MAX(`salaire`) FROM `employe` WHERE `nodep`="31")
+     ORDER BY nodep,salaire
 
 8.Rechercher le nom et le titre des employés du service 31qui ont un titre que l on trouve dans le département 32.
 
-8-  SELECT `nom`, `titre` 
+8 - SELECT `nom`, `titre` 
     FROM `employe`
     WHERE `nodep`=31 AND titre IN (SELECT `titre` FROM `employe` WHERE `nodep`=32 )
+
 9.Rechercher le nom et le titre des employés du service 31qui ont un titre l on ne trouve pas dans le département 32.
-10.Rechercher le nom, le titre et le salaire des employés qui ont le même titre et le même salaire que Fairant. 
+
+9 - SELECT `nom`, `titre` 
+    FROM `employe`
+    WHERE `nodep`=31 AND titre NOT IN (SELECT `titre` FROM `employe` WHERE `nodep`=32 )
+
+10.Rechercher le nom, le titre et le salaire des employés qui ont le même titre et le même salaire que Fairent. 
+
+10 - SELECT `nom`, `titre` 
+     FROM `employe`
+     WHERE titre = (SELECT `titre` FROM `employe` WHERE     `nom`="Fairent")
+     AND  salaire = (SELECT `salaire` FROM `employe` WHERE `nom`="Fairent")
+
 11.Rechercher le numéro de département, le nom du département, le nom des employés, en affichant aussi les départements dans lesquels il n y a personne, classés par nuéro de département.
+11 - SELECT `nodep`,dept.nom,employe.nom FROM `employe`
+     RIGHT JOIN dept ON employe.nodep =dept.nodept
+     ORDER BY `nodep`
+
 12.Calculer le nombre d employés de chaque titre.
+
+
 13.Calculer la moyenne des salaires et leur somme, par région.
 14.Afficher les numéros des départements ayant au moins 3 employés
 15.Afficher les lettres qui sont l initiale d au moins trois employés.
@@ -60,7 +80,3 @@
 19.Pour chaquenom dedépartement,afficher le nom du département et lenombre d employés.
 20.Rechercher les titres et la moyenne des salaires par titre dont la moyenne est supérieure à la moyenne des salaires des Représentants.
 21.Rechercher le nombre de salaires renseignés et le nombre de taux de commission renseignés
-
-SELECT `nom` AS "Nom Employé", `salaire` AS "Salaire Employé", (SELECT `nom` FROM employe WHERE `titre`="président")AS "Nom Supérieur", (SELECT `salaire` FROM employe WHERE `titre`="président")AS "Salaire supérieur" 
-FROM `employe` 
-WHERE `salaire` >(SELECT `salaire` FROM employe WHERE `titre`="président") 
