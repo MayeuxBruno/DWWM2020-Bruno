@@ -1,0 +1,50 @@
+body 
+{
+    background-color: rgb(143, 137, 137);
+}
+
+header
+{
+    background-color: lightskyblue;
+}
+
+header h1
+{
+    text-align: center;
+    padding: 20px;
+    color: mediumblue;
+}
+
+article
+{
+    padding : 20px;
+    background-color: palegreen;
+}
+
+footer
+{
+    background-color: tan;
+}
+
+footer h1
+{
+    text-align: left;
+}
+
+div
+{
+    background-color: chocolate;
+    padding : 20px;
+    margin : 25px;
+}
+
+.ev
+{
+    color : green;
+}
+
+aside
+{
+    margin-top : 20px;
+    background-color: blueviolet;
+}

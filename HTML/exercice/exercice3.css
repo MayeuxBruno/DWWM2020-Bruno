@@ -1,0 +1,27 @@
+nav{
+    width:100em;
+    height:10vh;
+    border: 1px dashed black;
+}
+
+nav ul li{
+    display:inline;
+    list-style: none;
+  
+}
+
+article{
+    width:70em;
+    margin : 1em;
+    border: 1px dashed black;
+}
+
+.entart{
+    background-color: grey;
+    border: 1px dashed grey;
+    margin : 1em;
+}
+
+.entart h1,p{
+    margin : 1em;
+}

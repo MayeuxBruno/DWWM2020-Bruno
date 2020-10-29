@@ -1,0 +1,22 @@
+.verte {
+    background-color: green;
+    float: right;
+    width: 30%;
+    height:70vh;
+    margin: 0;
+  }
+  .rouge {
+    background-color: red;
+    height:70vh;
+  }
+  .bleu{
+    background-color: blue;
+    float:left;
+    width:70%;
+    height:30vh;
+    margin:0;
+  }
+  .jaune{
+      height:30vh;
+      background-color: yellow;
+  }

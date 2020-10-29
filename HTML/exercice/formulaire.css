@@ -1,0 +1,20 @@
+#formulaire{
+    background: linear-gradient(to bottom, blue, white);
+    width:30em;
+}
+
+.rouge{
+   color:red; 
+}
+
+.l1
+{
+	display: block; 
+    width: 150px;
+    float : left;
+}
+
+.I1{
+    position : absolute;
+    margin-left:200px;
+}
