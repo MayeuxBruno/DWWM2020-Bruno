@@ -1,17 +1,15 @@
-nav{
-    width:100em;
-    height:10vh;
-    border: 1px dashed black;
+/* Agit sur la barre de navigation*/
+#nav {
+    padding: 2em; 
+    margin: 0;
+    border : 1px dashed black;
+
+ }
+#nav li {
+	display: inline;
+	list-style: none;
 }
 
-nav ul li{
-    /*position : relative;*/
-    display:inline;
-    list-style: none;
-    vertical-align: middle; 
-    
-  
-}
 
 article{
     width:70em;
@@ -23,8 +21,27 @@ article{
     background-color: grey;
     border: 1px dashed grey;
     margin : 1em;
+    padding : 1em;
 }
 
-.entart h1,p{
-    margin : 1em;
+.entart a{
+    color : blue;
 }
+
+.text{
+    margin:1em
+}
+
+.tangent{
+    margin :0 4em 0 4em ;
+    border : 1px dashed black;
+    padding : 1em 0 1em 0.5em;
+}
+
+aside{
+  
+    width : 15em;
+    border : 1px dashed black;
+
+}
+
