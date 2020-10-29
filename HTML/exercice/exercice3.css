@@ -10,9 +10,9 @@
 	list-style: none;
 }
 
-
+/* Agit Corp de la page*/
 article{
-    width:70em;
+    width:80em;
     margin : 1em;
     border: 1px dashed black;
 }
@@ -24,7 +24,7 @@ article{
     padding : 1em;
 }
 
-.entart a{
+.entart a,aside a,#nav a{
     color : blue;
 }
 
@@ -39,9 +39,15 @@ article{
 }
 
 aside{
-  
-    width : 15em;
+    float : right;
+    margin : 0 1em 0 1em ; 
+    width : 14em;
     border : 1px dashed black;
 
+}
+
+aside li{
+    display : inline;
+    list-style : none;
 }
 

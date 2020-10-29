@@ -1,0 +1,26 @@
+nav ,footer{
+    width : 98em;
+    background-color : black;
+    padding : 1em 0 1em 0;
+    margin-bottom : 0.5em
+}
+
+nav ul li,footer ul li {
+    list-style : none;
+    display : inline;
+}
+
+nav a,footer a{
+    color : white;
+}
+
+aside{
+    float : right;
+    width : 26em;
+    height : 415px;
+    background-color : lightgrey;
+}
+
+#photo{
+    width :98em;
+}
