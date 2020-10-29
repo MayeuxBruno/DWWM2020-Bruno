@@ -5,8 +5,11 @@ nav{
 }
 
 nav ul li{
+    /*position : relative;*/
     display:inline;
     list-style: none;
+    vertical-align: middle; 
+    
   
 }
 
