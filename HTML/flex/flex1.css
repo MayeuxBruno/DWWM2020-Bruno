@@ -1,18 +1,34 @@
 div{
-    display : flex;
+    display: flex;
+    flex: 1;
+    height: 50px;
+    margin: 5px;
+}
+.colonne {
+    flex-direction: column;
+}
+.bleu
+{
+    background-color: blue;
+    height: 600px;
+}
+.orange
+{
+    background-color: orangered;
+}
+.gris
+{
+    background-color: grey;
+    height: 180px;
     flex : 1;
 }
-
-.column{
-    flex-direction : column;
+.jaune
+{
+    background-color: yellow;
+    height: 180px;
+    flex : 3;
 }
-
-.bleu{
-    background-color : blue;
-    height : 300px;
+.vert
+{
+    background-color: green;
 }
-
-.orange{
-    
-}
-

@@ -1,0 +1,31 @@
+div{
+    display:flex;
+    flex : 1;
+    margin : 15px;
+    
+}
+
+.colonne{
+   border : 1px solid black;
+   flex-direction : column;
+}
+
+.bleu{
+    background-color :lightskyblue;
+    height : 950px;
+}
+
+.orange{
+    background-color : orange;
+    height : 20px;
+}
+
+.violet{
+    background-color : purple;
+    flex : 2;
+}
+
+.vert{
+    background-color : green;
+    height : 20px;
+}
