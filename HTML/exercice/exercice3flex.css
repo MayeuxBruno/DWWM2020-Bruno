@@ -3,40 +3,56 @@ div{
 }
 
 .container{
-    height : 100em;
     flex-direction : column;
-}
-
-.bordure{
-    border : 1px dashed black;
 }
 
 .entete{
     padding : 1em;
 }
 
-nav{
+nav,footer{
     display : flex;
     background-color : black;
     padding : 0.2em;
 }
 
-nav a{
-    color : white;
+.active {
+    background-color: #4CAF50;
 }
-nav ul li{
+nav a,footer a{
+    color : white;
+    text-decoration : none;
+}
+nav ul li,footer ul li{
     list-style : none;
     display : inline;
     background-color : black;
+    border : 1px solid white;
     border-radius : 0.5em;
     padding : 0.5em;
     margin : 1em;
 }
 
-nav ul li:hover{
+nav li:hover,footer li:hover{
     background-color: grey;
     color : white;
 }
-nav a:hover{
-    color : white;
+
+.photo img{
+   width : 100%;
 }
+
+.centre{
+    flex-direction : row;
+}
+.centred{
+    flex : 2;
+    flex-direction : column;   
+}
+
+aside{
+    flex:1;
+    flex-direction : column;
+    background-color : lightgray;
+}
+
