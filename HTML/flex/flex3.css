@@ -3,12 +3,20 @@
    border : 2px dashed blue;
    height : 20em;
    flex-direction:row;
+   justify-content : space-between
 }
 
 .jaune{
     background-color:yellow;
+    width : 150px;
 }
 
 .vert{
     background-color:green;
+    width:150px;
+}
+
+.violet{
+    background-color:purple;
+    width:150px;
 }
