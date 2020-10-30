@@ -12,5 +12,55 @@ div{
 
 .container{
     background-color : lightskyblue;
-    height : 95vh;
+    height : 125vh;
+    padding : 0.5em;
 }
+
+
+.bordure{
+    border : 1px dashed black;
+}
+
+.entete{
+    height :12em;
+}
+.orange{
+    background-color : orange;
+    flex : 1;
+    margin : 0.5em;
+}
+
+.jaune{
+    background-color :yellow;
+    flex : 1;
+    margin : 0.5em;
+}
+.second{
+    height : 10em;
+    padding-bottom : 1em;
+}
+
+.rouge{
+    background-color : red;
+    flex : 1;
+    margin : 0.5em;
+}
+
+.vert
+{
+    background-color : green;
+    flex : 1;
+    margin : 0.5em;
+}
+
+.troisieme{
+    height : 10em;
+    padding: 1.5em 0 1.5em 0;
+
+}
+
+.quatrieme{
+    height :12em;
+    padding-top : 1em;
+}
+
