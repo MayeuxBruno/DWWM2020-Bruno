@@ -1,5 +1,8 @@
+div{
+    display : flex;
+}
+
 .container{
-   display:flex;
    border : 2px dashed blue;
    height : 20em;
    flex-direction:row;
@@ -12,6 +15,8 @@
 }
 
 .vert{
+    display:flex;
+    flex-direction : row;
     background-color:green;
     width:150px;
 }
@@ -19,4 +24,26 @@
 .violet{
     background-color:purple;
     width:150px;
+}
+
+.bleu{
+    background-color:blue;
+    width:150px;
+}
+
+.noir{
+    flex-direction : column;
+    justify-content : space-around;
+    background-color : Black;
+    width : 50px;
+}
+
+.blanc{
+    background-color: white;
+    width : 50px;
+}
+
+.orange{
+    background-color:orange;
+    height : 50px;
 }
