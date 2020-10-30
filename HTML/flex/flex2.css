@@ -1,31 +1,48 @@
 div{
     display:flex;
     flex : 1;
-    margin : 15px;
-    
+    margin : 2px;
+    flex-wrap: wrap;
 }
 
 .colonne{
-   border : 1px solid black;
    flex-direction : column;
 }
 
 .bleu{
     background-color :lightskyblue;
+    padding:5px;
     height : 950px;
 }
 
 .orange{
     background-color : orange;
-    height : 20px;
 }
 
-.violet{
-    background-color : purple;
+.centre{
+    flex : 3
+}
+.trois{
     flex : 2;
+    align-content: flex-start;
+}
+.gris{
+    background-color : grey;
 }
 
 .vert{
     background-color : green;
-    height : 20px;
 }
+
+.jaune{
+    background-color : yellow;
+}
+
+.rouge{
+    background-color : red;
+}
+
+.rose{
+    background-color : pink;
+}
+
