@@ -1,0 +1,14 @@
+.container{
+   display:flex;
+   border : 2px dashed blue;
+   height : 20em;
+   flex-direction:row;
+}
+
+.jaune{
+    background-color:yellow;
+}
+
+.vert{
+    background-color:green;
+}

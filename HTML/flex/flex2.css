@@ -2,7 +2,6 @@ div{
     display:flex;
     flex : 1;
     margin : 2px;
-    flex-wrap: wrap;
 }
 
 .colonne{
