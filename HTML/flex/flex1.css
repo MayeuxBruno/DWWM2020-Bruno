@@ -1,0 +1,18 @@
+div{
+    display : flex;
+    flex : 1;
+}
+
+.column{
+    flex-direction : column;
+}
+
+.bleu{
+    background-color : blue;
+    height : 300px;
+}
+
+.orange{
+    
+}
+
