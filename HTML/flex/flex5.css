@@ -4,7 +4,7 @@ div{
 
 .container{
     flex-direction : column;
-    height : 120em;
+    height : 100em;
     padding : 2em;
 }
 .bordure{
@@ -32,4 +32,23 @@ div{
 
 .section{
     height : 80em;
+}
+.droite{
+    flex:3;
+    flex-direction : column;
+    justify-content : space-around;
+    padding : 2em;
+}
+.gauche{
+    flex:1;
+    flex-direction : column;
+    justify-content : space-around
+}
+
+.g1{
+    height : 5em;
+}
+
+.d1{
+    height : 15em;
 }

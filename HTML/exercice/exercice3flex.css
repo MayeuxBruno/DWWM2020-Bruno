@@ -1,0 +1,17 @@
+div{
+    display : flex;
+}
+
+.container{
+    height : 100em;
+    flex-direction : column;
+}
+
+.bordure{
+    border : 1px dashed black;
+}
+
+nav{
+    display : flex;
+    background-color : black;
+}
