@@ -1,0 +1,35 @@
+div{
+    display : flex;
+}
+
+.container{
+    flex-direction : column;
+    height : 120em;
+    padding : 2em;
+}
+.bordure{
+    border : 1px dashed black;
+}
+.bordurebleu1{
+    border : 5px solid blue;
+}
+
+.bordurebleu2{
+    border : 5px solid royalblue;
+}
+
+.bordurerouge{
+    border : 5px solid red;
+}
+
+.bordurevert{
+    border : 5px solid green;
+}
+
+.entete{
+    height : 10em;
+}
+
+.section{
+    height : 80em;
+}
