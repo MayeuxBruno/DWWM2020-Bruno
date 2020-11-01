@@ -1,0 +1,33 @@
+body {
+    display : flex;
+    flex-direction : column;
+    height : 200vh;
+    background-color : lightsalmon;
+}
+div{
+    display:flex;
+    flex : 1;
+}
+
+.bordure{
+    border : 1px dashed black;
+}
+
+nav{
+    background-color: lightgreen;
+}
+
+nav a{
+    text-decoration: none;
+}
+
+nav ul{
+    display : flex;
+    list-style-type: none;
+}
+
+nav ul li{
+    margin-right : 2em;
+}
+
+
