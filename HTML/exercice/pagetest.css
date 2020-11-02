@@ -1,0 +1,44 @@
+div{
+    display:flex;
+    flex : 1;
+    border : 1px dashed black;
+}
+
+header{
+    display : flex;
+    background-color: lightgray;
+}
+
+.logo{
+    
+}
+
+logo img{
+    width:100%;
+}
+.titre{
+    flex-direction : column;
+    
+    justify-content : center;
+    align-items : center;
+    flex : 2;
+}
+
+.connect{
+   
+}
+
+section{
+    display:flex;
+    border : 1px dashed black;
+}
+
+.gauche{
+    border : 1px dashed blue;
+}
+
+.droit{
+    flex : 4;
+    border : 1px dashed green;
+}
+
