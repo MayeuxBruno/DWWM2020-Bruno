@@ -1,0 +1,95 @@
+div{
+    display:flex;
+    flex : 1;
+   /* border : 1px dashed black;*/
+}
+
+header{
+    display : flex;
+    height : 10em;
+}
+footer{
+    height:5em;
+    background-image: url("drapeau.jpg");
+    background-size: cover;
+    height : 5em
+}
+
+img{
+    width:100%;
+   
+}
+.titre{
+    flex-direction : column; 
+    justify-content : center;
+    background-image: url("tower.jpg");
+    background-size: cover;
+    align-items : center;
+    flex : 2;
+}
+
+.connect{
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    flex-direction : column;
+    justify-content: center;
+    align-items : center;
+    font-size : 3em;
+}
+
+section{
+    display:flex;
+    /*border : 1px dashed black;*/
+    background-color: lightsteelblue ;
+}
+
+nav{
+    display:flex;
+    justify-content:center;
+    background-color : lightgray;
+}
+
+nav ul{
+    display : flex;
+}
+nav li{
+    list-style-type: none;
+    border : 1px solid black;
+    background-color: lightsteelblue ;
+    margin : 0.1em 1em;
+    padding : 1em;
+    text-align: center;
+    border-radius : 3em;
+}
+
+.gauche{
+    /*border : 1px dashed blue;*/
+    flex-direction : column;
+    background-color : #dcdbe1;
+}
+
+.droit{
+    flex : 4;
+    flex-direction : column;
+    /*border : 1px dashed green;*/
+}
+
+.article{
+    padding : 2em;
+}
+ .galerie{
+     flex-wrap : wrap;
+     justify-content : space-around;
+     height : 10em;
+    
+ }
+
+ .galerie img{
+     width : auto;
+     height : 30%;
+
+ }
+
+ .meteo{
+     justify-content: center;
+     align-items: center;
+ }
