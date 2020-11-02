@@ -12,33 +12,35 @@ footer{
     height:5em;
     background-image: url("drapeau.jpg");
     background-size: cover;
-    height : 5em
+    height : 5em;
+    opacity : 0.6;
 }
 
 img{
     width:100%;
    
 }
+
 .titre{
     flex-direction : column; 
     justify-content : center;
     background-image: url("tower.jpg");
     background-size: cover;
-    align-items : center;
-    flex : 2;
+    flex : 2;  
 }
 
 .connect{
-    font-family: Brush Script MT, Brush Script Std, cursive;
+    
     flex-direction : column;
     justify-content: center;
     align-items : center;
-    font-size : 3em;
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    font-size : 4em;
+    align-items: flex-end;
 }
 
 section{
     display:flex;
-    /*border : 1px dashed black;*/
     background-color: lightsteelblue ;
 }
 
@@ -62,15 +64,13 @@ nav li{
 }
 
 .gauche{
-    /*border : 1px dashed blue;*/
     flex-direction : column;
-    background-color : #dcdbe1;
+    
 }
 
 .droit{
     flex : 4;
     flex-direction : column;
-    /*border : 1px dashed green;*/
 }
 
 .article{
@@ -82,14 +82,13 @@ nav li{
      height : 10em;
     
  }
-
  .galerie img{
      width : auto;
      height : 30%;
 
  }
-
  .meteo{
      justify-content: center;
      align-items: center;
+    
  }
