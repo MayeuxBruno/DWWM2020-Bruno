@@ -17,7 +17,7 @@ header{
 
 .titre{
     flex-direction : column; 
-    background-image: url("../images/tower.jpg");
+    background-image: url("images/tower.jpg");
     background-size: cover;
     flex : 2;  
     font-family: Brush Script MT, Brush Script Std, cursive;
@@ -49,6 +49,7 @@ nav a{
     color : black;
     text-decoration : none;
 }
+
 /* CORP DE PAGE*/
 section{
     display : flex;
@@ -58,7 +59,8 @@ section{
 .centre{
     flex : 2;
     flex-direction: column;
-    padding :1.5em;
+    justify-content:space-around;
+    padding :3.5em;
 }
 .bas{
     padding : 1.5em;
@@ -74,21 +76,19 @@ section{
 .gauche{
     flex-direction:column;
     align-items: center;
-    padding:2em;
+    padding:5em;
 }
 
 .droite{
-    flex-direction : column;
-    justify-content:center
+    justify-content:center;
+    margin-bottom : 5em;
 }
 
-#meteo{
-    align-items:center;
-}
+
 
  /* FOOTER */
  .foot{
-    background-image: url("../images/drapeau.jpg");
+    background-image: url("images/drapeau.jpg");
     background-size: cover;
     opacity : 0.6;
     height:5em;
