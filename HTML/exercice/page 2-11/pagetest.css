@@ -27,6 +27,14 @@ img{
     background-image: url("tower.jpg");
     background-size: cover;
     flex : 2;  
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    font-size : 4em;
+    align-items: flex-end;
+}
+
+.titre span{
+    color : red;
+    font-weight: bold;
 }
 
 .connect{
@@ -34,14 +42,14 @@ img{
     flex-direction : column;
     justify-content: center;
     align-items : center;
-    font-family: Brush Script MT, Brush Script Std, cursive;
-    font-size : 4em;
-    align-items: flex-end;
+    background-image: url("fondnoir.jpg");
+    background-size: 100% 100%;
 }
 
 section{
     display:flex;
     background-color: lightsteelblue ;
+}
 }
 
 nav{
@@ -60,8 +68,14 @@ nav li{
     margin : 0.1em 1em;
     padding : 1em;
     text-align: center;
-    border-radius : 3em;
+    border-radius : 1em;
 }
+
+nav a{
+    text-decoration: none;
+}
+
+
 
 .gauche{
     flex-direction : column;
@@ -73,22 +87,18 @@ nav li{
     flex-direction : column;
 }
 
-.article{
-    padding : 2em;
-}
- .galerie{
+.galerie{
      flex-wrap : wrap;
      justify-content : space-around;
-     height : 10em;
-    
- }
- .galerie img{
+     height : 20em;
+     border : 1px dashed black;
+}
+      
+.galerie img{
      width : auto;
      height : 30%;
-
  }
  .meteo{
      justify-content: center;
      align-items: center;
-    
  }
