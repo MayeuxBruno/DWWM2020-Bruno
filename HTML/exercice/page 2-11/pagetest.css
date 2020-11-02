@@ -4,17 +4,12 @@ div{
    /* border : 1px dashed black;*/
 }
 
+/* HEADER */
 header{
     display : flex;
-    height : 10em;
+    /*height : 10em;*/
 }
-footer{
-    height:5em;
-    background-image: url("drapeau.jpg");
-    background-size: cover;
-    height : 5em;
-    opacity : 0.6;
-}
+
 
 img{
     width:100%;
@@ -38,7 +33,6 @@ img{
 }
 
 .connect{
-    
     flex-direction : column;
     justify-content: center;
     align-items : center;
@@ -46,16 +40,12 @@ img{
     background-size: 100% 100%;
 }
 
-section{
-    display:flex;
-    background-color: lightsteelblue ;
-}
-}
 
+/* MENU NAVIGATION */
 nav{
     display:flex;
-    justify-content:center;
     background-color : lightgray;
+    justify-content : center;
 }
 
 nav ul{
@@ -67,7 +57,6 @@ nav li{
     background-color: lightsteelblue ;
     margin : 0.1em 1em;
     padding : 1em;
-    text-align: center;
     border-radius : 1em;
 }
 
@@ -76,6 +65,12 @@ nav a{
 }
 
 
+/* PARTIE CENTRALE */
+
+section{
+    display:flex;
+    background-color: lightsteelblue ;
+}
 
 .gauche{
     flex-direction : column;
@@ -85,6 +80,7 @@ nav a{
 .droit{
     flex : 4;
     flex-direction : column;
+    padding : 1em;
 }
 
 .galerie{
@@ -95,10 +91,21 @@ nav a{
 }
       
 .galerie img{
+    flex:auto 0;
      width : auto;
-     height : 30%;
+     max-height : 30%;
  }
  .meteo{
      justify-content: center;
+     margin : 1em;
      align-items: center;
  }
+
+ /* FOOTER */
+ footer{
+    height:5em;
+    background-image: url("drapeau.jpg");
+    background-size: cover;
+    height : 5em;
+    opacity : 0.6;
+}
