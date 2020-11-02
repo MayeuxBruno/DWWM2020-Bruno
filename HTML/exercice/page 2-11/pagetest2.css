@@ -1,0 +1,64 @@
+div{
+    display:flex;
+    flex:1;
+    border : 1px dashed black;
+}
+
+/* HEADER */
+
+header{
+    display : flex;
+}
+
+.titre{
+    flex-direction : column; 
+    background-image: url("tower.jpg");
+    background-size: cover;
+    flex : 2;  
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    font-size : 3.5em;
+    justify-content : center;
+    align-items: center;
+    
+}
+
+.titre span{
+    color : red;
+    font-weight: bold;
+}
+
+
+/* NAVIGATION */
+.demi{
+    flex : 0;
+}
+
+nav{
+    display:flex;
+    justify-content : space-around;
+    padding : 1em;
+}
+
+nav a{
+    color : black;
+    text-decoration : none;
+}
+/* CORP DE PAGE*/
+section{
+    display : flex;
+    border : 2px dashed red; 
+}
+.centre{
+    flex : 2;
+    padding:1em;
+}
+
+ /* FOOTER */
+ footer{
+    height:5em;
+    background-image: url("drapeau.jpg");
+    background-size: cover;
+    height : 5em;
+    opacity : 0.6;
+}
+
