@@ -53,9 +53,7 @@ section{
 .centre{
     flex : 2;
     flex-direction: column;
-    align-content : space-around;
     padding :1.5em;
-    
 }
 .bas{
     padding : 1.5em;
