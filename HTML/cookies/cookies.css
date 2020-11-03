@@ -1,3 +1,7 @@
+html body{
+    margin : 0;
+    padding : 0;
+}
 body{
     min-height:100vh;
     background-image: url("image/fond.jpg");
@@ -10,31 +14,6 @@ div{
     border : 1px dashed black;
 }
 
-/*.header{
-    background-image: url("image/header.jpg");
-}
-
-.container{
-    margin : 5em 10em;
-    flex-direction : column
-
-}
-
-.image img{
-    width : 10em;
-}
-.titre{
-    justify-content : center;
-    align-items:center;
-    font-size : 3em;
-    font-weight: bold;
-}
-
-.nav{
-    height:5em;
-    background-image: url("image/header.jpg");
-}*/
-
 header{
     display : flex;
     background-image: url("/image/header.jpg");
@@ -46,7 +25,6 @@ nav{
     display:flex;
     background-image: url("/image/fond1.png");
     background-size : cover;
-   
     justify-content:center;
     align-items:center;
 }
@@ -58,7 +36,7 @@ nav{
 }
 
 .cookie img{
-    height : 10em
+    height : 10em;
 }
 
 .titre{
@@ -66,4 +44,18 @@ nav{
     align-items:center;
     font-size : 3em;
     font-weight: bold;
+}
+.article{
+    padding : 1em;
+}
+.article video{
+    height : 25em
+}
+
+.box{
+    flex:2;
+}
+
+.box style{
+    height : max-content;
 }
