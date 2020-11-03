@@ -1,0 +1,26 @@
+body{
+    min-height:100vh;
+    background-image: url("image/fond.jpg");
+}
+
+div{
+    display : flex;
+    flex:1;
+    border : 1px dashed black;
+}
+
+header{
+    display : flex;
+    background-image: url("image/header.jpg");
+}
+
+.container{
+    margin : 5em 10em;
+    flex-direction : column;
+ 
+}
+.titre{
+    flex : 2;
+}
+
+

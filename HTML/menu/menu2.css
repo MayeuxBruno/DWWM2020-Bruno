@@ -22,11 +22,10 @@ nav a{
 
 .menu{
     flex-direction : column;
-    
 }
 
 .sousmenu{
-    display : none;
+    display : flex;
     flex-direction:column;
     align-items : stretch;
 }
