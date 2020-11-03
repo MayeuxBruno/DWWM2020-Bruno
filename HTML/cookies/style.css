@@ -36,6 +36,13 @@ nav{
     background-position: top 25%;
     padding : 0.3em;
 }
+article{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+
 
 .menu{
     flex:none;
@@ -70,15 +77,50 @@ nav{
     flex-direction : column;
 }
 .cookieSemaine{
-    flex : 8;
+    flex:8;
     flex-direction : column;
+    height : 35vh;
+    overflow-y: scroll;
 }
 .titreSemaine{
+    flex:none;
     background-color : #74A6C4;
     justify-content: center;
     align-items:center;
-}
+    font-size:2em;
+    font-weight: bold;
 
+}
 .descriptionsemaine{
     
+}
+
+.ingredients{
+    flex :2;
+}
+.photoSemaine{
+   margin : 1em;
+}
+
+.partie2{
+    flex-direction:column;
+}
+.titreArticle{
+    font: size 1;em;
+    font-weight: bold;
+   
+}
+
+.texteArticle {
+    width : 90%;
+    margin : 1em;
+}
+
+.texteAside{
+    width:90%;;
+}
+
+.texteArticleAside{
+    border: 1px solid blue;
+    border-radius : 0.4em;
 }
