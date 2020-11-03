@@ -1,3 +1,8 @@
+nav{
+    display:flex;
+    width : 50vw;
+}
+
 .div{
     display:flex;
 }
@@ -10,11 +15,12 @@
     background-color : #ddd;
     padding : 0.5em;
     border-radius : 0.5em;
+    box-shadow : 0.2em 0.2em 0.1em #bbb;
 }
 
 .bouton:hover{
     background-color : #aaa;
-    box-shadow : 0.2em 0.2em 1em black;
+    box-shadow : 0.2em 0.2em 0.1em black;
 }
 
 .bouton a{
@@ -22,7 +28,7 @@
     color:black;
 }
 
-nav{
-    display:flex;
-    width : 40vw;
+.bouton a:hover{
+    color : white;
 }
+
