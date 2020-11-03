@@ -1,3 +1,12 @@
 body{
     background-color : blue;
 }
+
+div{
+    display:flex;
+    flex : 1;
+}
+
+.logo{
+    background-color:green;
+}

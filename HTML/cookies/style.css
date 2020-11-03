@@ -112,14 +112,14 @@ article{
     flex-direction:column;
 }
 .titreArticle{
-    font: size 1;em;
+    font: size : 1em;
     font-weight: bold;
-   
 }
 
 .texteArticle {
     width : 90%;
     margin : 1em;
+    text-align:justify;
 }
 
 .texteAside{
