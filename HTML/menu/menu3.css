@@ -1,0 +1,33 @@
+nav{
+    display : flex;
+}
+
+.menu{
+    display:flex;
+    jsutify-content:center;
+}
+
+.bouton{
+    background-color : lightskyblue;
+    position : relative;
+    margin : 10px;
+    padding : 0.5em;
+    border-radius: 5em;
+}
+
+.sousmenu{
+    display:none;
+    position : absolute;
+    flex-flow:column wrap;
+}
+
+.items{
+    background-color : lightskyblue;
+    padding : 0.5em;
+    margin : 0.5em;
+    border-radius:5em;
+}
+
+.menu:hover .sousmenu{
+    display:flex;
+}
