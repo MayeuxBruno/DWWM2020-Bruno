@@ -1,0 +1,28 @@
+.div{
+    display:flex;
+}
+
+.espace{
+    flex : 0.1em;
+}
+
+.bouton{
+    background-color : #ddd;
+    padding : 0.5em;
+    border-radius : 0.5em;
+}
+
+.bouton:hover{
+    background-color : #aaa;
+    box-shadow : 0.2em 0.2em 1em black;
+}
+
+.bouton a{
+    text-decoration:none;
+    color:black;
+}
+
+nav{
+    display:flex;
+    width : 40vw;
+}
