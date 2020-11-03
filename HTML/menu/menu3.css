@@ -4,7 +4,8 @@ nav{
 
 .menu{
     display:flex;
-    jsutify-content:center;
+    flex-direction : column;
+    align-items:center;
 }
 
 .bouton{
