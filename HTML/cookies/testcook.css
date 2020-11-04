@@ -1,0 +1,24 @@
+/****************** GLOBAUX *********************/
+html,body{
+    padding:0;
+    margin:0;
+}
+
+body{
+    display:flex;
+    flex-direction:column;
+    background-image: url("image/fond.jpg");
+    background-size: cover;
+    align-items : center;
+}
+
+div{
+    flex : 1;
+    border : 1px dashed black;
+}
+
+/**************** Page ***************/ 
+.page{
+    width:80vw;
+}
+

@@ -141,7 +141,6 @@ article{
 .ingredients{
     flex-direction : column;
     padding : 1em;
-    flex :2;
 }
 .ingredients span{
     font-weight: bold;
