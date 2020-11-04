@@ -105,7 +105,8 @@ nav{
 
 /*********** CONTENU **********/
 .contenu{
-    display:block;
+    /*display:block;*/
+    flex-direction:column;
 }
 
 /**** Partie 1 *****/
