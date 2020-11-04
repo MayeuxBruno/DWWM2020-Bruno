@@ -18,7 +18,15 @@ div{
     border : 1px dashed black;
 }
 
-img{
+.espace{
+    flex: 0.2;
+}
+
+.espacehor{
+    flex : 5vh;
+}
+
+img,video{
     width:100%;
 }
 /**************** Page ***************/ 
@@ -98,11 +106,18 @@ nav{
 
 /*********** CONTENU **********/
 .contenu{
-    flex-direction:column;
+    display:block;
 }
 
-.video{
-    flex:none
-}
+/**** Partie 1 *****/
 .box{
+    flex:3;
+    flex-direction : column;
+    height:35vh;
+    overflow-y:scroll;
 }
+.titreSemaine{
+    flex:none;
+    align-items:center;
+}
+
