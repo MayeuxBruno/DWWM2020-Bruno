@@ -13,12 +13,96 @@ body{
 }
 
 div{
+    display:flex;
     flex : 1;
     border : 1px dashed black;
 }
 
+img{
+    width:100%;
+}
 /**************** Page ***************/ 
 .page{
+    flex-direction:column;
     width:80vw;
 }
 
+/********** header **********/
+header , footer{
+    display:flex;
+}
+header{
+    background-image:url("image/header.jpg")
+}
+
+.titrepage,.titrepied{
+    flex:8;
+    justify-content:center;
+}
+
+.titrepage{
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 4em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: white 0.1em 0.1em 0.2em;
+}
+
+/******** footer *******/
+footer{
+    background-image:url("image/fond1.png");
+    background-position-x:center;
+}
+
+.titrepied{
+    color:white;
+}
+/******** menu *******/
+nav{
+    display:flex;
+    justify-content:center;
+    background-image:url("image/fond1.png");
+    background-position:center 50em;
+}
+
+.menu{
+    flex:none;
+    border : 1px solid grey;
+    background: linear-gradient(to bottom, #08598c, #3e99d1);
+    border-radius : 0.2em;
+    padding:0.3em;
+    margin:0.2em 0;
+    color:white;
+    position:relative;
+}
+
+.sousmenu{
+    display:none;
+    flex-direction:column;
+    background: linear-gradient(to bottom, #08598c, #3e99d1);
+    position:absolute;
+    margin-top:1.5em;
+    margin-left:-0.3em;
+    white-space:nowrap;
+}
+
+.menu:hover .sousmenu{
+    display:flex;
+}
+
+.item:hover{
+    padding : 0.2em;
+    color:red;
+    border : 1px solid red;
+}
+
+/*********** CONTENU **********/
+.contenu{
+    flex-direction:column;
+}
+
+.video{
+    flex:none
+}
+.box{
+}
