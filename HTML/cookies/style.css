@@ -48,6 +48,12 @@ nav{
     
     flex-direction:column;
 }
+
+.sousmenu{
+    flex-direction : column;
+    position:absolute;
+    margin-top:2.1em;
+}
 /*
 .bouton{
     flex:none;
