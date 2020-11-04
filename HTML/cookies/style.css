@@ -22,10 +22,32 @@ img{
     width: 100%;
 }
 
+video{
+    height : 35vh;
+}
+
 /***************************** HEADER ********************************/
 header {
     background-image: url(../image/header.jpg);
     display: flex;
+}
+
+/****************************** PAGE ***********************************/
+.titrePage span{
+    font-size:3em;
+    font-weight: bold;
+}
+
+.page {
+    width: 80vw;
+    flex-direction: column;
+    flex: none;
+}
+
+.titrePage, .piedPage {
+    flex: 9;
+    justify-content : center;
+    align-items : center;
 }
 
 /****************************** FOOTER ****************************/
@@ -49,7 +71,7 @@ nav{
     background: linear-gradient(to bottom, #08598c, #3e99d1);
     border: solid #326280 3px;
     border-radius: 5px;
-    font-size: 2em;
+    font-size: 1em;
     color: white;
     padding: 0 0.5vw;
     position: relative;
@@ -77,38 +99,22 @@ nav{
 }
 
 /**************************** CONTENU *************************/
+.contenu{
+    flex-direction : column;
+    background-color:#e6ece9
+}
+
 article{
     display:flex;
     flex-direction:column;
     align-items:center;
 }
 
-
-.page {
-    width: 80vw;
-    flex-direction: column;
-    flex: none;
-}
-.titrePage, .piedPage {
-    flex: 9;
-    justify-content : center;
-    align-items : center;
-}
-
-.titrePage span{
-    font-size:3em;
-    font-weight: bold;
-}
+/**************** Partie 1 ****************/
 .partie1{
     padding : 2em;
 }
-.partie1 video{
-    height : 35vh;
-}
-.contenu{
-    flex-direction : column;
-    background-color:#e6ece9
-}
+
 .cookieSemaine{
     flex:8;
     flex-direction : column;
@@ -116,6 +122,7 @@ article{
     overflow-y: scroll;
     background-color:#f7f7f7;
 }
+
 .titreSemaine{
     flex:none;
     background: linear-gradient(#2162a6,#559ebd);
@@ -125,6 +132,7 @@ article{
     font-weight: bold;
 }
 .recette{
+    flex-direction: column;
     padding : 1em;
 }
 
@@ -140,6 +148,7 @@ article{
    margin : 1.5em;
 }
 
+/********** Partie 2 ***************/
 .partie2{
     flex-direction:column;
 }
@@ -162,3 +171,10 @@ aside{
     align-items: center;
 }
 
+/*********** J Querry ***************/
+@media screen and (max-width:1200px)
+{
+    .page{
+        width: 90vw;
+    }
+}
