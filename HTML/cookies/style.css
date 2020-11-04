@@ -53,6 +53,7 @@ header {
 /****************************** FOOTER ****************************/
 footer{
     display: flex;
+    color : white;
     background-image: url(../image/fond1.png);
     background-position: top;
 }
@@ -96,6 +97,7 @@ nav{
 .sousItem:hover{
     color: #ccc;
     border: 1px solid #ccc;
+    padding : 0.1em;
 }
 
 /**************************** CONTENU *************************/

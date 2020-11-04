@@ -3,6 +3,7 @@
     .page{
         width:98vw;
     }
+    
     .descriptionSemaine{
         flex-direction:column;
     }
@@ -10,5 +11,9 @@
     .photoSemaine{
         width : 50%;
         align-self:center;
+    }
+
+    .titreSemaine{
+        font-size:1em;
     }
 }
