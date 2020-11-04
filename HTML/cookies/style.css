@@ -37,59 +37,44 @@ footer{
 
 /************************** MENU ****************************/
 nav{
-    display : flex;
-    justify-content:center;
-    background-image: url(../image/fond1.png);
-    background-position: top 25%;
-    padding : 0.3em;
+    display: flex;
+    justify-content: center;
+    background-image: url(../../image/fond1.png);
+    background-position: left;
+    padding: 0.2vw 0;
 }
 
 .menu{
-   flex:none;
+    flex: none; /*chaque bouton prend sa taille */
+    background: linear-gradient(to bottom, #08598c, #3e99d1);
+    border: solid #326280 3px;
+    border-radius: 5px;
+    font-size: 2em;
+    color: white;
+    padding: 0 0.5vw;
+    position: relative;
 }
-
-.sousmenu{
-    display : none;
-    flex-direction : column;
-    position:absolute;
-    margin-top:2.1em;
-    background: linear-gradient(#06314F,#3093B2);
-    color:white;
+.sousMenu{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 1.5em;
+    margin-left: -0.5vw;
+    background: linear-gradient(to bottom, #08598c, #3e99d1);
+    border: solid #326280 3px;
+    border-radius: 5px;
+    color: white;
+    padding: 0 0.5vw;
+    font-size: 0.8em;
+    white-space: nowrap;    /*evite le retour à la ligne du sous menu*/
 }
-
-.bouton{
-    flex:none;
-    color:white;
-    background: linear-gradient(#06314F,#3093B2);
-    border : 1px solid grey;
-    border-radius : 0.3em;
-    padding : 0.5em;
+.menu:hover .sousMenu{
+    display: flex;
 }
-
-.avecEnfant:hover .sousmenu{
-    display:flex;
+.sousItem:hover{
+    color: #ccc;
+    border: 1px solid #ccc;
 }
-/*
-.bouton{
-    flex:none;
-    background: linear-gradient(#06314F,#3093B2);
-    border : 1px solid grey;
-    padding : 0.5em;
-    border-radius : 0.3em;
-    color : white;
-}
-.sousmenu{
-    display:none;
-    flex-direction : column;
-    position:absolute;
-    margin-top:2em;
-    background: linear-gradient(#06314F,#3093B2);
-    color : white;
-}
-
-.menu:hover .sousmenu{
-    display:flex;
-}*/
 
 /**************************** CONTENU *************************/
 article{
