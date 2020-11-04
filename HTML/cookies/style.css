@@ -42,14 +42,33 @@ article{
     align-items:center;
 }
 
+/******** Menu **********/
 .menu{
     flex:none;
+    margin : 10px;
     border : 1px solid grey;
     background: linear-gradient(#06314F,#3093B2);
     color : white;
     padding : 0.5em;
     border-radius : 0.3em;
 }
+.menu{
+    flex-direction:column;
+}
+
+.bouton{
+    position: relative;
+}
+.sousmenu{
+    display:none;
+    position:relative;
+    flex-direction: column;
+}
+
+.menu:hover .sousmenu{
+    display:flex;
+}
+
 .page {
     width: 80vw;
     flex-direction: column;
@@ -84,7 +103,6 @@ article{
 }
 .titreSemaine{
     flex:none;
-    /*background-color : #74A6C4;*/
     background: linear-gradient(#2162a6,#559ebd);
     justify-content: center;
     align-items:center;
@@ -112,29 +130,21 @@ article{
     flex-direction:column;
 }
 .titreArticle{
-    font: size : 1em;
-    font-weight: bold;
+    justify-content:center;
 }
 
 .texteArticle {
-    width : 90%;
-    margin : 1em;
-    text-align:justify;
-}
-
-.texteAside{
-    width:90%;;
-}
-
-/*.texteArticleAside{
     flex:9;
-    border-radius : 0.4em;
+    padding : 0.1em;
     text-align:justify;
-}*/
+}
 
 aside{
-    display:flex;
-    flex:0.2em;
-    border : 1px solid blue;
-    border-radius: 0.3em;
+    display: flex;
+    flex: 1;
+    border: blue 1px solid;
+    border-radius: 6px;
+    padding: 0 0.5em;
+    align-items: center;
 }
+
