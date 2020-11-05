@@ -2,9 +2,18 @@
 {
     .titre,.titreDiapo{
         font-size:2em;
-        
+        letter-spacing:0.1em;
+
     }
     .texteArticle{
         flex:3;
+    }
+
+    .item{
+        padding:0;
+        width:6em;
+    }
+    .ville, .pays{
+        font-size:0.8em;
     }
 }

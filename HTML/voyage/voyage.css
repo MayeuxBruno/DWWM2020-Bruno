@@ -10,7 +10,7 @@ body{
 div{
     display:flex;
     flex:1;
-    /*border : 1px dashed black;*/
+    border : 1px dashed black;
 }
 
 img{
@@ -63,6 +63,7 @@ article{
     display:flex;
 }
 .texteArticle{
+    flex:1;
     flex-direction:column;
     background-color:white;
     padding:0.3em;
@@ -93,9 +94,9 @@ section{
 }
 
 .titreDiapo{
-    font-size:3em;
+    font-size:2em;
     font-weight:bold;
-    letter-spacing:0.2em;
+    letter-spacing:0.3em;
     justify-content:center;
 }
 
@@ -113,6 +114,8 @@ section{
 
 .ville,.pays{
     justify-content:center;
+    text-align:center;
+    white-space: nowrap;
 }
 
 .paris{
