@@ -1,0 +1,166 @@
+/**************** GLOBAL *********************/
+html,body{
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:'helvetica';
+}
+div{
+    display:flex;
+    flex:1;
+    /*border : 1px dashed black;*/
+}
+
+img{
+    width:100%;
+}
+.espace{
+    flex:0.5;
+}
+.espacedemi{
+    flex:0.25;
+}
+
+.espaceh{
+    flex:none;
+    height:20vh;
+}
+.espacehdiapo{
+    flex:none;
+    height:5vh;;
+}
+
+
+/**************** HEADER *********************/
+header{
+    display:flex;
+    background-image:url("/images/sky.jpg");
+    background-size:cover;
+    background-position:center;
+}
+
+.logo{
+    padding:1.6em;
+}
+.titre{
+    flex:6;
+    justify-content:center;
+    align-items:center;
+    font-size: 3em;
+    letter-spacing:0.2em;
+
+}
+
+/*********** CONTENU ************/
+.container{
+    flex-direction:column;
+    background-image:url("/images/bg.jpg");
+    background-size:cover;
+}
+article{
+    display:flex;
+}
+.texteArticle{
+    flex-direction:column;
+    background-color:white;
+    padding:0.3em;
+}
+.titreArticle{
+    flex:none;
+    align-items:center;
+    justify-content: center;
+    font-weight: bold;
+    font-size:1.6em; 
+    letter-spacing:0.2em;
+    text-align:center;
+    padding : 1em 0;
+}
+
+.contenuArticle{
+    padding:0.5em;
+    text-align: justify;
+    font-size:1.5em;
+}
+
+/********** Galerie Diapo ***********/
+section{
+    display:flex;
+}
+.diapo{
+    display:block;
+}
+
+.titreDiapo{
+    font-size:3em;
+    font-weight:bold;
+    letter-spacing:0.2em;
+    justify-content:center;
+}
+
+.galerie{
+    justify-content:space-between;
+}
+
+.item{
+    flex-direction:column;
+    padding : 2em; 
+    justify-content: center;
+    font-size:1.3em;
+    font-weight:bold;
+}
+
+.ville,.pays{
+    justify-content:center;
+}
+
+.paris{
+    background-image:url("/images/01.jpg");
+    background-size:cover;
+    color:white;
+}
+
+.londres{
+    background-image:url("/images/02.jpg");
+    background-size:cover;
+}
+
+.rome{
+    background-image:url("/images/03.jpg");
+    background-size:cover;
+
+}
+
+.bali{
+    background-image:url("/images/05.jpg");
+    background-size:cover;
+}
+
+.crete{
+    background-image:url("/images/04.jpg");
+    background-size:cover;
+}
+
+.barcelone{
+    background-image:url("/images/07.jpg");
+    background-size:cover;
+}
+
+.istanbul{
+    background-image:url("/images/06.jpg");
+    background-size:cover;
+}
+
+.marrakech{
+    background-image:url("/images/08.jpg");
+    background-size:cover;
+    color:white;
+}
+/************* FOOTER ************/
+footer{
+    background-image:url("/images/pp.jpg");
+    background-size:cover;
+    padding : 1em;
+}
+
