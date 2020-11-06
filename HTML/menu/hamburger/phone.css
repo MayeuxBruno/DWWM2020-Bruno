@@ -19,6 +19,7 @@
     }
 
     .menuphone:hover .menu{
+        display:block;
       
     }
 
