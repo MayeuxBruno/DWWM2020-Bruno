@@ -1,0 +1,45 @@
+div {
+    display: flex;
+    flex: 1;
+}
+
+/************************** MENU ***************************/
+nav{
+    display: flex;
+    justify-content: space-around;
+    background-image: url(../../image/fond1.png);
+    background-position: left;
+    padding: 0.2vw 0;
+}
+
+.menu{
+    flex: none; /*chaque bouton prend sa taille */
+    background: linear-gradient(to bottom, #08598c, #3e99d1);
+    border: solid #326280 3px;
+    border-radius: 5px;
+    font-size: 2em;
+    color: white;
+    padding: 0 0.5vw;
+    position: relative;
+}
+.sousMenu{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 1.5em;
+    margin-left: -0.5vw;
+    background: linear-gradient(to bottom, #08598c, #3e99d1);
+    border: solid #326280 3px;
+    border-radius: 5px;
+    color: white;
+    padding: 0 0.5vw;
+    font-size: 0.8em;
+    white-space: nowrap;    /*evite le retour à la ligne du sous menu*/
+}
+.menu:hover .sousMenu{
+    display: flex;
+}
+.sousItem:hover{
+    color: #ccc;
+    border: 1px solid #ccc;
+}
