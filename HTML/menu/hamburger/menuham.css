@@ -36,6 +36,10 @@ nav{
     font-size: 0.8em;
     white-space: nowrap;    /*evite le retour à la ligne du sous menu*/
 }
+
+.menuphone{
+    display:none;
+}
 .menu:hover .sousMenu{
     display: flex;
 }

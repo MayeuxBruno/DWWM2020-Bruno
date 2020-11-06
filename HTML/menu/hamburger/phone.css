@@ -1,4 +1,25 @@
 @media screen and (max-width:800px)
 {
+    nav{
+        background-color:orange;
+        align-items:center;
+        justify-content:center;
+    }
+
+    .menu{
+        display:none;
+    }
+
+    .menuphone{
+        flex:none;
+        display:block;
+        padding : 0.5em;
+        font-weight:bold;;
+        position: relative;
+    }
+
+    .menuphone:hover .menu{
+      
+    }
 
 }
