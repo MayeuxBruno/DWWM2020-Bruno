@@ -11,7 +11,6 @@ article,
 nav{
     display:flex;
     flex:1;
-    border:1px dashed blue;
 }
 
 img{
@@ -26,7 +25,7 @@ img{
     height:25vh;
 }
 
-.espace{
+.espace,.espacemenu{
     flex:0.5;
 }
 
@@ -53,7 +52,7 @@ footer{
     justify-content:center;
     align-items:center;
     letter-spacing:0.225em;
-    font-size:1.35em;
+    font-size:3em;
     font-weight:800;
 }
 
@@ -64,13 +63,13 @@ nav{
 }
 .menumobile{
     display:none;
+    justify-content:center;
 }
 
 .sousmenu{
     display:none;
     margin-top:1.2em;
-    margin-left:-0.1vw;
-    width:16.2vw;
+    width:16.4vw;
 
 }
 .bouton{
@@ -97,9 +96,14 @@ nav{
     display:block;
 }
 
-.itemssousmenu:hover{
+.bouton:hover{
     color:white;
-    backgroun
+    background-color:#188bea;
+}
+
+.itemsousmenu:hover{
+    color:white;
+    background-color:#188bea;
 }
 
 /*************** contenu ***********/
@@ -173,4 +177,47 @@ nav{
 
 #id1{
     background-image:url("images/01.jpg");
+}
+
+@media screen and (max-width:800px)
+{
+    .titre{
+        font-size:1.8em;
+    }
+
+    .bouton{
+        display:none;
+    }
+    .tout{
+        display:block;
+    }
+
+    .menumobile{
+        display:flex;
+    }
+
+    .tout:hover .bouton{
+        display:block;
+    }
+
+    .sousmenu{
+        position:unset;
+        width:100%;
+        margin-top:0;
+    }
+    .avecenfant{
+        display:block;
+        position:unset;
+    }
+    .deco{
+        flex:0.5;
+    }
+
+    .espace{
+        flex:0.2;
+    }
+
+    .espacehor{
+        height:20vh;
+    }
 }
