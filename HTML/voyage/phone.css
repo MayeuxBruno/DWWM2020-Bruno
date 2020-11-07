@@ -16,4 +16,30 @@
     .ville, .pays{
         font-size:0.8em;
     }
+
+    /*** menu ***/
+    .tout{
+        display:block;
+    }
+    .vide{
+        display:none;
+    }
+    .bouton{
+        display:none;
+    }
+    .titremobile{
+        display:flex;
+    }
+    .avecenfant{
+        position:unset;
+        display:block;
+    }
+    .tout:hover .bouton{
+        display:block;
+    }
+    .sousmenu{
+        display:none;
+        margin-top:0;
+        position:unset
+    }
 }
