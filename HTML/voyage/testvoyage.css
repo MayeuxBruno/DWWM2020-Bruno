@@ -5,7 +5,9 @@ html,body{
 }
 
 div,
-header{
+header,
+footer,
+article{
     display:flex;
     flex:1;
     border:1px dashed blue;
@@ -15,6 +17,23 @@ img{
     width:100%;
 }
 
+.colonne{
+    flex-direction:column;
+}
+
+.espacehor{
+    height:25vh;
+}
+
+.espace{
+    flex:0.5;
+}
+
+body{
+    background:url("images/bg.jpg");
+    background-size:cover;
+}
+
 /********* HEADER **********/
 header{
     background:url("images/sky.jpg");
@@ -22,8 +41,47 @@ header{
     padding:2em;
 }
 
+footer{
+    background:url("images/pp.jpg");
+    background-size:cover;
+    padding:2vw;
+}
+
 .titre{
     flex:3;
     justify-content:center;
     align-items:center;
+    letter-spacing:0.225em;
+    font-size:1.35em;
+    font-weight:800;
+}
+
+/*************** contenu ***********/
+/*************** partie 1 ***********/
+,.partie{
+    display:block;
+}
+
+.titrearticle{
+    flex:0.5;
+}
+
+.text{
+    background-color:white;
+}
+
+.titrearticle{
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    line-height:1.75em;
+    font-size:1.35em;
+    font-weight:800;
+    letter-spacing:0.225em;
+    padding:5vh 0;
+}
+
+.textarticle{
+   padding:0 5vh;
+   text-align:justify;
 }
