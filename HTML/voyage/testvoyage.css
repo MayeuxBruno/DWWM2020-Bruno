@@ -1,0 +1,29 @@
+/********** GENERAL **********/
+html,body{
+    margin:0;
+    padding:0;
+}
+
+div,
+header{
+    display:flex;
+    flex:1;
+    border:1px dashed blue;
+}
+
+img{
+    width:100%;
+}
+
+/********* HEADER **********/
+header{
+    background:url("images/sky.jpg");
+    background-size:cover;
+    padding:2em;
+}
+
+.titre{
+    flex:3;
+    justify-content:center;
+    align-items:center;
+}

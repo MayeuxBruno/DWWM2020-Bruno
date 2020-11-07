@@ -22,7 +22,6 @@ img{
 }
 
 .espaceh{
-    flex:none;
     height:25vh;
 }
 .espacehdiapo{
@@ -58,7 +57,9 @@ header{
 /********** MENU ****************/
 nav{
     padding:0.5em;
-    background : linear-gradient(#188BEA,#68726A )
+    background : linear-gradient(#188BEA,#68726A );
+    position:sticky;
+    top:0;
 }
 .titremobile{
     display:none;
@@ -112,17 +113,18 @@ article{
     line-height: 1.5em;
     padding:0 5vh;
     font-size:0.8em;
-    display:block;
+    flex-direction:column;
 }
 
 .titreArticle{
     align-self:center;
-    justify-content: center;
+    justify-content:center;
     font-weight: 800;
     font-size:1.35em; 
     letter-spacing:0.225em;
     text-align:center;
     padding : 5vh 0;
+    flex:0.5;
 }
 
 .contenuArticle{
