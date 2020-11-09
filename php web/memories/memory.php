@@ -9,22 +9,18 @@
 <body>
     
     <?php
-    $photo=array();
-    $num=1;
-    for($a=0;$a<16;$a+=2){
-        $photo[$a]=$num;
-        $photo[$a+1]=$num;
-        $num++;
+    echo'<div class="page">';
+    for($a=1;$a<9;$a++){
+        $photo[]=$a;
+        $photo[]=$a;
     }
     
-    echo'<div class="titre">Jeu de Memory</div>';
     
     for($i=1;$i<5;$i++)
     {
         echo'<div class="espacehor"></div>
         <div class="ligne">
-        <div class="vide"></div>';
-        
+        <div class="demi"></div>';
         for($j=1;$j<5;$j++)
         {
             $index=array_rand($photo);
@@ -33,12 +29,12 @@
             <img class="recto" src="Images/plage.jpg" alt="">
             <img class="verso" src="Images/'.$numphoto.'.jpg" alt="">
             </div>
-            <div class="vide"></div>';
+            <div class="demi"></div>';
             unset($photo[$index]);
         }
-        echo'</div>
-        <div class="vide"></div>';
+        echo'</div>';
     }
+    echo'</div>';
     ?> 
     
 </body>
