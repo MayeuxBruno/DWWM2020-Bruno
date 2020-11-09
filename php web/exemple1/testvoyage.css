@@ -1,0 +1,223 @@
+/********** GENERAL **********/
+html,body{
+    margin:0;
+    padding:0;
+}
+
+div,
+header,
+footer,
+article,
+nav{
+    display:flex;
+    flex:1;
+}
+
+img{
+    width:100%;
+}
+
+.colonne{
+    flex-direction:column;
+}
+
+.espacehor{
+    height:25vh;
+}
+
+.espace,.espacemenu{
+    flex:0.5;
+}
+
+body{
+    background:url("images/bg.jpg");
+    background-size:cover;
+}
+
+/********* HEADER **********/
+header{
+    background:url("images/sky.jpg");
+    background-size:cover;
+    padding:2em;
+}
+
+footer{
+    background:url("images/pp.jpg");
+    background-size:cover;
+    padding:2vw;
+}
+
+.titre{
+    flex:3;
+    justify-content:center;
+    align-items:center;
+    letter-spacing:0.225em;
+    font-size:3em;
+    font-weight:800;
+}
+
+/************* Menu ************/
+nav{
+    background:linear-gradient( #188bea, #68726a);
+    padding:0.3em;
+}
+.menumobile{
+    display:none;
+    justify-content:center;
+}
+
+.sousmenu{
+    display:none;
+    margin-top:1.2em;
+    width:16.4vw;
+
+}
+.bouton{
+    justify-content:center;
+    background-color:white;
+    color:#188bea;
+    border:1px solid #188bea;
+    border-radius:0.4em;
+    position:relative;
+}
+
+.sousmenu{
+    position:absolute;
+}
+.itemsousmenu{
+    justify-content:center;
+    background-color:white;
+    color:#188bea;
+    border:1px solid #188bea;
+    border-radius:0.4em;
+}
+
+.avecenfant:hover .sousmenu{
+    display:block;
+}
+
+.bouton:hover{
+    color:white;
+    background-color:#188bea;
+}
+
+.itemsousmenu:hover{
+    color:white;
+    background-color:#188bea;
+}
+
+/*************** contenu ***********/
+/*************** partie 1 ***********/
+.partie1,.partie2{
+    display:block;
+}
+
+.titrearticle{
+    flex:0.5;
+}
+
+.text{
+    background-color:white;
+}
+
+.titrearticle{
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    line-height:1.75em;
+    font-size:1.35em;
+    font-weight:800;
+    letter-spacing:0.225em;
+    padding:5vh 0;
+}
+
+.textarticle{
+   padding:0 5vh;
+   text-align:justify;
+}
+
+.texteminiature{
+    justify-content:center;
+    text-align:center;
+    padding : 5vh 0;
+   
+}
+.taillemax{
+    font-size:3em;
+}
+
+#id8{
+    background-image:url("images/08.jpg");
+    color:wheat;
+}
+
+#id7{
+    background-image:url("images/07.jpg");
+}
+
+#id6{
+    background-image:url("images/06.jpg");
+}
+
+#id5{
+    background-image:url("images/05.jpg");
+}
+
+#id4{
+    background-image:url("images/04.jpg");
+}
+
+#id3{
+    background-image:url("images/03.jpg");
+}
+
+#id2{
+    background-image:url("images/02.jpg");
+}
+
+#id1{
+    background-image:url("images/01.jpg");
+}
+
+@media screen and (max-width:800px)
+{
+    .titre{
+        font-size:1.8em;
+    }
+
+    .bouton{
+        display:none;
+    }
+    .tout{
+        display:block;
+    }
+
+    .menumobile{
+        display:flex;
+    }
+
+    .tout:hover .bouton{
+        display:block;
+    }
+
+    .sousmenu{
+        position:unset;
+        width:100%;
+        margin-top:0;
+    }
+    .avecenfant{
+        display:block;
+        position:unset;
+    }
+    .deco{
+        flex:0.5;
+    }
+
+    .espace{
+        flex:0.2;
+    }
+
+    .espacehor{
+        height:20vh;
+    }
+}
