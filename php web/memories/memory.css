@@ -1,1 +1,32 @@
+div{
+    display:flex;
+    flex:1;
+}
 
+body{
+    display:block;
+}
+
+img{
+    width:100%;
+}
+
+.vide{
+    flex:1.5;
+}
+
+.espacehor{
+    height:5vh;
+}
+
+.verso{
+    display:none;
+}
+
+.case:hover .recto{
+    display:none;
+}
+
+.case:hover .verso{
+    display:flex;
+}
