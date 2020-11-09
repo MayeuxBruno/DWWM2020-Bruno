@@ -10,9 +10,13 @@
     
     <?php
     $photo=array();
-    for($a=0;$a<8;$a++){
-        
+    $num=1;
+    for($a=0;$a<16;$a+=2){
+        $photo[$a]=$num;
+        $photo[$a+1]=$num;
+        $num++;
     }
+   
     for($i=1;$i<5;$i++)
     {
         echo'<div class="espacehor"></div>
@@ -20,10 +24,17 @@
         <div class="vide"></div>';
             for($j=1;$j<5;$j++)
             {
-                $photo=rand(1,8);
+                /*do{*/
+                    $numphoto=rand(1,8);
+                    echo $numphoto;
+                    $index=array_search($numphoto,$photo);
+                    
+                /*}while($index==NULL);
+                echo $index;*/
+                unset($photo[$index]);
                 echo'<div class="case">
                 <img class="recto" src="Images/plage.jpg" alt="">
-                <img class="verso" src="Images/'.$photo.'.jpg" alt="">
+                <img class="verso" src="Images/1.jpg" alt="">
                 </div>
                 <div class="vide"></div>';
             }
