@@ -30,6 +30,7 @@ img{
 }
 
 body{
+    flex-direction: column;
     background:url("images/bg.jpg");
     background-size:cover;
 }

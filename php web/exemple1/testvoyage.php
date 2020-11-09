@@ -1,54 +1,26 @@
 <?php
-    $titrepage="Invitation au voyage";
-    include 'head.php';
+    $titrepage="Invitation je sais pas ou";
+    if (file_exists("head.php")) {
+        include("head.php");
+    } else {
+        echo 'erreur le fichier "head.php est introuvable';
+    }
 ?>
 <body>
-    <?php include 'header.php'; ?>
-    <div class="colonne">
-         <nav>
-             <div class="tout">
-                 <div class="menumobile">MENU</div>
-                 <div class="espacemenu"></div>
-                 <div class="espacemenu"></div>
-                 <div class="avecenfant">
-                     <div class="bouton">Europe</div>
-                     <div class="sousmenu">
-                         <div class="itemsousmenu">France</div>
-                         <div class="itemsousmenu">Royaume-uni</div>
-                         <div class="itemsousmenu">Italie</div>
-                     </div>
-                 </div>
-                 <div class="espacemenu"></div>
-                 <div class="avecenfant">
-                    <div class="bouton">Asie</div>
-                    <div class="sousmenu">
-                        <div class="itemsousmenu">Inde</div>
-                        <div class="itemsousmenu">Japon</div>
-                        <div class="itemsousmenu">Chine</div>
-                    </div>
-                </div>
-                <div class="espacemenu"></div>
-                <div class="avecenfant">
-                    <div class="bouton">Amerique</div>
-                    <div class="sousmenu">
-                        <div class="itemsousmenu">Canada</div>
-                        <div class="itemsousmenu">Etats-Unis</div>
-                        <div class="itemsousmenu">Mexique</div>
-                    </div>
-                </div>
-                <div class="espacemenu"></div>
-                <div class="espacemenu"></div>
-             </div>
-
-         </nav>
-         <div class="page colonne">
+    <?php
+         if (file_exists("header.php")) {
+            include("header.php");
+        } else {
+            echo 'erreur le fichier "header.php est introuvable';
+        }
+        if (file_exists("nav.php")) {
+            include("nav.php");
+        } else {
+            echo 'erreur le fichier "nav.php est introuvable';
+        }
+    ?>
              <div class="partie1 colonne">
                  <div class="espacehor">
-                     <?php
-                        for($i=1;$i<11;$i++){
-                            echo '<h1>'.$i'.</h1>';
-                        }
-                     ?>
                  </div>
                  <article>
                      <div class="espace"></div>
@@ -124,9 +96,9 @@
                     <div class="espace"></div>
                 </div>
                 <div class="espacehor"></div>
-             </div>
+        
          </div>
          <?php include 'footer.php'; ?>
-    </div>
+    
 </body>
 </html>	
