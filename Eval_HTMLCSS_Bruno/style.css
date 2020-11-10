@@ -1,0 +1,105 @@
+/******** Gobal **************/
+Body,html{
+    margin:0;
+    padding:0;
+}
+
+div,header,aside{
+    display:flex;
+    flex:1;
+}
+
+body{
+    background-color: #F7EFDF;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+img{
+    width:100%;
+}
+
+.page{
+    width:80%;
+    display:block;
+    font-size:1.5em;
+}
+
+.bleu{
+    color:#000066;
+    font-weight:bold;
+}
+/********** header ***********/
+header{
+    justify-content: center;
+}
+
+/********* partie 1 ********/
+.partie1{
+    display:block;
+}
+.titrearticle{
+    display:block;
+    font-weight:bold;
+    padding:0.2em;
+}
+
+.textearticle{
+    display:block;
+    text-align:justify;
+    padding: 0 1.5em;
+}
+aside{
+    flex:0.60;
+    flex-direction:column;
+    border:1px solid black;
+    border-radius:0.6em;
+    padding:1em 0.5em;
+}
+
+li{
+    list-style-type:circle;
+    color:#006633;
+    font-size:0.8em;
+}
+/******** Partie 2 *********/
+.articlep2{
+    display:block;
+}
+
+.p2{
+    margin-left:-1em;
+}
+
+.asidepartie2{
+    display:block;
+    position:relative;
+    font-size:0.5em;
+    width:25%;
+    height:20%;
+    border:1px solid #bb8c00;
+    background-color:#f1e3c7;
+    margin-left:1em;
+    text-align: center;
+}
+
+.right{
+    float:right;
+}
+
+.left{
+    float:left;
+}
+.large{
+    width:40%;
+}
+
+.maj{
+    text-transform:uppercase;
+    font-size:1.2em;
+}
+
+.sansmarge{
+    padding:0;
+}
