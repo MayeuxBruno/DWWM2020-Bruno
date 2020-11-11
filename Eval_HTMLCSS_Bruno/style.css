@@ -104,9 +104,3 @@ li{
     padding:0;
 }
 
-@media screen and(max-width:800px)
-{
-    .articlep1{
-        display:block;
-    }
-}
