@@ -203,6 +203,17 @@ class Employe
         return $reponse;
     }
 
+    public function afficheEmployeHTML()
+    {
+        echo '<span class="gras">NOM :</span> '.$this->getNom().'<br>
+              <span class="gras">PRENOM :</span> '.$this->getPrenom().'<br>
+              <span class="gras">Date d\'embauche :</span> '.$this->getDateEmbauche()->format('j - m - Y').'<br>
+              <span class="gras">FONCTION :</span> '.$this->getFonction().'<br>
+              <span class="gras">SALAIRE BRUT ANNUEL :</span> '.$this->getSalaireBrutAnnuel().'<br>
+              <span class="gras">SERVICE :</span> '.$this->getService().'<br><br>';
+    }
+
+
     /**
      * Renvoi si l'employe bénéficie d'un restaurant ou si il 
      * doit recevoir des tickets repas.
