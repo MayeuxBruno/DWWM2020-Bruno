@@ -10,9 +10,9 @@
             <div></div>
             <div></div>
             <div class="colonne">
-                <div class="centre">Président</div>
+                <div class="centre"><h4>Président</h4></div>
                 <div><img src="images/photos/president.jpg"></div>
-                <div class="centre">Romain Dezoutter</div>
+                <div class="centre"><h4>Romain Dezoutter</h4></div>
             </div>
             <div></div>
             <div></div>
@@ -20,26 +20,49 @@
          <div class="espacedemihor"></div>
          <div>
             <div></div>
-            <div class="centre">Vice-Présidente</div>
+            <div class="centre"><h4>Vice-Présidente</h4></div>
             <div class="demi"></div>
-            <div class="centre">Vice-Présidente</div>
+            <div class="centre"><h4>Vice-Présidente</h4></div>
             <div></div>
          </div>  
          <div class="espacedemihor"></div>
          <div>
             <div></div>
-            <div class="centre">Secrétaire</div>
+            <div class="centre"><h4>Secrétaire</h4></div>
             <div class="demi"></div>
-            <div class="centre">Secrétaire-adjoint</div>
+            <div class="centre"><h4>Secrétaire-adjoint</h4></div>
             <div></div>
          </div>
          <div class="espacedemihor"></div>
          <div>
             <div></div>
-            <div class="centre">Trésorier</div>
+            <div class="centre"><h4>Trésorier</h4></div>
             <div class="demi"></div>
-            <div class="centre">Trésorier-adjoint</div>
+            <div class="centre"><h4>Trésorier-adjoint</h4></div>
             <div></div>
-         </div> ';
+         </div>
+         <div class="espacedemihor"></div>
+         <div class="centre"><h4>Administrateurs</h4></div>
+         <div class="espacedemihor"></div>
+         <div>
+            <div class="demi"></div>
+            <div class="centre"><h4>Nom</h4></div>
+            <div class="demi"></div>
+            <div class="centre"><h4>Nom</h4></div>
+            <div class="demi"></div>
+            <div class="centre"><h4>Nom</h4></div>
+            <div class="demi"></div>
+         </div>
+         <div class="espacedemihor"></div>
+         <div>
+            <div class="demi"></div>
+            <div class="centre"><h4>Nom</h4></div>
+            <div class="demi"></div>
+            <div class="centre"><h4>Nom</h4></div>
+            <div class="demi"></div>
+            <div class="centre"><h4>Nom</h4></div>
+            <div class="demi"></div>
+         </div>
+          ';
     include ("footer.php");
 ?>

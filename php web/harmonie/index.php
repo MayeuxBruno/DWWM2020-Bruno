@@ -9,18 +9,20 @@ echo'
                     <div></div>
                     <div class="agenda">
                         <div class="listeAgenda colonne">
-                            <h3>Nos prochains rendez-vous :</h3>
-                            <ul>
-                                <li>4 Janvier Voeux du maire</li> 
-                                <li>21 Avril Concert Spectacle</li> 
-                                <li>1er MaiCommémoration</li> 
-                                <li>8 MaiCommémorations</li> 
-                                <li>6 juin Ducasse</li>
-                                <li>21 juin Fête de la musique</li>
-                                <li>25 Aout Ville ouverte</li>
-                                <li>25octobre Concert d\'automne
-
-                            </ul>
+                                 <h3>Nos prochains rendez-vous :</h3>
+                                <ul>
+                                    <li>4 Janvier Voeux du maire</li> 
+                                    <li>21 Avril Concert Spectacle</li> 
+                                    <li>1er MaiCommémoration</li> 
+                                    <li>8 MaiCommémorations</li> 
+                                    <li>6 juin Ducasse</li>
+                                    <li>21 juin Fête de la musique</li>
+                                    <li>25 Aout Ville ouverte</li>
+                                    <li>25octobre Concert d\'automne</li>
+                                    <li>11 novembre Commémoration</li>
+                                    <li>20 novembre Concert de Ste Cécile</li>
+                                    <li>20 Décembre Arbre de Noël</li>
+                                </ul>
                         </div>
                     </div>
                     <div></div>
