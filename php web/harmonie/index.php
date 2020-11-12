@@ -1,9 +1,11 @@
 <?php
     include ("head.php");
     include ("header.php");
+    include ("nav.php");
 echo'
     <div class="container">
         <div class="page colonne">
+            <div class="espacehor"></div>
             <div class="photo">
                 <div>
                     <div></div>
@@ -11,22 +13,22 @@ echo'
                         <div class="listeAgenda colonne">
                             <h3>Nos prochains rendez-vous :</h3>
                             <ul>
-                                <li></li> 
-                                <li></li> 
-                                <li></li> 
-                                <li></li> 
+                                <li>Voeux de la municipalité</li> 
+                                <li>Concert Spectacle</li> 
+                                <li>Commémoration 1er Mai</li> 
+                                <li>Commémorations du 8 mai</li> 
                                 <li></li> 
                             </ul>
                         </div>
                     </div>
                     <div></div>
-                    
                 </div>
                 <div class="photo">
                     <img src="images/photos/spectacle1.jpg" alt="photo gala">
                 </div>
                
-            </div>    
+            </div> 
+            <div class="espacehor"></div>   
             <div>
                 <div></div>
                 <div class="aside colonne">
@@ -48,6 +50,7 @@ echo'
                 </div>
                 <div></div>
             </div>
+            <div class="espacehor"></div>
         </div>
     </div>';
     

@@ -7,7 +7,7 @@ header, footer,
 div,article,body{
     display:flex;
     flex:1;
-    /*border:1px dashed black;*/
+    border:1px dashed black;
 }
 
 .colonne{
@@ -32,6 +32,11 @@ img,video{
     flex:0.5;
 }
 
+.espacehor{
+    flex:none;
+    height:5vh;
+}
+
 /******* HEADER *******/
 header,footer{
     background-image:var(--fondEntete);
@@ -52,6 +57,15 @@ header,footer{
 .logo{
     padding:1.5em;
 }
+
+/******** Menu *********/
+nav{
+    display:flex;
+    background-color:var(--FondContainer);
+    padding:1em;
+    position:sticky;
+    top:0;
+}
 /******** PAGE *********/
 .agenda{
    flex:2;
@@ -60,7 +74,6 @@ header,footer{
 .listeAgenda{
    border:black 1px solid;
    border-radius:0.6em;
-   align-items:center;
    background-image: url;
 }
 
