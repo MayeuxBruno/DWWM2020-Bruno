@@ -9,7 +9,12 @@
                 <div>
                     <div></div>
                     <div class="agenda">
-                        <div class="listeAgenda"></div>
+                        <div class="listeAgenda colonne">
+                            <h3>Nos prochains rendez-vous :</h3>
+                            <ul>
+                                <li>Voeux de la municipalité</li> 
+                            </ul>
+                        </div>
                     </div>
                     <div></div>
                     
