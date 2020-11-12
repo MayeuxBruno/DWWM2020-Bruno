@@ -1,0 +1,12 @@
+/******* GLOBAL *******/
+header, footer,
+div,article,body{
+    display:flex;
+    flex:1;
+}
+
+.colonne{
+    flex-direction:column;
+}
+
+img
