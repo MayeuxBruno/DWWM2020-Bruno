@@ -1,0 +1,148 @@
+/******* GLOBAL *******/
+html,body{
+    margin:0;
+    padding:0;
+}
+header, footer,
+div,article,body{
+    display:flex;
+    flex:1;
+    /*border:1px dashed black;*/
+}
+
+.colonne{
+    flex-direction:column;
+}
+
+
+
+.page{
+    flex:none;
+    width:80%;
+  
+}
+
+.fonce{
+    background-color: rgba(23, 23, 27, 0.6) ;
+}
+
+img,video{
+    width:100%;
+}
+
+.demi{
+    flex:0.5;
+}
+
+.espacehor{
+    flex:none;
+    height:5vh;
+}
+
+.espacedemihor{
+    flex:none;
+    height:2.5vh;
+}
+
+.centre{
+    justify-content:center;
+}
+
+/******* HEADER *******/
+header,footer{
+    background-image:var(--fondEntete);
+    background-color: ;
+    background-position: bottom;
+    background-size:cover;
+}
+
+.titre{
+    flex:8;
+    justify-content:center;
+    align-items:center;
+}
+
+.entete{
+    font-size:var(--TailleTitreEntete);
+}
+
+.logo{
+    padding:1.5em;
+}
+
+/******** Menu *********/
+nav{
+    display:flex;
+    background-image:var(--FondNav);
+    padding:1em;
+    position:sticky;
+    top:0;
+    z-index: 1;
+}
+
+nav a{
+    text-decoration:none;
+    color:black;
+}
+
+.sousmenu{
+    display:none;
+    position:absolute;
+    flex-flow:column wrap;
+    background-color:lightgrey;
+}
+
+.avecenfant{
+    position:relative;
+}
+
+.avecenfant:hover .sousmenu{
+    display:flex;
+    margin-top:1.2em;
+}
+/******** PAGE *********/
+.container{
+    background-size:cover;
+    background-repeat: no-repeat;
+    justify-content:center;
+}
+
+#fond1{
+    background-image:var(--FondContainer1);
+}
+
+#fond2{
+    background-image:var(--FondContainer2);
+}
+.opaque{
+    opacity: 0.75;
+}
+.agenda{
+   flex:2;
+   padding:2em;
+}   
+
+.agenda h3{
+    margin-bottom:0;
+}
+.listeAgenda{
+   border:black 1px solid;
+   border-radius:0.6em;
+   padding:0.5em;
+   background-color:var(--FondAside);
+}
+
+.photo{
+    padding:1em;
+}
+
+.aside{
+    align-items:center;
+    text-align:justify;
+    border:1px solid black;
+    border-radius:0.6em;
+    padding:0.3em;
+    background-color:var(--FondAside);
+    
+}
+/******* FOOTER ********/

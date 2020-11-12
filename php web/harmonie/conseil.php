@@ -1,7 +1,7 @@
 <?php
-    include ("php/head.php");
-    include ("php/header.php");
-    include ("php/nav.php");
+    include ("head.php");
+    include ("header.php");
+    include ("nav.php");
 
     echo'
     <div class="container"id="fond2">
@@ -70,5 +70,5 @@
          </div>
      </div>
           ';
-    include ("php/footer.php");
+    include ("footer.php");
 ?>
