@@ -1,7 +1,8 @@
 <?php
 echo '
+        </div>
+    </div>
 <footer>
-       
         <div>
         </div>
         <div class="titre"><span>&copy; Novembre 2020</span></div>

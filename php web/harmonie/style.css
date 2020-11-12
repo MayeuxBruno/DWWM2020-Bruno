@@ -7,7 +7,7 @@ header, footer,
 div,article,body{
     display:flex;
     flex:1;
-    border:1px dashed black;
+    /*border:1px dashed black;*/
 }
 
 .colonne{
@@ -15,13 +15,16 @@ div,article,body{
 }
 
 .container{
-    background-color:var(--FondContainer);
+    /*background-color:var(--FondContainer);*/
+    background-image:var(--FondContainer);
+    background-size:cover;
+    background-repeat: no-repeat;
     justify-content:center;
 }
 .page{
     flex:none;
     width:80%;
-    background-color:var(--FondPage);
+    /*background-color:var(--FondPage);*/
 }
 
 img,video{
@@ -66,6 +69,26 @@ nav{
     position:sticky;
     top:0;
 }
+
+nav a{
+    text-decoration:none;
+    color:black;
+}
+
+.sousmenu{
+    display:none;
+    position:absolute;
+    flex-flow:column wrap;
+}
+
+.avecenfant{
+    position:relative;
+}
+
+.avecenfant:hover .sousmenu{
+    display:flex;
+    margin-top:1.2em;
+}
 /******** PAGE *********/
 .agenda{
    flex:2;
@@ -74,7 +97,7 @@ nav{
 .listeAgenda{
    border:black 1px solid;
    border-radius:0.6em;
-   background-image: url;
+   background-color:var(--FondAside);
 }
 
 .photo{
@@ -87,5 +110,6 @@ nav{
     border:1px solid black;
     border-radius:0.6em;
     padding:0.3em;
+    background-color:var(--FondAside);
 }
 /******* FOOTER ********/
