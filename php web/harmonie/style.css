@@ -7,28 +7,25 @@ header, footer,
 div,article,body{
     display:flex;
     flex:1;
-    border:1px dashed black;
+    /*border:1px dashed black;*/
 }
 
 .colonne{
     flex-direction:column;
 }
 
-body{
-    background-color:black;
+.container{
+    background-color:var(--FondContainer);
     justify-content:center;
 }
 .page{
     flex:none;
     width:80%;
+    background-color:var(--FondPage);
 }
 
 img,video{
     width:100%;
-}
-
-.espace{
-    flex:1.5em;
 }
 
 /******* HEADER *******/
@@ -40,11 +37,26 @@ header,footer{
 
 .titre{
     flex:8;
-    
+    justify-content:center;
+    align-items:center;
+}
+
+.entete{
+    font-size:var(--TailleTitreEntete);
 }
 
 .logo{
     padding:1.5em;
 }
+/******** PAGE *********/
+.agenda{
+   flex:2;
+   padding:2em;
+}   
+.listeAgenda{
+    border:black 1px solid;
+   border-radius:0.6em;
+}
 
+.
 /******* FOOTER ********/

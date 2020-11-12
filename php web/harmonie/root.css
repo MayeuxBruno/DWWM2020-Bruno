@@ -1,4 +1,7 @@
 :root{
     --fondEntete:url("images/fonds/partitionfond.jpg");
     --fondBody:black;
+    --TailleTitreEntete:3em;
+    --FondContainer:#D6D2D1;
+    --FondPage:whitesmoke;
 }
