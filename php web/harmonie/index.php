@@ -3,14 +3,14 @@
     include ("header.php");
     include ("nav.php");
 echo'
-<div class="container">
+<div class="container" id="fond1">
 <div class="page colonne">
             <div class="espacehor"></div>
             <div class="photo">
                 <div>
                     <div></div>
                     <div class="agenda">
-                        <div class="listeAgenda colonne">
+                        <div class="listeAgenda colonne opaque">
                                  <h3>Nos prochains rendez-vous :</h3>
                                 <ul>
                                     <li>4 Janvier Voeux du maire</li> 
@@ -37,7 +37,7 @@ echo'
             <div class="espacehor"></div>   
             <div>
                 <div></div>
-                <div class="aside colonne">
+                <div class="aside colonne opaque">
                     <img src="images/photos/agenda.png">
                     <h3>Reprise des repetitions</h3>
                     <p>Suite à la situation sanitaire, nous vous annoncons que nous sommes dans l\'obligation
@@ -46,7 +46,7 @@ echo'
                         des conditions qui nous le souhaitons seront meilleurs et sans danger</p> 
                 </div>
                 <div class="demi"></div>
-                <div class="aside colonne">
+                <div class="aside colonne opaque">
                 <img src="images/photos/partitions.jpg">
                 <h3>Tri de partitions</h3>
                 <p>NOTE AUX MUSICIEN (NE) S   Afin d’alléger votre pochette, nous vous demandons de 
@@ -56,6 +56,9 @@ echo'
                 </div>
                 <div></div>
             </div>
+            <div class="espacehor"></div>
+            </div>
+        </div>
             ';
     
         include("footer.php");

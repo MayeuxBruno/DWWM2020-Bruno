@@ -3,7 +3,7 @@
     include ("header.php");
     include ("nav.php");
   echo'
-  <div class="container">
+  <div class="container" id="fond2">
   <div class="page colonne">
     <div class="espacehor"></div>
     <div class="centre"><h1>Nous contacter</h1></div>;
@@ -19,6 +19,9 @@
             <p>Secrétaire : Dezoutter Coralie</p>
         </div>
         <div></div>
-    </div>';
+    </div>
+    <div class="espacehor"></div>
+    </div>
+</div>';
     include ("footer.php");
 ?>

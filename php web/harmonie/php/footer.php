@@ -1,8 +1,6 @@
 <?php
 echo '
-            <div class="espacehor"></div>
-        </div>
-    </div>
+          
 <footer>
         <div>
         </div>

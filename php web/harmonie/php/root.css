@@ -4,6 +4,7 @@
     --TailleTitreEntete:3em;
     --FondAside:whitesmoke;
     --FondContainer1:url("images/photos/spectacle1.jpg");
-    --FondContainer2:url("images/photos/spectacle1.jpg");
+    --FondContainer2:url("images/fonds/fond_jaune.png");
     --FondPage:whitesmoke;
+    --FondNav:linear-gradient(#e7e3e0, black);
 }
