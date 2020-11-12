@@ -11,11 +11,15 @@ echo'
                         <div class="listeAgenda colonne">
                             <h3>Nos prochains rendez-vous :</h3>
                             <ul>
-                                <li>Voeux de la municipalité</li> 
-                                <li>Concert Spectacle</li> 
-                                <li>Commémoration 1er Mai</li> 
-                                <li>Commémorations du 8 mai</li> 
-                                <li></li> 
+                                <li>4 Janvier Voeux du maire</li> 
+                                <li>21 Avril Concert Spectacle</li> 
+                                <li>1er MaiCommémoration</li> 
+                                <li>8 MaiCommémorations</li> 
+                                <li>6 juin Ducasse</li>
+                                <li>21 juin Fête de la musique</li>
+                                <li>25 Aout Ville ouverte</li>
+                                <li>25octobre Concert d\'automne
+
                             </ul>
                         </div>
                     </div>
@@ -48,7 +52,7 @@ echo'
                 </div>
                 <div></div>
             </div>
-            <div class="espacehor"></div>';
+            ';
     
         include("footer.php");
     ?>

@@ -7,7 +7,7 @@ header, footer,
 div,article,body{
     display:flex;
     flex:1;
-    /*border:1px dashed black;*/
+    border:1px dashed black;
 }
 
 .colonne{
@@ -38,6 +38,15 @@ img,video{
 .espacehor{
     flex:none;
     height:5vh;
+}
+
+.espacedemihor{
+    flex:none;
+    height:2.5vh;
+}
+
+.centre{
+    justify-content:center;
 }
 
 /******* HEADER *******/
