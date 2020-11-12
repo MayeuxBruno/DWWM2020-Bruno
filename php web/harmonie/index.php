@@ -3,6 +3,8 @@
     include ("header.php");
     include ("nav.php");
 echo'
+<div class="container">
+<div class="page colonne">
             <div class="espacehor"></div>
             <div class="photo">
                 <div>
@@ -28,7 +30,7 @@ echo'
                     <div></div>
                 </div>
                 <div class="photo">
-                    <img src="images/photos/spectacle1.jpg" alt="photo gala">
+                    <img src="images/photos/spectacle2.jpg" alt="photo gala">
                 </div>
                
             </div> 

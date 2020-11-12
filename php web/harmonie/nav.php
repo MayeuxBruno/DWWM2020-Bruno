@@ -16,8 +16,6 @@ echo'
         <div><a href="contact.php">Nous contacter</a></div>
         <div></div>
     </div> 
-</nav>
-    <div class="container">
-        <div class="page colonne">';
+</nav>';
 
 ?>

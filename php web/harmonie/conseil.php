@@ -3,7 +3,10 @@
     include ("header.php");
     include ("nav.php");
 
-    echo'<div class="espacehor"></div>
+    echo'
+    <div class="container">
+        <div class="page colonne">
+    <div class="espacehor"></div>
          <div class="centre"><h1>Le conseil d\'administration</h1></div>
          <div class="espacehor"></div>
          <div>

@@ -17,14 +17,17 @@ div,article,body{
 .container{
     /*background-color:var(--FondContainer);*/
     background-image:var(--FondContainer);
+    
     background-size:cover;
     background-repeat: no-repeat;
     justify-content:center;
+   
 }
 .page{
     flex:none;
     width:80%;
     /*background-color:var(--FondPage);*/
+    background-color: rgba(23, 23, 27, 0.6) ;
 }
 
 img,video{
@@ -52,6 +55,7 @@ img,video{
 /******* HEADER *******/
 header,footer{
     background-image:var(--fondEntete);
+    background-color: ;
     background-position: bottom;
     background-size:cover;
 }

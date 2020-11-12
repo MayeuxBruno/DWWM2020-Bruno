@@ -3,6 +3,7 @@
     --fondBody:black;
     --TailleTitreEntete:3em;
     --FondAside:whitesmoke;
-    --FondContainer:url("images/fonds/fond_jaune.png");
+    --FondContainer1:url("images/photos/spectacle1.jpg");
+    --FondContainer2:url("images/photos/spectacle1.jpg");
     --FondPage:whitesmoke;
 }

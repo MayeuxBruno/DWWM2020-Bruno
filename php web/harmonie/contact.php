@@ -3,6 +3,8 @@
     include ("header.php");
     include ("nav.php");
   echo'
+  <div class="container">
+  <div class="page colonne">
     <div class="espacehor"></div>
     <div class="centre"><h1>Nous contacter</h1></div>;
     <div class="espacehor"></div>
