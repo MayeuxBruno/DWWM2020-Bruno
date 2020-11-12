@@ -28,6 +28,10 @@ img,video{
     width:100%;
 }
 
+.demi{
+    flex:0.5;
+}
+
 /******* HEADER *******/
 header,footer{
     background-image:var(--fondEntete);
@@ -56,8 +60,19 @@ header,footer{
 .listeAgenda{
    border:black 1px solid;
    border-radius:0.6em;
+   align-items:center;
    background-image: url;
 }
 
-.
+.photo{
+    padding:1em;
+}
+
+.aside{
+    align-items:center;
+    text-align:justify;
+    border:1px solid black;
+    border-radius:0.6em;
+    padding:0.3em;
+}
 /******* FOOTER ********/
