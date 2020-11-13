@@ -1,0 +1,7 @@
+div{
+    display:flex;
+}
+.personne{
+    flex:0;
+    border:1px solid black;
+}
