@@ -10,7 +10,7 @@ echo'
             <div class="photo">
                 
                 <div class="photo">
-                    <img src="images/photos/spectacle1.jpg" alt="photo gala">
+                <iframe width=100% height=auto src="https://www.youtube.com/embed/df1K-HmKgmY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="photo">
                     <img src="images/photos/spectacle2.jpg" alt="photo gala">
@@ -19,7 +19,7 @@ echo'
             </div> 
             <div class="espacehor"></div>   
             <div>
-                <div></div>
+                <div class="demi"></div>
                 <div class="aside colonne opaque">
                     <img src="images/photos/agenda.png">
                     <h3>Reprise des repetitions</h3>
@@ -46,7 +46,7 @@ echo'
                 uniquement les morceaux suivants dans vos pochettes : SEVEN NATION ARMY THE UNTOUCHABLES THAT\'S 
                 THE WAY I LIKE \'EM STROMAE SHAPE OF YOU </p> 
                 </div>
-                <div></div>
+                <div class="demi"></div>
             </div>
             <div class="espacehor"></div>
             </div>
@@ -79,4 +79,3 @@ echo'
                 </div>*/
     ?>
 
-    

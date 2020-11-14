@@ -80,6 +80,7 @@ header,footer{
 
 .logo{
     padding:1.5em;
+    align-items:center;
 }
 
 /******** Menu *********/
@@ -87,8 +88,8 @@ nav{
     display:flex;
     background-color:#ddd;
     padding:1em;
-    position:sticky;
-    top:0;
+    /*position:sticky;
+    top:0;*/
     z-index: 1;
 }
 
@@ -101,16 +102,19 @@ nav a{
     display:none;
     position:absolute;
     flex-flow:column wrap;
-    background-color:lightgrey;
+    background-color:#ddd;
+    margin-top:1em;
+    padding-top:1em;
 }
 
 .avecenfant{
     position:relative;
+    
 }
 
 .avecenfant:hover .sousmenu{
     display:flex;
-    margin-top:1.2em;
+    
 }
 /******** PAGE *********/
 .container{
@@ -158,3 +162,6 @@ nav a{
     
 }
 /******* FOOTER ********/
+.fb{
+    justify-content:center;
+}
