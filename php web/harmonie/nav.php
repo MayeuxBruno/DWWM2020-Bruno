@@ -1,7 +1,7 @@
 <?php
 echo'
 <body class="colonne">
-<nav>
+<nav class="opaque">
    <div class="menu">
         <div></div>
         <div><a href="index.php">Accueil</a></div>

@@ -2,7 +2,8 @@
 echo '
           
 <footer>
-        <div>
+        <div class="logo">
+            rejoignez nous sur Facebook
         </div>
         <div class="titre"><span>&copy; Novembre 2020</span></div>
         <div class="logo">

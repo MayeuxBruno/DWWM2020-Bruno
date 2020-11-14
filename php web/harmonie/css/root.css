@@ -1,10 +1,10 @@
 :root{
-    --fondEntete:url("images/fonds/partitionfond.jpg");
+    --fondEntete:url("../images/fonds/partitionfond.jpg");
     --fondBody:black;
     --TailleTitreEntete:3em;
     --FondAside:whitesmoke;
-    --FondContainer1:url("images/photos/spectacle1.jpg");
-    --FondContainer2:url("images/fonds/fond_jaune.png");
+    --FondContainer1:url("../images/photos/spectacle1.jpg");
+    --FondContainer2:url("../images/fonds/fond_jaune.png");
     --FondPage:whitesmoke;
     --FondNav:#aaa;
 }

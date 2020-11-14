@@ -14,16 +14,25 @@ div,article,body{
     flex-direction:column;
 }
 
-
+.block{
+    display:block;
+}
 
 .page{
     flex:none;
     width:80%;
-  
+}
+
+.centre{
+    align-items:center;
 }
 
 .fonce{
-    background-color: rgba(23, 23, 27, 0.6) ;
+    background-color: rgba(80, 80, 97, 0.6) ;
+}
+
+.voile{
+    background-color: rgba(209, 209, 230, 0.6) ;
 }
 
 img,video{
@@ -59,11 +68,14 @@ header,footer{
     flex:8;
     justify-content:center;
     align-items:center;
+    text-shadow: #aaa 8px 8px 8px;
+    font-family:Jazz LET, fantasy;
+    font-variant-caps: small-caps;
+    letter-spacing: 0.2em;
 }
 
 .entete{
     font-size:var(--TailleTitreEntete);
-    color:green;
 }
 
 .logo{
@@ -73,7 +85,7 @@ header,footer{
 /******** Menu *********/
 nav{
     display:flex;
-    background-color:#aaa;
+    background-color:#ddd;
     padding:1em;
     position:sticky;
     top:0;
@@ -108,7 +120,7 @@ nav a{
 }
 
 #fond1{
-    background-image:var(--FondContainer1);
+    background-image:var(--fondEntete);
 }
 
 #fond2{
