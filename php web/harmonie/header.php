@@ -1,6 +1,5 @@
 <?php
 echo'
-<body class="colonne">
     <header>
         <div class="logo">
             <img src="images/logos/logo.png" alt="logo harmonie">

@@ -51,7 +51,6 @@ img,video{
 /******* HEADER *******/
 header,footer{
     background-image:var(--fondEntete);
-    background-color: ;
     background-position: bottom;
     background-size:cover;
 }
@@ -64,6 +63,7 @@ header,footer{
 
 .entete{
     font-size:var(--TailleTitreEntete);
+    color:green;
 }
 
 .logo{
@@ -73,7 +73,7 @@ header,footer{
 /******** Menu *********/
 nav{
     display:flex;
-    background-image:var(--FondNav);
+    background-color:#aaa;
     padding:1em;
     position:sticky;
     top:0;

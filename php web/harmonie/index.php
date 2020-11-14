@@ -1,7 +1,7 @@
 <?php
     include ("head.php");
-    include ("header.php");
     include ("nav.php");
+    include ("header.php");
 echo'
 <div class="container" id="fond1">
 <div class="page colonne">

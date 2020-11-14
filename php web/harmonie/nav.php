@@ -1,5 +1,6 @@
 <?php
 echo'
+<body class="colonne">
 <nav>
    <div class="menu">
         <div></div>
