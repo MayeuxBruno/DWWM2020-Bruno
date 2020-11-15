@@ -1,0 +1,76 @@
+@media screen and (max-width:800px)
+{
+    
+    div,footer{
+        flex-direction:column;
+    }
+    .menumobile,.row{
+        display:flex;
+        flex-direction:row;
+    }
+    .treslarge{
+        flex:2;
+    }
+    .page{
+        width:85%;
+    }
+
+    /******* Menu ******/
+    header{
+        padding:0;
+    }
+    .tout{
+        display:block;
+    }
+    .bouton ,.logo,.ecran{
+        display:none;
+    }
+    .sousmenu{
+        display:none;
+        width:100%;
+        position:unset;
+        margin-top:0;
+    }
+    .avecenfant{
+        display:block;
+        position:unset;
+    }
+    .tout:hover .bouton{
+        display:block;
+        padding-left:0.5em;
+    }
+
+    /****** Affiche la photo principale pour telephone *****/
+    .phone{
+        display:flex;
+    }
+    .vignette{
+        width:70%;
+        align-self:center;
+    }
+    .article,.contenu{
+        padding:0;
+    }
+
+    /***** Affichage ordre vignette et liste *****/
+    #cont{
+        order:1;
+    }
+    #vig1{
+        order:2;
+    }
+    #vig2{
+        order:3;
+    }
+    #art{
+        order:1;
+    }
+    #vig3{
+        order:2;
+    }
+
+    /********* footer *********/
+    .NomEsat{
+        border-bottom:1px solid white;
+    }
+}

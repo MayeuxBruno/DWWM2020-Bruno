@@ -1,0 +1,146 @@
+html,body{
+    margin:0;
+    padding:0;
+}
+
+div,header,footer{
+    display:flex;
+    flex:1;
+}
+
+img{
+    width:100%;
+}
+
+body{
+    display:block;
+}
+
+.colonne{
+    flex-direction:column;
+}
+
+.block{
+    display:block;
+}
+.mini{
+    flex:0.25;
+}
+
+.espacehor{
+    flex:none;
+    height:5vh;
+}
+
+.demi{
+    flex:0.5;
+}
+.large{
+    flex:3;
+}
+
+.treslarge{
+    flex:5;
+}
+/******** Menu ********/
+header{
+    padding:0 0.5em;
+}
+.menumobile{
+    display:none;
+    align-items:center;
+    text-align:center;
+}
+.bouton{
+    white-space:nowrap;
+    justify-content:center;
+    align-items:center;
+    color:var(--FondBouton);
+}
+
+.bouton:hover{
+    color:white;
+    padding:0.5em;
+    background-color:var(--FondBouton);
+}
+
+.avecenfant{
+    position:relative;
+}
+.sousmenu{
+    margin-top:2.8em;
+    display:none;
+    background-color:var(--FondSousMenu);
+    position:absolute;
+}
+
+.item{
+    padding:0.5em;
+
+}
+
+.avecenfant:hover .sousmenu{
+    display:flex;
+    color:var(--TextSousMenu);
+}
+
+
+/******* Contenu ********/
+/** photo **/
+.photo{
+    height:90vh;
+}
+
+.phone{
+    display:none;
+}
+
+/** page **/
+.container{
+    background-color:var(--FondContainer);
+    justify-content:center;
+    padding:2em 3em;
+}
+
+.page{
+    display:block;
+    background-color:var(--FondPage);
+    padding:1em;
+}
+
+h2,h3,h4{
+    color:var(--CouleurH3);
+    white-space:nowrap;
+}
+
+.contenu{
+    flex:2;
+    padding:1em;
+}
+
+.vignette{
+    display:block;
+    padding:0.5em;
+   
+}
+ul{
+    list-style-type: square;
+}
+
+.vignette img{
+    border : 2px solid var(--FondContainer);
+    padding:0.5em;
+    margin-left:-0.5em;
+}
+
+.lien{
+    align-items:center;
+    border-bottom:1px dotted var(--FondSousMenu);
+}
+
+/******** Footer *******/
+footer{
+    padding:1em;
+    background-color:var(--FondBouton);
+    color:var(--TextFooter);
+}

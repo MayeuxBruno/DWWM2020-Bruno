@@ -1,0 +1,187 @@
+/************************* Global **********************/
+html,body{
+    margin:0;
+    padding:0;
+}
+div,header,footer{
+    display:flex;
+    flex:1;
+}
+img{
+    width:100%;
+}
+
+/*************** Titres et styles texte *****************/
+h2,h3{
+    color:var(--CouleurH);
+}
+.petiteMaj{
+    font-variant-caps: small-caps;
+}
+.gras{
+    font-weight: bold;
+}
+.bleu{
+    color:var(--FondSousMenu);
+}
+.ssligne{
+    border-bottom:1px dotted var(--FondSousMenu);
+}
+
+/********************* Affichages ***********************/
+.colonne{
+    flex-direction:column;
+}
+.block{
+    display:block;
+}
+.uneLigne{
+    white-space:nowrap;
+}
+
+/**************** définition des div espace *************/
+.espacehor{
+    flex:none;
+    height:5vh;
+}
+.mini{
+    flex:0.25;
+}
+.demi{
+    flex:0.5;
+}
+.large{
+    flex:3;
+}
+
+.treslarge{
+    flex:4;
+}
+
+/********************** Menu *************************/
+header{
+    padding:0 0.5em;   
+    border-bottom:3px solid var(--FondBouton);
+}
+.menumobile{
+    display:none;
+    align-items:center;
+    text-align:center;
+}
+.bouton{  
+    justify-content:center;
+    align-items:center;
+    padding:1.3em 0;
+    color:var(--FondBouton);
+    font-size:1.1em;
+}
+.avecenfant:hover .bouton{
+    color:var(--TextBlanc);
+    padding:0.5em;
+    background-color:var(--FondBouton);
+}
+.avecenfant{
+    position:relative;
+}
+.sousmenu{
+    margin-top:4.3em;
+    display:none;
+    background-color:var(--FondSousMenu);
+    position:absolute;
+    z-index:1;
+}
+.item, .logo{
+    padding:0.5em;
+}
+.avecenfant:hover .sousmenu{
+    display:flex;
+    color:var(--TextBlanc);
+}
+/****** bouton hamburger *****/ 
+.bt img{
+    width:50%;
+}
+
+/************************* Contenu ************************/
+/************ photo principale**********/
+.photo{
+    height:90vh;
+    position:relative;
+    justify-content:center;
+}
+.titre{
+    z-index: 1;
+    position: absolute;
+    bottom:1em;
+    align-items:center;
+    color:var(--TextBlanc);
+    font-size:2.5em;
+}
+.fleche{
+    width:5%;
+}
+.phone{
+    display:none;
+}
+
+/****************  page ****************/
+.container{
+    background-color:var(--FondContainer);
+    align-items:center;
+    padding:5vh 0em;
+}
+.page{
+    width:80%;
+    padding:2.5em 2.5em 0 2.5em;
+    background-color:var(--FondPage);
+    box-shadow: 1px 1px 10px #AAA;
+}
+.contenu{
+    flex:1.5;
+    padding:0 2em;
+}
+.vignette{
+    margin-top:0.5em;
+    padding:0.5em;
+}
+.vignette img{
+    border : 3px solid var(--FondContainer);
+    box-shadow: 1px 1px 20px 1px var(--FondContainer);
+    padding:0.5em;
+    margin-left:-0.5em;
+}
+ul{
+    list-style-type: square;
+}
+.article{
+    flex:2.5;
+    padding:0 2em;
+}
+.finpage{
+    margin:2vh 0;
+}
+.lien{
+    align-items:center; 
+    border-top:1px solid#ccc;
+    padding:1em;
+}
+
+/******** Footer *******/
+footer{
+    background-color:var(--FondFooter);
+    color:var(--TextBlanc);
+}
+.bandeau{
+    background-color:var(--FondBandeau);
+}
+.coordonnees{
+    padding:2em 5em 1em 5em;
+}
+.NomEsat{
+    font-size:1.2em;
+}
+.adresse p{
+    line-height: 1.4em;
+}
+
+
