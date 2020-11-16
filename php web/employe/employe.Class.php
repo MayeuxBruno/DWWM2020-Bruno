@@ -3,6 +3,7 @@ class Employe
 {
 
     /*****************Attributs***************** */
+    private $_idEmploye;
     private $_nom;
     private $_prenom;
     private $_dateEmbauche;
@@ -15,6 +16,16 @@ class Employe
 
     /*****************Accesseurs***************** */
 
+    public function getIdEmploye()
+    {
+        return $this->_idEmploye;
+    }
+
+    public function setIdEmploye($idEmploye)
+    {
+        $this->_idEmploye = $idEmploye;
+    }
+    
     public function getNom()
     {
         return $this->_nom;

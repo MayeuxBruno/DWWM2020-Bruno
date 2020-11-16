@@ -1,4 +1,5 @@
 <?php
+echo '
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,6 +8,5 @@
     <link rel="stylesheet" href="style.css">
     <title>Liste des Employes</title>
 </head>
-<body>
-
+<body>';
 ?>
