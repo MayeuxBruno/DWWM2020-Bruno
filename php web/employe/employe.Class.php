@@ -1,30 +1,19 @@
 <?php
-
 class Employe
 {
 
     /*****************Attributs***************** */
     private $_nom;
     private $_prenom;
-    private $_agence;
     private $_dateEmbauche;
     private $_fonction;
-    private $_salaireBrutAnnuel;
+    private $_salaireAnnuel;
     private $_service;
-    private $_enfant;
-    private static $_compteur=0;
+    private $_agence;
+    private $_enfants = [];
+    private static $_compteur = 0;
 
     /*****************Accesseurs***************** */
-
-    public function setEnfant(Array $enf)
-    {
-        $this->_enfant=$enf;
-    }
-
-    public function getEnfant()
-    {
-        return $this->_enfant;
-    }
 
     public function getNom()
     {
@@ -33,7 +22,7 @@ class Employe
 
     public function setNom($nom)
     {
-        $this->_nom = ucfirst($nom);
+        $this->_nom = $nom;
     }
 
     public function getPrenom()
@@ -43,17 +32,26 @@ class Employe
 
     public function setPrenom($prenom)
     {
-        $this->_prenom = ucfirst($prenom);
+        $this->_prenom = $prenom;
     }
-
     public function getDateEmbauche()
     {
         return $this->_dateEmbauche;
     }
 
-    public function setDateEmbauche( DateTime $dateEmbauche)
+    public function setDateEmbauche(DateTime $dateEmbauche)
     {
         $this->_dateEmbauche = $dateEmbauche;
+    }
+
+    public function getSalaireAnnuel()
+    {
+        return $this->_salaireAnnuel;
+    }
+
+    public function setSalaireAnnuel($salaireAnnuel)
+    {
+        $this->_salaireAnnuel = $salaireAnnuel;
     }
 
     public function getFonction()
@@ -66,16 +64,6 @@ class Employe
         $this->_fonction = $fonction;
     }
 
-    public function getSalaireBrutAnnuel()
-    {
-        return $this->_salaireBrutAnnuel;
-    }
-
-    public function setSalaireBrutAnnuel($salaireBrutAnnuel)
-    {
-        $this->_salaireBrutAnnuel = $salaireBrutAnnuel;
-    }
-
     public function getService()
     {
         return $this->_service;
@@ -83,17 +71,7 @@ class Employe
 
     public function setService($service)
     {
-        $this->_service = $service;
-    }
-
-    public static function getCompteur()
-    {
-        return self::$_compteur;
-    }
-
-    public static function setCompteur($compteur)
-    {
-        self::$_compteur = $compteur;
+        $this->_service = ucfirst($service);
     }
 
     public function getAgence()
@@ -105,7 +83,25 @@ class Employe
     {
         $this->_agence = $agence;
     }
-    
+
+    public function getEnfants()
+    {
+        return $this->_enfants;
+    }
+
+    public function setEnfants(array $enfants)
+    {
+        $this->_enfants = $enfants;
+    }
+    public static function getCompteur()
+    {
+        return self::$_compteur;
+    }
+
+    public static function setCompteur($compteur)
+    {
+        self::$_compteur = $compteur;
+    }
     /*****************Constructeur***************** */
 
     public function __construct(array $options = [])
@@ -114,7 +110,7 @@ class Employe
         {
             $this->hydrate($options);
         }
-            Self::$_compteur ++;
+        self::setCompteur(self::getCompteur() + 1); //on increment le compteur
     }
     public function hydrate($data)
     {
@@ -129,68 +125,6 @@ class Employe
     }
 
     /*****************Autres Méthodes***************** */
-    
-    /**
-     * Calcul depuis combien d'années l'employé est dans l'entreprise
-     *
-     * @return Int nombre d'années de présence.
-     */
-    public function anciennete()
-    {
-        $entree=$this->getDateEmbauche();
-        $actuelle = new DateTime('now'); //récupère la date actuelle
-        $interval = $entree->diff($actuelle);  // fait la différence entre la date d'embauche et la date actuelle
-        return intval(($interval->format('%y')));  // retourne la différence en années sous forme d'entier
-    }
-
-     /**
-     * Calcul la prime sur salaire de l'emplyé (5% du brut)
-     *
-     * @return Double prime à verser à l'employé.
-     */
-    private function primeSalaire()
-    {
-        return ($this->getSalaireBrutAnnuel()*1000*0.05);
-    }
-
-    /**
-     * Calcul la prime d'ancienneté de l'emplyé (2% du brut pour chaque année d'ancienneté)
-     *
-     * @return Double prime à verser à l'employé.
-     */
-    private function primeAnciennete()
-    {
-        return (($this->getSalaireBrutAnnuel()*1000*0.02)*$this->anciennete()) ;
-    }
-
-     /**
-     * Calcul la prime d'ancienneté de l'emplyé (2% du brut pour chaque année d'ancienneté)
-     *
-     * @return Double prime à verser à l'employé.
-     */
-    public function prime()
-    {
-        return $this->primeSalaire()+$this->primeAnciennete();
-    }
-
-     /**
-     * Permet l'affichage de la liste des enfants de l'employé.
-     *
-     * @return String Liste des enfants.
-     */
-    public function afficheEnfant()
-    {
-        if(!empty($this->getEnfant()))
-        {
-            $message="\n\n\t*** Enfant(s) ***\n";
-            foreach($this->getEnfant() as $elt)
-            {
-                $message.=$elt->toString();
-            }
-            return $message;
-        }
-        return " ";
-    }
 
     /**
      * Transforme l'objet en chaine de caractères
@@ -199,33 +133,51 @@ class Employe
      */
     public function toString()
     {
-        $reponse="\n****** Fiche Employé ******\nNom :\t\t\t".$this->getNom()."\nPrénom :\t\t".$this->getPrenom().$this->getAgence()->toString()."\n\nDate d'embauche :\t".$this->getDateEmbauche()->format('j - m - Y')."\nFonction :\t\t".$this->getFonction()."\nSalaire Brut Annuel :   ".$this->getSalaireBrutAnnuel()." K€"."\nService :\t\t".$this->getService().$this->afficheEnfant()."\n\n****************************\n\n";
-        return $reponse;
+        $aff = "\n\n*** SALARIE ***\n";
+        $aff .= "Nom :" . $this->getNom() . "\nPrenom :" . $this->getPrenom() . "\nDateEmbauche :" . $this->getDateEmbauche()->format('Y-m-d') . "\nPosteEntreprise :" . $this->getFonction() . "\nSalaire annuel :" . $this->getSalaireAnnuel() . "K\nService :" . $this->getService() . "\n";
+        $aff .= $this->recoitChequeVacances() ? "Ce salarié bénéficie de chèques vacances\n" : "Ce salarié ne bénéficie pas de chèques vacances\n";
+        $aff .= "\n*** AGENCE ***\n" . $this->getAgence()->toString();
+        $aff .= "\n*** ENFANTS ***\n";
+        if (count($this->getEnfants()) > 0)
+        {
+            foreach ($this->getEnfants() as $enfant)
+            {
+                $aff .= $enfant->toString();
+            }
+        }
+        else
+        {
+            $aff .= "Pas d'enfant";
+        }
+        $aff .= "\n*** CHEQUES NOEL ***\n";
+        $cheques = $this->recoitChequeNoel();
+        if (array_sum($cheques) > 0)
+        {
+            foreach ($cheques as $key=>$nbCheque) // on parcours le tableau de chèques
+            {
+                if ($nbCheque > 0)    //  si le nombre de chèque est supérieur à 0
+                {
+                    $aff .= $nbCheque . " chèque(s) de ".$key."\n";   //$nbCheque contient le nombre de chèques  et $key, la valeur du chèque
+                }
+            }
+        }
+        else
+        {
+            $aff .= "Pas de chèques de Noël";
+        }
+        return $aff;
     }
-
-    public function afficheEmployeHTML()
-    {
-        echo '<span class="gras">NOM :</span> '.$this->getNom().'<br>
-              <span class="gras">PRENOM :</span> '.$this->getPrenom().'<br>
-              <span class="gras">Date d\'embauche :</span> '.$this->getDateEmbauche()->format('j - m - Y').'<br>
-              <span class="gras">FONCTION :</span> '.$this->getFonction().'<br>
-              <span class="gras">SALAIRE BRUT ANNUEL :</span> '.$this->getSalaireBrutAnnuel().'<br>
-              <span class="gras">SERVICE :</span> '.$this->getService().'<br><br>';
-    }
-
 
     /**
-     * Renvoi si l'employe bénéficie d'un restaurant ou si il 
-     * doit recevoir des tickets repas.
-     * 
-     * @return string "Tickets" ou "Restaurant"
+     * Renvoi vrai si l'objet en paramètre est égal à l'objet appelant
+     *
+     * @param [type] obj
+     * @return bool
      */
-    public function repas()
+    public function equalsTo($obj)
     {
-        return $this->getAgence()->restauration();
+        return true;
     }
-
-
     /**
      * Compare 2 objets sur le nom et le prénom
      * Renvoi 1 si le 1er est >
@@ -281,81 +233,87 @@ class Employe
         {
             return self::compareToNomPrenom($obj1, $obj2);
         }
+
+    }
+    /**
+     * Renvoi l'anciennete de l'employe
+     *
+     * @return int  le nombre d'annee d'ancienneté
+     */
+    public function anciennete()
+    {
+        $auj = new DateTime('now');
+        $interval = $auj->diff($this->getDateEmbauche(), true); //diff renvoi une DateIntervalle, true oblige cet interval a être positif
+        $annee = $interval->format('%y') * 1; // on *1 pour avoir un int
+        return $annee;
     }
 
+    /**
+     * methode pour pour calculer la prime salaire
+     *
+     * @return  double  le montant de la prime salaire
+     */
+    private function primeSalaire()
+    {
+        return $this->getSalaireAnnuel() * 1000 * 0.05; // on retourne le montant de la prime annuelle
+    }
+
+    /**
+     * methode pour pour calculer la prime d'ancienneté
+     *
+     * @return   double le montant de la prime d'ancienneté
+     */
+    private function primeAnciennete()
+    {
+        return $this->getSalaireAnnuel() * 1000 * 0.02 * $this->anciennete(); // on retourne le montant de la prime annuelle
+    }
+
+    /**
+     * methode pour pour calculer la prime annuelle
+     *
+     * @return  double  le montant de la prime annuelle
+     *
+     *
+     */
+    public function prime()
+    {
+        return $this->primeSalaire() + $this->primeAnciennete(); // on retourne le montant de la prime annuelle
+    }
     /**
      * Renvoi la masse salariale de l'employé
      *
-     * @return Int retourne la masse salariale de l'employe
+     * @return void
      */
     public function masseSalariale()
     {
-        return $this->getSalaireBrutAnnuel()*1000+ $this->prime();
+        return $this->getSalaireAnnuel() * 1000 + $this->prime();
     }
 
-     /**
-     * Indique si l'employé peux bénéficier des chèques vacances
+    /**
      *
-     * @return Boolean 1 si l'employé peu en bénéficier si non 0 
+     * verifie si l'employé est eligible aux cheques vacances
+     *
+     * @return string oui ou non selon si l'employé est eligible ou pas
      */
-    public function chequeVacance()
+    public function recoitChequeVacances()
     {
-        if($this->anciennete()>=1)
-        {   
-           return TRUE;
-        }
-        return FALSE;
-    }
 
-    /**
-     * Détermine si l'employé peux bénéficier de chèques de noel
-     * 
-     * @return booleen TRUE si il peux en beneficier si non FALSE 
-     */
-    public function chequeNoel()
-    {
-        $tabenfant=$this->getEnfant();
-        if(!empty($tabenfant))
-        {
-            foreach($tabenfant as $elt)
-            {
-                if (($elt->age())<=18)
-                {
-                    return TRUE;
-                }
-            }
-        }
-        return FALSE;
+        return ($this->anciennete() >= 1); // on verifie par rapport a l'anciennete si l employé est dans l'entreprise depuis plus d'un an
     }
-
     /**
-     * Détermine la somme à remettre en chèque de noel en fonction
-     * de l'age et du nombre d'enfants
-     * @return Array contenant en index 0 la somme des chèques de 20€
-     *                         en index 1 la somme des chèques de 30€
-     *                         en index 2 la somme des chèques de 50€  
+     * renvoi un tableau contenant le nombre de chèque de chaque montant
+     *
+     * @return array
      */
-    public function montantChequeNoel()
+    public function recoitChequeNoel()
     {
-        $cheque=["20€"=>0,"30€"=>0,"50€"=>0];
-        foreach($this->getEnfant() as $elt)
+        $cheque = ["0" => 0, "20" => 0, "30" => 0, "50" => 0];
+        foreach ($this->getEnfants() as $enfant)
         {
-            if (($elt->age())<10)
-            {
-                $cheque["20€"]++;
-            }
-            else 
-            {
-                if(($elt->age())<15)
-                {
-                    $cheque["30€"]++;
-                }
-                else if($elt->age()<18)
-                {
-                    $cheque["50€"]++;
-                }    
-            }
+            $cheque[$enfant->montantChequeNoel()] += 1; // on augmente la valeur liée à l'étiquette correspondant au montant retourné par la fonction
         }
+        $cheque["0"] = 0;       // pour que la somme du tableau corresponde au nombre de chèques à distibuer
         return $cheque;
     }
+
 }
