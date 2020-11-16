@@ -32,7 +32,7 @@ $pers->affichage();
 
 /*$q=$db->exec('INSERT INTO identite(nomPersonne,prenom,age)VALUES("Blarel","Olivier",43)');*/
 
-$perso=new Personne(["nomPersonne"=>"Honnart","prenom"=>"Nocolas","age"=>50]);
+$p=new Personne(["nomPersonne"=>"Pinson","prenom"=>"Nocolas","age"=>50]);
 
 /*$q = $db->prepare('INSERT INTO identite(nomPersonne,prenom,age)VALUE(:nom,:prenom,:age)');
 
@@ -40,7 +40,8 @@ $q->bindValue(':nom',$perso->getNomPersonne());
 $q->bindValue(':prenom',$perso->getPrenom());
 $q->bindValue(':age',$perso->getAge());*/
 
-$q=$db->prepare('INSERT INTO identite(nomPersonne,prenom,age)VALUE('.$perso->getNomPersonne().','.$perso->getPrenom().','.$perso->getAge().')');
+var_dump($p);
+$q=$db->prepare('INSERT INTO identite(nomPersonne,prenom,age)VALUE($perso->getNomPersonne(),$perso->getPrenom(),$perso->getAge())');
 $reponse=$q->execute();
 
 var_dump($reponse);
