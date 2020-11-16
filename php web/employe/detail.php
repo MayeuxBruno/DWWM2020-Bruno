@@ -60,16 +60,15 @@ foreach ($e as $employe)
                 {
                      echo'<li>'.$enfant->getNom().' '.$enfant->getPrenom().' '.$enfant->getAge().'</li>';
                 }
-            echo'</ul>
-            </div>
+                 echo'</ul>
+                </div>
+                <div></div>  
             </div>';
         }
-        echo '
-        <div></div>    
-        </div>';
     }
 }
-echo '<a href="index.php">Retour</a>';
+echo '<a class="centre" href="index.php">Retour</a>
+</div>';
 
 
 include "footer.php";
