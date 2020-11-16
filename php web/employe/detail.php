@@ -11,7 +11,9 @@ foreach ($e as $employe)
     if($employe->getIdEmploye()==$idRecherche)
     {
         echo'<div class="container colonne">
-              <div class="centre"><h3>'.$employe->getNom().' '.$employe->getPrenom().'</h3></div>';
+              <div class="espaceh"></div>
+              <div class="centre"><h3>'.$employe->getNom().' '.$employe->getPrenom().'</h3></div>
+              <div class="espaceh"></div>';
         echo '<div class="information">
               <div></div>
               <div class="titre centre"><h2>Informations</h2></div>
@@ -27,12 +29,13 @@ foreach ($e as $employe)
 
         echo '<div class="Agence">
               <div></div>
-              <div class="titre centre"><h2>Poste</h2></div>
+              <div class="titre centre"><h2>Agence</h2></div>
                 <div class="liste">
                     <ul>
                         <li>'.$employe->getAgence()->getNom().'</li>
                         <li>'.$employe->getAgence()->getAdresse().'</li>
                         <li>'.$employe->getAgence()->getCodePostal().' '.$employe->getAgence()->getVille().'</li>
+                        <li>'.$employe->getAgence()->getRestauration().'</li>
                     </ul>
                 </div>
                 <div></div>
@@ -58,7 +61,7 @@ foreach ($e as $employe)
                 <ul>';
                 foreach($employe->getEnfants() as $enfant)
                 {
-                     echo'<li>'.$enfant->getNom().' '.$enfant->getPrenom().' '.$enfant->getAge().'</li>';
+                     echo'<li>'.$enfant->getNom().'  '.$enfant->getPrenom().'  '.$enfant->getAge().' Ans </li>';
                 }
                  echo'</ul>
                 </div>
@@ -67,8 +70,11 @@ foreach ($e as $employe)
         }
     }
 }
-echo '<a class="centre" href="index.php">Retour</a>
+echo '
+<div class="espaceh"></div>
+<a class="centre" href="index.php">Retour</a>
 </div>';
+
 
 
 include "footer.php";

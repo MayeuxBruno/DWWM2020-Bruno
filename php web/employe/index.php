@@ -39,9 +39,14 @@ for($i=0;$i<count($e);$i++)
 {
     echo'<div class="employe">
         <div></div>
-        <div class="cache">'.$e[$i]->getIdEmploye().'</div>
-        <div class="vertFonce">
-            <div class="cellule agence"><a href="detail.php?id='.$e[$i]->getIdEmploye().'">'.$e[$i]->getAgence()->getNom().'</a></div>
+        <div class="cache">'.$e[$i]->getIdEmploye().'</div>';
+        if($i%2==0){
+            echo'<div class="couleur1">';
+        }
+        else{
+            echo'<div class="couleur2">';
+        }
+        echo'<div class="cellule agence"><a href="detail.php?id='.$e[$i]->getIdEmploye().'">'.$e[$i]->getAgence()->getNom().'</a></div>
             <div class="cellule agence"><a href="detail.php?id='.$e[$i]->getIdEmploye().'">'.$e[$i]->getService().'</a></div>
             <div class="cellule nom"><a href="detail.php?id='.$e[$i]->getIdEmploye().'">'.$e[$i]->getNom().'</a></div>
             <div class="cellule prenom"><a href="detail.php?id='.$e[$i]->getIdEmploye().'">'.$e[$i]->getPrenom().'</a></div>
