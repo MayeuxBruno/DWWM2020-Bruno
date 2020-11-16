@@ -6,8 +6,11 @@ body,html{
 div,header{
     display:flex;
     flex:1;
+    border:1px dotted red;
 }
-
+.centre{
+    justify-content:center;
+}
 .colonne{
     flex-direction:column;
 }
@@ -19,10 +22,20 @@ header{
 .cache{
     display:none;
 }
-
-.cellule{
+.liste ,.titre{
     border:1px solid black;
+}
+
+.titre{
+    align-items:center;
 }
 a{
     display:flex;
 }
+
+li{
+    white-space: nowrap;
+}
+
+
+
