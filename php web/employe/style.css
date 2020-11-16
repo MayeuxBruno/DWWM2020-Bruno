@@ -8,8 +8,22 @@ div,header{
     flex:1;
 }
 
+.bleuciel{
+    background-color:lightblue;
+}
+
+.vertFonce{
+    background-color:rgb(22, 253, 176);
+}
+
+.espaceh{
+    flex:none;
+    height:10vh;
+}
 .cellule{
   border:1px solid white;
+  color:white;
+  justify-content:center;
 }
 
 h3,a{
