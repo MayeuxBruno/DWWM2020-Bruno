@@ -1,7 +1,6 @@
 <?php
 
 echo'<header>
-        
-        <h1>LISTE DES EMPLOYES</h1>
+        <h1>Gestion des Employés</h1>
      </header>';
 ?>

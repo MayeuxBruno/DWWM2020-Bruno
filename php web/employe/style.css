@@ -19,3 +19,10 @@ header{
 .cache{
     display:none;
 }
+
+.cellule{
+    border:1px solid black;
+}
+a{
+    display:flex;
+}
