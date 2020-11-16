@@ -73,7 +73,7 @@ class Personne
     
     public function affichage()
     {
-        echo $this->getNomPersonne().' - '.$this->getPrenom().' - '.$this->getAge();
+        echo $this->getNomPersonne().' - '.$this->getPrenom().' - '.$this->getAge().'<br>';
     }
 
     
