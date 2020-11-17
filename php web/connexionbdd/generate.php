@@ -1,50 +1,5 @@
 <?php
 
-$nomDB="gestion_hotels";
-$nomTable="hotels";
-
-
-/*********************************************************************************************************/
-/*****                              CONNECTION A LA BASE DE DONNEES                                 ******/
-/*********************************************************************************************************/
-
-
-try { // execute les instructions et rpère les erreurs
-    $db = new PDO('mysql:host=localhost;dbname=baseproduits;charset=utf8', 'root', '');
-}
-catch (Exception $e) // si une erreur est levée, on agit en conséquence
-{
-    if ($e->getCode() == 1049)
-    {
-        echo "Base de données indisponible";
-        die(); // permet d'arrêter l'execution
-    }
-    else if ($e->getCode() == 1045) // erreur identification
-    {
-        echo "La connexion a échouée";
-        die();
-    }
-    else
-    {
-        die('Erreur : ' . $e->getMessage());
-    }
-}
-
-echo "Connection à la base de données réussie";
-
-/*********************** Récupération des noms de colonnes de la table ****************************/
-
-
-$requete = $db->query('SELECT TABLE_NAME,COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA="'.$nomDB.'" and TABLE_NAME="'.$nomTable.'"'); // $requete est un objet de type PDO_Statement
-while ($donnees = $requete->fetch(PDO::FETCH_ASSOC)) // le while permet de boucler sur les enregistrements
-// il s'arrete quand fetch renvoi false
-{
-   $colonne[]=$donnees["COLUMN_NAME"];
-}
-
-var_dump($colonne);
-
-
 /*********************************************************************************************************/
 /**********************************  GENERATION DE CLASSE  ***********************************************/
 /******************************************************************************************************* */
@@ -240,26 +195,29 @@ function genereCompareTo($fichier)
 
 
 
-// Genere le nom et ouvre le fichier contenant la classe
-$nomFichier=$nomTable.".Class.php";
-$fp=fopen($nomFichier,"w");
+function genereClass($nomTable,$colonne)
+{
+    // Genere le nom et ouvre le fichier contenant la classe
+    $nomFichier=$nomTable.".Class.php";
+    $fp=fopen($nomFichier,"w");
 
-// Affichage de l'entête du fichier
-genereEntete($nomTable,$fp);
-// Affichage des attributs
-affichageAttributs($colonne,$fp);
-// Affichage des getters setters
-genereSetters($colonne,$fp);
-// Affichage du constructeur
-genereConstruct($fp);
-// Affichage la fonction toString
-genereToString($colonne,$fp);
-// Affichage la fonction equalsTo
-genereEqualsTo($fp);
-// Affiche la fonction CompareTo
-genereCompareTo($fp);
-//Parenthèse de la fin de classe
-fputs($fp,'}');
-//Fermeture du fichier contenant la classe
-fclose($fp);
-
+    // Affichage de l'entête du fichier
+    genereEntete($nomTable,$fp);
+    // Affichage des attributs
+    affichageAttributs($colonne,$fp);
+    // Affichage des getters setters
+    genereSetters($colonne,$fp);
+    // Affichage du constructeur
+    genereConstruct($fp);
+    // Affichage la fonction toString
+    genereToString($colonne,$fp);
+    // Affichage la fonction equalsTo
+    genereEqualsTo($fp);
+    // Affiche la fonction CompareTo
+    genereCompareTo($fp);
+    //Parenthèse de la fin de classe
+    fputs($fp,'}');
+    //Fermeture du fichier contenant la classe
+    fclose($fp);
+}
+?>
