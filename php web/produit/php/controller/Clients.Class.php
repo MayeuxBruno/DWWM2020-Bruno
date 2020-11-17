@@ -83,7 +83,7 @@ class Clients
 	*/
 	public function toString()
 	{
-		return "IdClient : ".$this->getIdClient()."Nom : ".$this->getNom()."Prenom : ".$this->getPrenom()."Age : ".$this->getAge()."\n";
+		return $this->getNom().' - '.$this->getPrenom().' - '.$this->getAge()."\n";
 	}
 
 
