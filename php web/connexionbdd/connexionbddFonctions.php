@@ -1,6 +1,7 @@
 <?php
 
 include "generate.php";
+include "generateManager.php";
 
 
 /*********************************************************************************************************/
@@ -78,6 +79,7 @@ $tableauTable=["chambres","clients","stations"];
 
 $jeton=connectDB($nomDB);
 
+
 foreach ($tableauTable as $nomTable)
 {
     $attributs=recupColonne($jeton,$nomDB,$nomTable);
@@ -85,4 +87,5 @@ foreach ($tableauTable as $nomTable)
     var_dump($attributs);
 
     genereClasse($nomTable,$attributs);
+    genereManager($nomTable,$attributs);
 }
