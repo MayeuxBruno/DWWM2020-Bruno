@@ -1,13 +1,13 @@
 <?php 
-class ProduitdManager
+class ProduitsManager
 {
     public static function add(Produits $obj)
     {
         $db = DbConnect::getDb();
-        $q=$db->prepare("INSERT INTO Produits(libelleProduit,prix,dateDePeremption) VALUES (:libelleProduit,:prix,::dateDePeremption)");
+        $q=$db->prepare("INSERT INTO Produits(libelleProduit,prix,dateDePeremption) VALUES (:libelleProduit,:prix,:dateDePeremption)");
         $q->bindValue(":libelleProduit",$obj->getLibelleProduit());
         $q->bindValue(":prix",$obj->getPrix());
-        $q->bingValue(":dateDePeremption",$obj->getDateDePeremption());
+        $q->bindValue(":dateDePeremption",$obj->getDateDePeremption());
         $q->execute();
     }
 
@@ -16,7 +16,7 @@ class ProduitdManager
         $db = DbConnect::getDb();
         $q = $db->prepare("UPDATE Produits SET libelleProduit=:libelleProduit,prix=:prix,dateDePeremption=:dateDePeremption WHERE idProduit=:idProduit");
         $q->bindValue(":libelleProduit",$obj->getLibelleProduit());
-        $q->bindValue(":prix",$obj->prix());
+        $q->bindValue(":prix",$obj->getPrix());
         $q->bindValue(":dateDePeremption",$obj->getDateDePeremption());
         $q->bindValue(":idProduit",$obj->getIdProduit());
         $q->execute();
@@ -33,8 +33,8 @@ class ProduitdManager
         $db = DbConnect::getDb();
         $id = (int) $id;
         $q = $db->query("SELECT * FROM Produits WHERE idProduit=".$id);
-        $results=$q->fetch(PDO::FEETCH_ASSOC);
-        if ($result != false)
+        $results=$q->fetch(PDO::FETCH_ASSOC);
+        if ($results != false)
         {
             return new Produits($results);
         }
@@ -48,7 +48,7 @@ class ProduitdManager
     {
         $db=DbConnect::getDb();
         $liste = [];
-        $q = $db->querry("SELECT * FROM Produits");
+        $q = $db->query("SELECT * FROM Produits");
         while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
         {
             if($donnees != false)

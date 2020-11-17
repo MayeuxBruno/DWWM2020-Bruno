@@ -8,11 +8,11 @@ function chargerClasse($classe)
 {
     if (file_exists("php/controller/".$classe.".class.php"))
     {
-        require "php/controller/".$classe."class.php";
+        require "php/controller/".$classe.".class.php";
     }
     if (file_exists("php/model/".$classe.".class.php"))
     {
-        require "php/model/".$classe."class.php";
+        require "php/model/".$classe.".class.php";
     }
 }
 
