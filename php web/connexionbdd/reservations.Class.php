@@ -128,10 +128,22 @@ class reservations
 			}
 		}
 	}
-"IdReservation : ".$this->getIdReservation()."DateReservationSejour : ".$this->getDateReservationSejour()."DateDebutSejour : ".$this->getDateDebutSejour()."DateFinSejour : ".$this->getDateFinSejour()."PrixSejour : ".$this->getPrixSejour()."ArrhesSejour : ".$this->getArrhesSejour()."IdClient : ".$this->getIdClient()."IdChambre : ".$this->getIdChambre()."Archive : ".$this->getArchive()."\n"
+
+	/*****************Autres Méthodes***************** */
+
+	/**
+	* Transforme l'objet en chaine de caractères
+	*
+	* @return String
+	*/
+	public function toString()
+	{
+		return "IdReservation : ".$this->getIdReservation()"DateReservationSejour : ".$this->getDateReservationSejour()"DateDebutSejour : ".$this->getDateDebutSejour()"DateFinSejour : ".$this->getDateFinSejour()"PrixSejour : ".$this->getPrixSejour()"ArrhesSejour : ".$this->getArrhesSejour()"IdClient : ".$this->getIdClient()"IdChambre : ".$this->getIdChambre()"Archive : ".$this->getArchive()"\n";
+	}
+
 
 	
-	* Renvoit Vrai si l'objet en paramètre est égal 
+	/* Renvoit Vrai si lobjet en paramètre est égal 
 	* à l'objet appelant
 	*
 	* @param [type] $obj

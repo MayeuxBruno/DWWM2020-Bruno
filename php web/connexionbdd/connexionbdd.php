@@ -1,7 +1,7 @@
 <?php
 
 $nomDB="gestion_hotels";
-$nomTable="reservations";
+$nomTable="hotels";
 /********************************************/
 /*****  CONNECTION A LA BASE DE DONNEES *****/
 /********************************************/
@@ -163,7 +163,17 @@ function genereToString($tabAt,$fichier)
         $rep.='"'.ucfirst($tabAt[$i]).' : ".$this->get'.ucfirst($tabAt[$i]).'().';
     }
     $rep.='"\n"';
-    fputs($fichier,$rep);
+    $toStr="\n\t/*****************Autres Méthodes***************** */\n\n".
+            "\t/**\n".
+            "\t* Transforme l'objet en chaine de caractères\n".
+            "\t*\n".
+            "\t* @return String\n".
+            "\t*/\n".
+            "\tpublic function toString()\n".
+            "\t{\n".
+            "\t\treturn ".$rep.";\n".
+            "\t}\n";
+    fputs($fichier,$toStr);
 }
 
 /**
@@ -176,7 +186,7 @@ function genereToString($tabAt,$fichier)
 function genereEqualsTo($fichier)
 {
      $toStr="\n\n\t\n".
-            "\t* Renvoit Vrai si l'objet en paramètre est égal \n".
+            "\t/* Renvoit Vrai si lobjet en paramètre est égal \n".
             "\t* à l'objet appelant\n".
             "\t*\n".
             "\t* @param [type] ".'$obj'."\n".
