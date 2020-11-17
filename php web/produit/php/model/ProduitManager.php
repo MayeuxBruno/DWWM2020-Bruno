@@ -49,6 +49,13 @@ class ProduitdManager
         $db=DbConnect::getDb();
         $liste = [];
         $q = $db->querry("SELECT * FROM Produits");
-        while ($donnees = $q->fetch(P))
+        while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
+        {
+            if($donnees != false)
+            {
+                $liste[] = new Produits ($donnees);
+            }
+        }
+        return $liste;
     }
 }
