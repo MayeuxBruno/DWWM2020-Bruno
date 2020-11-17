@@ -51,7 +51,7 @@ class ClientsManager
     public static function update(Clients $obj)
     {
         $db=DbConnect::getDb();
-        $q=$db->prepare("UPDATE Clients SET nom=:nom, prenom=:prenom, age=:age WHERE icClient=:idClient");
+        $q=$db->prepare("UPDATE Clients SET nom=:nom, prenom=:prenom, age=:age WHERE idClient=:idClient");
         $q->bindValue(":nom",$obj->getNom());
         $q->bindValue(":prenom",$obj->getPrenom());
         $q->bindValue(":age",$obj->getAge());
