@@ -21,27 +21,4 @@ $e[] = new Employe(["idEmploye"=>3,"Nom" => "Balair", "Prenom" => "Quentin", "da
 $e[] = new Employe(["idEmploye"=>4,"Nom" => "Cugny", "Prenom" => "Maxime", "dateEmbauche" => new DateTime("27-08-2007"), "fonction" => "Homme de menage", "salaireAnnuel" => "50", "Service" => "Nettoyage","agence"=>$a3,"enfants"=>[$enfant[4]]]);
 
 
-try{
-    $db=new PDO('mysql:host=localhost;dbname=employe;charset=utf-8','root','');
-}
-catch (Exception $e)
-{
-    if ($e->getCode()==1049)
-    {
-        echo '<h3>on est connecté à la base de données</h3>';
-        die();
-    }
-    else if ($e->getCode()==1045)
-    {
-        echo '<h3>on est connecté à la base de données</h3>';
-        die();
-    }
-    else
-    {
-        die('Erreur :'.$e->getMessage());
-    }
-}
-echo '<h3>on est connecté à la base de données</h3>'
-
-$requete=$db->query("SELECT idPersonne,nom,prenom,")
 ?>
