@@ -19,4 +19,29 @@ $e[] = new Employe(["idEmploye"=>1,"Nom" => "Courquin", "Prenom" => "Pierre", "d
 $e[] = new Employe(["idEmploye"=>2,"Nom" => "Rjeb", "Prenom" => "Zied", "dateEmbauche" => new DateTime("15-09-2015"), "fonction" => "Kebabiste", "salaireAnnuel" => "30", "Service" => "Restauration","agence"=>$a2,"enfants"=>[$enfant[2],$enfant[3]]]);
 $e[] = new Employe(["idEmploye"=>3,"Nom" => "Balair", "Prenom" => "Quentin", "dateEmbauche" => new DateTime("03-03-2003"), "fonction" => "Plaquiste", "salaireAnnuel" => "20", "Service" => "batiment","agence"=>$a1]);
 $e[] = new Employe(["idEmploye"=>4,"Nom" => "Cugny", "Prenom" => "Maxime", "dateEmbauche" => new DateTime("27-08-2007"), "fonction" => "Homme de menage", "salaireAnnuel" => "50", "Service" => "Nettoyage","agence"=>$a3,"enfants"=>[$enfant[4]]]);
+
+
+try{
+    $db=new PDO('mysql:host=localhost;dbname=employe;charset=utf-8','root','');
+}
+catch (Exception $e)
+{
+    if ($e->getCode()==1049)
+    {
+        echo '<h3>on est connecté à la base de données</h3>';
+        die();
+    }
+    else if ($e->getCode()==1045)
+    {
+        echo '<h3>on est connecté à la base de données</h3>';
+        die();
+    }
+    else
+    {
+        die('Erreur :'.$e->getMessage());
+    }
+}
+echo '<h3>on est connecté à la base de données</h3>'
+
+$requete=$db->query("SELECT idPersonne,nom,prenom,")
 ?>

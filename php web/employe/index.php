@@ -4,8 +4,8 @@ include "head.php";
 include "listeEmploye.php";
 include "header.php";
 
+/*echo '<h3>Salut</h3>';
 
-/*
 echo'<div class="colonne">';
 $compteur=0;
 for($i=0;$i<count($e);$i++)
