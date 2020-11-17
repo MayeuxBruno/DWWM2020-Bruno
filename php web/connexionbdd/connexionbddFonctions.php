@@ -2,14 +2,20 @@
 
 include "generate.php";
 
-$nomDB="gestion_hotels";
-$nomTable="hotels";
-
 
 /*********************************************************************************************************/
 /*****                              CONNECTION A LA BASE DE DONNEES                                 ******/
 /*********************************************************************************************************/
 
+/**
+ * 
+ *   Etablie La connection avec la base de données
+ * 
+ * @param string Nom de la base de données
+ * 
+ * @return object PDO  pointant sur la base de données
+ * 
+ */
 function connectDb($nomDB)
 {
     try { // execute les instructions et rpère les erreurs
@@ -39,13 +45,25 @@ function connectDb($nomDB)
 
 /*********************** Récupération des noms de colonnes de la table ****************************/
 
-function recupColonne()
+/**
+ * 
+ * Récupère le nom des colonnes d'une table passée en paramètre
+ * 
+ * @param object PDO  pointant sur la base de données
+ * @param string Nom de la base de données
+ * @param string Nom de la table
+ * 
+ * @return array Tableau contenant les noms des colonnes
+ * 
+ */
+
+function recupColonne($db,$nomDB,$nomTable)
 {
     $requete = $db->query('SELECT TABLE_NAME,COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA="'.$nomDB.'" and TABLE_NAME="'.$nomTable.'"'); // $requete est un objet de type PDO_Statement
     while ($donnees = $requete->fetch(PDO::FETCH_ASSOC)) // le while permet de boucler sur les enregistrements
     // il s'arrete quand fetch renvoi false
     {
-    $colonne[]=$donnees["COLUMN_NAME"];
+     $colonne[]=$donnees["COLUMN_NAME"];
     }
     return $colonne;
 }
@@ -53,3 +71,18 @@ function recupColonne()
 
 
 
+/*********** Main  **************/
+
+$nomDB="gestion_hotels";
+$tableauTable=["chambres","clients","stations"];
+
+$jeton=connectDB($nomDB);
+
+foreach ($tableauTable as $nomTable)
+{
+    $attributs=recupColonne($jeton,$nomDB,$nomTable);
+
+    var_dump($attributs);
+
+    genereClasse($nomTable,$attributs);
+}

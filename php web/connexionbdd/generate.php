@@ -5,11 +5,6 @@
 /******************************************************************************************************* */
 
 
-/***
- * Generateur de classe prenant en charge l'héritage et les attributs statics
- * 09-10-2020 - MAYEUX Bruno
- */
-
  /**
  * Méthode qui crée l'entête de la classe
  * Prend en paramètre le nom de la classe, le nom de la classe mere le fichier
@@ -17,13 +12,12 @@
  * dans lequel on crée la classe
  * 
  * @param String  $nom
- * @param String $mere
  * @param Resousce $fichier
- * @param Bool $herit
  * @return Void
  */
 function genereEntete($nom,$fichier)
 {
+    $nom=ucfirst($nom);
     $entete='<?php'."\n\nclass $nom ";
     $entete.="\n{\n\n";
     fputs($fichier,$entete); 
@@ -31,13 +25,13 @@ function genereEntete($nom,$fichier)
 
 /**
  * Méthode qui crée l'affichage des attributs de la classe
- * Prend en paramètre le tableau d'attribut, le nombre d'attributs et le fichier 
+ * Prend en paramètre le tableau d'attribut et le fichier 
  * dans lequel on crée la classe
  * 
  * @param Array  $tabAtt
- * @param Integer $nbAtt
  * @param Resousce $fichier
- * @return Array
+ * @return void
+ * 
  */
 function affichageAttributs($tabAtt,$fichier)
 {
@@ -51,10 +45,8 @@ function affichageAttributs($tabAtt,$fichier)
 
 /**
  * Méthode qui crée l'affichage du constructeur de classe
- * Prend en paramètre le fichier dans lequel on crée la classe et
- * un booleen indiquant si il y a heritage
+ * Prend en paramètre le fichier dans lequel on crée la classe
  * 
- * @param Bool $herit
  * @param Resousce $fichier
  * @return Void
  */
@@ -72,7 +64,7 @@ function genereConstruct($fichier)
            "\t{\n ".
            "\t\t".'foreach ($data as $key => $value)'."\n".
            "\t\t{\n ".
-           "\t\t\t".'$methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule'."\n". 
+           "\t\t\t".'$methode = "set".ucfirst($key); //ucfirst met la 1ere lettre en majuscule'."\n". 
            "\t\t\t".'if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe'."\n". 
            "\t\t\t{\n".
            "\t\t\t\t".'$this->$methode($value);'."\n".
@@ -85,11 +77,10 @@ function genereConstruct($fichier)
 
 /**
  * Méthode qui crée l'affichage des Accesseurs de la classe
- * Prend en paramètre le tableau d'attribut, le nombre d'attributs et le fichier 
+ * Prend en paramètre le tableau d'attribut et le fichier 
  * dans lequel on crée la classe
  * 
  * @param Array  $tabAtt
- * @param Integer $nbAtt
  * @param Resousce $fichier
  * @return Void
  */
@@ -112,11 +103,10 @@ function genereSetters($tabAtt,$fichier)
 
 /**
  * Méthode qui crée l'affichage de la méthode toString() de la classe
- * Prend en paramètre le tableau d'attribut le nombre d'attributs et le fichier 
+ * Prend en paramètre le tableau d'attribut et le fichier 
  * dans lequel on crée la classe
  * 
  * @param Array  $tabAtt
- * @param Integer $nbAtt
  * @param Resousce $fichier
  * @return Void
  */
@@ -191,11 +181,13 @@ function genereCompareTo($fichier)
 }
 
 
-/********************* FIN DES FONCTIONS**************************** */
+/********************************* FIN DES FONCTIONS********************************************** */
 
 
 
-function genereClass($nomTable,$colonne)
+
+
+function genereClasse($nomTable,$colonne)
 {
     // Genere le nom et ouvre le fichier contenant la classe
     $nomFichier=$nomTable.".Class.php";
