@@ -20,7 +20,7 @@ include "generateManager.php";
 function connectDb($nomDB)
 {
     try { // execute les instructions et rpère les erreurs
-        $db = new PDO('mysql:host=localhost;dbname=baseproduits;charset=utf8', 'root', '');
+        $db = new PDO('mysql:host=localhost;dbname='.$nomDB.';charset=utf8', 'root', '');
     }
     catch (Exception $e) // si une erreur est levée, on agit en conséquence
     {
@@ -75,7 +75,7 @@ function recupColonne($db,$nomDB,$nomTable)
 /*********** Main  **************/
 
 $nomDB="gestion_hotels";
-$tableauTable=["chambres","clients","stations"];
+$tableauTable=["reservations"];
 
 $jeton=connectDB($nomDB);
 
