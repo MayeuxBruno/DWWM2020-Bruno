@@ -29,7 +29,7 @@ class HotelsManager
 	public static function delete(Hotels $obj)
 	{
  		$db=DbConnect::getDb();
-		$db->exec("DELETE FROM Hotels WHERE idHotel=" .$obj->getIdHotel());
+		$db->exec("DELETE CASCADE FROM Hotels WHERE idHotel=" .$obj->getIdHotel());
 	}
 	public static function findById($id)
 	{

@@ -10,7 +10,8 @@ echo'<body>';
         echo'<div class="ligne">
              <div></div>
              <div class="bouton bleuCiel">'.$unhotel->getNomHotel().' - '.$unhotel->getVilleHotel().'</div>
-             <a href="consult.pdf?id='.$unhotel->getIdHotel().'"><div class="demi bouton vert">Consulter</div></a>
+             <a href="PHP/VIEW/consult.php?id='.$unhotel->getIdHotel().'"><div class="demi bouton vert">Consulter</div></a>
+             <a href="PHP/VIEW/delete.php?id='.$unhotel->getIdHotel().'"><div class="demi bouton rouge">Supprimmer</div></a>
              <div></div>
              </div>';
     }
