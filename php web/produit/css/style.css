@@ -1,14 +1,49 @@
-body, header,div{
+div,header{
     display: flex;
     flex: 1;
 }
+
+
 .colonne{
     flex-direction: column;
 }
+.bouton{
+    border: 2px solid black;
+    border-radius: 0.5em;
+    padding: 2em;
+    font-weight:bold;
+}
 
-.titre {
-	color: coral;
-    font-size: 3em;
-    justify-content: center;
-    align-items: center;
+.cache{
+    display: none;
+}
+
+.espacehor{
+    flex:none;
+    
+}
+
+/***** Header *****/ 
+header{
+    height:25vh;
+    align-items:center;
+    background-color:lightskyblue
+}
+
+.titre{
+    justify-content:center;
+}
+
+/******* Contenu ********/
+
+.vert{
+    background-color:green;
+}
+
+.orange{
+    background-color:orange;
+}
+
+.rouge{
+    background-color:red;
 }
