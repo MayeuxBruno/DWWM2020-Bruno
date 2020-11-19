@@ -3,7 +3,9 @@ div,header{
     flex: 1;
 }
 
-
+body{
+    background-color:lightgrey
+}
 .colonne{
     flex-direction: column;
 }
@@ -12,6 +14,7 @@ div,header{
     border-radius: 0.5em;
     padding: 2em;
     font-weight:bold;
+    justify-content:center;
 }
 
 .cache{
@@ -20,7 +23,7 @@ div,header{
 
 .espacehor{
     flex:none;
-    
+    height:10vh;
 }
 
 /***** Header *****/ 
@@ -46,4 +49,11 @@ header{
 
 .rouge{
     background-color:red;
+}
+.blanc{
+    background-color:white;
+}
+
+.vertclair{
+    background-color:greenyellow
 }
