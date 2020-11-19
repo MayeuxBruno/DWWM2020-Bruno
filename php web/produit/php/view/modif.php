@@ -29,12 +29,10 @@ DbConnect::Init();
 
 $detailProduit=$_POST;
 
-$Produit=new Produits($detailProduit);
+/*$Produit=new Produits($detailProduit);
 
-ProduitsManager::add($Produit);
+ProduitsManager::update($Produit);
 
-header("Location: ../../index.php");
+header("Location: ../../index.php");*/
 
-
-
-var_dump($Produit);
+var_dump($detailProduit);

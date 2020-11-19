@@ -27,14 +27,10 @@ spl_autoload_register("chargerClasse");
 
 DbConnect::Init();
 
-$detailProduit=$_POST;
+$Produit=ProduitsManager::findById($_GET['id']);
 
-$Produit=new Produits($detailProduit);
-
-ProduitsManager::add($Produit);
+ProduitsManager::delete($Produit);
 
 header("Location: ../../index.php");
 
-
-
-var_dump($Produit);
+include "php/view/Footer.php";
