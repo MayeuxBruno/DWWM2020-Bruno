@@ -48,9 +48,9 @@ class HotelsManager
 	}
 	public static function getList()
 	{
- 		$db=DbConnect::getDb();
+		 $db=DbConnect::getDb();
 		$liste = [];
-		$q = $db->query("SELECT * FROM Hotels");
+		$q = $db->query("SELECT * FROM hotels");
 		while($donnees = $q->fetch(PDO::FETCH_ASSOC))
 		{
 			if($donnees != false)
