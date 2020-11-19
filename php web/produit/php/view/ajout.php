@@ -18,7 +18,7 @@ include "Header.php";
         <div class="ligne">
         <div></div>
         <div class="bouton blanc">Prix</div>
-        <div class="bouton vertclair"><input type="text" size="6" name="prix"/>€</div>
+        <div class="bouton vertclair"><input type="text" size="6" name="prix"/>&nbsp;€</div>
         <div></div>
         </div>
         <div class="ligne">

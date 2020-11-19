@@ -19,7 +19,7 @@ $produit=ProduitsManager::findById($idProduit);
      <div class="ligne">
      <div></div>
      <div class="bouton blanc">Prix</div>
-     <div class="bouton vertclair"><input type="text" disabled="disabled" size="6" value="'.$produit->getPrix().'"/>€</div>
+     <div class="bouton vertclair"><input type="text" disabled="disabled" size="6" value="'.$produit->getPrix().'"/>&nbsp;€</div>
      <div></div>
      </div>
      <div class="ligne">
