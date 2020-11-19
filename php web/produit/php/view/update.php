@@ -33,9 +33,8 @@ $produit=ProduitsManager::findById($idProduit);
         <div class="espacehor"></div>
         <div>
             <div></div>
-            <div class="bouton vertclair"><a href="../../index.php">Retour</a></div>
-            <div></div>
-            <div><input class="bouton vertclair" type="submit" value="Modifier">
+            <div class="bouton vertclair demi"><a href="../../index.php">Retour</a></div>
+            <div><input class="bouton orange" type="submit" value="Modifier">
             <div></div>
         </div>
      </form>

@@ -34,12 +34,12 @@ echo(!empty($titre))?'<title>'.$titre.'</title>':'<title>Titre de la page</title
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />';
 
 if (file_exists("./css/style.css"))
-    {
-        echo'<link rel="stylesheet" href="./css/style.css">';
-    }
-    else if (file_exists("../../css/style.css"))
-    {
-        echo'<link rel="stylesheet" href="../../css/style.css">';
-    }
+{
+    echo'<link rel="stylesheet" href="./css/style.css">';
+}
+else if (file_exists("../../css/style.css"))
+{
+    echo'<link rel="stylesheet" href="../../css/style.css">';
+}
 
 echo'</head>';
