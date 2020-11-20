@@ -17,3 +17,39 @@ img, video {
 	flex-direction:column;
 }
 
+.espacehor{
+	flex:none;
+	height:10vh;
+}
+
+/********* Header **********/
+header{
+	background-color: antiquewhite;
+}
+
+.titre{
+	justify-content:center;
+}
+
+/******** Contenu *********/
+.case{
+	border:1px solid black;
+	border-radius:0.5em;
+	padding:1em;
+	background-color:lightskyblue;
+	justify-content:center;
+}
+
+.btn{
+	justify-content:center;
+}
+
+button{
+	padding:1em;
+	background-color:greenyellow;
+}
+
+/******* Formulaire ******/
+.conteneur{
+	align-items: center;
+}
