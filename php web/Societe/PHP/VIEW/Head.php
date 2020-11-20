@@ -3,7 +3,16 @@
 <head>
 	<meta charset="utf-8">
 	<?php echo'<title>'.$titre.'</title>'."\n" ?>
-	<link rel="stylesheet" href="./CSS/style.css">
+	<?php
+		if (file_exists("./css/style.css"))
+		{
+			echo'<link rel="stylesheet" href="./css/style.css">';
+		}
+		else if (file_exists("../../css/style.css"))
+		{
+			echo'<link rel="stylesheet" href="../../css/style.css">';
+		}
+	?>
 	<script src="./JS/script.js"></script>
 </head>
 <?php

@@ -19,7 +19,7 @@ class Adherents
 		return $this->_idAdherent;
 	}
 
-	public function setIdAdherent($idAdherent)
+	public function setIdAdherent(int $idAdherent)
 	{
 		$this->_idAdherent=$idAdherent;
 	}
