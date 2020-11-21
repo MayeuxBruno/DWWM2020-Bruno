@@ -11,7 +11,7 @@
         <input type="text" name="nom" />
     </div>
     <div>
-        <label for="prenom">Nom : </label>
+        <label for="prenom">Prenom : </label>
         <input type="text" name="prenom" />
     </div>
     <div>
@@ -19,13 +19,13 @@
         <input type="text" name="pupitre" />
     </div>
     <div>
-        <label for="fonction">Nom : </label>
+        <label for="fonction">Fonctio : </label>
         <input type="text" name="fonction" />
     </div>
     <div class="espaceh"></div>
     <div>
-        <button type="submit">Ajouter</button>
-        <button type="submit"><a href="../../index.php">Ajouter</a></button>
+        <button class="vert" type="submit">Ajouter</button>
+        <button class="orange" type="submit"><a href="../../index.php">Retour</a></button>
     </div>
 </form>
 </div>

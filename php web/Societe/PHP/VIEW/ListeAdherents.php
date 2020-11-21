@@ -1,7 +1,7 @@
 <?php
     echo'<div class="espacehor"></div>';
     $listeMusiciens=AdherentsManager::getList();
-    echo '<div class="btn"><a href="PHP/VIEW/FormAjout.php"><button>Ajouter un Musicien</button></a></div>';
+    echo '<div class="btn"><a href="PHP/VIEW/FormAjout.php"><button class="vert">Ajouter un Musicien</button></a></div>';
     echo'<div class="espacehor"></div>';
     echo '<div class="colonne">';
     foreach($listeMusiciens as $unMusicien)

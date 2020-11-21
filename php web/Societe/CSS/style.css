@@ -46,10 +46,29 @@ header{
 
 button{
 	padding:1em;
+	
+}
+
+.vert
+{
 	background-color:greenyellow;
+}
+
+.orange
+{
+	background-color:orange;
+}
+
+.orange
+{
+	background-color:orangered;
 }
 
 /******* Formulaire ******/
 .conteneur{
 	align-items: center;
+}
+
+input{
+	border:none;
 }
