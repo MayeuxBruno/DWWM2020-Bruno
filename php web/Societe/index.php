@@ -37,7 +37,14 @@ $routes=[
      "liste"=>["PHP/VIEW/","listeAdherents","Liste des Musiciens"],
      
      "formajout"=>["PHP/VIEW/","FormAjout","Ajouter un Membre"],
-     "ajout"=>["PHP/VIEW/","AjoutAdherent","Ajouter un Membre"]
+     "ajout"=>["PHP/VIEW/","AjoutAdherent","Ajouter un Membre"],
+
+     "detail"=>["PHP/VIEW/","detail","Membre"],
+
+     "formModif"=>["PHP/VIEW/","FormModif","Ajouter un Membre"],
+    
+     "formSuppr"=>["PHP/VIEW/","FormSupp","Ajouter un Membre"],
+     "delete"=>["PHP/VIEW/","delete","Ajouter un Membre"]
 ];
 
 if (isset($_GET["code"]))

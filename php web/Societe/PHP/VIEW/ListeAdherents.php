@@ -9,8 +9,11 @@
         echo'<div class="ligne">
                 <div></div>
                 <div class="case">'.$unMusicien->getNom()." - ".$unMusicien->getPrenom().'</div>
-                <div class="bouton"><a href="index.php?code=detail&id='.$unMusicien->getIdAdherent().'>Détail</a></div>
-              
+                <div>
+                <div class="case vert"><a href="index.php?code=detail&id='.$unMusicien->getIdAdherent().'">Détail</a></div>
+                <div class="case orange"><a href="index.php?code=formModif&id='.$unMusicien->getIdAdherent().'">Modifier</a></div>
+                <div class="case rouge"><a href="index.php?code=formSuppr&id='.$unMusicien->getIdAdherent().'">Supprimer</a></div>
+                </div>
                 <div></div>
             </div>';
     }
