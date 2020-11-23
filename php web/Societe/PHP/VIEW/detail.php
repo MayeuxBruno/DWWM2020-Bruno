@@ -1,26 +1,29 @@
+<?php
 
-<div class="espacehor"></div>
+$musicien=AdherentsManager::getById($_GET['id']);
+
+echo'<div class="espacehor"></div>
 <div class="conteneur colonne">
-<form action="index.php?code=ajout" method="post">
+
+<form action="index.php?code=liste" method="post">
     <div>
         <label for="nom">Nom : </label>
-        <input type="text" name="nom" />
+        <input type="text" name="nom" value="'.$musicien->getNom().'" />
     </div>
     <div>
         <label for="prenom">Prenom : </label>
-        <input type="text" name="prenom" />
+        <input type="text" name="prenom" value="'.$musicien->getPrenom().'"/>
     </div>
     <div>
         <label for="pupitre">Pupitre : </label>
-        <input type="text" name="pupitre" />
+        <input type="text" name="pupitre" value="'.$musicien->getPupitre().'"/>
     </div>
     <div>
         <label for="fonction">Fonctio : </label>
-        <input type="text" name="fonction" />
+        <input type="text" name="fonction" value="'.$musicien->getFonction().'"/>
     </div>
     <div class="espaceh"></div>
     <div>
-        <button class="vert" type="submit">Ajouter</button>
         <button class="orange" type="submit"><a href="index.php?code=liste">Retour</a></button>
     </div>
 </form>
