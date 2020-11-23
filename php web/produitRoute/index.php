@@ -18,7 +18,8 @@ function AfficherPage($page)
      $chemin=$page[0];
      $nom=$page[1];
      $titre=$page[2];
-
+     var_dump($chemin);
+     var_dump($nom);
      include "php/view/Head.php";
      include "php/view/Header.php";
      include $chemin.$nom.'.php';
@@ -40,7 +41,7 @@ if (isset($_GET["code"]))
 {
      $code=$_GET["code"];
      // Si la route existe
-     if (isset($routes["code"]))
+     if (isset($routes[$code]))
      {
           AfficherPage($routes[$code]);
      }

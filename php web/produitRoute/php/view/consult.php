@@ -1,7 +1,8 @@
 <?php
-$idProduit=$_GET['id'];
+//$idProduit=$_GET['id'];
+$idProduit="1";
 $produit=ProduitsManager::findById($idProduit);
-
+var
      echo'<div class="colonne">
      <div class="espacehor"></div>
      <div class="ligne">
