@@ -1,8 +1,6 @@
 <?php
-//$idProduit=$_GET['id'];
-$idProduit="1";
+$idProduit=$_GET['id'];
 $produit=ProduitsManager::findById($idProduit);
-var
      echo'<div class="colonne">
      <div class="espacehor"></div>
      <div class="ligne">
@@ -26,5 +24,5 @@ var
      </div>
 
      <div class="espacehor"></div>
-     <div class="bouton vertclair"><a href="../../index.php">Retour</a></div>';
+     <div class="bouton vertclair"><a href="index.php">Retour</a></div>';
 

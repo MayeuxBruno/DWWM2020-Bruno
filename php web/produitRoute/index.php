@@ -18,11 +18,18 @@ function AfficherPage($page)
      $chemin=$page[0];
      $nom=$page[1];
      $titre=$page[2];
-     var_dump($chemin);
-     var_dump($nom);
+     
      include "php/view/Head.php";
      include "php/view/Header.php";
-     include $chemin.$nom.'.php';
+     if (isset($page[3]))
+     {
+          $mode=$page[3];
+          include $chemin.$nom.'.php?mode='.$mode;
+     }
+     else
+     {
+          include $chemin.$nom.'.php';
+     }
      include "php/view/Footer.php";
 }
 
@@ -34,7 +41,12 @@ DbConnect::Init();
 $routes=[
      "default"=>["PHP/VIEW/","listeProduits","Liste des Produits"],
      "liste"=>["PHP/VIEW/","listeProduits","Liste des Produits"],
-     "detail"=>["PHP/VIEW/","consult","Liste des Produits"],
+     "detail"=>["PHP/VIEW/","consult","Détail du Produit"],
+     "ajout"=>["PHP/VIEW/","FormProduit","Détail du Produit"],
+     "add"=>["PHP/VIEW/","add","Détail du Produit"],
+     "update"=>["PHP/VIEW/","update","Modification du Produit"],
+     "modif"=>["PHP/VIEW/","modif","Modification du Produit"],
+     "delete"=>["PHP/VIEW/","del","Détail du Produit"],
 ];
 
 if (isset($_GET["code"]))

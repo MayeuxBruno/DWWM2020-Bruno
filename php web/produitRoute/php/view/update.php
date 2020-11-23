@@ -5,7 +5,7 @@ $produit=ProduitsManager::findById($idProduit);
 
      echo'<div class="colonne">
      <div class="espacehor"></div>
-     <form method="post" action="modif.php">
+     <form method="post" action="index.php?code=modif">
         <input class="cache" type="text" name="idProduit" value="'.$idProduit.'"/>
         <div class="ligne">
             <div></div>
@@ -28,7 +28,7 @@ $produit=ProduitsManager::findById($idProduit);
         <div class="espacehor"></div>
         <div>
             <div></div>
-            <div class="bouton vertclair demi"><a href="../../index.php">Retour</a></div>
+            <div class="bouton vertclair demi"><a href="index.php">Retour</a></div>
             <div><input class="bouton orange" type="submit" value="Modifier">
             <div></div>
         </div>

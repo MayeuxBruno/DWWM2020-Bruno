@@ -12,4 +12,4 @@ $produit->setDateDePeremption($detailProduit['dateDePeremption']);
 
 ProduitsManager::update($produit);
 
-header("Location: ../../index.php");
+header("Location: index.php");
