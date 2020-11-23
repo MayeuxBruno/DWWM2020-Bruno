@@ -1,7 +1,5 @@
 <?php
 
-include "Head.php";
-
 $detailProduit=$_POST;
 
 $produit=ProduitsManager::findById($detailProduit['idProduit']);

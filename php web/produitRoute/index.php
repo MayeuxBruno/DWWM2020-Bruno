@@ -35,9 +35,9 @@ DbConnect::Init();
 $routes=[
      "default"=>["PHP/VIEW/","listeProduits","Liste des Produits"],
      "liste"=>["PHP/VIEW/","listeProduits","Liste des Produits"],
-     "detail"=>["PHP/VIEW/","consult","Détail du Produit"],
+     "detail"=>["PHP/VIEW/","FormProduit","Détail du Produit"],
      "ajout"=>["PHP/VIEW/","FormProduit","Détail du Produit"],
-     "add"=>["PHP/VIEW/","add","Détail du Produit"],
+     "ajj"=>["PHP/VIEW/","add","Détail du Produit"],
      "update"=>["PHP/VIEW/","update","Modification du Produit"],
      "modif"=>["PHP/VIEW/","modif","Modification du Produit"],
      "delete"=>["PHP/VIEW/","del","Détail du Produit"],
