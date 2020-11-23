@@ -21,15 +21,9 @@ function AfficherPage($page)
      
      include "php/view/Head.php";
      include "php/view/Header.php";
-     if (isset($page[3]))
-     {
-          $mode=$page[3];
-          include $chemin.$nom.'.php?mode='.$mode;
-     }
-     else
-     {
-          include $chemin.$nom.'.php';
-     }
+     
+     include $chemin.$nom.'.php';
+     
      include "php/view/Footer.php";
 }
 

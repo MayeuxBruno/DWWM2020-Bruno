@@ -1,6 +1,6 @@
 <div class="colonne">
      <div class="espacehor"></div>
-     <form method="post" action="index.php?code=add">
+     <form method="post" action="index.php?code=ajout">
         <div class="ligne">
         <div></div>
         <div class="bouton blanc">Nom</div>
