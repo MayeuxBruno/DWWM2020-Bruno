@@ -12,7 +12,18 @@
     </div>
     <div>
         <label for="pupitre">Pupitre : </label>
-        <input type="text" name="pupitre" />
+        <!--<input type="text" name="pupitre" /> -->
+        <br>
+        <select name="pupitre">
+            <option value="1">Flute</option>
+            <option value="2">Clarinette</option>
+            <option value="3">Sax Alto</option>
+            <option value="4">Sax Tenor</option>
+            <option value="5">Sax Bar</option>
+            <option value="6">Trompette</option>
+            <option value="7">Cor</option>
+            <option value="8">Percussion</option>
+        </select>
     </div>
     <div>
         <label for="fonction">Fonctio : </label>

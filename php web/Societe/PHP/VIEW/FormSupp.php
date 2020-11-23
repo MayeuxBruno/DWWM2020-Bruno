@@ -1,13 +1,12 @@
 <?php
 
 $musicien=AdherentsManager::findById($_GET['id']);
-var_dump($musicien);
 echo'<div class="espacehor"></div>
 <div class="conteneur colonne">
 <form action="index.php?code=delete" method="post" value=">
-    <div>
-        <label for="id">Id : </label>
-        <input type="text" name="id" value="'.$musicien->getIdAdherent().'"/>
+    <div class="cache">
+        <label  class="cache"for="idAdherent">Id : </label>
+        <input  class="cache" type="text" name="idAdherent" value="'.$musicien->getIdAdherent().'"/>
     </div>
     <div>
         <label for="nom">Nom : </label>

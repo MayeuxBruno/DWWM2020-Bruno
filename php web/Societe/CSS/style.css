@@ -72,3 +72,7 @@ button{
 input{
 	border:none;
 }
+
+.cache{
+	display:none;
+}

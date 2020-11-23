@@ -42,6 +42,8 @@ $routes=[
      "detail"=>["PHP/VIEW/","detail","Membre"],
 
      "formModif"=>["PHP/VIEW/","FormModif","Ajouter un Membre"],
+     "update"=>["PHP/VIEW/","update","Ajouter un Membre"],
+    
     
      "formSuppr"=>["PHP/VIEW/","FormSupp","Ajouter un Membre"],
      "delete"=>["PHP/VIEW/","delete","Ajouter un Membre"]
