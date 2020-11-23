@@ -38,7 +38,6 @@ $routes=[
      "detail"=>["PHP/VIEW/","FormProduit","Détail du Produit"],
      "ajout"=>["PHP/VIEW/","FormProduit","Détail du Produit"],
      "ajj"=>["PHP/VIEW/","add","Détail du Produit"],
-     "update"=>["PHP/VIEW/","update","Modification du Produit"],
      "modif"=>["PHP/VIEW/","modif","Modification du Produit"],
      "delete"=>["PHP/VIEW/","del","Détail du Produit"],
 ];
