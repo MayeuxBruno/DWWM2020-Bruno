@@ -1,6 +1,81 @@
 <?php
-
 $mode=$_GET['mode'];
+
+if (isset($_GET['id']))
+{
+    $idRecu=$_GET['id'];
+    if($idRecu!=false)
+    {
+        $produitChoisi=ProduitsManager::findById($idRecu);
+    }
+}
+switch($mode)
+{
+    case"add":
+    {
+        echo'<form method="post" action="index.php?code=actionProduit&mode=ajout">';
+        break;
+    }
+    case "upd": 
+    {
+        echo'<form method="post" action="index.php?code=actionProduit&mode=modif">
+             <input name="idProduit" value="'.$produitChoisi->getIdProduit().'" type="hidden"/>';
+        break;
+    }
+    case "del":
+    {
+        echo'<form method="post" action="index.php?code=actionProduit&mode=delete">
+             <input name="idProduit" value="'.$produitChoisi->getIdProduit().'" type="hidden"/>';
+        break;
+    }
+    case "cons":
+    {
+        echo'<form>
+             <input name="idProduit" value="'.$produitChoisi->getIdProduit().'" type="hidden"/>';
+        break;
+    }
+}
+?>
+
+<div>
+    <label for="libelleProduit">Nom</label>
+    <input name="libelleProduit" <?php if ($mode!="add") { echo 'value="'.$produitChoisi->getLibelleProduit().'"';} 
+    if($mode=="cons"||$mode=="del") echo 'disabled';?>/>
+</div>
+<div>
+    <label for="prix">Prix</label>
+    <input name="prix" <?php if ($mode!="add") {echo 'value="'.$produitChoisi->getPrix().'"'; }
+    if ($mode=="del" || $mode=="cons") echo 'disabled'; ?>/>
+</div>
+<div>
+    <label for="dateDePeremption">Date de peremption</label>
+    <input name="dateDePeremption" <?php if ($mode!="add") { echo 'value="'.$produitChoisi->getDateDePeremption().'"';} 
+    if($mode=="cons"||$mode=="del") echo 'disabled';?>/>
+</div>
+<?php
+switch($mode)
+{
+    case"add":
+    {
+        echo'<button type="submit">Ajouter un Produit</button>';
+        break;
+    }
+    case "upd": 
+    {
+        echo'<button type="submit">Modifier un Produit</button>';
+        break;
+    }
+    case "del":
+    {
+        echo'<button type="submit">Supprimmer un Produit</button>';
+        break;
+    }
+}
+echo '<button><a href="index.php?code=liste">Retour</a></button>
+</form>';
+?>
+<?php
+/*$mode=$_GET['mode'];
 $code=$_GET['code'];
 if(isset($_GET['id']))
 {
@@ -43,8 +118,7 @@ if($mode=="add")
         
 
 
-echo '<div class="colonne">
-     <div class="espacehor"></div>
+   <div class="espacehor"></div>
      '.$methode.'
      
         <div class="ligne">
@@ -62,7 +136,8 @@ echo '<div class="colonne">
         <div class="ligne">
         <div></div>
         <div class="bouton blanc">Date de peremption</div>
-        <div class="bouton vertclair"><input type="text" name="dateDePeremption" value="'.$date.'"/></div>
+        <div class=echo '<div class="colonne">
+  "bouton vertclair"><input type="text" name="dateDePeremption" value="'.$date.'"/></div>
         <div></div>
         </div>
         <div class="espacehor"></div>
@@ -70,5 +145,5 @@ echo '<div class="colonne">
         '.$boutons.'
         </div>
      </form>
-     </div>';
+     </div>';*/
 ?>

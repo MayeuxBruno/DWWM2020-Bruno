@@ -35,11 +35,12 @@ DbConnect::Init();
 $routes=[
      "default"=>["PHP/VIEW/","listeProduits","Liste des Produits"],
      "liste"=>["PHP/VIEW/","listeProduits","Liste des Produits"],
-     "detail"=>["PHP/VIEW/","FormProduit","Détail du Produit"],
-     "ajout"=>["PHP/VIEW/","FormProduit","Détail du Produit"],
+     "actionForm"=>["PHP/VIEW/","FormProduit","Détail du Produit"],
+     "actionProduit"=>["PHP/VIEW/","actionProduit","Détail du Produit"],
      "ajj"=>["PHP/VIEW/","add","Détail du Produit"],
      "modif"=>["PHP/VIEW/","modif","Modification du Produit"],
      "delete"=>["PHP/VIEW/","del","Détail du Produit"],
+     ""
 ];
 
 if (isset($_GET["code"]))
