@@ -28,12 +28,12 @@ include "PHP/VIEW/Header.php";
 
 
 //On affiche le liste des objets
-echo 'On affiche la liste des objet <br>';
-$tableau=TVAManager::getList();
-foreach($tableau as $elt)
-{
+//echo 'On affiche la liste des objet <br>';
+//$tableau=TVAManager::getList();
+//foreach($tableau as $elt)
+//{
 	echo $elt->toString().'<br>';
-}
-include "PHP/VIEW/Footer.php";
+//}
+//include "PHP/VIEW/Footer.php";
 
 ?>

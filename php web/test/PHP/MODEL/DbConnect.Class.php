@@ -10,11 +10,13 @@ class DbConnect{
 	public static function init()
 	{
 		try {
-			self::$db= new PDO ( 'mysql:host=localhost;dbname=harmonie;charset=utf8', 'root', '');
+			self::$db= new PDO ( 'mysql:host=localhost;dbname=caisseenregistreuse;charset=utf8', 'root', '');
 		}
 		catch (Exception $e)
 		{
 			die('Erreur :'. $e->getMessage());
 		}
+		echo'Connexion Base Ok';
+
 	}
 }
