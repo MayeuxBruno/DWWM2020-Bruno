@@ -1,0 +1,78 @@
+/****  GENERAL ****/
+html, body {
+	margin : 0;
+	padding : 0;
+}
+
+div, header, footer, nav, article {
+	display : flex;
+	flex : 1;
+}
+
+img, video {
+	width : 100%;
+}
+
+.colonne{
+	flex-direction:column;
+}
+
+.espacehor{
+	flex:none;
+	height:10vh;
+}
+
+/********* Header **********/
+header{
+	background-color: antiquewhite;
+}
+
+.titre{
+	justify-content:center;
+}
+
+/******** Contenu *********/
+.case{
+	border:1px solid black;
+	border-radius:0.5em;
+	padding:1em;
+	background-color:lightskyblue;
+	justify-content:center;
+}
+
+.btn{
+	justify-content:center;
+}
+
+button{
+	padding:1em;
+	
+}
+
+.vert
+{
+	background-color:greenyellow;
+}
+
+.rouge
+{
+	background-color:orangered;
+}
+
+.orange
+{
+	background-color:orange;
+}
+
+/******* Formulaire ******/
+.conteneur{
+	align-items: center;
+}
+
+input{
+	border:none;
+}
+
+.cache{
+	display:none;
+}
