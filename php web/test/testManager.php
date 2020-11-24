@@ -7,29 +7,33 @@ include "PHP/VIEW/Header.php";
 
 //On teste la recherche par ID
 //echo 'Recherche de id=1 <br>';
-//$p=TVAManager::findById(3);
+//$p=PaiementsManager::findById(1);
 //var_dump($p);
 
-//On teste l'ajout  
+//On teste l'ajout
+//$ticket=TicketsManager::findById(1);
+//$mode=ModesPaiementsManager::findById(1);  
+//var_dump($ticket);
+//var_dump($mode);
 //echo 'On ajoute un objet TVA <br>';
-//$pNew = new TVA(["tauxTva"=>2]);
-//TVAManager::add($pNew);
+//$pNew = new Paiements(["idModePaiement"=>2,"idTicket"=>1,"prixTTC"=>39,"ModePaiement"=>$mode,"Ticket"=>$ticket]);
+//PaiementsManager::add($pNew);
 
 //On teste la suppression
 //echo 'On supprime un article <br>';
-//$pSupp=TVAManager::findById(4);
-//TVAManager::delete($pSupp);
+//$pSupp=PaiementsManager::findById(4);
+//PaiementsManager::delete($pSupp);
 
 
 //On teste la mise a jour
-//$pRecharge=TVAManager::findById(2);
-//$pRecharge->setTauxTva(9.6);
-//TVAManager::update($pRecharge);
+$pRecharge=PaiementsManager::findById(2);
+$pRecharge->setPrixTtc(1000);
+PaiementsManager::update($pRecharge);
 
 
 //On affiche le liste des objets
 echo 'On affiche la liste des objet <br>';
-$tableau=TVAManager::getList();
+$tableau=PaiementsManager::getList();
 foreach($tableau as $elt)
 {
 	echo $elt->toString().'<br>';
