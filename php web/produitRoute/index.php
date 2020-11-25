@@ -21,6 +21,7 @@ function AfficherPage($page)
      
      include "php/view/Head.php";
      include "php/view/Header.php";
+     include "php/view/Nav.php";
      
      include $chemin.$nom.'.php';
      
@@ -34,13 +35,20 @@ DbConnect::Init();
 
 $routes=[
      "default"=>["PHP/VIEW/","listeProduits","Liste des Produits"],
-     "liste"=>["PHP/VIEW/","listeProduits","Liste des Produits"],
+     "produits"=>["PHP/VIEW/","listeProduits","Liste des Produits"],
      "actionForm"=>["PHP/VIEW/","FormProduit","Détail du Produit"],
+     "actionProduit"=>["PHP/VIEW/","actionProduit","Détail du Produit"],
+
+     "categories"=>["PHP/VIEW/","listeCategories","Liste des Categories"],
+     "FormCategorie"=>["PHP/VIEW/","FormCategorie","Détail du Produit"],
+     "actionCategorie"=>["PHP/VIEW/","actionCategorie","Détail du Produit"],
+
+     /*"actionForm"=>["PHP/VIEW/","FormProduit","Détail du Produit"],
      "actionProduit"=>["PHP/VIEW/","actionProduit","Détail du Produit"],
      "ajj"=>["PHP/VIEW/","add","Détail du Produit"],
      "modif"=>["PHP/VIEW/","modif","Modification du Produit"],
-     "delete"=>["PHP/VIEW/","del","Détail du Produit"],
-     ""
+     "delete"=>["PHP/VIEW/","del","Détail du Produit"],*/
+     
 ];
 
 if (isset($_GET["code"]))
