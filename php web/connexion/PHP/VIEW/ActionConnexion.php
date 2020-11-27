@@ -1,14 +1,13 @@
 <?php 
-$utilisateur=UsersManager::findPasswordByPseudo($_POST['pseudoUser']);
+$utilisateur=UsersManager::findByPseudo($_POST['pseudoUser']);
 
 if (!empty($_POST['pseudoUser'])&&!empty($_POST['passwordUser']))
 {
-    $rechPassword=UsersManager::findPasswordByPseudo($pw);
-    var_dump($rechPassword);
-    if (strcmp($rechPassword['passwordUser'],$_POST['passwordUser'])==0)
+    if (strcmp($utilisateur->getPasswordUser(),$_POST['passwordUser'])==0)
     {
         session_start();
-        $_SESSION['nom']=$_POST['pseudoUser'];
+        $_SESSION['nom']=$utilisateur->getNomUser();
+        $_SESSION['prenom']=$utilisateur->getPrenomUser();
         header("Location:index.php?codePage=accueil");    
     }
     else{

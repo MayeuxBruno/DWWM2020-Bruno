@@ -69,7 +69,7 @@ class Users
 
     public function setPasswordUser($passwordUser)
     {
-        $this->_passwordUser = $passwordUser;
+        $this->_passwordUser = md5($passwordUser);
     }
 
     public function getRoleUser()

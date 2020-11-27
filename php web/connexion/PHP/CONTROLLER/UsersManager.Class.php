@@ -67,7 +67,7 @@ class UsersManager
 		return $liste;
 	}
 
-	public static function findPasswordByPseudo($pseudo)
+	public static function findByPseudo($pseudo)
 	{
 		$db=DbConnect::getDb();
 		$q=$db->query("SELECT * FROM users WHERE pseudoUser =".'"'.$pseudo.'"');
