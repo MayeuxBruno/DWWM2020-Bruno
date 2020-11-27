@@ -56,7 +56,7 @@ class UsersManager
 	{
 		$db=DbConnect::getDb();
 		//$id = (int) $id;
-		$q=$db->query("SELECT * FROM users WHERE pseudoUser =".$pseudo);
+		$q=$db->query("SELECT * FROM users WHERE pseudoUser =".'"'.$pseudo.'"');
 		$results = $q->fetch(PDO::FETCH_ASSOC);
 		if($results != false)
 		{
