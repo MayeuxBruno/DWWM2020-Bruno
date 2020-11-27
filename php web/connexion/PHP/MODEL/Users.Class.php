@@ -9,6 +9,7 @@ class Users
     private $_pseudoUser;
     private $_mailUser;
     private $_passwordUser;
+    private $_roleUser;
 
     /*****************Accesseurs***************** */
     public function getIdUser()
@@ -70,6 +71,18 @@ class Users
     {
         $this->_passwordUser = $passwordUser;
     }
+
+    public function getRoleUser()
+    {
+        return $this->_roleUser;
+    }
+
+    public function setRoleUser($roleUser)
+    {
+        $this->_roleUser = $roleUser;
+    }
+
+    
     
     /*****************Constructeur***************** */
 
@@ -102,7 +115,7 @@ class Users
     public function toString()
     {
         return $this->getNomUser()." - ".$this->getPrenomUser()." - ".$this->getPseudoUser()." - "
-        .$this->getMailUser()." - ".$this->getPasswordUser();
+        .$this->getMailUser()." - ".$this->getPasswordUser()." - ".$this->getRoleUser();
     }
 
     /**
@@ -131,4 +144,8 @@ class Users
     }
 
     
+
+    
+
+   
 }

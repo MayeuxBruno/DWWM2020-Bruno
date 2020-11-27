@@ -4,28 +4,30 @@ class UsersManager
 	public static function add(Users $obj)
 	{
  		$db=DbConnect::getDb();
-		$q=$db->prepare("INSERT INTO users (idUser, nomUser, prenomUser, pseudoUser, mailUser, passwordUser) VALUES 
-        (:idUser,:nomUser,:prenomUser,:pseudoUser,:mailUser,:passwordUser)");
+		$q=$db->prepare("INSERT INTO users (idUser, nomUser, prenomUser, pseudoUser, mailUser, passwordUser, roleUser) VALUES 
+        (:idUser,:nomUser,:prenomUser,:pseudoUser,:mailUser,:passwordUser,:roleUser)");
         $q->bindValue(":idUser", $obj->getIdUser());
         $q->bindValue(":nomUser", $obj->getNomUser());
         $q->bindValue(":prenomUser", $obj->getPrenomUser());
         $q->bindValue(":pseudoUser", $obj->getPseudoUser());
         $q->bindValue(":mailUser", $obj->getMailUser());
-        $q->bindValue(":passwordUser", $obj->getPasswordUser());
+		$q->bindValue(":passwordUser", $obj->getPasswordUser());
+		$q->bindValue(":roleUser", $obj->getRoleUser());
 		$q->execute();
 	}
 
 	public static function update(Users $obj)
 	{
  		$db=DbConnect::getDb();
-		$q=$db->prepare("UPDATE users SET idUser=:idUser,nomUser=:nomUser,prenomUser=:prenomUser,pseudoUser=:pseudoUser,passwordUser=:passwordUser 
+		$q=$db->prepare("UPDATE users SET idUser=:idUser,nomUser=:nomUser,prenomUser=:prenomUser,pseudoUser=:pseudoUser,passwordUser=:passwordUser,roleUser=:roleUser
         WHERE idUser=:idUser");
 		$q->bindValue(":idUser", $obj->getIdUser());
         $q->bindValue(":nomUser", $obj->getNomUser());
         $q->bindValue(":prenomUser", $obj->getPrenomUser());
         $q->bindValue(":pseudoUser", $obj->getPseudoUser());
         $q->bindValue(":mailUser", $obj->getMailUser());
-        $q->bindValue(":passwordUser", $obj->getPasswordUser());
+		$q->bindValue(":passwordUser", $obj->getPasswordUser());
+		$q->bindValue(":roleUser", $obj->getRoleUser());
 		$q->execute();
 	}
 	public static function delete(Users $obj)
@@ -48,6 +50,14 @@ class UsersManager
 		{
 			return false;
 		}
+	}
+	
+	public static function findByPseudo($pseudo)
+	{
+		var_dump($pseudo);
+ 		$db=DbConnect::getDb();
+		$result=$db->query("SELECT * FROM users WHERE pseudoUser =".$pseudo);
+		return $result;
     }
     
 	public static function getList()

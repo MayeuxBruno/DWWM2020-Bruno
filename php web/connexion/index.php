@@ -21,14 +21,16 @@ function AfficherPage($page)
 
     include 'PHP/VIEW/Head.php';
     include 'PHP/VIEW/Header.php';
-    include 'PHP/VIEW/Menu.php';
     include $chemin . $nom . '.php';
 }
 
 DbConnect::init();
 
 $routes = [
-    "default" => ["PHP/VIEW/", "PageAccueil", "page d'accueil"],
+    "default" => ["PHP/VIEW/", "FormConnexion", "page de connexion"],
+    "connexion" => ["PHP/VIEW/", "FormConnexion", "page de connexion"],
+    "formcreecompte" => ["PHP/VIEW/", "FormCreeCompte", "Création de compte"],
+    "actioncreecompte"=> ["PHP/VIEW/", "ActionCreeCompte", "Création de compte"]
 ];
 
 if (isset($_GET["codePage"]))

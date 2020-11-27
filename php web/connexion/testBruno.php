@@ -51,6 +51,11 @@ DbConnect::Init();
 //$p=FacturesManager::findById(2);
 //var_dump($p);
 
+//On teste la recherche par ID
+echo 'Recherche pseudo nono <br>';
+$p=UsersManager::findByPseudo("nono");
+var_dump($p);
+
 //On teste l'ajout
 //$ticket=ReparationsManager::findById(1);
 //$mode=ModesPaiementsManager::findById(1);  

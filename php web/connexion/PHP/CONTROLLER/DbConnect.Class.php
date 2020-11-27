@@ -17,6 +17,5 @@ class DbConnect{
         {
             die('Erreur : '.$e->getMessage());
         }
-        echo 'CONNEXION BASE DE DONNEES OK';
     }
 }
