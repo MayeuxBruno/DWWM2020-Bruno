@@ -1,15 +1,36 @@
-<form action="index.php?codePage=actioncreecompte" method="POST">
-<label for="nomUser">Nom :</label>
-<input name="nomUser" type="text" />
-<label for="prenomUser">Prenom :</label>
-<input name="prenomUser" type="text" />
-<label for="mailUser">Mail :</label>
-<input name="mailUser" type="text" />
-<label for="pseudoUser">Pseudo :</label>
-<input name="pseudoUser" type="text" />
-<label for="passwordUser">Mot de Passe :</label>
-<input name="passwordUser" type="text" />
-<input name="roleUser" type="text" value="user" type="hidden"/>
-<button type="submit">Creer</button>
-</form>
-<button><a href="index.php?codePage=connexion">Retour</a></button>
+<div class="espacehor"></div>
+<div>
+    <div class="vide"></div>
+    <div class="colonne">
+        <div>
+            <form action="index.php?codePage=actioncreecompte" method="POST">
+        </div>
+        <div class="padConex">    
+            <div class="center"><label for="nomUser">Nom :</label></div>
+            <div><input name="nomUser" type="text" /></div>
+        </div>
+        <div class="padConex">
+            <div class="center"><label for="prenomUser">Prenom :</label></div> 
+            <div><input name="prenomUser" type="text" /></div>
+        </div>
+        <div class="padConex">    
+            <div class="center"><label for="mailUser">Mail :</label></div>
+            <div><input name="mailUser" type="text" /></div>
+        </div>
+        <div class="padConex">
+            <div class="center"><label for="pseudoUser">Pseudo :</label></div>
+            <div><input name="pseudoUser" type="text" /></div>
+        </div>
+        <div class="padConex">
+            <div class="center"><label for="passwordUser">Mot de Passe :</label></div>
+            <div><input name="passwordUser" type="text" /></div>
+        </div>
+        <div class="center padConex">
+            <input name="roleUser"  value="user" type="hidden"/>
+            <button type="submit">Creer</button>
+        </div>
+        </form>
+        <div class="center padConex"><button><a href="index.php?codePage=connexion">Retour</a></button></div>
+    </div>
+    <div class="vide"></div>
+</div>

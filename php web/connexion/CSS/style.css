@@ -3,11 +3,31 @@ body,html{
     padding:0;
 }
 
-div, body,.flex{
+div{
+    border : 1px dotted red;
     display:flex;
     flex:1;
 }
 
 .colonne{
     flex-direction:column;
+}
+.center{
+    justify-content:center;
+}
+
+.fin{
+    justify-content:flex-end;
+}
+
+.padConex{
+    padding:1em;
+}
+.vide{
+    flex:2;
+}
+
+.espacehor{
+    flex:none;
+    height:20vh;
 }
