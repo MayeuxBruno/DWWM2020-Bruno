@@ -9,8 +9,7 @@
 <input name="pseudoUser" type="text" />
 <label for="passwordUser">Mot de Passe :</label>
 <input name="passwordUser" type="text" />
-<label for="roleUser">Role :</label>
-<input name="roleUser" type="text" />
+<input name="roleUser" type="text" value="user" type="hidden"/>
 <button type="submit">Creer</button>
 </form>
 <button><a href="index.php?codePage=connexion">Retour</a></button>

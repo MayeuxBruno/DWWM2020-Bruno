@@ -29,7 +29,7 @@ class Users
 
     public function setNomUser($nomUser)
     {
-        $this->_nomUser = $nomUser;
+        $this->_nomUser = ucfirst($nomUser);
     }
 
     public function getPrenomUser()
@@ -39,7 +39,7 @@ class Users
 
     public function setPrenomUser($prenomUser)
     {
-        $this->_prenomUser = $prenomUser;
+        $this->_prenomUser = ucfirst($prenomUser);
     }
 
     public function getPseudoUser()
