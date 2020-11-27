@@ -70,7 +70,7 @@ class UsersManager
 	public static function findPasswordByPseudo($pseudo)
 	{
 		$db=DbConnect::getDb();
-		$q=$db->query("SELECT passwordUser FROM users WHERE pseudoUser =".'"'.$pseudo.'"');
+		$q=$db->query("SELECT * FROM users WHERE pseudoUser =".'"'.$pseudo.'"');
 		$results = $q->fetch(PDO::FETCH_ASSOC);
 		if($results != false)
 		{
