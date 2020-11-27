@@ -1,10 +1,16 @@
+
+<form  action="index.php?codePage=connexion" method="POST">
 <div class="colonne">
-<form class="flex colonne" action="index.php?codePage=connexion" method="POST">
-<label for="pseudoUser">Pseudo :</label>
-<input name="pseudoUser" type="text" />
-<label for="passwordUser">Mot de passe :</label>
-<input name="passwordUser" type="text" />
-<button type="submit">Connexion</button>
+<div>
+    <label for="pseudoUser">Pseudo :</label>
+    <input name="pseudoUser" type="text" />
+</div>
+<div>
+    <label for="passwordUser">Mot de passe :</label>
+    <input name="passwordUser" type="text"/>
+</div>
+<div><button type="submit">Connexion</button></div>
+</div>
 </form>
 <button><a href="index.php?codePage=formcreecompte">Créer un compte</a></button>
 </div>
