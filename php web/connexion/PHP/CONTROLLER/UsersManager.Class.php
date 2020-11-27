@@ -56,7 +56,16 @@ class UsersManager
 	{
 		var_dump($pseudo);
  		$db=DbConnect::getDb();
-		$result=$db->query("SELECT * FROM users WHERE pseudoUser =".$pseudo);
+		$q=$db->query("SELECT * FROM users WHERE pseudoUser =".$pseudo);
+		$results = $q->fetch(PDO::FETCH_ASSOC);
+		if($results != false)
+		{
+			return new Users($results);
+		}
+		else
+		{
+			return false;
+		}
 		return $result;
     }
     
