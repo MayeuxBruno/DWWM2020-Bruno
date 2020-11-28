@@ -11,7 +11,7 @@ class UsersManager
         $q->bindValue(":prenomUser", $obj->getPrenomUser());
         $q->bindValue(":pseudoUser", $obj->getPseudoUser());
         $q->bindValue(":mailUser", $obj->getMailUser());
-		$q->bindValue(":passwordUser", $obj->getPasswordUser());
+		$q->bindValue(":passwordUser", md5($obj->getPasswordUser()));
 		$q->bindValue(":roleUser", $obj->getRoleUser());
 		$q->execute();
 	}
