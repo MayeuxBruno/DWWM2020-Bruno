@@ -24,9 +24,9 @@ switch($_GET['mode'])
             if (strcmp($utilisateur->getPasswordUser(),$passwordCrypte)==0)
             {
                 session_start();
-                $_SESSION['nom']=$utilisateur->getNomUser();
-                $_SESSION['prenom']=$utilisateur->getPrenomUser();
-                header("Location:index.php?codePage=accueil");
+                $nom=$_SESSION['nom']=$utilisateur->getNomUser();
+                $prenom=$_SESSION['prenom']=$utilisateur->getPrenomUser();
+                header("Location:index.php?codePage=accueil&nom=$nom&prenom=$prenom");
             }
             else{
                 echo '<h2 class="rouge">Pseudo ou Mot de passe invalide</h2>';

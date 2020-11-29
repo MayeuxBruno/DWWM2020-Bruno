@@ -1,7 +1,7 @@
 <div class="espacehor"></div>
 <div>
     <div class="vide"></div>
-    <div class="colonne">
+    <div class="colonne fondform bordure">
         <div>
             <form action="index.php?codePage=actioncompte&mode=new" method="POST">
         </div>

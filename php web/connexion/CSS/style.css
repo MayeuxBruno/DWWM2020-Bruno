@@ -3,17 +3,23 @@ body,html{
     padding:0;
 }
 
-div{
-    border : 1px dotted red;
+div,header{
+    /*border : 1px dotted red;*/
     display:flex;
     flex:1;
 }
 
+a{
+    text-decoration: none;
+}
 .colonne{
     flex-direction:column;
 }
 .center{
     justify-content:center;
+}
+.centerh{
+    align-items:center;
 }
 
 .fin{
@@ -32,6 +38,23 @@ div{
     height:20vh;
 }
 
+.bordure{
+    border:1px solid grey;
+    border-radius:0.5em; 
+}
+
 .rouge{
     color:red;
+}
+
+.fondheader{
+    background-color:lightskyblue;
+}
+
+.fondpage{
+    background-color:#ddd;
+}
+
+.fondform{
+    background-color:lightsteelblue;
 }

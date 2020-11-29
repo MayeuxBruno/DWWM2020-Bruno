@@ -1,7 +1,7 @@
 <div class="espacehor"></div>
 <div>
     <div class="vide"></div>
-    <div class="colonne">
+    <div class="colonne fondform bordure">
         <form  action="index.php?codePage=actioncompte&mode=connect" method="POST">
             <div class="fin padConex">
                 <label for="pseudoUser">Pseudo :</label>
