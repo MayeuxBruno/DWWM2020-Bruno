@@ -3,7 +3,7 @@
     <div class="vide"></div>
     <div class="colonne">
         <div>
-            <form action="index.php?codePage=actioncreecompte" method="POST">
+            <form action="index.php?codePage=actioncompte&mode=new" method="POST">
         </div>
         <div class="padConex">    
             <div class="center"><label for="nomUser">Nom :</label></div>

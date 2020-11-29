@@ -2,7 +2,7 @@
 <div>
     <div class="vide"></div>
     <div class="colonne">
-        <form  action="index.php?codePage=actionconnexion" method="POST">
+        <form  action="index.php?codePage=actioncompte&mode=connect" method="POST">
             <div class="fin padConex">
                 <label for="pseudoUser">Pseudo :</label>
                 <input name="pseudoUser" type="text" />

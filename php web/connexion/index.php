@@ -29,9 +29,8 @@ DbConnect::init();
 $routes = [
     "default" => ["PHP/VIEW/", "FormConnexion", "Page de connexion"],
     "connexion" => ["PHP/VIEW/", "FormConnexion", "Page de connexion"],
-    "actionconnexion"=> ["PHP/VIEW/", "ActionConnexion", "Page de connexion"],
     "formcreecompte" => ["PHP/VIEW/", "FormCreeCompte", "Création de compte"],
-    "actioncreecompte"=> ["PHP/VIEW/", "ActionCreeCompte", "Création de compte"],
+    "actioncompte" => ["PHP/VIEW/", "ActionCompte", "Création de compte"],
     "accueil"=> ["PHP/VIEW/", "PageAccueil", "Bienvenue sur notre site"]
 ];
 
