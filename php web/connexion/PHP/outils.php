@@ -20,6 +20,7 @@ function AfficherPage($page)
 
     include 'PHP/VIEW/Head.php';
     include 'PHP/VIEW/Header.php';
+    include 'PHP/VIEW/nav.php';
     
     include $chemin . $nom . '.php';
 }

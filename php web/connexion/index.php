@@ -11,7 +11,9 @@ $routes = [
     "connexion" => ["PHP/VIEW/", "FormConnexion", "Connexion à l'application"],
     "formcreecompte" => ["PHP/VIEW/", "FormCreeCompte", "Création du compte"],
     "actioncompte" => ["PHP/VIEW/", "ActionCompte", "Création du compte"],
-    "accueil"=> ["PHP/VIEW/", "PageAccueil", "Bienvenue sur notre site"]
+    "accueil"=> ["PHP/VIEW/", "PageAccueil", "Bienvenue sur notre site"],
+    "admin"=> ["PHP/VIEW/", "admin", "Page Administrateur"],
+    "user"=> ["PHP/VIEW/", "user", "Page Utilisateur"]
 ];
 
 if (isset($_GET["codePage"]))

@@ -32,7 +32,7 @@ switch($_GET['mode'])
         {
             if (strcmp($utilisateur->getPasswordUser(),$passwordCrypte)==0)
             {
-                $_SESSION['nom']=;
+                $_SESSION['utilisateur']=$utilisateur;
                 header("Location:index.php?codePage=accueil");
             }
             else{

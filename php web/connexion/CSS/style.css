@@ -3,7 +3,7 @@ body,html{
     padding:0;
 }
 
-div,header{
+div,header,nav{
     /*border : 1px dotted red;*/
     display:flex;
     flex:1;
@@ -22,6 +22,9 @@ a{
     align-items:center;
 }
 
+.space{
+    justify-content: space-around;
+}
 .fin{
     justify-content:flex-end;
 }

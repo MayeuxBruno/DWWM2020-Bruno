@@ -1,4 +1,5 @@
 <?php
+echo '<nav class="space fondform padConex">';
 if (isset($_SESSION['utilisateur']))
 {
     if($_SESSION['utilisateur']->getRoleUser()==2)
@@ -7,3 +8,4 @@ if (isset($_SESSION['utilisateur']))
     }
     echo'<button><a href="index.php?codePage=user">Utilisateur</a></button>';
 }
+echo '</nav>';
