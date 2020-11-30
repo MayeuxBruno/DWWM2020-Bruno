@@ -9,7 +9,7 @@ switch($_GET['mode'])
         {
             if($_POST['passwordUser']==$_POST['confirmationMdp'])
             {
-                $_POST['passwordUser']=md5($_POST['passwordUser']);
+                $_POST['passwordUser']=crypte($_POST['passwordUser']);
                 $utilisateur=new Users($_POST);
                 UsersManager::add($utilisateur);
                 header("Location:index.php?codePage=connexion");
@@ -27,13 +27,12 @@ switch($_GET['mode'])
 
     // Connexion à un compte
     case ("connect"):
-        $passwordCrypte = md5($_POST['passwordUser']);
+        $passwordCrypte = crypte($_POST['passwordUser']);
         if ($utilisateur!=FALSE)
         {
             if (strcmp($utilisateur->getPasswordUser(),$passwordCrypte)==0)
             {
-                $_SESSION['nom']=$utilisateur->getNomUser();
-                $_SESSION['prenom']=$utilisateur->getPrenomUser();
+                $_SESSION['nom']=;
                 header("Location:index.php?codePage=accueil");
             }
             else{
