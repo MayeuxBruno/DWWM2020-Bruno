@@ -77,7 +77,7 @@ class Users
         return $this->_roleUser;
     }
 
-    public function setRoleUser($roleUser)
+    public function setRoleUser(int $roleUser)
     {
         $this->_roleUser = $roleUser;
     }

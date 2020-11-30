@@ -2,10 +2,11 @@
 $utilisateur=UsersManager::findByPseudo($_POST['pseudoUser']);
 switch($_GET['mode'])
 {
-    case ("new"):
+    // Création d'un compte
+    case ("new"):   
         if($utilisateur==FALSE)
         {
-            if($_PSOST['passwordUser']==$_POST[confirmationMdp])
+            if($_POST['passwordUser']==$_POST['confirmationMdp'])
             {
                 $_POST['passwordUser']=md5($_POST['passwordUser']);
                 $utilisateur=new Users($_POST);
@@ -14,7 +15,7 @@ switch($_GET['mode'])
             }
             else{
                 echo '<h2 class="rouge">Erreur dans la saisie du mot de passe</h2>';
-                //header("refresh:3;url=index.php?codePage=formcreecompte");
+                header("refresh:3;url=index.php?codePage=formcreecompte");
             }
         }
         else{
@@ -23,15 +24,16 @@ switch($_GET['mode'])
         }
     break;
 
+    // Connexion à un compte
     case ("connect"):
         $passwordCrypte = md5($_POST['passwordUser']);
         if (!empty($_POST['pseudoUser'])&&!empty($_POST['passwordUser']))
         {
             if (strcmp($utilisateur->getPasswordUser(),$passwordCrypte)==0)
             {
-                $nom=$_SESSION['nom']=$utilisateur->getNomUser();
-                $prenom=$_SESSION['prenom']=$utilisateur->getPrenomUser();
-                header("Location:index.php?codePage=accueil&nom=$nom&prenom=$prenom");
+                $_SESSION['nom']=$utilisateur->getNomUser();
+                $_SESSION['prenom']=$utilisateur->getPrenomUser();
+                header("Location:index.php?codePage=accueil");
             }
             else{
                 echo '<h2 class="rouge">Pseudo ou Mot de passe invalide</h2>';
@@ -44,6 +46,8 @@ switch($_GET['mode'])
             header("refresh:3;url=index.php?codePage=connexion");
         }
     break;
+
+    //deconnexion
     case ("disconnect"):
         session_destroy();
         header("Location:index.php?codePage=connexion");

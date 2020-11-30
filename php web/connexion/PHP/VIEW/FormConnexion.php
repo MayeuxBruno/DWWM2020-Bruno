@@ -5,11 +5,11 @@
         <form  action="index.php?codePage=actioncompte&mode=connect" method="POST">
             <div class="fin padConex">
                 <label for="pseudoUser">Pseudo :</label>
-                <input name="pseudoUser" type="text" />
+                <input name="pseudoUser" type="text" required/>
             </div>
             <div class="fin padConex">
                 <label for="passwordUser">Mot de passe :</label>
-                <input name="passwordUser" type="password"/>
+                <input name="passwordUser" type="password"required/>
             </div>
             <div class="center padConex"><button type="submit">Connexion</button></div>
         </form>
