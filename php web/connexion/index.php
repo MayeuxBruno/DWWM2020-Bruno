@@ -26,6 +26,7 @@ function AfficherPage($page)
 }
 
 DbConnect::init();
+session_start();
 
 $routes = [
     "default" => ["PHP/VIEW/", "FormConnexion", "Page de connexion"],

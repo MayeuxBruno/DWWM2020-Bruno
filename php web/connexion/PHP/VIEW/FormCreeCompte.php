@@ -23,7 +23,11 @@
         </div>
         <div class="padConex">
             <div class="center"><label for="passwordUser">Mot de Passe :</label></div>
-            <div><input name="passwordUser" type="text" /></div>
+            <div><input name="passwordUser" type="password" /></div>
+        </div>
+        <div class="padConex">
+            <div class="center"><label for="confirmationMdp">Confirmation :</label></div>
+            <div><input name="confirmationMdp" type="password" /></div>
         </div>
         <div class="center padConex">
             <input name="roleUser"  value="user" type="hidden"/>

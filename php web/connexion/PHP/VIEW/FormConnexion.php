@@ -9,7 +9,7 @@
             </div>
             <div class="fin padConex">
                 <label for="passwordUser">Mot de passe :</label>
-                <input name="passwordUser" type="text"/>
+                <input name="passwordUser" type="password"/>
             </div>
             <div class="center padConex"><button type="submit">Connexion</button></div>
         </form>

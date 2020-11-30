@@ -5,10 +5,10 @@ echo'<body class="colonne fondpage">
         <div class="titre center centerh"><h1>'.$titre.'</h1></div>';
         
     echo'<div class="center centerh colonne">';
-           if(isset($_GET['nom'])&&isset($_GET['prenom']))
+           if(isset($_SESSION['nom'])&&isset($_SESSION['nom']))
            {
-               echo '<div><h3>'.$_GET['nom'].' '.$_GET['prenom'].'</h3></div>
-               <div class="center padConex"><button><a href="index.php?codePage=connexion">Deconnexion</a></button></div>';
+               echo '<div><h3>'.$_SESSION['nom'].' '.$_SESSION['prenom'].'</h3></div>
+               <div class="center padConex"><button><a href="index.php?codePage=actioncompte&mode=disconnect">Deconnexion</a></button></div>';
            }
     echo'</div>
     </header>';
