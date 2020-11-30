@@ -29,12 +29,19 @@
             <div class="center"><label for="confirmationMdp">Confirmation :</label></div>
             <div><input name="confirmationMdp" type="password" required/></div>
         </div>
+        <div class="padConex">
+            <div class="center"><label for="roleUser">Role Utilisateur :</label></div>
+            <div><select name="roleUser">
+                <option value="1">Utilisateur</option>
+                <option value="2">Administrateur</option>
+            </select>
+            </div>
+        </div>
         <div class="center padConex">
-            <input name="roleUser"  value="1" type="hidden"/>
-            <button type="submit">Creer</button>
+            <button type="submit">Creer le compte</button>
         </div>
         </form>
-        <div class="center padConex"><button><a href="index.php?codePage=connexion">Retour</a></button></div>
+        <div class="center padConex"><button><a href="index.php?codePage=connexion">Retour à la page de connexion</a></button></div>
     </div>
     <div class="vide"></div>
 </div>

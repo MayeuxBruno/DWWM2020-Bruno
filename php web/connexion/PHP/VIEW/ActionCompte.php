@@ -3,7 +3,8 @@ $utilisateur=UsersManager::findByPseudo($_POST['pseudoUser']);
 switch($_GET['mode'])
 {
     // Création d'un compte
-    case ("new"):   
+    case ("new"):
+        var_dump($_POST);   
         if($utilisateur==FALSE)
         {
             if($_POST['passwordUser']==$_POST['confirmationMdp'])
@@ -14,7 +15,7 @@ switch($_GET['mode'])
                 header("Location:index.php?codePage=connexion");
             }
             else{
-                echo '<h2 class="rouge">Erreur dans la saisie du mot de passe</h2>';
+                echo '<h2 class="rouge">La confirmation ne correspond pas au mot de passe</h2>';
                 header("refresh:3;url=index.php?codePage=formcreecompte");
             }
         }
@@ -27,7 +28,7 @@ switch($_GET['mode'])
     // Connexion à un compte
     case ("connect"):
         $passwordCrypte = md5($_POST['passwordUser']);
-        if (!empty($_POST['pseudoUser'])&&!empty($_POST['passwordUser']))
+        if ($utilisateur!=FALSE)
         {
             if (strcmp($utilisateur->getPasswordUser(),$passwordCrypte)==0)
             {
@@ -36,13 +37,13 @@ switch($_GET['mode'])
                 header("Location:index.php?codePage=accueil");
             }
             else{
-                echo '<h2 class="rouge">Pseudo ou Mot de passe invalide</h2>';
+                echo '<h2 class="rouge">Le mot de passe est invalide</h2>';
                 header("refresh:3;url=index.php?codePage=connexion");
             }
         }
         else
         {
-            echo '<h2 class="rouge">Veuillez Entrer un pseudo et un mot de passe</h2>';
+            echo '<h2 class="rouge">Le pseudo n\'existe pas</h2>';
             header("refresh:3;url=index.php?codePage=connexion");
         }
     break;
