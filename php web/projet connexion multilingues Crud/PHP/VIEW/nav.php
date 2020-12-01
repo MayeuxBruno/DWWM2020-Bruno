@@ -18,16 +18,15 @@ else
 <nav class="fondform padConex">
 <div>
 <div></div>
-<div class="space">    
+<div class="center">    
 <?php
 if (isset($_SESSION['utilisateur']))
 {
-    /*if($_SESSION['utilisateur']->getRoleUser()==2)
+    if($_SESSION['utilisateur']->getRoleUser()==2)
     {
-        echo'<button><a href="index.php?codePage=admin">'. texte("administrateur").'</a></button>';
+        echo'<button><a href="index.php?codePage=admin">'.texte("listeutilisateur").'</a></button>';
     }
-    echo'<button><a href="index.php?codePage=user">'. texte("utilisateur").'</a></button>';*/
-    echo '<div class="center"><button><a href="index.php?codePage=listevehicules">'.texte("listeVehicule").'</button></div>';
+    echo '<button><a href="index.php?codePage=listevehicules">'.texte("listeVehicule").'</button>';
 }
 ?>
 

@@ -1,3 +1,9 @@
+<?php
+if(isset($_SESSION['utilisateur']))
+{
+    session_destroy();
+}
+?>
 <div class="espacehor"></div>
 <div>
     <div class="vide"></div>

@@ -1,7 +1,6 @@
 <?php
 
-//var_dump($_SESSION);
-$vehicules=VehiculesManager::getList();
+$utilisateurs=UsersManager::getList();
 if (isset($_SESSION['utilisateur']))
 {
     if ($_SESSION['utilisateur']->getRoleUser()==2)

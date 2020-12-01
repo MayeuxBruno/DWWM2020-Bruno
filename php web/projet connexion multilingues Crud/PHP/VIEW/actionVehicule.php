@@ -2,7 +2,7 @@
 
 $vehicule=new Vehicules($_POST);
 var_dump($vehicule);
-/*
+
 switch($_GET['mode'])
 {
     case "ajout":
@@ -21,4 +21,4 @@ switch($_GET['mode'])
         break;
         }
 }
-header("Location:index.php?codePage=listevehicules");*/
+header("Location:index.php?codePage=listevehicules");

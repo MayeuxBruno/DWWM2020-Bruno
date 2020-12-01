@@ -19,18 +19,18 @@ switch($mode)
 {
     case"add":
     {
-        echo'<form method="post" action="index.php?code=actionvehicule&mode=ajout">';
+        echo'<form method="post" action="index.php?codePage=actionvehicule&mode=ajout">';
         break;
     }
     case "upd": 
     {
-        echo'<form method="post" action="index.php?code=actionvehicule&mode=modif">
+        echo'<form method="post" action="index.php?codePage=actionvehicule&mode=modif">
              <input name="idVehicule" value="'.$vehiculeChoisi->getIdVehicule().'" type="hidden"/>';
         break;
     }
     case "del":
     {
-        echo'<form method="post" action="index.php?code=actionvehicule&mode=delete">
+        echo'<form method="post" action="index.php?codePage=actionvehicule&mode=delete">
              <input name="idVehicule" value="'.$vehiculeChoisi->getIdVehicule().'" type="hidden"/>';
         break;
     }
@@ -43,27 +43,27 @@ switch($mode)
 }
 ?>
 <div>
-    <label for="noParc">Numéro de parc</label>
+    <label for="noParc"><?php echo texte("noparc")?></label>
     <input name="noParc" <?php if ($mode!="add") {echo 'value="'.$vehiculeChoisi->getNoParc().'"'; }
     if ($mode=="del" || $mode=="cons") echo 'disabled'; ?>/>
 </div>
 <div>
-    <label for="marque">Marque</label>
+    <label for="marque"><?php echo texte("marque")?></label>
     <input name="marque" <?php if ($mode!="add") { echo 'value="'.$vehiculeChoisi->getMarque().'"';} 
     if($mode=="cons"||$mode=="del") echo 'disabled';?>/>
 </div>
 <div>
-    <label for="modele">Modele</label>
+    <label for="modele"><?php echo texte("modele")?></label>
     <input name="modele" <?php if ($mode!="add") {echo 'value="'.$vehiculeChoisi->getModele().'"'; }
     if ($mode=="del" || $mode=="cons") echo 'disabled'; ?>/>
 </div>
 <div>
-    <label for="immat">Numéro d'immatriculation</label>
+    <label for="immat"><?php echo texte("noimmat")?></label>
     <input type="text" name="immat" <?php if ($mode!="add") { echo 'value="'.$vehiculeChoisi->getImmat().'"';} 
     if($mode=="cons"||$mode=="del") echo 'disabled';?>/>
 </div>
 <div>
-    <label for="capacite">Capacité</label>
+    <label for="capacite"><?php echo texte("capacite")?></label>
     <input name="capacite" <?php if ($mode!="add") {echo 'value="'.$vehiculeChoisi->getCapacite().'"'; }
     if ($mode=="del" || $mode=="cons") echo 'disabled'; ?>/>
 </div>
@@ -73,20 +73,20 @@ switch($mode)
 {
     case"add":
     {
-        echo'<button type="submit">Ajouter le véhicule</button>';
+        echo'<button type="submit">'.texte("ajvehicule").'</button>';
         break;
     }
     case "upd": 
     {
-        echo'<button type="submit">Modifier le véhicule</button>';
+        echo'<button type="submit">'.texte("modifveh").'</button>';
         break;
     }
     case "del":
     {
-        echo'<button type="submit">Supprimmer le véhicule</button>';
+        echo'<button type="submit">'.texte("suppveh").'</button>';
         break;
     }
 }
-echo '<button><a href="index.php?codePage=listevehicules">Retour</a></button>
+echo '<button><a href="index.php?codePage=listevehicules">'.texte("retour").'</a></button>
 </form>';
 ?>
