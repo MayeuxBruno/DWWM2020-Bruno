@@ -7,19 +7,23 @@ DbConnect::init();
 session_start();
 
 /*********** Gestion des langues ************/
+// On recupere la langue de l'URL
 if (isset($_GET['lang']))
 {
-    $_SESSION['lang']=$_GET['lang'];
-}
-if (isset($_SESSION['lang']))
-{
-    $lang=$_SESSION['lang'];
-}
-else
-{
-    $lang='FR';
+    $_SESSION['lang'] = $_GET['lang'];
 }
 
+//On prend la langue de la session sinon FR par défaut
+$lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'FR';
+
+/**
+ * Fonction qui ramène le texte dans la bonne langue
+ */
+function texte($codetexte)
+{
+    global $lang; //on appel la variable globale
+    return TexteManager::findByCodes($lang, $codetexte);
+}
 
 $routes = [
     "default" => ["PHP/VIEW/", "FormConnexion", "Connexion à l'application"],

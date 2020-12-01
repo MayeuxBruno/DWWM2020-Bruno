@@ -8,12 +8,13 @@
                 <input name="pseudoUser" type="text" required/>
             </div>
             <div class="fin padConex">
-                <label for="passwordUser">Mot de passe :</label>
+                <?php echo'<label for="passwordUser">'.texte("motDePasse")." :".'</label>';?>
                 <input name="passwordUser" type="password"required/>
             </div>
-            <div class="center padConex"><button type="submit">Connexion</button></div>
+           <?php echo'<div class="center padConex"><button type="submit">'.texte("connexion").'</button></div>
         </form>
-        <div class="center padConex"><button><a href="index.php?codePage=formcreecompte">Je n'ai pas de compte</a></button></div>
+        <div class="center padConex"><button><a href="index.php?codePage=formcreecompte">'.texte("inscription").'</a></button></div>';
+        ?>
     </div>
     <div class="vide"></div>
 </div>

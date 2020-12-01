@@ -38,9 +38,9 @@ spl_autoload_register("chargerClasse");
 
 */
 
-include "PHP/MODEL/Users.Class.php";
-include "PHP/CONTROLLER/UsersManager.Class.php";
-include "PHP/CONTROLLER/DbConnect.Class.php";
+include "PHP/CONTROLLER/Texte.Class.php";
+include "PHP/MODEL/TexteManager.Class.php";
+include "PHP/MODEL/DbConnect.Class.php";
 
 DbConnect::Init();
 
@@ -52,8 +52,8 @@ DbConnect::Init();
 //var_dump($p);
 
 //On teste la recherche par ID
-echo 'Recherche pseudo nono <br>';
-$p=UsersManager::findByPseudo("nono");
+//echo 'Recherche pseudo nono <br>';
+$p=TexteManager::findByCodes("EN","deconnexion");
 var_dump($p);
 
 //On teste l'ajout
@@ -82,7 +82,7 @@ var_dump($p);
 
 //On affiche le liste des objets
 //echo 'On affiche la liste des objet <br>';
-//$tableau=UsersManager::getList();
+//$tableau=TexteManager::getList();
 //var_dump($tableau);
 //foreach($tableau as $elt)
 //{

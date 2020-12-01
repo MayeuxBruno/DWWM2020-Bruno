@@ -32,8 +32,9 @@
         <div class="padConex">
             <div class="center"><label for="roleUser">Role Utilisateur :</label></div>
             <div><select name="roleUser">
-                <option value="1">Utilisateur</option>
-                <option value="2">Administrateur</option>
+            <?php echo'<option value="1">'.texte("utilisateur").'</option>
+                  <option value="2">'.texte("administrateur").'</option>';
+            ?>
             </select>
             </div>
         </div>
