@@ -7,6 +7,7 @@ class Vehicules
     private $_noParc;
     private $_marque;
     private $_modele;
+    private $_immat;
     private $_capacite;
 
     /*****************Accesseurs***************** */
@@ -26,7 +27,7 @@ class Vehicules
         return $this->_noParc;
     }
 
-    public function setNoParc($noParc)
+    public function setNoParc(int $noParc)
     {
         $this->_noParc = $noParc;
     }
@@ -51,15 +52,27 @@ class Vehicules
         $this->_modele = $modele;
     }
 
+    public function getImmat()
+    {
+        return $this->_immat;
+    }
+
+    public function setImmat($immat)
+    {
+        $this->_immat = $immat;
+    }
+
     public function getCapacite()
     {
         return $this->_capacite;
     }
 
-    public function setCapacite($capacite)
+    public function setCapacite(int $capacite)
     {
         $this->_capacite = $capacite;
     }
+
+    
     
     /*****************Constructeur***************** */
 
@@ -118,6 +131,8 @@ class Vehicules
     {
         return 0;
     }
+
+    
 
     
 }

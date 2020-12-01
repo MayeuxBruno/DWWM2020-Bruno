@@ -38,23 +38,26 @@ spl_autoload_register("chargerClasse");
 
 */
 
-include "PHP/CONTROLLER/Texte.Class.php";
-include "PHP/MODEL/TexteManager.Class.php";
+include "PHP/CONTROLLER/Vehicules.Class.php";
+include "PHP/CONTROLLER/Parametre.Class.php";
+include "PHP/MODEL/VehiculesManager.Class.php";
 include "PHP/MODEL/DbConnect.Class.php";
+include "PHP/outils.php";
 
+Parametre::init();
 DbConnect::Init();
 
 /****** Test de AdherentsManager ******/
 
 //On teste la recherche par ID
 //echo 'Recherche de id=1 <br>';
-//$p=FacturesManager::findById(2);
+//$p=VehiculesManager::findById(2);
 //var_dump($p);
 
 //On teste la recherche par ID
 //echo 'Recherche pseudo nono <br>';
-$p=TexteManager::findByCodes("EN","deconnexion");
-var_dump($p);
+//$p=TexteManager::findByCodes("EN","deconnexion");
+//var_dump($p);
 
 //On teste l'ajout
 //$ticket=ReparationsManager::findById(1);
@@ -62,27 +65,27 @@ var_dump($p);
 //var_dump($ticket);
 //var_dump($mode);
 //echo 'On ajoute un objet TVA <br>';
-//$pNew = new Users(["nomUser"=>"Honnart","prenomUser"=>"Nicalas","pseudoUser"=>"honnic","mailUser"=>"honnart.nicola@guit.fr","passwordUser"=>"ponney"]);
+//$pNew = new Vehicules(["noParc"=>393,"marque"=>"Neoplan","modele"=>"StarLiner","immat"=>"ER-756-TY","capacite"=>55]);
 //var_dump($pNew);
-//UsersManager::add($pNew);
+//VehiculesManager::add($pNew);
 
 //On teste la suppression
 //echo 'On supprime un article <br>';
-//$pSupp=UsersManager::findById(4);
+//$pSupp=VehiculesManager::findById(2);
 //var_dump($pSupp);
-//UsersManager::delete($pSupp);
+//VehiculesManager::delete($pSupp);
 
 
 //On teste la mise a jour
-//$pRecharge=UsersManager::findById(4);
-//$pRecharge->setPasswordUser("skyliner");
+//$pRecharge=VehiculesManager::findById(2);
+//$pRecharge->setCapacite(32);
 //var_dump($pRecharge);
-//UsersManager::update($pRecharge);
+//VehiculesManager::update($pRecharge);
 
 
 //On affiche le liste des objets
 //echo 'On affiche la liste des objet <br>';
-//$tableau=TexteManager::getList();
+//$tableau=VehiculesManager::getList();
 //var_dump($tableau);
 //foreach($tableau as $elt)
 //{

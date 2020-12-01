@@ -25,7 +25,7 @@ $routes = [
     "connexion" => ["PHP/VIEW/", "FormConnexion", texte("pageConnexion")],
     "formcreecompte" => ["PHP/VIEW/", "FormCreeCompte", texte("creerCompte")],
     "actioncompte" => ["PHP/VIEW/", "ActionCompte", texte("creerCompte")],
-    "accueil"=> ["PHP/VIEW/", "PageAccueil",  texte("phraseBienvenue")],
+    "accueil"=> ["PHP/VIEW/", "ListeVehicule",  texte("phraseBienvenue")],
     "admin"=> ["PHP/VIEW/", "admin", texte("pageAdministrateur")],
     "user"=> ["PHP/VIEW/", "user", texte("pageUtilisateur")]
 ];
