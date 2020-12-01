@@ -32,11 +32,4 @@ function crypte($mot)
     return md5(md5($mot).strlen(md5($mot)).strlen($mot));
 }
 
-/**
- * Fonction qui ramène le texte dans la bonne langue
- */
-function texte($codetexte)
-{
-    global $lang; //on appel la variable globale
-    return TexteManager::findByCodes($lang, $codetexte);
-}
+
