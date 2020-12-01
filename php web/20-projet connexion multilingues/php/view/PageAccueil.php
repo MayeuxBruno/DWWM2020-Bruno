@@ -1,3 +1,3 @@
 <?php
-echo '<div class="center"><h2>Vous êtes connecté à l\'application</h2></div>';
+echo '<div class="center"><h2>'.texte("phraseConnexion").'</h2></div>';
 ?>

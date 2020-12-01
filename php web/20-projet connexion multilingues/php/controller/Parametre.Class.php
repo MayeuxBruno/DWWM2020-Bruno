@@ -67,7 +67,6 @@ class Parametre
                     $param[] = substr($info[1], 0, strlen($info[1]) - 2);
                 }
             }
-
             self::$host = $param[0];
             self::$port = $param[1];
             self::$dbname = $param[2];

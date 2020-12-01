@@ -3,8 +3,10 @@
 include 'PHP/outils.php';
 
 spl_autoload_register("ChargerClasse");
+Parametre::init();
 DbConnect::init();
 session_start();
+
 
 /*********** Gestion des langues ************/
 // On recupere la langue de l'URL
@@ -30,9 +32,9 @@ $routes = [
     "connexion" => ["PHP/VIEW/", "FormConnexion", texte("pageConnexion")],
     "formcreecompte" => ["PHP/VIEW/", "FormCreeCompte", texte("creerCompte")],
     "actioncompte" => ["PHP/VIEW/", "ActionCompte", texte("creerCompte")],
-    "accueil"=> ["PHP/VIEW/", "PageAccueil", "Bienvenue sur notre site"],
-    "admin"=> ["PHP/VIEW/", "admin", "Page Administrateur"],
-    "user"=> ["PHP/VIEW/", "user", "Page Utilisateur"]
+    "accueil"=> ["PHP/VIEW/", "PageAccueil",  texte("phraseBienvenue")],
+    "admin"=> ["PHP/VIEW/", "admin", texte("pageAdministrateur")],
+    "user"=> ["PHP/VIEW/", "user", texte("pageUtilisateur")]
 ];
 
 if (isset($_GET["codePage"]))
