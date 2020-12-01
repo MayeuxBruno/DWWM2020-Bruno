@@ -54,7 +54,7 @@ class VehiculesManager
 	{
  		$db=DbConnect::getDb();
 		$liste = [];
-		$q = $db->query("SELECT * FROM vehicules");
+		$q = $db->query("SELECT * FROM vehicules ORDER BY noParc");
 		while($donnees = $q->fetch(PDO::FETCH_ASSOC))
 		{
 			if($donnees != false)

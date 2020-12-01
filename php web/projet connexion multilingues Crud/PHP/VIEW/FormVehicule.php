@@ -15,6 +15,10 @@ if (isset($_GET['id']))
         $vehiculeChoisi=VehiculesManager::findById($idRecu);
     }
 }
+echo '<div class="espacehor"></div>';
+echo '<div>';
+echo '<div></div>';
+echo '<div class="center bordure fondform padConex">';
 switch($mode)
 {
     case"add":
@@ -42,32 +46,32 @@ switch($mode)
     }
 }
 ?>
-<div>
+<div class="fin">
     <label for="noParc"><?php echo texte("noparc")?></label>
     <input name="noParc" <?php if ($mode!="add") {echo 'value="'.$vehiculeChoisi->getNoParc().'"'; }
     if ($mode=="del" || $mode=="cons") echo 'disabled'; ?>/>
 </div>
-<div>
+<div class="fin">
     <label for="marque"><?php echo texte("marque")?></label>
     <input name="marque" <?php if ($mode!="add") { echo 'value="'.$vehiculeChoisi->getMarque().'"';} 
     if($mode=="cons"||$mode=="del") echo 'disabled';?>/>
 </div>
-<div>
+<div class="fin">
     <label for="modele"><?php echo texte("modele")?></label>
     <input name="modele" <?php if ($mode!="add") {echo 'value="'.$vehiculeChoisi->getModele().'"'; }
     if ($mode=="del" || $mode=="cons") echo 'disabled'; ?>/>
 </div>
-<div>
+<div class="fin">
     <label for="immat"><?php echo texte("noimmat")?></label>
     <input type="text" name="immat" <?php if ($mode!="add") { echo 'value="'.$vehiculeChoisi->getImmat().'"';} 
     if($mode=="cons"||$mode=="del") echo 'disabled';?>/>
 </div>
-<div>
+<div class="fin">
     <label for="capacite"><?php echo texte("capacite")?></label>
     <input name="capacite" <?php if ($mode!="add") {echo 'value="'.$vehiculeChoisi->getCapacite().'"'; }
     if ($mode=="del" || $mode=="cons") echo 'disabled'; ?>/>
-</div>
-
+</div class="fin">
+<div class="center padConex">
 <?php
 switch($mode)
 {
@@ -88,5 +92,9 @@ switch($mode)
     }
 }
 echo '<button><a href="index.php?codePage=listevehicules">'.texte("retour").'</a></button>
+</div>
 </form>';
+echo '</div>';
+echo '<div></div>';
+echo '</div>';
 ?>

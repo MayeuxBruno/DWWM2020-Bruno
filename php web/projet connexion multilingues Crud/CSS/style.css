@@ -4,11 +4,14 @@ body,html{
 }
 
 div,header,nav{
-    border : 1px dotted red;
+    /*border : 1px dotted red;*/
     display:flex;
     flex:1;
 }
 
+label{
+    margin-right:0.5em;
+}
 a{
     text-decoration: none;
 }

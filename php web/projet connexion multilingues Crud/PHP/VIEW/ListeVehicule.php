@@ -18,7 +18,7 @@ if (isset($_SESSION['utilisateur']))
     echo '<div class="colonne">';
     foreach ($vehicules as $unvehicule)
     {
-            echo'<div>';
+            echo'<div class="bordure fondform">';
             echo '<div class="center">'.$unvehicule->getNoparc().'</div>';
             echo '<div class="center"><button><a href="index.php?codePage=formvehicule&mode=cons&id='.$unvehicule->getIdVehicule().'">'.texte("details").'</a></button></div>';
             if ($_SESSION['utilisateur']->getRoleUser()==2)

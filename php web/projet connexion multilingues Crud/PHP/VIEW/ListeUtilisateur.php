@@ -6,7 +6,7 @@ if (isset($_SESSION['utilisateur']))
     if ($_SESSION['utilisateur']->getRoleUser()==2)
     {
         echo '<div class="demiespacehor"></div>';
-        echo '<div class="center"><button><a href="index.php?codePage=formvehicule&mode=add">'.texte("ajouterVehicule").'</a></button></div>';
+        echo '<div class="center"><button><a href="index.php?codePage=formutilisateur&mode=add">'.texte("ajutilisateur").'</a></button></div>';
         echo '<div class="demiespacehor"></div>';
     }
     else{
@@ -15,15 +15,15 @@ if (isset($_SESSION['utilisateur']))
     echo'<div>';
     echo'<div></div>';
     echo '<div class="colonne">';
-    foreach ($vehicules as $unvehicule)
+    foreach ($utilisateurs as $unutilisateur)
     {
-            echo'<div>';
-            echo '<div class="center">'.$unvehicule->getNoparc().'</div>';
-            echo '<div class="center"><button><a href="index.php?codePage=formvehicule&mode=cons&id='.$unvehicule->getIdVehicule().'">'.texte("details").'</a></button></div>';
+            echo'<div class="bordure fondform">';
+            echo '<div class="center">'.$unutilisateur->getNomUser()." - ".$unutilisateur->getPrenomUser().'</div>';
+            echo '<div class="center"><button><a href="index.php?codePage=formutilisateur&mode=cons&id='.$unutilisateur->getIdUser().'">'.texte("details").'</a></button></div>';
             if ($_SESSION['utilisateur']->getRoleUser()==2)
             {
-                echo '<div class="center"><button><a href="index.php?codePage=formvehicule&mode=upd&id='.$unvehicule->getIdVehicule().'">'.texte("modifier").'</a></button></div>';
-                echo '<div class="center"><button><a href="index.php?codePage=formvehicule&mode=del&id='.$unvehicule->getIdVehicule().'">'.texte("supprimer").'</a></button></div>';
+                echo '<div class="center"><button><a href="index.php?codePage=formutilisateur&mode=upd&id='.$unutilisateur->getIdUser().'">'.texte("modifier").'</a></button></div>';
+                echo '<div class="center"><button><a href="index.php?codePage=formutilisateur&mode=del&id='.$unutilisateur->getIdUser().'">'.texte("supprimer").'</a></button></div>';
             }
             echo '</div>';
     }
