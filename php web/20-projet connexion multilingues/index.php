@@ -26,10 +26,10 @@ function texte($codetexte)
 }
 
 $routes = [
-    "default" => ["PHP/VIEW/", "FormConnexion", "Connexion à l'application"],
-    "connexion" => ["PHP/VIEW/", "FormConnexion", "Connexion à l'application"],
-    "formcreecompte" => ["PHP/VIEW/", "FormCreeCompte", "Création du compte"],
-    "actioncompte" => ["PHP/VIEW/", "ActionCompte", "Création du compte"],
+    "default" => ["PHP/VIEW/", "FormConnexion", texte("pageConnexion")],
+    "connexion" => ["PHP/VIEW/", "FormConnexion", texte("pageConnexion")],
+    "formcreecompte" => ["PHP/VIEW/", "FormCreeCompte", texte("creerCompte")],
+    "actioncompte" => ["PHP/VIEW/", "ActionCompte", texte("creerCompte")],
     "accueil"=> ["PHP/VIEW/", "PageAccueil", "Bienvenue sur notre site"],
     "admin"=> ["PHP/VIEW/", "admin", "Page Administrateur"],
     "user"=> ["PHP/VIEW/", "user", "Page Utilisateur"]

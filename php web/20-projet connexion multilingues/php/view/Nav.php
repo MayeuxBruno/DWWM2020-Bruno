@@ -27,6 +27,6 @@ if (isset($_SESSION['utilisateur']))
 }
 ?>
 <div>
-<div><a href="<?php echo $uri;?>lang=FR">FR</a> - <a href="<?php echo $uri;?>lang=EN">EN</a></div>';
+<div class="fin"><a href="<?php echo $uri;?>lang=FR">FR</a> - <a href="<?php echo $uri;?>lang=EN">EN</a></div>
 </div>
 </nav>
