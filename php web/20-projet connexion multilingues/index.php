@@ -1,81 +1,57 @@
-<?php
-function chargerClasse($classe)
+<?PHP
+
+include 'PHP/outils.php';
+
+spl_autoload_register("ChargerClasse");
+DbConnect::init();
+session_start();
+
+/*********** Gestion des langues ************/
+if (isset($_GET['lang']))
 {
-    if (file_exists("php/controller/".$classe.".class.php"))
-    {
-        require "php/controller/".$classe.".class.php";
-    }
-    if (file_exists("php/model/".$classe.".class.php"))
-    {
-        require "php/model/".$classe.".class.php";
-    }
+    $_SESSION['lang']=$_GET['lang'];
 }
-
-spl_autoload_register("chargerClasse");
-
-function AfficherPage($page)
+if (isset($_SESSION['lang']))
 {
-     $chemin=$page[0];
-     $nom=$page[1];
-     $titre=$page[2];
-     
-     include "php/view/Head.php";
-     include "php/view/Header.php";
-     include "php/view/Nav.php";
-     
-     include $chemin.$nom.'.php';
-     
-     include "php/view/Footer.php";
-}
-
-// connexion à la base de données
-DbConnect::Init();
-
-//création du tableau de redirections
-
-$routes=[
-     "default"=>["PHP/VIEW/","listeProduits","Liste des Produits"],
-     "produits"=>["PHP/VIEW/","listeProduits","Liste des Produits"],
-     "actionForm"=>["PHP/VIEW/","FormProduit","Détail du Produit"],
-     "actionProduit"=>["PHP/VIEW/","actionProduit","Détail du Produit"],
-
-     "categories"=>["PHP/VIEW/","listeCategories","Liste des Categories"],
-     "FormCategorie"=>["PHP/VIEW/","FormCategorie","Détail du Produit"],
-     "actionCategorie"=>["PHP/VIEW/","actionCategorie","Détail du Produit"],
-
-     /*"actionForm"=>["PHP/VIEW/","FormProduit","Détail du Produit"],
-     "actionProduit"=>["PHP/VIEW/","actionProduit","Détail du Produit"],
-     "ajj"=>["PHP/VIEW/","add","Détail du Produit"],
-     "modif"=>["PHP/VIEW/","modif","Modification du Produit"],
-     "delete"=>["PHP/VIEW/","del","Détail du Produit"],*/
-     
-];
-
-if (isset($_GET["code"]))
-{
-     $code=$_GET["code"];
-     // Si la route existe
-     if (isset($routes[$code]))
-     {
-          AfficherPage($routes[$code]);
-     }
-     else
-     {
-          AfficherPage($routes["default"]);
-     }
+    $lang=$_SESSION['lang'];
 }
 else
 {
-     AfficherPage($routes["default"]);
+    $lang='FR';
 }
 
 
+$routes = [
+    "default" => ["PHP/VIEW/", "FormConnexion", "Connexion à l'application"],
+    "connexion" => ["PHP/VIEW/", "FormConnexion", "Connexion à l'application"],
+    "formcreecompte" => ["PHP/VIEW/", "FormCreeCompte", "Création du compte"],
+    "actioncompte" => ["PHP/VIEW/", "ActionCompte", "Création du compte"],
+    "accueil"=> ["PHP/VIEW/", "PageAccueil", "Bienvenue sur notre site"],
+    "admin"=> ["PHP/VIEW/", "admin", "Page Administrateur"],
+    "user"=> ["PHP/VIEW/", "user", "Page Utilisateur"]
+];
 
+if (isset($_GET["codePage"]))
+{
 
+    $codePage = $_GET["codePage"];
 
+    //Si cette route existe dans le tableau des routes
+    if (isset($routes[$codePage]))
+    {
+        //Afficher la page correspondante
+        AfficherPage($routes[$codePage]);
+    }
+    else
+    {
+        //Sinon afficher la page par defaut
+        AfficherPage($routes["default"]);
+    }
 
+}
+else
+{
+    //Sinon afficher la page par defaut
+    AfficherPage($routes["default"]);
 
-
-
-
-
+}

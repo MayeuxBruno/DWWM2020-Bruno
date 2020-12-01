@@ -1,34 +1,56 @@
 <?php
 
-class Categories 
+class Texte 
 {
 
 	/*****************Attributs***************** */
 
-	private $_idCategorie;
-	private $_LibelleCategorie;
+	private $_idTexte;
+	private $_codeTexte;
+	private $_codeLangue;
+	private $_Texte;
 
 	/***************** Accesseurs ***************** */
 
 
-	public function getIdCategorie()
+	public function getIdTexte()
 	{
-		return $this->_idCategorie;
+		return $this->_idTexte;
 	}
 
-	public function setIdCategorie($idCategorie)
+	public function setIdTexte($idTexte)
 	{
-		$this->_idCategorie=$idCategorie;
+		$this->_idTexte=$idTexte;
 	}
 
-	public function getLibelleCategorie()
+	public function getCodeTexte()
 	{
-		return $this->_LibelleCategorie;
+		return $this->_codeTexte;
 	}
 
-	public function setLibelleCategorie($LibelleCategorie)
+	public function setCodeTexte($codeTexte)
 	{
-		$this->_LibelleCategorie=$LibelleCategorie;
+		$this->_codeTexte=$codeTexte;
+	}
+
+	public function getCodeLangue()
+	{
+		return $this->_codeLangue;
+	}
+
+	public function setCodeLangue($codeLangue)
+	{
+		$this->_codeLangue=$codeLangue;
+	}
+
+	public function getTexte()
+	{
+		return $this->_Texte;
+	}
+
+	public function setTexte($Texte)
+	{
+		$this->_Texte=$Texte;
 	}
 
 	/*****************Constructeur***************** */
@@ -61,7 +83,7 @@ class Categories
 	*/
 	public function toString()
 	{
-		return "IdCategorie : ".$this->getIdCategorie()."LibelleCategorie : ".$this->getLibelleCategorie()."\n";
+		return "IdTexte : ".$this->getIdTexte()."CodeTexte : ".$this->getCodeTexte()."CodeLangue : ".$this->getCodeLangue()."Texte : ".$this->getTexte()."\n";
 	}
 
 

@@ -1,66 +1,63 @@
-div,header,.flex{
-    display: flex;
-    flex: 1;
+body,html{
+    margin:0;
+    padding:0;
 }
 
-img{
-    width:100%;
+div,header,nav{
+    /*border : 1px dotted red;*/
+    display:flex;
+    flex:1;
 }
 
-.demi{
-    flex:0;
-}
-body{
-    background-color:lightgrey
+a{
+    text-decoration: none;
 }
 .colonne{
-    flex-direction: column;
+    flex-direction:column;
 }
-.bouton{
-    border: 2px solid black;
-    border-radius: 0.5em;
-    padding: 2em;
-    font-weight:bold;
+.center{
     justify-content:center;
 }
+.centerh{
+    align-items:center;
+}
 
-.cache{
-    display: none;
+.space{
+    justify-content: space-around;
+}
+.fin{
+    justify-content:flex-end;
+}
+
+.padConex{
+    padding:1em;
+}
+.vide{
+    flex:2;
 }
 
 .espacehor{
     flex:none;
-    height:10vh;
+    height:20vh;
 }
 
-/***** Header *****/ 
-header{
-    height:25vh;
-    align-items:center;
-    background-color:lightskyblue
-}
-
-.titre{
-    justify-content:center;
-}
-
-/******* Contenu ********/
-
-.vert{
-    background-color:green;
-}
-
-.orange{
-    background-color:orange;
+.bordure{
+    border:1px solid grey;
+    border-radius:0.5em; 
 }
 
 .rouge{
-    background-color:red;
-}
-.blanc{
-    background-color:white;
+    color:red;
 }
 
-.vertclair{
-    background-color:greenyellow
+.fondheader{
+    background-color:lightskyblue;
+}
+
+.fondpage{
+    background-color:#ddd;
+}
+
+.fondform{
+    background-color:lightsteelblue;
 }

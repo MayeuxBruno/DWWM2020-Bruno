@@ -11,7 +11,7 @@ class DbConnect{
     public static function init()
     {
         try {
-            self::$db=new PDO ('mysql:host=localhost;dbname=baseProduits;charset=utf8','root',''); 
+            self::$db=new PDO ('mysql:host=localhost;dbname=testconnexion;charset=utf8','root',''); 
         }
         catch (Exception $e)
         {
