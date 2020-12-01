@@ -6,7 +6,7 @@ $vehicules=VehiculesManager::getList();
 if ($_SESSION['utilisateur']->getRoleUser()==2)
 {
     echo '<div class="demiespacehor"></div>';
-    echo '<div class="center"><button>Ajouter un véhicule</button></div>';
+    echo '<div class="center"><button>'.texte("ajouterVehicule").'</button></div>';
     echo '<div class="demiespacehor"></div>';
 }
 else{
@@ -19,11 +19,11 @@ foreach ($vehicules as $unvehicule)
 {
         echo'<div>';
         echo '<div class="center">'.$unvehicule->getNoparc().'</div>';
-        echo '<div class="center"><button>Détail</button></div>';
+        echo '<div class="center"><button>'.texte("details").'</button></div>';
         if ($_SESSION['utilisateur']->getRoleUser()==2)
         {
-            echo '<div class="center"><button>Modifier</button></div>';
-            echo '<div class="center"><button>Supprimmer</button></div>';
+            echo '<div class="center"><button>'.texte("modifier").'</button></div>';
+            echo '<div class="center"><button>'.texte("supprimer").'</button></div>';
         }
         echo '</div>';
 }
