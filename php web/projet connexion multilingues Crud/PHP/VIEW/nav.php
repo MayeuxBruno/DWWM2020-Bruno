@@ -22,13 +22,15 @@ else
 <?php
 if (isset($_SESSION['utilisateur']))
 {
-    if($_SESSION['utilisateur']->getRoleUser()==2)
+    /*if($_SESSION['utilisateur']->getRoleUser()==2)
     {
         echo'<button><a href="index.php?codePage=admin">'. texte("administrateur").'</a></button>';
     }
-    echo'<button><a href="index.php?codePage=user">'. texte("utilisateur").'</a></button>';
+    echo'<button><a href="index.php?codePage=user">'. texte("utilisateur").'</a></button>';*/
+    echo '<div class="center"><button><a href="index.php?codePage=listevehicules">'.texte("listeVehicule").'</button></div>';
 }
 ?>
+
 </div>
 <div>
 <div class="fin"><a href="<?php echo $uri;?>lang=FR">FR</a> - <a href="<?php echo $uri;?>lang=EN">EN</a></div>
