@@ -18,14 +18,7 @@ if (isset($_GET['lang']))
 //On prend la langue de la session sinon FR par défaut
 $lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'FR';
 
-/**
- * Fonction qui ramène le texte dans la bonne langue
- */
-function texte($codetexte)
-{
-    global $lang; //on appel la variable globale
-    return TexteManager::findByCodes($lang, $codetexte);
-}
+
 
 $routes = [
     "default" => ["PHP/VIEW/", "FormConnexion", texte("pageConnexion")],

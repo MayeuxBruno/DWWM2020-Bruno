@@ -67,11 +67,11 @@ class Parametre
                     $param[] = substr($info[1], 0, strlen($info[1]) - 2);
                 }
             }
-            self::$host = $param[0];
-            self::$port = $param[1];
-            self::$dbname = $param[2];
-            self::$login = $param[3];
-            self::$pwd = $param[4];
+            self::$host = decrypte($param[0]);
+            self::$port = decrypte($param[1]);
+            self::$dbname = decrypte($param[2]);
+            self::$login = decrypte($param[3]);
+            self::$pwd = decrypte($param[4]);
         }
     }
 

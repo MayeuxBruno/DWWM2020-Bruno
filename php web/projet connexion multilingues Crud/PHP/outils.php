@@ -32,4 +32,20 @@ function crypte($mot)
     return md5(md5($mot).strlen(md5($mot)).strlen($mot));
 }
 
+function decrypte($motadecrypter)
+{
+    for($i=0;$i<strlen($motadecrypter);$i++)
+    {
+        $motadecrypter[$i]=chr(ord($motadecrypter[$i])-5);
+    }
+    return $motadecrypter;
+}
 
+/**
+ * Fonction qui ramène le texte dans la bonne langue
+ */
+function texte($codetexte)
+{
+    global $lang; //on appel la variable globale
+    return TexteManager::findByCodes($lang, $codetexte);
+}
