@@ -2,6 +2,7 @@ var chaine;
 var carac;
 var voyelles=0;
 chaine=prompt("Veuillez saisir un mot : ");
+chaine=chaine.toLowerCase()
 
 for (i=0;i<chaine.length;i++)
 {
