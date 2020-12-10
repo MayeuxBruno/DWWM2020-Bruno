@@ -1,6 +1,6 @@
 <?php
 
-class TexteManager 
+class TextesManager 
 {
 	public static function add(Texte $obj)
 	{

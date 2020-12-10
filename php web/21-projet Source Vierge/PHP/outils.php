@@ -71,5 +71,5 @@ function decrypte($motadecrypter)
 function texte($codetexte)
 {
     global $lang; //on appel la variable globale
-    return TexteManager::findByCodes($lang, $codetexte);
+    return TextesManager::findByCodes($lang, $codetexte);
 }

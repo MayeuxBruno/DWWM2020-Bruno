@@ -1,6 +1,6 @@
 <?php
 
-class Texte 
+class Textes 
 {
 
 	/*****************Attributs***************** */
