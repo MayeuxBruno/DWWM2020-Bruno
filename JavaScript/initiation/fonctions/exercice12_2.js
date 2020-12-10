@@ -2,7 +2,7 @@ function TableMultiplication(table)
 {
     for(i=1;i<=10;i++)
     {
-        document.write(table+" X "+i+" = "+(table*i)+"<br>");
+        document.write(i+" X "+table+" = "+(table*i)+"<br>");
     }
 }
 
