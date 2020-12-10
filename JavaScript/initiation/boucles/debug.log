@@ -3,3 +3,5 @@
 [1209/220801.462:ERROR:process_info.cc(375)] NtQuerySystemInformation SystemExtendedHandleInformation: La longueur d’enregistrement d’informations spécifiée ne correspond pas à la longueur nécessaire pour la classe d’informations spécifiée. (0xc0000004)
 [1209/220801.485:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\nonom\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\55e36433-d003-44a3-b6cf-1c20b8a79191: Le chemin d’accès spécifié est introuvable. (0x3)
 [1209/221905.715:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
+[1210/084532.463:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
+[1210/141949.283:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\nonom\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\9267122b-aeac-4e84-bdc4-593e7148c349: Le chemin d’accès spécifié est introuvable. (0x3)
