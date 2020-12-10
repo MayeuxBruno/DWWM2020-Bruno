@@ -1,4 +1,6 @@
 <?php
+
+/**** Script qui cré le formulaire de la création du compte */
 echo'
 <div class="espacehor"></div>
 <div>
