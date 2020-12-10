@@ -31,16 +31,16 @@ $routes = [
     "user"=> ["PHP/VIEW/", "user", texte("pageUtilisateur")]
 ];
 
-if (isset($_GET["codePage"]))
+if (isset($_GET["page"]))
 {
 
-    $codePage = $_GET["codePage"];
+    $page = $_GET["page"];
 
     //Si cette route existe dans le tableau des routes
-    if (isset($routes[$codePage]))
+    if (isset($routes[$page]))
     {
         //Afficher la page correspondante
-        AfficherPage($routes[$codePage]);
+        AfficherPage($routes[$page]);
     }
     else
     {

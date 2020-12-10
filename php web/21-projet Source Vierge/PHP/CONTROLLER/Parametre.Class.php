@@ -1,51 +1,36 @@
 <?php
-class Parametre
+class Parametres
 {
-    private static $host;
-    private static $port;
-    private static $dbname;
-    private static $login;
-    private static $pwd;
+	rivate static $_host;
+	rivate static $_port;
+	rivate static $_dbname;
+	rivate static $_login;
+	rivate static $_pwd;
 
-    /**
-     * Get the value of host
-     */
-    public static function getHost()
-    {
-        return self::$host;
-    }
+	tatic function getHost() /**GET TOAST LEL**/
+	
+	return self::$_host;
+	
 
-    /**
-     * Get the value of port
-     */
-    public static function getPort()
-    {
-        return self::$port;
-    }
-    /**
-     * Get the value of dbname
-     */
-    public static function getDbname()
-    {
-        return self::$dbname;
-    }
+	tatic function getPort() /**GET PORC LEL**/
+	
+	return self::$_port;
+	
 
-    /**
-     * Get the value of login
-     */
-    public static function getLogin()
-    {
-        return self::$login;
-    }
+	tatic function getDbname() /**Qu'est ce qui est jaune et qui attends ?**/
+	
+	return self::$_dbname;
+	
 
-    /**
-     * Get the value of pwd
-     */
-    public static function getPwd()
-    {
-        return self::$pwd;
-    }
+	tatic function getLogin() /**Jaune a temps**/
+	
+	return self::$_login;
+	
 
+	tatic function getPwd() /**POWNED**/
+	
+	return self::$_pwd;
+	
     public static function init()
     {
 //on récupere les paramètres de connection base de données

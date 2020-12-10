@@ -5,7 +5,7 @@ echo'
     <div class="vide"></div>
     <div class="colonne fondform bordure">
         <div>
-            <form action="index.php?codePage=actioncompte&mode=ajout" method="POST">
+            <form action="index.php?page=actioncompte&mode=ajout" method="POST">
         </div>
         <div class="padConex">    
             <div class="center"><label for="nomUser">'.texte("nom")." :".'</label></div>
@@ -43,7 +43,7 @@ echo'
             <button type="submit">'.texte("creerCompte").'</button>
         </div>
         </form>
-        <div class="center padConex"><button><a href="index.php?codePage=connexion">'.texte("retour").'</a></button></div>
+        <div class="center padConex"><button><a href="index.php?page=connexion">'.texte("retour").'</a></button></div>
     </div>
     <div class="vide"></div>
 </div>';

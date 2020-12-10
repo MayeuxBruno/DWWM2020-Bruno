@@ -12,16 +12,16 @@ switch($_GET['mode'])
                 $_POST['passwordUser']=crypte($_POST['passwordUser']);
                 $utilisateur=new Users($_POST);
                 UsersManager::add($utilisateur);
-                header("Location:index.php?codePage=connexion");
+                header("Location:index.php?page=connexion");
             }
             else{
                 echo '<h2 class="rouge">La confirmation ne correspond pas au mot de passe</h2>';
-                header("refresh:3;url=index.php?codePage=formcreecompte");
+                header("refresh:3;url=index.php?page=formcreecompte");
             }
         }
         else{
             echo '<h2 class="rouge">Le pseudo existe déjà, veuillez en saisir un autre</h2>';
-            header("refresh:3;url=index.php?codePage=formcreecompte");
+            header("refresh:3;url=index.php?page=formcreecompte");
         }
     break;
 
@@ -33,23 +33,23 @@ switch($_GET['mode'])
             if (strcmp($utilisateur->getPasswordUser(),$passwordCrypte)==0)
             {
                 $_SESSION['utilisateur']=$utilisateur;
-                header("Location:index.php?codePage=accueil");
+                header("Location:index.php?page=accueil");
             }
             else{
                 echo '<h2 class="rouge">Le mot de passe est invalide</h2>';
-                header("refresh:3;url=index.php?codePage=connexion");
+                header("refresh:3;url=index.php?page=connexion");
             }
         }
         else
         {
             echo '<h2 class="rouge">Le pseudo n\'existe pas</h2>';
-            header("refresh:3;url=index.php?codePage=connexion");
+            header("refresh:3;url=index.php?page=connexion");
         }
     break;
 
     //deconnexion
     case ("deconnexion"):
         session_destroy();
-        header("Location:index.php?codePage=connexion");
+        header("Location:index.php?page=connexion");
     break;
 }
