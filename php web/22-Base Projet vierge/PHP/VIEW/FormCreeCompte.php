@@ -7,7 +7,7 @@ echo'
     <div class="vide"></div>
     <div class="colonne fondform bordure">
         <div>
-            <form action="index.php?page=actioncompte&mode=ajout" method="POST">
+            <form action="index.php?page=actionCompte&mode=ajout" method="POST">
         </div>
         <div class="padConex">    
             <div class="center"><label for="nomUser">'.texte("nom")." :".'</label></div>

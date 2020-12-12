@@ -1,10 +1,17 @@
 <?php
-$utilisateur=UsersManager::findByPseudo($_POST['pseudoUser']);
+if($_GET['mode']=="suppr")
+{
+    $utilisateur=UsersManager::findById($_POST['idUser']);
+}
+else{
+    $utilisateur=UsersManager::findByPseudo($_POST['pseudoUser']);
+}
 switch($_GET['mode'])
 {
     // Création d'un compte
-    case ("ajout"):
-        var_dump($_POST);   
+    case "ajout":
+    case "creer":
+        //die (var_dump($_POST));   
         if($utilisateur==FALSE)
         {
             if($_POST['passwordUser']==$_POST['confirmationMdp'])
@@ -12,16 +19,22 @@ switch($_GET['mode'])
                 $_POST['passwordUser']=crypte($_POST['passwordUser']);
                 $utilisateur=new Users($_POST);
                 UsersManager::add($utilisateur);
-                header("Location:index.php?page=connexion");
+                if($_GET[mode]=="creer")
+                {
+                    header("Location:index.php?page=connexion");
+                }
+                else{
+                    header("Location:index.php?page=listeUtilisateurs");
+                }
             }
             else{
                 echo '<h2 class="rouge">La confirmation ne correspond pas au mot de passe</h2>';
-                header("refresh:3;url=index.php?page=formcreecompte");
+                header("refresh:3;url=index.php?page=formCreeCompte");
             }
         }
         else{
             echo '<h2 class="rouge">Le pseudo existe déjà, veuillez en saisir un autre</h2>';
-            header("refresh:3;url=index.php?page=formcreecompte");
+            header("refresh:3;url=index.php?page=formCreeCompte");
         }
     break;
 
@@ -51,5 +64,10 @@ switch($_GET['mode'])
     case ("deconnexion"):
         session_destroy();
         header("Location:index.php?page=connexion");
+    break;
+
+    case "suppr":
+        UsersManager::delete($utilisateur);
+        header("Location:index.php?page=listeUtilisateurs");
     break;
 }

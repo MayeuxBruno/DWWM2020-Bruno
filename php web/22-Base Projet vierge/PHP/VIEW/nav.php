@@ -11,6 +11,7 @@ if (isset($_SESSION['utilisateur']))
     if($_SESSION['utilisateur']->getRoleUser()==2)
     {
         echo'<button><a href="index.php?page=admin">'. texte("administrateur").'</a></button>';
+        echo'<button><a href="index.php?page=listeUtilisateurs">'. texte("administrateur").'</a></button>';
     }
     echo'<button><a href="index.php?page=user">'. texte("utilisateur").'</a></button>';
 }

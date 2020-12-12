@@ -8,7 +8,7 @@ echo'<body class="colonne fondpage">
            if(isset($_SESSION['utilisateur']))
            {
                echo '<div><h3>'.$_SESSION['utilisateur']->getNomUser().' '.$_SESSION['utilisateur']->getPrenomUser().'</h3></div>
-               <div class="center padConex"><button><a href="index.php?page=actioncompte&mode=deconnexion">'.texte("deconnexion").'</a></button></div>';
+               <div class="center padConex"><button><a href="index.php?page=actionCompte&mode=deconnexion">'.texte("deconnexion").'</a></button></div>';
            }
     echo'</div>
     </header>';

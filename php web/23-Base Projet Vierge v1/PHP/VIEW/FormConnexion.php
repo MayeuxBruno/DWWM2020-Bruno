@@ -2,7 +2,7 @@
 <div>
     <div class="vide"></div>
     <div class="colonne fondform bordure">
-        <form  action="index.php?page=actioncompte&mode=connexion" method="POST">
+        <form  action="index.php?page=actionCompte&mode=connexion" method="POST">
             <div class="fin padConex">
                 <label for="pseudoUser">Pseudo :</label>
                 <input name="pseudoUser" type="text" required/>
@@ -13,7 +13,7 @@
             </div>
            <?php echo'<div class="center padConex"><button type="submit">'.texte("connexion").'</button></div>
         </form>
-        <div class="center padConex"><button><a href="index.php?page=formcreecompte">'.texte("inscription").'</a></button></div>';
+        <div class="center padConex"><button><a href="index.php?page=formUtilisateurs&mode=creer">'.texte("inscription").'</a></button></div>';
         ?>
     </div>
     <div class="vide"></div>
