@@ -1,0 +1,49 @@
+/****  GENERAL ****/
+html, body {
+	margin : 0;
+	padding : 0;
+}
+
+div, header, footer, nav, article {
+	display : flex;
+	flex : 1;
+}
+
+img, video {
+	width : 100%;
+}
+
+.demi{
+	flex:0.5;
+}
+
+.colonne{
+	flex-direction:column;
+}
+
+.bouton{
+	border:1px solid black;
+	justify-content:center;
+	padding:2em;
+	border-radius:0.5em;
+}
+
+.bleuCiel{
+	background-color:lightskyblue;
+}
+
+.vert
+{
+	background-color:greenyellow;
+}
+
+.blanc{
+	background-color:white;
+}
+
+.rouge{
+	background-color:red;
+}
+
+
+

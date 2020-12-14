@@ -1,7 +1,7 @@
 <?php
 
 ?>
-<nav class="fondform padConex">
+<nav class="fondform padForm">
 <div>
 <div></div>
 <div class="space">    
@@ -11,7 +11,7 @@ if (isset($_SESSION['utilisateur']))
     if($_SESSION['utilisateur']->getRoleUser()==2)
     {
         echo'<button><a href="index.php?page=admin">'. texte("administrateur").'</a></button>';
-        echo'<button><a href="index.php?page=listeUtilisateurs">Liste Utilisateurs</a></button>';
+        echo'<button><a href="index.php?page=listeUtilisateurs">'.texte("listeUtilisateurs").'</a></button>';
     }
     echo'<button><a href="index.php?page=user">'. texte("utilisateur").'</a></button>';
 }

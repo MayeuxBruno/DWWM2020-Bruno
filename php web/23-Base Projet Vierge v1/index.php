@@ -24,7 +24,6 @@ $lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'FR';
 $routes = [
     "default" => ["PHP/VIEW/", "FormConnexion", texte("pageConnexion")],
     "connexion" => ["PHP/VIEW/", "FormConnexion", texte("pageConnexion")],
-    "formCreeCompte" => ["PHP/VIEW/", "formCreeCompte", texte("creerCompte")],
     "actionCompte" => ["PHP/VIEW/", "ActionCompte", texte("creerCompte")],
     "accueil"=> ["PHP/VIEW/", "PageAccueil",  texte("phraseBienvenue")],
     "listeUtilisateurs"=>["PHP/VIEW/", "ListeUsers",  texte("phraseBienvenue")],

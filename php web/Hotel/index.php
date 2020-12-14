@@ -1,21 +1,60 @@
-<?php
-$titre = "Ton titre infobulle";
-include "PHP/VIEW/head.php";
+<?PHP
 
-echo'<body>';
-    $hotel=HotelsManager::getList();
-    echo'<div class="colonne">';
-    foreach($hotel as $unhotel)
+include 'PHP/outils.php';
+
+spl_autoload_register("ChargerClasse");
+
+Parametres::init();
+DbConnect::init();
+
+session_start();
+
+
+/*********** Gestion des langues ************/
+// On recupere la langue de l'URL
+if (isset($_GET['lang']))
+{
+    $_SESSION['lang'] = $_GET['lang'];
+}
+//On prend la langue de la session sinon FR par défaut
+$lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'FR';
+
+
+// Gestion des routes
+$routes = [
+    "default" => ["PHP/VIEW/", "FormConnexion", texte("pageConnexion")],
+    "connexion" => ["PHP/VIEW/", "FormConnexion", texte("pageConnexion")],
+    "actionCompte" => ["PHP/VIEW/", "ActionCompte", texte("creerCompte")],
+    "accueil"=> ["PHP/VIEW/", "PageAccueil",  texte("phraseBienvenue")],
+    "listeUtilisateurs"=>["PHP/VIEW/", "ListeUsers",  texte("phraseBienvenue")],
+    "listeHotels"=>["PHP/VIEW/", "ListeHotels", "Liste des Hotels"],
+    "listeReservations"=>["PHP/VIEW/", "ListeReservations", "Liste des Reservations"],
+    "formUtilisateurs"=>["PHP/VIEW/", "FormUsers",  texte("phraseBienvenue")],
+    "admin"=> ["PHP/VIEW/", "admin", texte("pageAdministrateur")],
+    "user"=> ["PHP/VIEW/", "user", texte("pageUtilisateur")]
+];
+
+if (isset($_GET["page"]))
+{
+
+    $page = $_GET["page"];
+
+    //Si cette route existe dans le tableau des routes
+    if (isset($routes[$page]))
     {
-        echo'<div class="ligne">
-             <div></div>
-             <div class="bouton bleuCiel">'.$unhotel->getNomHotel().' - '.$unhotel->getVilleHotel().'</div>
-             <a href="PHP/VIEW/consult.php?id='.$unhotel->getIdHotel().'"><div class="demi bouton vert">Consulter</div></a>
-             <a href="PHP/VIEW/delete.php?id='.$unhotel->getIdHotel().'"><div class="demi bouton rouge">Supprimmer</div></a>
-             <div></div>
-             </div>';
+        //Afficher la page correspondante
+        AfficherPage($routes[$page]);
+    }
+    else
+    {
+        //Sinon afficher la page par defaut
+        AfficherPage($routes["default"]);
     }
 
-echo '</div>
-      </body>
-    </html>';
+}
+else
+{
+    //Sinon afficher la page par defaut
+    AfficherPage($routes["default"]);
+
+}

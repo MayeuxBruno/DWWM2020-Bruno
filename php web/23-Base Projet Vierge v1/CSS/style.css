@@ -1,24 +1,37 @@
+/******** GLOBAL ********/ 
 body,html{
     margin:0;
     padding:0;
 }
-
 div,header,nav{
     /*border : 1px dotted red;*/
     display:flex;
     flex:1;
 }
-
 a{
     text-decoration: none;
 }
 .colonne{
     flex-direction:column;
 }
-.center{
+
+/****** ESPACES **********/
+.espacehor{
+    flex:none;
+    height:20vh;
+}
+.vide{
+    flex:2;
+}
+/***** ALERTES ********/
+.alert{
+    color:red;
+}
+/***** ALIGNEMENTS *******/
+.justify{
     justify-content:center;
 }
-.centerh{
+.justifyh{
     align-items:center;
 }
 
@@ -29,35 +42,28 @@ a{
     justify-content:flex-end;
 }
 
-.padConex{
-    padding:1em;
-}
-.vide{
-    flex:2;
-}
-
-.espacehor{
-    flex:none;
-    height:20vh;
-}
-
+/****** FORMULAIRES ********/
 .bordure{
     border:1px solid grey;
     border-radius:0.5em; 
 }
-
-.rouge{
-    color:red;
+.fondform{
+    background-color:lightsteelblue;
+}
+.padForm{
+    padding:1em;
+}
+.fondform{
+    background-color:lightsteelblue;
 }
 
+/****** HEADER *******/
 .fondheader{
     background-color:lightskyblue;
 }
 
+/****** PAGE *******/
 .fondpage{
     background-color:#ddd;
 }
 
-.fondform{
-    background-color:lightsteelblue;
-}

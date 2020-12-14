@@ -1,49 +1,78 @@
-/****  GENERAL ****/
-html, body {
-	margin : 0;
-	padding : 0;
+/******** GLOBAL ********/ 
+body,html{
+    margin:0;
+    padding:0;
 }
-
-div, header, footer, nav, article {
-	display : flex;
-	flex : 1;
+div,header,nav{
+    /*border : 1px dotted red;*/
+    display:flex;
+    flex:1;
 }
-
-img, video {
-	width : 100%;
+a{
+    text-decoration: none;
 }
-
-.demi{
-	flex:0.5;
-}
-
 .colonne{
-	flex-direction:column;
+    flex-direction:column;
 }
 
-.bouton{
-	border:1px solid black;
-	justify-content:center;
-	padding:2em;
-	border-radius:0.5em;
+/****** ESPACES **********/
+.espacehor{
+    flex:none;
+    height:20vh;
+}
+.vide{
+    flex:2;
+}
+/***** ALERTES ********/
+.alert{
+    color:red;
 }
 
-.bleuCiel{
-	background-color:lightskyblue;
+/******** LISTES *********/
+.entete{
+    background-color:lightskyblue;
+}
+.celule{
+    border:2px solid white;
+    padding:1em;
+}
+/***** ALIGNEMENTS *******/
+.justify{
+    justify-content:center;
+}
+.justifyh{
+    align-items:center;
 }
 
-.vert
-{
-	background-color:greenyellow;
+.space{
+    justify-content: space-around;
+}
+.fin{
+    justify-content:flex-end;
 }
 
-.blanc{
-	background-color:white;
+/****** FORMULAIRES ********/
+.bordure{
+    border:1px solid grey;
+    border-radius:0.5em; 
+}
+.fondform{
+    background-color:lightsteelblue;
+}
+.padForm{
+    padding:1em;
+}
+.fondform{
+    background-color:lightsteelblue;
 }
 
-.rouge{
-	background-color:red;
+/****** HEADER *******/
+.fondheader{
+    background-color:lightskyblue;
 }
 
-
+/****** PAGE *******/
+.fondpage{
+    background-color:#ddd;
+}
 
