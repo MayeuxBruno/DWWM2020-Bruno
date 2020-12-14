@@ -1,0 +1,28 @@
+div{
+    display:flex;
+    flex:1;
+}
+.colonne{
+    flex-direction:column;
+}
+.formulaire{
+    border : 1px solid black;
+    padding:0.5em;
+}
+.ligne{
+    margin-bottom:0.2em;
+}
+label{
+    white-space: nowrap;
+}
+.bordureBas{
+    border-bottom:1px black solid;
+}
+.espacehor{
+    flex:none;
+    height:1em;
+}
+
+.pad{
+    padding-left:3em;
+}
