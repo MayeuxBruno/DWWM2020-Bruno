@@ -1031,11 +1031,141 @@ function choisirMot(niv)
     }
 }
 
+/**
+ * méthode qui demande une lettre à l’utilisateur, elle vérifie que le caractère saisi est une lettre et le renvoi en majuscule.
+ */
+function demanderLettre()
+{
+    do
+    {
+        var lettre = prompt("entrez une lettre : ").toUpperCase();
+    }while(lettre.match(/[A-Z]/gi)==null); // ou utilisation de  while (!IntlChar::isalpha($lettre))
+    return lettre;
+}
+
+/**
+ * méthode qui renvoi 1 si la partie est gagné, -1 si la partie est perdu, 0 si la partie continue.
+ * Elle reçoit en paramètre le nombre d’erreurs et le tableau contenant le mot composé
+ *
+ * @param int $nberreur
+ * @param array $tab
+ * @return void //0 si la partie est toujours en cours, 1 si c'est gagné, -1 sinon
+ */
+function testerGagner(nberreur, tab)
+{
+    if (nberreur == 9) // si nb erreur =9, partie perdue
+    {
+        return -1;
+    }
+    else 
+    if (tab.indexOf("_") == -1) // s'il y a un _ dans le tableau, la partie est en cours
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+/**
+ * Demande le niveau à l'utilisateur
+ *
+ * @return int le niveau de difficulté
+ */
+function choisirNiveau()
+{
+    do
+    {
+        var niveau = prompt ("Niveau de difficulé : Facile (1)  Normal (2)  Difficile (3) Court(4) ");
+
+        if (niveau > 4 || niveau < 1 || niveau==null || isNaN(niveau))
+        {
+            alert ("Saisie invalide ! Recommencer (rappel : 1 ou 2 ou 3 ou 4)");
+        }
+    } while (niveau > 4 || niveau < 1 || niveau==null || isNaN(niveau));
+    switch (niveau)
+    {
+        case "1":
+            break;
+        case "2":
+            break;
+        case "3":
+            break;
+        case "4":
+            break;
+    }
+    return niveau;
+}
+
+function sleep(seconds) {
+    var waitUntil = new Date().getTime() + seconds*1000;
+    while(new Date().getTime() < waitUntil) true;
+}
+
+/**
+ * Permet de gérer la partie
+ *
+ * @return void
+ */
+function lancerPartie(niveau)
+{
+    var motATrouver = choisirMot(niveau); // determine la mot à trouver
+    var tabMotATrouver = motATrouver.split(","); // toutes les functions travaillent avec des tableaux, on transforme la haine en tableau
+    var motCode = coderMot(motATrouver, niveau);
+    var nbErreur = 0; // compte le nombre d'erreur
+    var gagne = false;
+    var mauvaisesLettres = []; // tableau contenant les mauvaises lettres
+    do
+    {
+        afficherTableau(motCode); // on affiche le mot contenant les _
+        dessinerPendu(nbErreur);
+        if (mauvaisesLettres.length!=0)
+        { //s'il y a des mauvaises lettres, on les affiche
+            afficherMauvaisesLettres(mauvaisesLettres);
+        }
+        var lettre =demanderLettre();
+        sleep(1);
+        var lesPositions = testerLettre(lettre, tabMotATrouver, 0); //on recupere toutes les positions de cette lettre dans le mot
+        if (lesPositions.length==0)
+        { //la lettre n'est pas dans le mot
+            nbErreur++;
+            mauvaisesLettres.push(lettre);
+        }
+        else
+        {
+            var reponse = ajouterLesLettres(lettre, motCode, lesPositions, niveau); //motCode = pour récuperer le tableau mis à jour
+            if (reponse == -1) // la lettre ne peut plus etre placée
+            {
+                nbErreur++;
+                mauvaisesLettres.push(lettre);
+            }
+            else
+            {
+                motCode = reponse;
+            }
+        }
+
+        gagne = testerGagner(nbErreur, motCode); // on teste l'état de la partie
+        //echo chr(27) . chr(91) . 'H' . chr(27) . chr(91) . 'J'; //permet de vider l'écran
+    } while (gagne == 0);
+    if (gagne == 1)
+    {
+        document.write("Bravo!! vous avez gagné. Le mot était : "+motATrouver);
+    }
+    else
+    {
+        document.write("Vous avez perdu. Le mot était : "+motATrouver);
+    }
+}
+
+niv = choisirNiveau();
+lancerPartie(niv);
 /************ FONCTION DE TEST  *************/
 
- var tableau=["b","o","n","j","o","o","o"];
- var code=["_","_","_","_","_","_","_"];
- var tabPos=[1,4,6];
+ //var tableau=["b","o","n","j","o","o","o"];
+ //var code=["_","_","_","_","_","_","_"];
+ //var tabPos=[1,4,6];
  //afficherTableau(tableau);
 
  //doccoderMot("bonjour",1));
@@ -1048,4 +1178,10 @@ function choisirMot(niv)
 
  //afficherMauvaisesLettres(tableau);
 
- document.write(choisirMot(4));
+ //document.write(choisirMot(4));
+
+ //document.write(demanderLettre());
+
+ //testerGagner(5, tableau)
+
+ //choisirNiveau();
