@@ -29,7 +29,10 @@ $routes = [
     "listeUtilisateurs"=>["PHP/VIEW/", "ListeUsers",  texte("phraseBienvenue")],
     "formUtilisateurs"=>["PHP/VIEW/", "FormUsers",  texte("phraseBienvenue")],
     "admin"=> ["PHP/VIEW/", "admin", texte("pageAdministrateur")],
-    "user"=> ["PHP/VIEW/", "user", texte("pageUtilisateur")]
+    "user"=> ["PHP/VIEW/", "user", texte("pageUtilisateur")],
+
+    /**** Test Manager ***/
+    "testuser"=> ["PHP/TESTMANAGER/","testBruno", texte("pageUtilisateur")]
 ];
 
 if (isset($_GET["page"]))
