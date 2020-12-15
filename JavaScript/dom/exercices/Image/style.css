@@ -1,0 +1,11 @@
+div{
+    display:flex;
+    flex:1;
+}
+.espacehor{
+    flex:none;
+    height:4em;
+}
+.centre{
+    justify-content: center;
+}
