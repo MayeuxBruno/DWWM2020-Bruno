@@ -19,10 +19,10 @@
                <div class="celule">'.StationsManager::findById($unHotel->getIdStation())->getNomStation().'</div>
 
                <div class="celule space">
-                    <a href="index.php?page=formUtilisateurs&mode=detail&id='.$unHotel->getIdHotel().'"><button>'.texte("consulter").'</button></a>';
+                    <a href="index.php?page=formHotels&mode=detail&id='.$unHotel->getIdHotel().'"><button>'.texte("consulter").'</button></a>';
                     if (isset($_SESSION['utilisateur'])&&$_SESSION['utilisateur']->getRoleUser()==2)
                     {
-                        echo' <a href="index.php?page=formUtilisateurs&mode=modif&id='.$unHotel->getIdHotel().'"><button>'.texte("modifier").'</button></a>
+                        echo' <a href="index.php?page=formHotels&mode=modif&id='.$unHotel->getIdHotel().'"><button>'.texte("modifier").'</button></a>
                               <a href="index.php?page=formUtilisateurs&mode=suppr&id='.$unHotel->getIdHotel().'"><button>'.texte("supprimer").'</button></a>';
                     }
                echo '</div>

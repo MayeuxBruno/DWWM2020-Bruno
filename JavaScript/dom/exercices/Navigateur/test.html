@@ -7,7 +7,29 @@
 </head>
 <body>
     <script>
-        document.write("Votre navigateur est de la marque "+navigator.appName+"<br>");
+        function QuelNavigateur() {
+        var ua = navigator.userAgent;
+        var x = ua.indexOf("MSIE");
+        var navig = "MSIE";
+        if (x == -1) {
+            x = ua.indexOf("Firefox");
+            navig = "Firefox";
+            if (x == -1) {
+                x = ua.indexOf("Chrome");
+                navig = "Chrome";
+                if (x == -1) {
+                    x = ua.indexOf("Opera");
+                    navig = "Opera";
+                    if (x == -1) {
+                        x = ua.indexOf("Safari");
+                        navig = "Safari"
+                    }
+                }
+            }
+        }
+    return navig;
+}
+        document.write("Votre navigateur est de la marque "+QuelNavigateur()+"<br>");
         document.write("Son numéro de version est "+navigator.appVersion+"<br>");
         document.write("définition de l'écran :"+screen.width+" * "+screen.height);
     </script>

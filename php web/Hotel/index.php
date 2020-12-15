@@ -30,6 +30,7 @@ $routes = [
     "listeHotels"=>["PHP/VIEW/", "ListeHotels", "Liste des Hotels"],
     "listeReservations"=>["PHP/VIEW/", "ListeReservations", "Liste des Reservations"],
     "formUtilisateurs"=>["PHP/VIEW/", "FormUsers",  texte("phraseBienvenue")],
+    "formHotels"=>["PHP/VIEW/", "FormHotel",  texte("phraseBienvenue")],
     "admin"=> ["PHP/VIEW/", "admin", texte("pageAdministrateur")],
     "user"=> ["PHP/VIEW/", "user", texte("pageUtilisateur")]
 ];
