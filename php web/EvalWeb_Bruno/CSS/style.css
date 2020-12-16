@@ -1,0 +1,92 @@
+/******** GLOBAL ********/ 
+body,html{
+    margin:0;
+    padding:0;
+}
+div,header,nav{
+    border : 1px dotted red;
+    display:flex;
+    flex:1;
+}
+a{
+    text-decoration: none;
+}
+.colonne{
+    flex-direction:column;
+}
+
+/****** ESPACES **********/
+.espacehor{
+    flex:none;
+    height:25vh;
+}
+
+.petitEspacehor{
+    flex:none;
+    height:3vh; 
+}
+.vide{
+    flex:2;
+}
+
+.separ{
+    flex:none;
+    height:1em;
+}
+/***** ALERTES ********/
+.alert{
+    color:red;
+}
+/***** ALIGNEMENTS *******/
+.justify{
+    justify-content:center;
+}
+.justifyh{
+    align-items:center;
+}
+
+.space{
+    justify-content: space-around;
+}
+.fin{
+    justify-content:flex-end;
+}
+
+/****** FORMULAIRES ********/
+.bordure{
+    border:1px solid grey;
+    border-radius:0.5em; 
+}
+.fondform{
+    background-color:lightsteelblue;
+}
+.padForm{
+    padding:1em;
+}
+.fondform{
+    background-color:#f8cbad;
+}
+
+/****** HEADER *******/
+.fondheader{
+    background-color:#f8cbad;
+}
+.padLogo{
+    padding:1em;
+}
+
+.fondFonce{
+    background-color:#f2a16a;
+}
+
+/****** PAGE *******/
+.fondpage{
+    background-color:#f8cbad;
+}
+
+/***** Bouton *****/
+button{
+    background-color:#f2a16a;
+    padding:0.5em 1em;
+}
+
