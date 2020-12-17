@@ -9,8 +9,10 @@ function deplace (dLeft,dTop)
     var styleCarre=window.getComputedStyle(carre,null);
     var topActuel = styleCarre.top;
     var leftActuel = styleCarre.left;
-    carre.style.top=parseInt(topActuel)+
+    carre.style.top=parseInt(topActuel)+dTop+"px";
+    carre.style.left=parseInt(leftActuel)+dLeft+"px"; 
 }
+
 btUp.addEventListener("click",function(){
     deplace(0,-5);
 });

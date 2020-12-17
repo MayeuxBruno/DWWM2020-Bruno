@@ -4,9 +4,8 @@
     height:5em;
     position:absolute;
     background-color:lightskyblue;
-    top:10em;
-    left:10em;
-    padding:0;
+    top:100px;
+    left:100px;
 }
 .colonne{
     flex-direction:column;
