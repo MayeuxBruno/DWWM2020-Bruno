@@ -3,8 +3,8 @@ var btUp=document.getElementById("up");
 var btDown=document.getElementById("down");
 var btLeft=document.getElementById("left");
 var btRight=document.getElementById("right");
-var x=10;
-var y=10;
+var x=0;
+var y=0;
 
 function moveUp()
 {

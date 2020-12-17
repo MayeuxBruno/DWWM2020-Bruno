@@ -4,8 +4,8 @@
     height:5em;
     position:absolute;
     background-color:lightskyblue;
-    top:10em;
-    left:10em;
+    top:0em;
+    left:0em;
 }
 .colonne{
     flex-direction:column;
@@ -15,5 +15,4 @@
 }
 div{
     display : flex;
-    /*border : 1px dotted black;*/
 }

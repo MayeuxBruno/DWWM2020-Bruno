@@ -1,4 +1,42 @@
-var nb=0;
+function clickBtn(e)
+{
+    let btnClick=e.target.id;
+    if (btnClick=="eff")
+    {
+        afficheur.value=afficheur.value.slice(0,-1);
+    }
+    else{
+        if(btnClick=="=")
+        {
+            afficheur.value=eval(afficheur.value);
+            for (let i=0;i<lesBoutons.length;i++)
+            {
+            lesBoutons[i].removeEventListener("click",clickBtn);
+            }
+        }
+        else{
+            afficheur.value+=btnClick;
+        }
+    }
+}
+
+var afficheur=document.getElementById("afficheur");
+var lesBoutons=document.getElementsByTagName("button");
+for (let i=0;i<lesBoutons.length;i++)
+{
+    lesBoutons[i].addEventListener("click",clickBtn);
+}
+var resetBtn=document.getElementById("cl");
+resetBtn.addEventListener("click",function(){
+    afficheur.value="";
+    for (let i=0;i<lesBoutons.length;i++)
+    {
+        lesBoutons[i].addEventListener("click",clickBtn);
+    }
+});
+
+
+/*var nb=0;
 var tot=0;
 var op="";
 
@@ -74,4 +112,4 @@ var lesBoutons=document.getElementsByTagName("button");
 for (let i=0;i<lesBoutons.length;i++)
 {
     lesBoutons[i].addEventListener("click",calcul);
-}
+}*/
