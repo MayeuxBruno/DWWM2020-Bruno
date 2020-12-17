@@ -1,0 +1,41 @@
+div{
+    display:flex;
+    flex:1;
+}
+
+.espaceh{
+    flex:none;
+    height:20vh;
+}
+
+.vide{
+    flex:2;
+}
+
+.colonne{
+    flex-direction:column;
+}
+.calculatrice{
+    background-color:#eee;
+    border : 1px black solid;
+    border-radius:0.5em;
+    padding:2em;
+}
+
+.ligne{
+    margin-top:1em;
+    justify-content: space-between;
+}
+
+button{
+    height:3em;
+    width:6em;
+}
+
+input{
+    height:2em;
+    font-weight:bold;
+    font-size:2em;
+    margin-bottom:1em;
+    text-align:right;
+}

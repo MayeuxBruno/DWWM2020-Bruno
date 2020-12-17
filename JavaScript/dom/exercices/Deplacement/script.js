@@ -30,7 +30,12 @@ function moveRight()
     carre.style.left=y+"em";
 }
 
+function blocMove(evt)
+{
+    var
+}
 btUp.addEventListener("click",moveUp);
 btDown.addEventListener("click",moveDown);
 btLeft.addEventListener("click",moveLeft);
 btRight.addEventListener("click",moveRight);
+bloc.addEventListener("mousemove",blocMove);
