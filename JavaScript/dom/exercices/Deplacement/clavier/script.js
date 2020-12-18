@@ -1,41 +1,33 @@
 var carre=document.getElementById("carre");
-var btUp=document.getElementById("up");
-var btDown=document.getElementById("down");
-var btLeft=document.getElementById("left");
-var btRight=document.getElementById("right");
-var x=0;
-var y=0;
+var affiche=document.getElementById("afficheur");
 
-function moveUp()
+function deplace(dLeft,dTop)
 {
-    x-=1;
-    carre.style.top=x+"em";
+    var styleCarre=window.getComputedStyle(carre,null);
+    var topActuel = styleCarre.top;
+    var leftActuel = styleCarre.left;
+    carre.style.top=parseInt(topActuel)+dTop+"px";
+    carre.style.left=parseInt(leftActuel)+dLeft+"px"; 
 }
+document.addEventListener("keydown",function(evt){
+    switch (evt.key)
+    {
+        case "ArrowUp":
+                deplace(0,-5);
+            break;
 
-function moveDown()
-{
-    x+=1;
-    carre.style.top=x+"em";
-}
+        case "ArrowDown":
+                deplace(0,5);
+            break;
+        
+        case "ArrowRight":
+               deplace(5,0);
+            break;
 
-function moveLeft()
-{
-    y-=1;
-    carre.style.left=y+"em";
-}
-
-function moveRight()
-{
-    y+=1;
-    carre.style.left=y+"em";
-}
-
-function blocMove(evt)
-{
-    var
-}
-btUp.addEventListener("click",moveUp);
-btDown.addEventListener("click",moveDown);
-btLeft.addEventListener("click",moveLeft);
-btRight.addEventListener("click",moveRight);
-bloc.addEventListener("mousemove",blocMove);
+        case "ArrowLeft":
+               deplace(-5,0);
+        break;
+        default:
+            alert([evt.key])
+    }
+});
