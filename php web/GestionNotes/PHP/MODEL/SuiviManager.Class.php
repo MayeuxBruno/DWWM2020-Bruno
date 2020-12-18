@@ -58,4 +58,18 @@ class SuiviManager
 		}
 		return $liste;
 	}
+	public static function getListByMatiere(Matiere $obj)
+	{
+ 		$db=DbConnect::getDb();
+		$liste = [];
+		$q=$db->query("SELECT * FROM Suivis WHERE idMatiere =".$obj->getIdMatiere());
+		while($donnees = $q->fetch(PDO::FETCH_ASSOC))
+		{
+			if($donnees != false)
+			{
+				$liste[] = new Suivi($donnees);
+			}
+		}
+		return $liste;
+	}
 }

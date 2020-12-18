@@ -19,7 +19,7 @@ class Suivi
 		return $this->_idSuivis;
 	}
 
-	public function setIdSuivis($idSuivis)
+	public function setIdSuivis(int $idSuivis)
 	{
 		$this->_idSuivis=$idSuivis;
 	}
@@ -29,7 +29,7 @@ class Suivi
 		return $this->_idEleve;
 	}
 
-	public function setIdEleve($idEleve)
+	public function setIdEleve(int $idEleve)
 	{
 		$this->_idEleve=$idEleve;
 	}
@@ -39,7 +39,7 @@ class Suivi
 		return $this->_idMatiere;
 	}
 
-	public function setIdMatiere($idMatiere)
+	public function setIdMatiere(int $idMatiere)
 	{
 		$this->_idMatiere=$idMatiere;
 	}
@@ -49,7 +49,7 @@ class Suivi
 		return $this->_Note;
 	}
 
-	public function setNote($Note)
+	public function setNote(int $Note)
 	{
 		$this->_Note=$Note;
 	}
@@ -59,7 +59,7 @@ class Suivi
 		return $this->_Coefficient;
 	}
 
-	public function setCoefficient($Coefficient)
+	public function setCoefficient(int $Coefficient)
 	{
 		$this->_Coefficient=$Coefficient;
 	}

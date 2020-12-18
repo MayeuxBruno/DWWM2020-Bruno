@@ -20,7 +20,12 @@ class MatiereManager
 	}
 	public static function delete(Matiere $obj)
 	{
- 		$db=DbConnect::getDb();
+		$db=DbConnect::getDb();
+		$idEnseignant=UtilisateurManager::getListByMatiere($obj);
+		foreach($idEnseignant as $unEnseignant)
+		{
+			UtilisateurManager::delete($unEnseignant);
+		} 
 		$db->exec("DELETE FROM Matieres WHERE idMatiere=" .$obj->getIdMatiere());
 	}
 	public static function findById($id)

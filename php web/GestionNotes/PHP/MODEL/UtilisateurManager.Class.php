@@ -82,5 +82,19 @@ class UtilisateurManager
         {
             return false;
         }
-    }
+	}
+	public static function getListByMatiere(Matiere $matiere)
+	{
+ 		$db=DbConnect::getDb();
+		$liste = [];
+		$q=$db->query("SELECT * FROM utilisateurs WHERE IdMatiere =".'"'.$matiere->getIdMatiere().'"');
+		while($donnees = $q->fetch(PDO::FETCH_ASSOC))
+		{
+			if($donnees != false)
+			{
+				$liste[] = new Utilisateur($donnees);
+			}
+		}
+		return $liste;
+	}
 }

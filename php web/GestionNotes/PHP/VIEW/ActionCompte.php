@@ -14,7 +14,7 @@ switch($_GET['mode'])
                 }
                 else
                 {
-                    header("Location:index.php?page=pageProf");
+                    header("Location:index.php?page=menuProf");
                 }
             }
             else{
@@ -33,4 +33,33 @@ switch($_GET['mode'])
         session_destroy();
         header("Location:index.php?page=connexion");
         break;
+
+    case "ajout":
+        $utilisateur=UtilisateurManager::getByPseudo($_POST['Login']);
+        if($utilisateur==false)
+        {
+            $newUtilisateur= new Utilisateur($_POST);
+            var_dump($_POST);
+            var_dump($newUtilisateur);
+            UtilisateurManager::add($newUtilisateur);
+            header("Location:index.php?page=listeEnseignants");
+        }
+        else{
+            echo '<h2 class="alert">Le pseudo existe déjà...</h2>';
+            header("refresh:3;url=index.php?page=connexion");
+        }
+        break;
+    
+    case "modif":
+        $utilisateur=new Utilisateur($_POST);
+        UtilisateurManager::update($utilisateur);
+        header("Location:index.php?page=listeEnseignants");
+        break;
+
+    case "suppr":
+        $utilisateur=new Utilisateur($_POST);
+        UtilisateurManager::delete($utilisateur);
+        header("Location:index.php?page=listeEnseignants");
+        break;
+        
 }

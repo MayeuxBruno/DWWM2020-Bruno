@@ -1,10 +1,10 @@
 <?php
-$listeEleves=EleveManager::getList();
+$listeMatieres=MatiereManager::getList();
 echo'<div class="colonne">
     <div class="vide"></div>
     <div>
         <div class="titre"></div>
-        <a href="index.php?page=formEleve&mode=ajout&titre=Ajouter un élève"><button>Ajouter un élève</button></a>
+        <a href="index.php?page=formMatiere&mode=ajout&titre=Ajouter une matière"><button>Ajouter une matière</button></a>
         <div class="titre"></div>
     </div>
     <div>
@@ -20,17 +20,16 @@ echo'<div class="colonne">
         <div class="demi"></div>
         <div class="titre colonne logo">
             <div class="vide"></div>';
-            foreach($listeEleves as $unEleve)
+            foreach($listeMatieres as $uneMatiere)
             {
                 echo'<div class="ligne">
-                <div class="centreh">'.$unEleve->getNomEleve().'</div>
-                <div class="centreh">'.$unEleve->getPrenomEleve().'</div>
-                <div class="centreh">'.$unEleve->getClasse().'</div>
+                <div class="demi"></div>
+                <div class="centreh demi">'.$uneMatiere->getLibelleMatiere().'</div>
                 <div>
-                    <div>
-                        <div><a href="index.php?page=formEleve&mode=modif&titre=Modifier un élève&id='.$unEleve->getIdEleve().'"><img src="IMG/modifier.png" alt="modifier"></a></div>
+                    <div class="demi">
+                        <div><a href="index.php?page=formMatiere&mode=modif&titre=Modifier une matière&id='.$uneMatiere->getIdMatiere().'"><img src="IMG/modifier.png" alt="modifier"></a></div>
                         <div></div>
-                        <div><a href="index.php?page=formEleve&mode=suppr&titre=Supprimer un élève&id='.$unEleve->getIdEleve().'"><img src="IMG/supprimer.png" alt="supprimer"></a></div>
+                        <div><a href="index.php?page=formMatiere&mode=suppr&titre=Supprimer une matière&id='.$uneMatiere->getIdMatiere().'"><img src="IMG/supprimer.png" alt="supprimer"></a></div>
                     </div>
                     <div class="titre"></div>
                 </div>

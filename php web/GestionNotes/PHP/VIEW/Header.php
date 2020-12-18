@@ -16,16 +16,16 @@ echo'<body>
     {
         echo '  <div></div>
                 <div class="centre centreh colonne"><span>'.$_SESSION['utilisateur']->getNomUtilisateur()." ".$_SESSION['utilisateur']->getNomUtilisateur().'</span>
-                <span>'.(($_SESSION['utilisateur']->getRole()==1)?"Proviseur":"Professeur").'</span></div>
+                <span>'.(($_SESSION['utilisateur']->getRole()==1)?"Proviseur":MatiereManager::findById($_SESSION['utilisateur']->getIdMatiere())->getLibelleMatiere()).'</span></div>
                 <div class="connexion centre">
-                   <a href="index.php?page=actionCompte&mode=deconnexion"><button>Deconnectez vous</button></a>
+                <button><a href="index.php?page=actionCompte&mode=deconnexion">Deconnectez vous</a></button>
                 </div>
                 <div></div>';
     }
     else{
        echo ' <div></div>
               <div class="connexion centre">
-                <a href="index.php?page=connexion"><button>Connectez vous</button></a>
+              <button><a href="index.php?page=connexion">Connectez vous</a></button>
                 </div>
               <div></div>';
     }

@@ -7,19 +7,19 @@ if (isset($_SESSION['utilisateur'])&& $_SESSION['utilisateur']->getRole()==1)
             <div></div>
             <div class="colonne">
                 <div>
-                    <a href="index.php?page=listeEleves"><button>Gérer les élèves</button></a>
+                    <button><a href="index.php?page=listeEleves">Gérer les élèves</a></button>
                 </div>
                 <div class="vide"></div>
                 <div>
-                    <a href="index.php?page=connexion"><button>Gérer les enseignants</button></a>    
+                    <button><a href="index.php?page=listeEnseignants">Gérer les enseignants</a></button>   
                 </div>
                 <div class="vide"></div>
                 <div>
-                    <a href="index.php?page=connexion"><button>Gérer les notes</button></a>
+                    <button><a href="index.php?page=listeNotes">Gérer les notes</a></button>
                 </div>
                 <div class="vide"></div>
                 <div>
-                    <a href="index.php?page=connexion"><button>Gérer les matières</button></a>
+                    <button><a href="index.php?page=listeMatieres">Gérer les matières</a></button>
                 </div>
             </div>
             <div></div>

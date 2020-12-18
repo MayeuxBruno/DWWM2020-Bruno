@@ -4,10 +4,10 @@ html, body {
 	padding : 0;
 }
 
-div, header, footer, a,button{
+div, header, footer, button{
 	display : flex;
 	flex : 1;
-	/*border:1px dotted black;*/
+	border:1px dotted black;
 }
 
 img, video {
@@ -16,6 +16,7 @@ img, video {
 .colonne{
 	flex-direction:column;
 }
+
 .centre{
 	justify-content:center;
 }
@@ -69,9 +70,17 @@ button{
 	margin-bottom:0.5em;
 }
 
+select{
+	width:13em;
+}
+
+li a{
+	flex:none;
+	text-align:left;
+}
+
 /****** FOOTER *******/
 a{
-	justify-content: center;
 	text-decoration: none;
 	color:black;
 	border:none;

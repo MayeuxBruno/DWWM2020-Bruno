@@ -5,7 +5,7 @@ if (isset($_GET['id']))
     $idRecu = $_GET['id'];
     if ($idRecu != false)
     {
-        $eleveChoisi = EleveManager::findById($idRecu);
+        $suiviChoisi = SuiviManager::findById($idRecu);
     }
 }
 ?>
@@ -18,41 +18,37 @@ if (isset($_GET['id']))
         switch ($mode)
             {
                 case "ajout": 
-                    echo '<form action="index.php?page=actionEleve&mode=ajout" method="POST">';
+                    echo '<form action="index.php?page=actionNote&mode=ajout" method="POST">';
                 break;
 
                 case "modif": 
-                    echo '<form action="index.php?page=actionEleve&mode=modif" method="POST">
-                    <input name="idEleve"  value="' . $eleveChoisi->getIdEleve() . '" type="hidden" />';
+                    echo '<form action="index.php?page=actionNote&mode=modif" method="POST">
+                    <input name="idSuivis"  value="' . $suiviChoisi->getIdSuivis() . '" type="hidden" />';
                 break;
 
                 case "suppr":    
-                    echo '<form action="index.php?page=actionEleve&mode=suppr" method="POST">
-                    <input name="idEleve"  value="' . $eleveChoisi->getIdEleve() . '" type="hidden" />';
+                    echo '<form action="index.php?page=actionNote&mode=suppr" method="POST">
+                    <input name="idSuivis"  value="' . $suiviChoisi->getIdSuivis() . '" type="hidden" />';
                 break;
                 
             }
             ?>
             <div>
                 <div></div>
-                <div><lable for="NomEleve">Nom:</input></div>
-                <div><input type="text" name="NomEleve"<?php if($mode!="ajout"){echo 'value="'.$eleveChoisi->getNomEleve().'"';} if($mode=="suppr")echo"disabled"; ?>/></div>
+                <div><lable for="NomEleve">Eleve:</input></div>
+                <div><input type="text" name="NomEleve" value="<?php echo EleveManager::findById($suiviChoisi->getIdEleve())->getNomEleve()." ".EleveManager::findById($suiviChoisi->getIdEleve())->getPrenomEleve(); ?>" disabled/></div>
                 <div></div>
             </div>
             <div class="vide"></div>
             <div>
                 <div></div>
-                <div><lable for="PrenomEleve">Prénom :</input></div>
-                <div><input type="text" name="PrenomEleve" <?php if($mode!="ajout"){echo 'value="'.$eleveChoisi->getPrenomEleve().'"';} if ($mode=="suppr") echo"disabled";?>/></div>
-                <div></div>            
-            </div>
-            <div class="vide"></div>
-            <div>
+                <div><lable for="Note">Note:</input></div>
+                <div><input type="text" name="Note" value="<?php echo $suiviChoisi->getNote(); ?>"/></div>
                 <div></div>
-                <div><lable for="Classe">Classe :</input></div>
-                <div><input type="text" name="Classe" <?php if($mode!="ajout"){echo 'value="'.$eleveChoisi->getClasse().'"';} if ($mode=="suppr") echo"disabled";?>></div>
-                <div></div>            
             </div>
+            <input type="text" name="idMatiere" value="<?php echo $suiviChoisi->getIdMatiere(); ?>"hidden/>
+            <input type="text" name="Coefficient" value="<?php echo $suiviChoisi->getCoefficient(); ?>"hidden/>
+            <input type="text" name="idEleve" value="<?php echo $suiviChoisi->getIdEleve(); ?>"hidden/>
             <div class="vide"></div>
             <div class="vide"></div>
             <div>
@@ -78,7 +74,7 @@ if (isset($_GET['id']))
                     </form>
                 </div>
                 <div></div>
-                <div><button type="reset"><a class="align" href="index.php?page=listeEleves">Retour</button></a></div>
+                <div><button type="reset"><a class="align" href="index.php?page=listeNotes">Retour</button></a></div>
                 <div></div>
                 
             </div>
