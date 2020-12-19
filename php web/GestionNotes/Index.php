@@ -3,10 +3,13 @@
 include 'PHP/Outils.php';
 
 Parametres::init();
-
 DbConnect::init();
 
 session_start();
+
+/***** Gestion du titre de la page des formulaire en fonction du mode  **
+ * 			ajout modif ou suppr
+ */
 
 $titrepage="";
 if(isset($_GET['titre']))
@@ -14,6 +17,7 @@ if(isset($_GET['titre']))
 	$titrepage=$_GET['titre'];
 }
 
+/**************************** GESTION DES ROUTES *************************/
 $routes=[
 	"default"=>["PHP/VIEW/","accueil","Page de connexion"],
 	"default"=>["PHP/VIEW/","accueil","Page de connexion"],

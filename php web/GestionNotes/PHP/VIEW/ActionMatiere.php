@@ -3,7 +3,8 @@ switch($_GET['mode'])
 {
     case "ajout":
         $matiere=new Matiere($_POST);
-        MatiereManager::add($matiere);  
+        MatiereManager::add($matiere);
+        header("Location:index.php?page=listeMatieres");  
     break;
 
     case "modif":
@@ -17,6 +18,7 @@ switch($_GET['mode'])
         if(empty($util))
         {
            MatiereManager::delete($matiere);
+           header("Location:index.php?page=listeMatieres");
         }
         else{
             echo '<h2 class="alert">Des Enseignants sont toujopurs attachés à cette matiere</h2>';

@@ -2,8 +2,15 @@
 $role=$_SESSION['utilisateur']->getRole();
 if(!empty($_POST))
 {
-    $matiereChoisie=MatiereManager::findById($_POST['idMatiere']);
-    $listeSuivis=SuiviManager::getListByMatiere($matiereChoisie);
+    if($_POST['idMatiere']!="0")
+    {
+        $matiereChoisie=MatiereManager::findById($_POST['idMatiere']);
+        $listeSuivis=SuiviManager::getListByMatiere($matiereChoisie);
+    }
+    else
+    {
+        $listeSuivis=SuiviManager::getList();
+    }
 }
 else
 {
@@ -25,6 +32,7 @@ else
                     <form action="index.php?page=listeNotes" method="POST">
                     <div><select name="idMatiere">';
                          $listeMatieres=MatiereManager::getList();
+                         echo'<option value="0" selected>Sélectionnez une matiere</option>';
                          foreach ($listeMatieres as $uneMatiere)
                          {
                             echo'<option value="'.$uneMatiere->getIdMatiere().'"'.(($uneMatiere->getIdMatiere()==$_POST['idMatiere'])?'selected':'').'>'.$uneMatiere->getLibelleMatiere().'</option>';
@@ -36,7 +44,7 @@ else
         }
         else{  //Si connexion Enseignant
             echo'<div class="titre"></div>
-                 <div><button>Ajouter une note</button></div>
+                 <div><button><a href="index.php?page=formNote&mode=ajout">Ajouter une note</a></button></div>
                 <div class="titre"></div>';
         }
             echo'</div>

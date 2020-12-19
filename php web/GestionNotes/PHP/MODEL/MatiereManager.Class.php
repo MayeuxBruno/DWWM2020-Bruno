@@ -47,7 +47,7 @@ class MatiereManager
 	{
  		$db=DbConnect::getDb();
 		$liste = [];
-		$q = $db->query("SELECT * FROM Matieres");
+		$q = $db->query("SELECT * FROM Matieres ORDER BY LibelleMatiere");
 		while($donnees = $q->fetch(PDO::FETCH_ASSOC))
 		{
 			if($donnees != false)

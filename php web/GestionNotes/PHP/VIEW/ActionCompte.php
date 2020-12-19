@@ -5,7 +5,7 @@ switch($_GET['mode'])
         $utilisateur=UtilisateurManager::getByPseudo($_POST['Login']);
         if ($utilisateur!=FALSE)
         {
-            if (strcmp($utilisateur->getMotDePasse(),$_POST['MotDePasse'])==0)
+            if (strcmp($utilisateur->getMotDePasse(),crypte($_POST['MotDePasse']))==0)
             {
                 $_SESSION['utilisateur']=$utilisateur;
                 if ($_SESSION['utilisateur']->getRole()==1)
@@ -39,6 +39,7 @@ switch($_GET['mode'])
         if($utilisateur==false)
         {
             $newUtilisateur= new Utilisateur($_POST);
+            $newUtilisateur->setMotDePasse(crypte($newUtilisateur->getMotDePasse()));
             var_dump($_POST);
             var_dump($newUtilisateur);
             UtilisateurManager::add($newUtilisateur);

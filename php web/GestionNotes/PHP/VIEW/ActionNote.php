@@ -2,7 +2,9 @@
 switch($_GET['mode'])
 {
     case "ajout":
-        
+        $suivi=new Suivi($_POST);
+        SuiviManager::add($suivi);
+        header("Location:index.php?page=listeNotes");
     break;
 
     case "modif":
@@ -16,3 +18,5 @@ switch($_GET['mode'])
         header("Location:index.php?page=listeNotes");
     break;
 }
+var_dump($_GET);
+var_dump($_POST);

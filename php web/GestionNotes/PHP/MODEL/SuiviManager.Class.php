@@ -48,7 +48,7 @@ class SuiviManager
 	{
  		$db=DbConnect::getDb();
 		$liste = [];
-		$q = $db->query("SELECT * FROM Suivis");
+		$q = $db->query("SELECT * FROM Suivis ORDER BY idEleve");
 		while($donnees = $q->fetch(PDO::FETCH_ASSOC))
 		{
 			if($donnees != false)
@@ -63,6 +63,20 @@ class SuiviManager
  		$db=DbConnect::getDb();
 		$liste = [];
 		$q=$db->query("SELECT * FROM Suivis WHERE idMatiere =".$obj->getIdMatiere());
+		while($donnees = $q->fetch(PDO::FETCH_ASSOC))
+		{
+			if($donnees != false)
+			{
+				$liste[] = new Suivi($donnees);
+			}
+		}
+		return $liste;
+	}
+	public static function getListByEleve(Eleve $obj)
+	{
+ 		$db=DbConnect::getDb();
+		$liste = [];
+		$q=$db->query("SELECT * FROM Suivis WHERE idEleve =".$obj->getIdEleve());
 		while($donnees = $q->fetch(PDO::FETCH_ASSOC))
 		{
 			if($donnees != false)

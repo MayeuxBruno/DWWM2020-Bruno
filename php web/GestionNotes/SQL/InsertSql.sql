@@ -1,21 +1,36 @@
-insert into Matieres(idMatiere,libelleMatiere)Values("1","Français");		
-insert into Matieres(idMatiere,libelleMatiere)Values("2","Mathematiques");		
-insert into Matieres(idMatiere,libelleMatiere)Values("3","Histoire");		
-insert into Matieres(idMatiere,libelleMatiere)Values("4","Geographie");		
-insert into Matieres(idMatiere,libelleMatiere)Values("5","Sport");		
+INSERT INTO `matieres` (`idMatiere`, `LibelleMatiere`) VALUES
+(1, 'Français'),
+(2, 'Mathematiques'),
+(3, 'Histoire'),
+(8, 'Géographie'),
+(10, 'Education Musicale'),
+(12, 'Art plastique');
 
-insert into utilisateurs(Login,NomUtilisateur,PrenomUtilisateur,MotDePasse,Role,IdMatiere)VALUES("nono","Mayeux","Bruno","nono","1","1");
-insert into utilisateurs(Login,NomUtilisateur,PrenomUtilisateur,MotDePasse,Role,IdMatiere)VALUES("toto","Dupont","Toto","toto","2","2");
-insert into utilisateurs(Login,NomUtilisateur,PrenomUtilisateur,MotDePasse,Role,IdMatiere)VALUES("tata","Durand","Tata","tata","2","3");
+INSERT INTO `utilisateurs` (`idUtilisateur`, `Login`, `NomUtilisateur`, `PrenomUtilisateur`, `MotDePasse`, `Role`, `IdMatiere`) VALUES
+(1, 'nono', 'Mayeux', 'Bruno', 'c625ade02c3acde8e4d9de57fca78203', 1, 1),
+(11, 'Jean', 'Birgy', 'Birgy', 'b71985397688d6f1820685dde534981b', 2, 2),
+(12, 'dav', 'Lelong', 'Lelong', '676ac6f0f8dc64239691d8052409a54c', 2, 3),
+(13, 'lolo', 'Toupin', 'Laurent', 'd6581d542c7eaf801284f084478b5fcc', 2, 1),
+(14, 'oliv', 'Blarel', 'Olivier', 'af0c3ad1aaaac0a6d0b26e29de113248', 2, 12);
 
-insert into eleves(NomEleve,PrenomEleve,Classe)Values("Dupont","Eve","CE2");
-insert into eleves(NomEleve,PrenomEleve,Classe)Values("Duran","Lea","CE1");
-insert into eleves(NomEleve,PrenomEleve,Classe)Values("Roi","Cleo","CP");
+INSERT INTO `eleves` (`idEleve`, `NomEleve`, `PrenomEleve`, `Classe`) VALUES
+(1, 'Dupont', 'Eve', 'CE2'),
+(2, 'Duran', 'Lea', 'CE1'),
+(3, 'Roosebeke', 'Cleo', 'CE2'),
+(5, 'Buttin', 'Nicolas', 'CE1'),
+(6, 'Patou', 'Matthieu', 'CE1'),
+(7, 'Ilski', 'Aurélie', 'CE2'),
+(8, 'Codron', 'Aurélie', 'CM2'),
+(9, 'Tondeur', 'Charlize', 'CP'),
+(10, 'Mamie', 'Lucette', 'CP');
 
-insert into suivis(idEleve,idMatiere,Note,Coefficient)Values("1","1","10","1");
-insert into suivis(idEleve,idMatiere,Note,Coefficient)Values("1","2","15","1");
-insert into suivis(idEleve,idMatiere,Note,Coefficient)Values("2","1","10","1");
-insert into suivis(idEleve,idMatiere,Note,Coefficient)Values("2","2","3","1");
-insert into suivis(idEleve,idMatiere,Note,Coefficient)Values("3","1","6","1");
-insert into suivis(idEleve,idMatiere,Note,Coefficient)Values("3","2","9","1");
+INSERT INTO `suivis` (`idSuivis`, `idEleve`, `idMatiere`, `Note`, `Coefficient`) VALUES
+(1, 1, 1, 10, 1),
+(2, 1, 2, 15, 1),
+(5, 3, 1, 20, 1),
+(6, 3, 2, 20, 1),
+(7, 8, 1, 15, 1),
+(8, 3, 3, 18, 1),
+(9, 5, 3, 16, 1),
+(10, 7, 3, 15, 1);
 

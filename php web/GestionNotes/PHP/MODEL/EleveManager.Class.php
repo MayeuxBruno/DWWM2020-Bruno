@@ -24,7 +24,12 @@ class EleveManager
 	}
 	public static function delete(Eleve $obj)
 	{
- 		$db=DbConnect::getDb();
+		$db=DbConnect::getDb();
+		$listeNotes=SuiviManager::getListByEleve($obj);
+		foreach($listeNotes as $uneNote)
+		{
+			SuiviManager::delete($uneNote);
+		} 
 		$db->exec("DELETE FROM Eleves WHERE idEleve=" .$obj->getIdEleve());
 	}
 	public static function findById($id)

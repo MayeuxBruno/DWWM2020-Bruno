@@ -52,7 +52,7 @@ class UtilisateurManager
 	{
  		$db=DbConnect::getDb();
 		$liste = [];
-		$q = $db->query("SELECT * FROM Utilisateurs");
+		$q = $db->query("SELECT * FROM Utilisateurs ORDER BY NomUtilisateur");
 		while($donnees = $q->fetch(PDO::FETCH_ASSOC))
 		{
 			if($donnees != false)
