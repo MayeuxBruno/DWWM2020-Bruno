@@ -15,7 +15,7 @@ echo'<body>
     if(isset($_SESSION['utilisateur']))
     {
         echo '  <div></div>
-                <div class="centre centreh colonne"><span>'.$_SESSION['utilisateur']->getNomUtilisateur()." ".$_SESSION['utilisateur']->getNomUtilisateur().'</span>
+                <div class="centre centreh colonne"><span>'.$_SESSION['utilisateur']->getNomUtilisateur()." ".$_SESSION['utilisateur']->getPrenomUtilisateur().'</span>
                 <span>'.(($_SESSION['utilisateur']->getRole()==1)?"Proviseur":MatiereManager::findById($_SESSION['utilisateur']->getIdMatiere())->getLibelleMatiere()).'</span></div>
                 <div class="connexion centre">
                 <button><a href="index.php?page=actionCompte&mode=deconnexion">Deconnectez vous</a></button>

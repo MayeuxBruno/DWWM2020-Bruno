@@ -18,7 +18,6 @@ $routes=[
 	"default"=>["PHP/VIEW/","accueil","Page de connexion"],
 	"default"=>["PHP/VIEW/","accueil","Page de connexion"],
 	"menuProviseur"=>["PHP/VIEW/","MenuProviseur","Menu Proviseur"],
-	"menuProf"=>["PHP/VIEW/","MenuProF","Menu Professeur"],
 	"actionCompte"=>["PHP/VIEW/","ActionCompte",".."],
 	"listeEleves"=>["PHP/VIEW/","ListeEleves","Gestion des Eleves"],
 	"formEleve"=>["PHP/VIEW/","FormEleve","$titrepage"],

@@ -32,19 +32,21 @@ if (isset($_GET['id']))
                 break;
                 
             }
-            ?>
-            <div>
+            
+            echo'<div>
                 <div></div>
                 <div><lable for="NomEleve">Eleve:</input></div>
-                <div><input type="text" name="NomEleve" value="<?php echo EleveManager::findById($suiviChoisi->getIdEleve())->getNomEleve()." ".EleveManager::findById($suiviChoisi->getIdEleve())->getPrenomEleve(); ?>" disabled/></div>
+                <div><input type="text" name="NomEleve" value="'.EleveManager::findById($suiviChoisi->getIdEleve())->getNomEleve()." ".EleveManager::findById($suiviChoisi->getIdEleve())->getPrenomEleve(); ?>" disabled/></div>
                 <div></div>
             </div>
             <div class="vide"></div>
             <div>
+            
                 <div></div>
                 <div><lable for="Note">Note:</input></div>
-                <div><input type="text" name="Note" value="<?php echo $suiviChoisi->getNote(); ?>"/></div>
-                <div></div>
+                <div><input type="text" name="Note"'.((($mode!="ajout")?'value="'.EleveManager::findById($suiviChoisi->getIdEleve())->getNomEleve()." ".EleveManager::findById($suiviChoisi->getIdEleve())->getPrenolEleve().'"':'value=""')($mode=="suppr")?"disabled":"" ).'/></div>
+                <div></div>';
+            ?>
             </div>
             <input type="text" name="idMatiere" value="<?php echo $suiviChoisi->getIdMatiere(); ?>"hidden/>
             <input type="text" name="Coefficient" value="<?php echo $suiviChoisi->getCoefficient(); ?>"hidden/>

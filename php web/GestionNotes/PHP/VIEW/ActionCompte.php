@@ -14,7 +14,7 @@ switch($_GET['mode'])
                 }
                 else
                 {
-                    header("Location:index.php?page=menuProf");
+                    header("Location:index.php?page=listeNotes");
                 }
             }
             else{
