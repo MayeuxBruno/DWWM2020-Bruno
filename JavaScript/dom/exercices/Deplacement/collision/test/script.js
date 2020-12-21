@@ -3,9 +3,9 @@ var afficheCollisions=document.getElementById("collisions");
 var afficheResultat=document.getElementById("resultat");
 var depart=document.getElementById("debPartie");
 var rejouer=document.getElementById("rejouer");
-init();
+afficheTemps.value="Il vous reste 60 secondes";
+afficheCollisions.value="Nombre de collisions : 0";
 
-/***************** Gesyion des déplacements *****************/
 function deplace(dx, dy) {
     var deplacement_ok = true;
     var styleArrivee = window.getComputedStyle(document.getElementById('arrivee'), null);
@@ -19,32 +19,26 @@ function deplace(dx, dy) {
     var w = parseInt(styleCarre.width);
     var h = parseInt(styleCarre.height);
     var listeObs = document.querySelectorAll('.obstacle');
-    let isCollision=false
-    let i=0;
-    while(i<listeObs.length&&isCollision==false)
-    {
-        var styleObst = window.getComputedStyle(listeObs[i], null);
+    listeObs.forEach(function (elt) {
+        var styleObst = window.getComputedStyle(elt, null);
         var tob = parseInt(styleObst.top);
         var lob = parseInt(styleObst.left);
         var wob = parseInt(styleObst.width);
         var hob = parseInt(styleObst.height);
         if (!depl_ok(tob, lob, wob, hob, t + dy, l + dx, w, h)) {
-            isCollision=true;
             compteurCollision ++;
-            var audio = new Audio('sons/boing.mp3');
-            audio.play();
             afficheCollisions.value="Nombre de collisions : "+compteurCollision;
-            console.log("collision n°" + compteurCollision + "  " + listeObs[i].id);
+            console.log("collision n°" + compteurCollision + "  " + elt.id);
             carre.style.backgroundColor="red";
         }
         deplacement_ok = deplacement_ok && depl_ok(tob, lob, wob, hob, t + dy, l + dx, w, h);
-        i++;
-    }
+
+    });
     if (deplacement_ok) {
         carre.style.backgroundColor="lightskyblue";
         document.getElementById('carre').style.top = t + dy + 'px';
         document.getElementById('carre').style.left = l + dx + 'px';
-        var deplFin=depl_ok(ta,la,wa/2,ha,t,l,w,h); //Si on est dans la zone d'arrivée
+        var deplFin=depl_ok(ta,la,wa/3,ha,t,l,w,h); //Si on est dans la zone d'arrivée
         if(!deplFin)
         {
             finJeu(1);
@@ -107,6 +101,7 @@ window.addEventListener("keydown", function (event) {
 
 });
 
+
 function deplaceSouris(e) {
     if (!collisionObstacles(parseInt(e.clientY) + ecartY, parseInt(e.clientX) + ecartX)) {
         // if (!collisionObstacles(parseInt(e.clientY) + ecartY, parseInt(e.clientX) + ecartX)) {
@@ -154,15 +149,13 @@ function collisionObstacles(posX, posY) {
     });
     return !pasCollision;
 }
-
-/*********** Gestion du timer ****************/
 var depart=0;
 var timer;
 debPartie.addEventListener("click",function(){
     timer = setInterval(startTimer, 1000);
     if (depart==0)
     {
-        compteur=90;
+        compteur=60;
         depart=1;
     }
 });
@@ -183,22 +176,18 @@ function startTimer()
     }
 }
 
-/***************** Reinitialisation de la partie *******************/
 function init()
 {
     depart=0;
-    afficheTemps.value="Il vous reste 90 secondes";
+    afficheTemps.value="Il vous reste 60 secondes";
     afficheCollisions.value="Nombre de collisions : 0";
     let pion=document.getElementById("carre");
     pion.style.left="17px";
     pion.style.top="15px";
     afficheResultat.value="";
     rejouer.style.display="none";
-    var audio = new Audio('sons/musique.mp3');
-    audio.play();
 }
 
-/*************** Gestion de la fin de partie *********************/
 function finJeu(vic)
 {
     clearInterval(timer);
@@ -207,13 +196,9 @@ function finJeu(vic)
     if (vic==1)
     {
         afficheResultat.value="Bravo vous avez gagné...";
-        var audio = new Audio('sons/gagne.mp3');
-        audio.play();
     }
     else
     {
         afficheResultat.value="Dommage vous avez perdu...";
-        var audio = new Audio('sons/perdu.mp3');
-        audio.play();
     }
 }

@@ -1,0 +1,186 @@
+#carre{
+    flex : none;
+    width:2em;
+    height:2em;
+    position:absolute;
+    background-color:lightskyblue;
+    top:1em;
+    left:1em;
+}
+#arrivee{
+    flex : none;
+    width:3em;
+    height:7.5em;
+    position:absolute;
+    background-color:red;
+    color:white;
+    top:37em;
+    left:31em;
+}
+#afficheur{
+    position:absolute;
+    top:15em;
+    left:50em;
+}
+
+#collisions{
+    position:absolute;
+    top:20em;
+    left:50em;
+}
+
+.obstacle{
+    flex : none;
+    position:absolute;   
+}
+
+.p1{
+    top:0em;
+    left:0em;
+    width:80em;
+    height:0.5em;
+}
+.p2{
+    top:0em;
+    left:0em;
+    width:0.5em;
+    height:45em;
+}
+.p3{
+    top:45em;
+    left:0em;
+    width:80em;
+    height:0.5em;
+}
+.p4{
+    top:0em;
+    left:80em;
+    width:0.5em;
+    height:45em;
+}
+.p5{
+    top:0em;
+    left:0em;
+    width:0.5em;
+    height:45em;
+}
+.p6{
+    top:4em;
+    left:0em;
+    width:14em;
+    height:0.5em;
+}
+.p7{
+    top:0em;
+    left:18em;
+    width:0.5em;
+    height:25em;
+}
+.p8{
+    top:25em;
+    left:10.5em;
+    width:8em;
+    height:0.5em;
+}
+.p9{
+    top:4em;
+    left:14em;
+    width:0.5em;
+    height:18em;
+}
+.p10{
+    top:7.5em;
+    left:10em;
+    width:0.5em;
+    height:18em;
+}
+.p11{
+    top:7.5em;
+    left:6em;
+    width:0.5em;
+    height:38em;
+}
+.p12{
+    top:29.5em;
+    left:6em;
+    width:16em;
+    height:0.5em;
+}
+.p13{
+    top:7.5em;
+    left:3em;
+    width:0.5em;
+    height:35em;
+}
+.p14{
+    top:4.5em;
+    left:22em;
+    width:0.5em;
+    height:37em;
+}
+.p15{
+    top:0em;
+    left:26em;
+    width:0.5em;
+    height:41.5em;
+}
+.p16{
+    top:33em;
+    left:10em;
+    width:0.5em;
+    height:12em;
+}
+.p17{
+    top:30em;
+    left:14em;
+    width:0.5em;
+    height:12em;
+}
+.p18{
+    top:33em;
+    left:18em;
+    width:0.5em;
+    height:12em;
+}
+.p19{
+    top:4em;
+    left:30em;
+    width:0.5em;
+    height:41.5em;
+}
+.p20{
+    top:4em;
+    left:30em;
+    width:45em;
+    height:0.5em;
+}
+.p21{
+    top:4em;
+    left:75em;
+    width:0.5em;
+    height:32em;
+}
+.p22{
+    top:36em;
+    left:30em;
+    width:45.5em;
+    height:0.5em;
+}
+
+
+
+
+
+
+.vert{
+    background-color:green;
+}
+.colonne{
+    flex-direction:column;
+}
+.centre{
+    justify-content: center;
+}
+div{
+    display : flex;
+}
