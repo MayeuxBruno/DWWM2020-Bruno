@@ -4,8 +4,8 @@
     height:5em;
     position:absolute;
     background-color:lightskyblue;
-    top:0em;
-    left:0em;
+    top:10em;
+    left:10em;
 }
 
 #carrefixe{
@@ -13,7 +13,7 @@
     width:10em;
     height:10em;
     position:absolute;
-    background-color:red;
+    background-color:green;
     top:25em;
     left:50em;
 }
