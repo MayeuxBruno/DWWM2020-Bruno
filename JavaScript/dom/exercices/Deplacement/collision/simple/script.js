@@ -6,10 +6,10 @@ var flagCollision=false;
 
 function collision(dLeft,dTop)
 {
-    if(parseInt(carre.left)+parseInt(dLeft*2) < parseInt(obstacle.left)+parseInt(obstacle.width)&&
-        parseInt(carre.left)+parseInt(dLeft*2)+parseInt(carre.width)>parseInt(obstacle.left) &&
-        parseInt(carre.top)+parseInt(dTop*2) < parseInt(obstacle.top)+parseInt(obstacle.height) &&
-        parseInt(carre.height)+parseInt(carre.top)+parseInt(dTop*2)>parseInt(obstacle.top))
+    if(parseInt(carre.left)+parseInt(dLeft) < parseInt(obstacle.left)+parseInt(obstacle.width)&&
+        parseInt(carre.left)+parseInt(dLeft)+parseInt(carre.width)>parseInt(obstacle.left) &&
+        parseInt(carre.top)+parseInt(dTop) < parseInt(obstacle.top)+parseInt(obstacle.height) &&
+        parseInt(carre.height)+parseInt(carre.top)+parseInt(dTop)>parseInt(obstacle.top))
     {
         flagCollision=true;
         carre2.style.backgroundColor="red";
