@@ -6,6 +6,7 @@ body{
     display:flex;
     align-items:center;
     flex-direction:column;
+    background-color:black;
 }
 
 .page{
@@ -13,8 +14,12 @@ body{
     width:80%;
 }
 
+img{
+    width:100%;
+}
+
 .demi{
-    flex:0.5;
+    flex:0.2;
 }
 
 .espacehor{
@@ -28,10 +33,3 @@ body{
     display:none;
 }
 
-.case:hover .recto{
-    display:none;
-}
-
-.case:hover .verso{
-    display:flex;
-}

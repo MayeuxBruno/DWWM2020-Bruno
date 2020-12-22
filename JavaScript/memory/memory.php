@@ -15,27 +15,29 @@
         $photo[]=$a;
     }
     
-    
+    $compteur=1;
     for($i=1;$i<5;$i++)
     {
         echo'<div class="espacehor"></div>
         <div class="ligne">
-        <div class="demi"></div>';
+        <div></div>';
+        
         for($j=1;$j<5;$j++)
         {
             $index=array_rand($photo);
             $numphoto=$photo[$index];
-            echo'<div class="case">
-            <img class="recto" src="Images/plage.jpg" alt="">
+            echo'<div class="case" name="'.$compteur.'">
+            <img class="recto"  src="Images/plage.jpg" alt="">
             <img class="verso" src="Images/'.$numphoto.'.jpg" alt="">
             </div>
-            <div class="demi"></div>';
+            <div></div>';
             unset($photo[$index]);
+            $compteur++;
         }
         echo'</div>';
     }
     echo'</div>';
     ?> 
-    
+    <script src="script.js"></script>
 </body>
 </html>
