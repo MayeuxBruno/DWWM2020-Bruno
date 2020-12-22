@@ -1,4 +1,4 @@
-div{
+div,header{
     display:flex;
     flex:1;
 }   
@@ -7,6 +7,7 @@ body{
     align-items:center;
     flex-direction:column;
     background-color:black;
+    color:white;
 }
 
 .page{
@@ -30,6 +31,43 @@ img{
     display:flex;
 }
 .verso{
+    display:none;
+}
+.colonne{
+    flex-direction:column;
+}
+
+
+/******** HEADER ***********/
+.centre{
+    justify-content:center;
+}
+.menu{
+    justify-content:space-around;
+}
+h1{
+    margin:0.5em;
+    letter-spacing: 0.3em;
+    font-size:3em;
+}
+
+input{
+    background-color:black;
+    color:white;
+    border:none;
+}
+
+button{
+    background-color:black;
+    color:white;
+    border:3px solid blue;
+    padding:0.5em;
+}
+#solution{
+    display:flex;
+}
+
+#reset{
     display:none;
 }
 

@@ -14,7 +14,20 @@
         $photo[]=$a;
         $photo[]=$a;
     }
-    
+    echo'<header class="colonne">
+            <div class="espacehor"></div>
+            <div class="centre"><h1>Jeu de memorie</h1></div>
+            <div class="espacehor"></div>
+            <div class="menu">
+                <button id="debPartie">Commencer la Partie</button>
+                <input id="nbClick">
+                <input id="temps" value="Il vous reste 120 secondes">
+                <button id="solution">Solution</button>
+                <button id="reset">Rejouer</button>
+            </div>
+        </header>
+        <div class="espacehor"></div>
+        <div class="espacehor"></div>';
     $compteur=1;
     for($i=1;$i<5;$i++)
     {
