@@ -1,0 +1,37 @@
+div{
+    display:flex;
+    flex:1;
+}   
+body{
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+}
+
+.page{
+    display:block;
+    width:80%;
+}
+
+.demi{
+    flex:0.5;
+}
+
+.espacehor{
+    height:2vh;
+}
+
+.recto{
+    display:flex;
+}
+.verso{
+    display:none;
+}
+
+.case:hover .recto{
+    display:none;
+}
+
+.case:hover .verso{
+    display:flex;
+}

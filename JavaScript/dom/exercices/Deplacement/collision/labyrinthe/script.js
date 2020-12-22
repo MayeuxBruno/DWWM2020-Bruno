@@ -3,6 +3,8 @@ var afficheCollisions=document.getElementById("collisions");
 var afficheResultat=document.getElementById("resultat");
 var depart=document.getElementById("debPartie");
 var rejouer=document.getElementById("rejouer");
+var score=document.getElementById("score");
+var cmpscore=0;
 init();
 
 /***************** Gesyion des déplacements *****************/
@@ -18,24 +20,58 @@ function deplace(dx, dy) {
     var l = parseInt(styleCarre.left);
     var w = parseInt(styleCarre.width);
     var h = parseInt(styleCarre.height);
+
     var listeObs = document.querySelectorAll('.obstacle');
-    let isCollision=false
+    let isCollision=false;
     let i=0;
     while(i<listeObs.length&&isCollision==false)
     {
+        var typeObstacle=listeObs[i].getAttribute("type");
         var styleObst = window.getComputedStyle(listeObs[i], null);
         var tob = parseInt(styleObst.top);
         var lob = parseInt(styleObst.left);
         var wob = parseInt(styleObst.width);
         var hob = parseInt(styleObst.height);
         if (!depl_ok(tob, lob, wob, hob, t + dy, l + dx, w, h)) {
-            isCollision=true;
-            compteurCollision ++;
-            var audio = new Audio('sons/boing.mp3');
-            audio.play();
-            afficheCollisions.value="Nombre de collisions : "+compteurCollision;
-            console.log("collision n°" + compteurCollision + "  " + listeObs[i].id);
-            carre.style.backgroundColor="red";
+            switch(typeObstacle)
+            {
+                case "mur":
+                    isCollision=true;
+                    compteurCollision ++;
+                    var audio = new Audio('sons/boing.mp3');
+                    audio.play();
+                    afficheCollisions.value="Nombre de collisions : "+compteurCollision;
+                    cmpscore-=50;
+                    score.value="Votre Score est de  :"+cmpscore+"Pts";
+                    if(cmpscore<0)
+                    {
+                        finJeu(-1);
+                    }
+                    carre.style.backgroundColor="red";
+                break;
+
+                case "bonus":
+                    if (listeObs[i].style.display!="none")
+                    {
+                        isCollision=true;
+                        listeObs[i].style.display="none";
+                        var point=parseInt(listeObs[i].getAttribute("points"));
+                        cmpscore+=point;
+                        score.value="Votre Score est de  :"+cmpscore+"Pts";
+                        var audio = new Audio('sons/piece.mp3');
+                        audio.play();
+                    }
+                    document.getElementById('carre').style.top = t + dy + 'px';
+                    document.getElementById('carre').style.left = l + dx + 'px';
+                    break;
+
+                case "fin":
+                    isCollision=true;
+                    document.getElementById('carre').style.left = l - 5 + 'px';
+                    document.getElementById('carre').style.top = t  +10  + 'px';
+                    finJeu(1);
+                    break;
+            }
         }
         deplacement_ok = deplacement_ok && depl_ok(tob, lob, wob, hob, t + dy, l + dx, w, h);
         i++;
@@ -45,10 +81,6 @@ function deplace(dx, dy) {
         document.getElementById('carre').style.top = t + dy + 'px';
         document.getElementById('carre').style.left = l + dx + 'px';
         var deplFin=depl_ok(ta,la,wa/2,ha,t,l,w,h); //Si on est dans la zone d'arrivée
-        if(!deplFin)
-        {
-            finJeu(1);
-        }
     }
 }
 
@@ -162,6 +194,8 @@ debPartie.addEventListener("click",function(){
     timer = setInterval(startTimer, 1000);
     if (depart==0)
     {
+        var audio = new Audio('sons/musique.mp3');
+        audio.play();
         compteur=90;
         depart=1;
     }
@@ -187,15 +221,24 @@ function startTimer()
 function init()
 {
     depart=0;
-    afficheTemps.value="Il vous reste 90 secondes";
-    afficheCollisions.value="Nombre de collisions : 0";
+    cmpscore=0;
+    compteur=90;
+    compteurCollision=0;
+    afficheTemps.value="Il vous reste "+compteur+" secondes";
+    afficheCollisions.value="Nombre de collisions : "+compteurCollision;
+    score.value="Votre Score est de  : 0 Pts";
     let pion=document.getElementById("carre");
+    pion.style.backgroundColor="lightskyblue";
     pion.style.left="17px";
-    pion.style.top="15px";
+    pion.style.top="18px";
     afficheResultat.value="";
     rejouer.style.display="none";
-    var audio = new Audio('sons/musique.mp3');
-    audio.play();
+    var listeBonus = document.querySelectorAll('.obstacle');
+    for(let j=0;j<listeBonus.length;j++)
+    {
+        listeBonus[j].style.display="block";
+    }
+    
 }
 
 /*************** Gestion de la fin de partie *********************/

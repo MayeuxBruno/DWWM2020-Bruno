@@ -202,6 +202,73 @@ button{
     width:0.5em;
     height:6em;
 }
+
+.jaune{
+    background-color:yellow;
+}
+
+.rose{
+    background-color:pink;
+}
+
+.bleu{
+    background-color:blueviolet;
+}
+
+.bonus{
+    display:block;
+    border-radius:0.5em;
+}
+
+#bonus1{
+    top:4em;
+    left:20em;
+    width:1em;
+    height:1em;
+}
+
+#bonus2{
+    top:2em;
+    left:10em;
+    width:1em;
+    height:1em;
+}
+
+#bonus3{
+    top:40em;
+    left:4.5em;
+    width:1em;
+    height:1em;
+}
+
+#bonus4{
+    top:2em;
+    left:45em;
+    width:1em;
+    height:1em;
+}
+
+#bonus5{
+    top:2em;
+    left:45em;
+    width:1em;
+    height:1em;
+}
+
+#bonus6{
+    top:2em;
+    left:45em;
+    width:1em;
+    height:1em;
+}
+
+#bonus7{
+    top:2em;
+    left:45em;
+    width:1em;
+    height:1em;
+}
+
 #afficheur{
     position:absolute;
     top:15em;
@@ -216,6 +283,17 @@ button{
 #collisions{
     position:absolute;
     top:20em;
+    left:55.5em;
+    width:15em;
+    text-align: center;
+    border:none;
+    color:white;
+    background-color: black;
+}
+
+#score{
+    position:absolute;
+    top:25em;
     left:55.5em;
     width:15em;
     text-align: center;
