@@ -64,10 +64,30 @@ button{
     padding:0.5em;
 }
 #solution{
-    display:flex;
+    display:none;/**/
 }
 
 #reset{
     display:none;
 }
 
+#temps{
+    display:none;
+}
+
+#nbClick{
+    display:none;
+}
+
+#debPartie{
+    display:none;
+}
+#scoreJ1{
+    display:none;
+}
+#scoreJ2{
+    display:none;
+}
+#tour{
+    display:none;
+}

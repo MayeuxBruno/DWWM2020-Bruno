@@ -16,12 +16,17 @@
     }
     echo'<header class="colonne">
             <div class="espacehor"></div>
-            <div class="centre"><h1>Jeu de memorie</h1></div>
+            <div class="centre"><h1>Jeu de memory</h1></div>
             <div class="espacehor"></div>
             <div class="menu">
+                <button id="solo">Mode solitaire</button>
+                <button id="multi">Mode Multijoueur</button>
                 <button id="debPartie">Commencer la Partie</button>
-                <input id="nbClick">
                 <input id="temps" value="Il vous reste 120 secondes">
+                <input id="nbClick">
+                <input id="tour">
+                <input id="scoreJ1">
+                <input id="scoreJ2">
                 <button id="solution">Solution</button>
                 <button id="reset">Rejouer</button>
             </div>

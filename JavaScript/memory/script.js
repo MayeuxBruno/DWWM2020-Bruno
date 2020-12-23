@@ -4,16 +4,26 @@ var btnReset=document.getElementById("reset");
 var affClicks=document.getElementById("nbClick");
 var affTime=document.getElementById("temps");
 var commencer=document.getElementById("debPartie");
+var multi=document.getElementById("multi");
+var solo=document.getElementById("solo");
+var scoreJ1=document.getElementById("scoreJ1");
+var scoreJ2=document.getElementById("scoreJ2");
+var tour=document.getElementById("tour");
 var memoireRecto=[];
 var memoireVerso=[];
 var caseRetourne=[];
+var joueurs=[];
+var scores=[0,0];
+var tourJoueur;
 var sens=true;
 var nbPaires=0;
 var nbClicks=0;
-affClicks.value="Nombre de clicks : "+nbClicks;
+affClicks.value="Nombre de Clicks : 0";
 var jeu=true;
 var myVar;
-var temp;
+var modeJeu;    //0->1Joueur  1->2Joueurs
+
+/******************* Verification des paires ********************/
 function verifPaire()
 {
     if(memoireVerso[0].getAttribute("src")==memoireVerso[1].getAttribute("src"))
@@ -28,7 +38,7 @@ function verifPaire()
         console.log("Nombre de paires : "+nbPaires);
         if(nbPaires==8)
         {
-             temp=setTimeout(finJeu(1),3000);
+            finJeu(1);
         }
     }
     else{
@@ -37,6 +47,7 @@ function verifPaire()
     }
 }
 
+/*************** Fonction qui retourne les cartes **********************/
 function retourne(e)
 {
     if (sens==true)
@@ -72,12 +83,10 @@ function retourne(e)
     }
 }
 
+/******** Retourne toutes les cartes *********/
 function solution()
 {
-    for (let i=0;i<listeCases.length;i++)
-    {
-        listeCases[i].removeEventListener("click",retourne);
-    }
+    finJeu(-1);
     var listeRecto=document.getElementsByClassName("recto");
     var listeVerso=document.getElementsByClassName("verso");
     console.log("solution demandée");
@@ -96,45 +105,108 @@ function reset()
     window.location.reload();
 }
 
+/************** Gestion du début de partie **********/
+function AfficheScore()
+{
+    scoreJ1.value="Score de "+joueurs[0]+" : "+scores[0]+" pts";
+    scoreJ2.value="Score de "+joueurs[1]+" : "+scores[1]+" pts";
+}
 /**************** Gestion du timer ****************/
+
 var timer;
-commencer.addEventListener("click",function(){
+function lancerPartie()
+{
+    if(modeJeu==0) // Si 1 joueur
+    {
+        solo.style.display="none";
+        multi.style.display="none";
+        btnSolution.style.display="flex";
+        commencer.style.display="flex";
+        affClicks.style.display="flex";
+    }
+    else
+    {
+        joueurs.push(prompt("Entrez le nom du premier joueur : "));
+        joueurs.push(prompt("Entrez le nom du deuxième joueur : "));
+        console.log(joueurs);
+        solo.style.display="none";
+        multi.style.display="none";
+        scoreJ1.style.display="flex";
+        scoreJ2.style.display="flex";
+        tour.style.display="flex";
+        btnSolution.style.display="flex";
+        commencer.style.display="flex";
+        AfficheScore();
+        tourJoueur(0);
+    }
+    commencer.addEventListener("click",function(){
+    for (let i=0;i<listeCases.length;i++)
+    {
+        listeCases[i].addEventListener("click",retourne);
+    }
     timer = setInterval(startTimer, 1000);
-});
+    commencer.style.display="none";
+    if(modeJeu==0)
+    {
+        affTime.style.display="flex";
+    }
+    else
+    {
+        tour.style.diplay="flex";
+    }
+    });
+}
+
 var compteur=120;
-var delay;
 function startTimer()
 {
     if(compteur>=0)
     {
-        console.log(compteur);
         affTime.value="Il vous reste "+compteur+" secondes";
         compteur--;
     }
     else{
-        delay=setInterval(finJeu(-1),1000);
+        finJeu(-1);
     }
 }
-
 /*************** Gestion de la fin de partie *********************/
 function finJeu(vic)
 {
-    clearInterval(delay);
-    clearTimeout(temp);
     clearInterval(timer);
     if (vic==1)
     {
-        alert("Bravo vous avez gagné...");
+        affTime.value="Partie Gagnée";
     }
     else
     {
-        alert("Dommage vous avez perdu...");
+        affTime.value="Partie Perdue";
+    }
+    btnSolution.style.display="none";
+    btnReset.style.display="flex";
+    for (let i=0;i<listeCases.length;i++)
+    {
+        listeCases[i].removeEventListener("click",retourne);
     }
 }
 /************** GESTION DES EVENEMENTS *****************/
-for (let i=0;i<listeCases.length;i++)
+function tourJoueur(i)
 {
-    listeCases[i].addEventListener("click",retourne);
+    if(i==0)
+    {
+        tourJoueur=Math.random[1,2]
+    }
+    tour.value("c'est au tour de "+joueurs[tourJoueur-1]+"de jouer");
 }
+
 btnSolution.addEventListener("click",solution);
 btnReset.addEventListener("click",reset);
+
+solo.addEventListener("click",function(){
+    modeJeu=0;
+    lancerPartie()
+})
+
+multi.addEventListener("click",function(){
+    modeJeu=1;
+    lancerPartie()
+})
