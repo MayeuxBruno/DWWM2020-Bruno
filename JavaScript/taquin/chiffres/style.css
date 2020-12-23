@@ -1,0 +1,36 @@
+div{
+    display:flex;
+    flex:1;
+}
+
+.colonne{
+    flex-direction:column;
+}
+
+.espacehor{
+    flex:none;
+    height:25vh;
+}
+
+.ligne{
+    justify-content:center;
+}
+
+button{
+    width:8em;
+    height:8em;
+    margin:0.1em;
+    font-weight: bold;
+    font-size:1.5em;
+}
+
+.vide{
+    background-color:white;
+    border:none;
+}
+
+.plein{
+    background-color:#ccc;
+    border:1px solid black;
+    border-radius:0.5em;
+}

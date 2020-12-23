@@ -14,13 +14,14 @@ var memoireVerso=[];
 var caseRetourne=[];
 var joueurs=[];
 var scores=[0,0];
-var tourJoueur;
+var joueur;
 var sens=true;
 var nbPaires=0;
 var nbClicks=0;
 affClicks.value="Nombre de Clicks : 0";
 var jeu=true;
 var myVar;
+var delaytour;
 var modeJeu;    //0->1Joueur  1->2Joueurs
 
 /******************* Verification des paires ********************/
@@ -40,11 +41,14 @@ function verifPaire()
         {
             finJeu(1);
         }
+        scores[joueur-1]++;
+        AfficheScore();
     }
     else{
         sens=false;
         myVar = setTimeout(retourne, 1000);
     }
+    delaytour = setTimeout(tourJoueur(1), 500);
 }
 
 /*************** Fonction qui retourne les cartes **********************/
@@ -88,8 +92,7 @@ function solution()
 {
     finJeu(-1);
     var listeRecto=document.getElementsByClassName("recto");
-    var listeVerso=document.getElementsByClassName("verso");
-    console.log("solution demandée");
+    var listeVerso=document.getElementsByClassName("verso");;
     for (let i=0;i<listeRecto.length;i++)
     {
         listeRecto[i].style.display="none";
@@ -147,7 +150,7 @@ function lancerPartie()
     timer = setInterval(startTimer, 1000);
     commencer.style.display="none";
     if(modeJeu==0)
-    {
+    {   
         affTime.style.display="flex";
     }
     else
@@ -172,20 +175,41 @@ function startTimer()
 /*************** Gestion de la fin de partie *********************/
 function finJeu(vic)
 {
-    clearInterval(timer);
-    if (vic==1)
+    if(modeJeu==0)
     {
-        affTime.value="Partie Gagnée";
+        clearInterval(timer);
+        if (vic==1)
+        {
+            affTime.value="Partie Gagnée";
+        }
+        else
+        {
+            affTime.value="Partie Perdue";
+        }
+        btnSolution.style.display="none";
+        btnReset.style.display="flex";
+        for (let i=0;i<listeCases.length;i++)
+        {
+            listeCases[i].removeEventListener("click",retourne);
+        }
     }
     else
     {
-        affTime.value="Partie Perdue";
-    }
-    btnSolution.style.display="none";
-    btnReset.style.display="flex";
-    for (let i=0;i<listeCases.length;i++)
-    {
-        listeCases[i].removeEventListener("click",retourne);
+        if(scores[0]==score[1])
+        {
+            tour.value="Match Nul";
+        }
+        else
+        {
+            if(score[0]>score[1])
+            {
+                tour.value=joueurs[0]+" a gagné";
+            }
+            else
+            {
+                tour.value=joueurs[1]+" a gagné";
+            }
+        }
     }
 }
 /************** GESTION DES EVENEMENTS *****************/
@@ -193,9 +217,18 @@ function tourJoueur(i)
 {
     if(i==0)
     {
-        tourJoueur=Math.random[1,2]
+        joueur=Math.floor(Math.random()*2)+1;
     }
-    tour.value("c'est au tour de "+joueurs[tourJoueur-1]+"de jouer");
+    else
+    {
+        clearInterval(delaytour);
+        joueur++;
+        if(joueur==3)
+        {
+            joueur=1;
+        }
+    }
+    tour.value="c'est a "+joueurs[joueur-1]+" de jouer";
 }
 
 btnSolution.addEventListener("click",solution);
