@@ -33,6 +33,8 @@ function eraseCookie(name) {
 }
    
 //affichage.textContent="Vous avez visitez cette page";
-createCookie("toto","28",5);
+
 var cookie=readCookie("toto");
-alert(cookie);
+cookie++;
+createCookie("toto",cookie,5);
+alert("La valeur du cookie est :"+cookie);
