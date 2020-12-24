@@ -1,6 +1,8 @@
 casePleine=document.getElementsByClassName("plein");
 caseVide=document.getElementsByClassName("vide")[0];
+afficheur=document.getElementById("affClick");
 var nb=[];
+var nbClicks=0;
 var xc,yc;
 var xv,yv;
 
@@ -25,17 +27,18 @@ function inverseCase(evt)
     parseInt(yv=caseVide.getAttribute("y"));
     if(((Math.abs(yv-yc)==1)^(Math.abs(xv-xc)==1))&&((Math.abs(yv-yc)<2)&&(Math.abs(xv-xc)<2)))
     {
-            console.log(Math.abs(xv-xc));
-            console.log(Math.abs(yv-yc));
-            caseVide.setAttribute("class","plein");
-            evt.target.setAttribute("class","vide");
-            caseVide.innerHTML=evt.target.innerHTML;
-            evt.target.innerHTML="";
-            caseVide=document.getElementsByClassName("vide")[0];
+        caseVide.setAttribute("class","plein");
+        evt.target.setAttribute("class","vide");
+        caseVide.innerHTML=evt.target.innerHTML;
+        evt.target.innerHTML="";
+        caseVide=document.getElementsByClassName("vide")[0];
+        nbClicks++;
+        afficheur.value="Nombre de changements : "+nbClicks;
     }
 }
 /************* Event Listener  **************/
 ArrayRand();
+afficheur.value="Nombre de changements : "+nbClicks;
 caseVide.addEventListener("click",inverseCase);
 for (let i=0;i<casePleine.length;i++)
 {

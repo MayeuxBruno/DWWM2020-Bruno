@@ -13,7 +13,7 @@ function ArrayRand()
     nb=nb.map(p => p[0]);
     for (let i=0;i<casePleine.length;i++)
     {
-        casePleine[i].style.backgroundImage="url('"+(nb[i])+".jpg')";
+        casePleine[i].setAttribute("id","img"+nb[i]);
     }
 }
 /************** Inverse Case *****************/
@@ -29,8 +29,8 @@ function inverseCase(evt)
             console.log(Math.abs(yv-yc));
             caseVide.setAttribute("class","plein");
             evt.target.setAttribute("class","vide");
-            caseVide.style.backgroundImage=evt.target.style.backgroundImage;
-            evt.target.style.background="none";
+            caseVide.setAttribute("id",evt.target.getAttribute("id"));
+            evt.target.removeAttribute("id");
             caseVide=document.getElementsByClassName("vide")[0];
     }
 }
