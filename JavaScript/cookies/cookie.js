@@ -1,4 +1,5 @@
-affichage=document.getElementById("affichage");
+var affichage=document.getElementById("affichage");
+var init=document.getElementById("init");
 
 function createCookie(name,value,days) 
 {
@@ -37,4 +38,9 @@ function eraseCookie(name) {
 var cookie=readCookie("toto");
 cookie++;
 createCookie("toto",cookie,5);
-alert("La valeur du cookie est :"+cookie);
+affichage.innerHTML="vous avez visité cette page :<b>"+cookie+" fois</b>";
+
+init.addEventListener("click",function(){
+    createCookie("toto",0,5);
+    document.location.reload();
+});
