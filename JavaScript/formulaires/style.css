@@ -7,6 +7,12 @@ div{
     flex:1;
     /*border:1px dotted black;*/
 }
+img{
+    width:100%;
+}
+.logo{
+    flex:0.1;
+}
 .espacehor{
     flex:none;
     height:10em;
@@ -20,7 +26,16 @@ div{
 .centre{
     justify-content:center;
 }
-input[required] +span::before{
+.fin{
+    justify-content:flex-end;
+}
+input[required] +div::before{
     content: "*";
     color: red;
+    display:flex;
+    align-items:center;
 }
+.rouge{
+    color:red;
+}
+
