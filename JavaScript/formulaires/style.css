@@ -1,0 +1,26 @@
+body{
+    background-color: #aaa;
+}
+
+div{
+    display:flex;
+    flex:1;
+    /*border:1px dotted black;*/
+}
+.espacehor{
+    flex:none;
+    height:10em;
+}
+.colonne{
+    flex-direction:column;
+}
+.champs{
+    padding:0.5em;
+}
+.centre{
+    justify-content:center;
+}
+input[required] +span::before{
+    content: "*";
+    color: red;
+}
