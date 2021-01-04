@@ -53,7 +53,6 @@ nom.addEventListener("keyup",function(){
         check[0]=false;
     }
     checkResult();
-    console.log(check);
 });
 
 prenom.addEventListener("keyup",function(){
@@ -84,13 +83,11 @@ prenom.addEventListener("keyup",function(){
         check[1]=false; 
     }
     checkResult();
-    console.log(check);
 });
 
 cp.addEventListener("keyup",function(){
     erreur.textContent="";
     var chaine=cp.value;
-    console.log(cp.value.length);
      if(cp.value.length<5)
      {
          if (isNaN(chaine[chaine.length-1]))
@@ -113,29 +110,40 @@ cp.addEventListener("keyup",function(){
         check[2]=true; 
      }
      checkResult();
-     console.log(check);
 });
 
 dateNaissance.addEventListener("change",function(){
     erreur.textContent="";
-	var date = dateNaissance.value;
-    var aaaa = date.substring(0,4);
-    var mm = date.substring(5,7);
-    var jj = date.substring(8,10);
-    var dates = new Date(aaaa,mm-1,jj);
-    var dateActuelle=new Date();
-    if (dates>dateActuelle)
-    {
-        erreur.textContent="La date de naissance est incorrecte";
-        dateOk.setAttribute("src","croix.png");
-        check[3]=false; 
-    } 
+    var date = dateNaissance.value;
+    if(date.length<=10){
+        var aaaa = date.substring(0,4);
+        var mm = date.substring(5,7);
+        var jj = date.substring(8,10);
+        if(jj!="" & mm!="" & aaaa!="")
+        {
+            var dates = new Date(aaaa,mm-1,jj);
+            var dateActuelle=new Date();
+            if (dates>dateActuelle)
+            {
+                erreur.textContent="La date de naissance est incorrecte";
+                dateOk.setAttribute("src","croix.png");
+                check[3]=false; 
+            } 
+            else{
+                dateOk.setAttribute("src","coche.png");
+                check[3]=true; 
+            } 
+        }
+        else{
+            dateOk.setAttribute("src","croix.png");
+            check[3]=false;
+        }
+    }
     else{
-        dateOk.setAttribute("src","coche.png");
-        check[3]=true; 
-    } 
+        dateOk.setAttribute("src","croix.png");
+        check[3]=false;
+    }
     checkResult();
-    console.log(check);
 });
 
 function checkResult()
@@ -153,7 +161,6 @@ function checkResult()
     }
     if(erreur==false)
     {
-        console.log("check");
         submit.disabled=false;
     }
 }
