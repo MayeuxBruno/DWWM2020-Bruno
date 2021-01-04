@@ -19,10 +19,13 @@
                             <div class="champs">
                                 <div><label for="nom">Nom:</label></div>
                                 <div><input name="nom" type="text" required><div></div></div>
-                                <div class="logo">
-                                    <div><img src="point.png" title="Entrez votre nom de famille"></div>
+                                <div class="infobulle">
+                                    <div class="infobulle-texte" id="aide-nom">Entrez ici votre nom de famille</div>
+                                    <div><img src="point.png" class="infobulle-icone"></div>
+
                                     <div></div>
                                 </div>
+                                <div class="logo"></div>
                                 <div class="logo">
                                     <img id="nomKo" src="croix.png">
                                 </div>
@@ -30,21 +33,25 @@
                             <div class="champs">
                                 <div><label for="prenom">Prenom:</label></div>
                                 <div><input name="prenom" type="text" required><div></div></div>
-                                <div class="logo">
-                                    <div><img src="point.png"></div>
+                                <div class="infobulle">
+                                    <div class="infobulle-texte" id="aide-nom">Entrez ici votre prénom</div>
+                                    <div><img src="point.png" class="infobulle-icone"></div>
                                     <div></div>
                                 </div>
+                                <div class="logo"></div>
                                 <div class="logo">
                                     <img id="prenomKo" src="croix.png">
                                 </div>
                             </div>
                             <div class="champs">
                                 <div><label for="cp">Code Postal:</label></div>
-                                <div><input name="cp" type="text" title="5 chiffres attendus"><div></div></div>
-                                <div class="logo">
-                                    <div><img src="point.png"></div>
+                                <div><input name="cp" type="text"><div></div></div>
+                                <div class="infobulle">
+                                    <div class="infobulle-texte" id="aide-nom">Entrez ici votre code postal sur 5 chiffres</div>
+                                    <div><img src="point.png" class="infobulle-icone"></div>
                                     <div></div>
                                 </div>
+                                <div class="logo"></div>
                                 <div class="logo">
                                     <img id="cpKo" src="croix.png">
                                 </div>
@@ -52,15 +59,17 @@
                             <div class="champs">
                                 <div><label for="dateNaissance">Date de Naissance:</label></div>
                                 <div><input name="dateNaissance" type="date" required><div></div></div>
-                                <div class="logo">
-                                    <div><img src="point.png"></div>
+                                <div class="infobulle">
+                                    <div class="infobulle-texte" id="aide-nom">Entrez ici votre date de naissance</div>
+                                    <div><img src="point.png" class="infobulle-icone"></div>
                                     <div></div>
                                 </div>
+                                <div class="logo"></div>
                                 <div class="logo">
                                     <img id="dateKo" src="croix.png">
                                 </div>
                             </div>
-                                <div class="champs centre"><input type="submit" value="Envoyer" disabled></div>
+                                <div class="champs centre"><input id="submit" type="submit" value="Envoyer" disabled></div>
                     </fieldset>
                 </form>
                 <div class="centre champs" id="erreur"></div>

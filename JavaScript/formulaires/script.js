@@ -1,6 +1,8 @@
-var formulaire=document.getElementById("form");
+var submit=document.getElementById("submit");
 var erreur=document.getElementById("erreur");
 var inputs=document.getElementsByTagName("input");
+var infobulle=document.getElementsByClassName("infobulle-icone");
+var texteInfobulle=document.getElementsByClassName("infobulle-texte");
 var nom=inputs[0];
 var prenom=inputs[1];
 var cp=inputs[2];
@@ -9,57 +11,80 @@ var nomOk=document.getElementById("nomKo");
 var prenomOk=document.getElementById("prenomKo");
 var cpOk=document.getElementById("cpKo");
 var dateOk=document.getElementById("dateKo");
+var check=[false,false,false,false];
+
+//Gestion des infos-bulles
+for(let i=0;i<infobulle.length;i++)
+{
+    infobulle[i].addEventListener("mouseover",function(){
+        texteInfobulle[i].style.display="block";
+    });
+    infobulle[i].addEventListener("mouseout",function(){
+        texteInfobulle[i].style.display="none";
+    });
+}
 
 nom.addEventListener("keyup",function(){
+    
     erreur.textContent="";
     var chaine=nom.value;
     var code=chaine.charCodeAt(chaine.length-1)
-    console.log(code);
     if(!((code<97||code>122)^(code<64||code>90)))
     {
         if(code!=45&&code!=39&&code!=32)
         {
             nomOk.setAttribute("src","croix.png");
+            check[0]=false;
             nom.value = nom.value.slice(0,-1);
             erreur.textContent="Ce caractère n'est pas accepte";
         }
         else{
-            nomOk.setAttribute("src","coche.png");    
+            nomOk.setAttribute("src","coche.png");   
+            check[0]=true; 
         }
     }
     else{
         nomOk.setAttribute("src","coche.png");
+        check[0]=true; 
     }
     if(chaine.length==0)
     {
         nomOk.setAttribute("src","croix.png");
+        check[0]=false;
     }
+    checkResult();
+    console.log(check);
 });
 
 prenom.addEventListener("keyup",function(){
     erreur.textContent="";
     var chaine=prenom.value;
     var code=chaine.charCodeAt(chaine.length-1)
-    console.log(code);
     if(!((code<97||code>188)^(code<64||code>90)))
     {
         if(code!=45&&code!=39&&code!=32)
         {
             prenomOk.setAttribute("src","croix.png");
+            check[1]=false; 
             prenom.value = prenom.value.slice(0,-1);
             erreur.textContent="Ce caractère n'est pas accepte";
         }
         else{
-            prenomOk.setAttribute("src","coche.png");    
+            prenomOk.setAttribute("src","coche.png"); 
+            check[1]=true;    
         }
     }
     else{
         prenomOk.setAttribute("src","coche.png");
+        check[1]=true; 
     }
     if(chaine.length==0)
     {
         prenomOk.setAttribute("src","croix.png");
+        check[1]=false; 
     }
+    checkResult();
+    console.log(check);
 });
 
 cp.addEventListener("keyup",function(){
@@ -74,6 +99,7 @@ cp.addEventListener("keyup",function(){
          }
         erreur.textContent="La code postal doit comporter 5 chiffres";
         cpOk.setAttribute("src","croix.png");
+        check[2]=false; 
      }
      else{
         if(cp.value.length>5){
@@ -84,7 +110,10 @@ cp.addEventListener("keyup",function(){
      if(cp.value.length==5)
      {
         cpOk.setAttribute("src","coche.png");
+        check[2]=true; 
      }
+     checkResult();
+     console.log(check);
 });
 
 dateNaissance.addEventListener("change",function(){
@@ -99,8 +128,32 @@ dateNaissance.addEventListener("change",function(){
     {
         erreur.textContent="La date de naissance est incorrecte";
         dateOk.setAttribute("src","croix.png");
+        check[3]=false; 
     } 
     else{
         dateOk.setAttribute("src","coche.png");
+        check[3]=true; 
     } 
+    checkResult();
+    console.log(check);
 });
+
+function checkResult()
+{
+    let erreur=false;
+    let i=0;
+    while(i<check.length&&erreur==false)
+    {
+        if(check[i]==false)
+        {
+            erreur=true;
+            submit.disabled=true;
+        }
+        i++;
+    }
+    if(erreur==false)
+    {
+        console.log("check");
+        submit.disabled=false;
+    }
+}

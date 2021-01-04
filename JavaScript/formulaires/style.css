@@ -7,6 +7,36 @@ div{
     flex:1;
     /*border:1px dotted black;*/
 }
+fieldset{
+    background-color:lightcyan;
+}
+img.infobulle-icone{
+    cursor:help;
+}
+.infobulle-texte{
+    display:none;
+    position:absolute;
+    border:1px black solid;
+    white-space: nowrap;
+    background-color:lightgoldenrodyellow;
+    padding:0.2em;
+    margin-left:1em;
+}
+legend{
+    border:1px black solid;
+    padding:0.5em;
+    border-radius:0.5em;
+    background-color:lightcyan;
+    
+}
+.infobulle{
+    flex:none;
+    position:relative;
+    display:inline;
+    width:0.8em;
+    height:0.8em;
+    
+}
 img{
     width:100%;
 }

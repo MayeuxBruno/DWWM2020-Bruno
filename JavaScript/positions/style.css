@@ -1,0 +1,22 @@
+div{
+    border:1px black solid;
+    
+}
+.base{
+    display:inline;
+    position:relative;
+    border:2px blue solid;
+    padding:1em;
+}
+.pos{
+    position:absolute;
+    display:none;
+    background-color:grey;
+    margin-left:4em;
+    margin-top:-1em;
+    z-index:2;
+}
+.base:hover .pos{
+    display:flex;
+
+}
