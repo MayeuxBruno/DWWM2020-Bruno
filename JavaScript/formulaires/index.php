@@ -18,7 +18,7 @@
                         <div class="champs">Les champs ( <span class="rouge">*</span> ) sont obligatoires</div>
                             <div class="champs">
                                 <div><label for="nom">Nom:</label></div>
-                                <div><input name="nom" type="text" required><div></div></div>
+                                <div><input class="checkinput" name="nom" type="text" pattern="[a-zA-Z '-]{3,}" required><div></div></div>
                                 <div class="infobulle">
                                     <div class="infobulle-texte" id="aide-nom">Entrez ici votre nom de famille</div>
                                     <div><img src="point.png" class="infobulle-icone"></div>
@@ -32,7 +32,7 @@
                             </div>
                             <div class="champs">
                                 <div><label for="prenom">Prenom:</label></div>
-                                <div><input name="prenom" type="text" required><div></div></div>
+                                <div><input class="checkinput" name="prenom" type="text" pattern="[a-zA-Z '-]{3,}" required><div></div></div>
                                 <div class="infobulle">
                                     <div class="infobulle-texte" id="aide-nom">Entrez ici votre prénom</div>
                                     <div><img src="point.png" class="infobulle-icone"></div>
@@ -45,7 +45,7 @@
                             </div>
                             <div class="champs">
                                 <div><label for="cp">Code Postal:</label></div>
-                                <div><input name="cp" type="text"><div></div></div>
+                                <div><input class="checkinput" name="cp" type="text" pattern="\d{5}" required><div></div></div>
                                 <div class="infobulle">
                                     <div class="infobulle-texte" id="aide-nom">Entrez ici votre code postal sur 5 chiffres</div>
                                     <div><img src="point.png" class="infobulle-icone"></div>
@@ -58,7 +58,7 @@
                             </div>
                             <div class="champs">
                                 <div><label for="dateNaissance">Date de Naissance:</label></div>
-                                <div><input name="dateNaissance" type="date" required><div></div></div>
+                                <div><input class="checkinput" name="dateNaissance" type="date" pattern="^[0-9]" required><div></div></div>
                                 <div class="infobulle">
                                     <div class="infobulle-texte" id="aide-nom">Entrez ici votre date de naissance</div>
                                     <div><img src="point.png" class="infobulle-icone"></div>
@@ -69,7 +69,7 @@
                                     <img id="dateKo" src="croix.png">
                                 </div>
                             </div>
-                                <div class="champs centre"><input id="submit" type="submit" value="Envoyer" disabled></div>
+                                <div class="champs centre"><input id="submit" type="submit" value="Envoyer"></div>
                     </fieldset>
                 </form>
                 <div class="centre champs" id="erreur"></div>

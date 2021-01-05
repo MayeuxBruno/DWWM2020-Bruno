@@ -68,4 +68,8 @@ input[required] +div::before{
 .rouge{
     color:red;
 }
+/*input:invalid{
+    border:red solid 3px;
+}*/
+
 

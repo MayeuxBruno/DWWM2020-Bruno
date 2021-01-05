@@ -11,7 +11,6 @@ var nomOk=document.getElementById("nomKo");
 var prenomOk=document.getElementById("prenomKo");
 var cpOk=document.getElementById("cpKo");
 var dateOk=document.getElementById("dateKo");
-var checkinput=document.getElementsByClassName("checkinput");
 var check=[false,false,false,false];
 
 //Gestion des infos-bulles
@@ -26,13 +25,30 @@ for(let i=0;i<infobulle.length;i++)
 }
 
 nom.addEventListener("keyup",function(){
+    
     erreur.textContent="";
-    if(checkinput[0].checkValidity())
+    var chaine=nom.value;
+    var code=chaine.charCodeAt(chaine.length-1)
+    if(!((code<97||code>122)^(code<64||code>90)))
     {
-        nomOk.setAttribute("src","coche.png");
-        check[0]=true;
+        if(code!=45&&code!=39&&code!=32)
+        {
+            nomOk.setAttribute("src","croix.png");
+            check[0]=false;
+            nom.value = nom.value.slice(0,-1);
+            erreur.textContent="Ce caractère n'est pas accepte";
+        }
+        else{
+            nomOk.setAttribute("src","coche.png");   
+            check[0]=true; 
+        }
     }
     else{
+        nomOk.setAttribute("src","coche.png");
+        check[0]=true; 
+    }
+    if(chaine.length==0)
+    {
         nomOk.setAttribute("src","croix.png");
         check[0]=false;
     }
@@ -41,30 +57,59 @@ nom.addEventListener("keyup",function(){
 
 prenom.addEventListener("keyup",function(){
     erreur.textContent="";
-    if(checkinput[1].checkValidity())
+    var chaine=prenom.value;
+    var code=chaine.charCodeAt(chaine.length-1)
+    if(!((code<97||code>188)^(code<64||code>90)))
     {
-        prenomOk.setAttribute("src","coche.png");
-        check[1]=true;
+        if(code!=45&&code!=39&&code!=32)
+        {
+            prenomOk.setAttribute("src","croix.png");
+            check[1]=false; 
+            prenom.value = prenom.value.slice(0,-1);
+            erreur.textContent="Ce caractère n'est pas accepte";
+        }
+        else{
+            prenomOk.setAttribute("src","coche.png"); 
+            check[1]=true;    
+        }
     }
     else{
+        prenomOk.setAttribute("src","coche.png");
+        check[1]=true; 
+    }
+    if(chaine.length==0)
+    {
         prenomOk.setAttribute("src","croix.png");
-        check[1]=false;
+        check[1]=false; 
     }
     checkResult();
 });
 
 cp.addEventListener("keyup",function(){
     erreur.textContent="";
-    if(checkinput[2].checkValidity())
-    {
-        cpOk.setAttribute("src","coche.png");
-        check[2]=true;
-    }
-    else{
+    var chaine=cp.value;
+     if(cp.value.length<5)
+     {
+         if (isNaN(chaine[chaine.length-1]))
+         {
+            cp.value = cp.value.slice(0,-1);
+         }
+        erreur.textContent="La code postal doit comporter 5 chiffres";
         cpOk.setAttribute("src","croix.png");
-        check[2]=false;
-    }
-    checkResult();
+        check[2]=false; 
+     }
+     else{
+        if(cp.value.length>5){
+            cp.value = cp.value.slice(0,-1);
+        }
+
+     }
+     if(cp.value.length==5)
+     {
+        cpOk.setAttribute("src","coche.png");
+        check[2]=true; 
+     }
+     checkResult();
 });
 
 dateNaissance.addEventListener("change",function(){
@@ -105,7 +150,6 @@ function checkResult()
 {
     let erreur=false;
     let i=0;
-    console.log(check);
     while(i<check.length&&erreur==false)
     {
         if(check[i]==false)
