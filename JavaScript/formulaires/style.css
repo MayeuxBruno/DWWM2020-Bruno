@@ -34,8 +34,17 @@ legend{
     position:relative;
     display:inline;
     width:0.8em;
-    height:0.8em;
-    
+    height:0.8em; 
+}
+.infobulle-icone{
+    position:relative;
+}
+.infobulle-text{
+    position:absolute;
+    white-space:nowrap;
+    border:1px solid black;
+    background-color:indianred;
+    margin-left:1vw;
 }
 img{
     width:100%;
@@ -69,7 +78,7 @@ input[required] +div::before{
     color:red;
 }
 input:invalid{
-    border:red solid 3px;
+    border-bottom:red solid 3px;
 }
 
 .champs{
