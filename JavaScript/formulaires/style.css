@@ -68,8 +68,28 @@ input[required] +div::before{
 .rouge{
     color:red;
 }
-/*input:invalid{
+input:invalid{
     border:red solid 3px;
-}*/
+}
+
+.champs{
+    position: relative;
+}
+
+.message{
+    justify-content:center;
+}
+
+.input_icon{
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    margin-left:18vw;
+    margin-top:1.5vh;
+    font-size: 11px;
+    width: 50px;
+}
+    
+   
 
 

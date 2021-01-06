@@ -22,13 +22,12 @@
                                 <div class="infobulle">
                                     <div class="infobulle-texte" id="aide-nom">Entrez ici votre nom de famille</div>
                                     <div><img src="point.png" class="infobulle-icone"></div>
-
-                                    <div></div>
                                 </div>
                                 <div class="logo"></div>
                                 <div class="logo">
-                                    <img id="nomKo" src="croix.png">
+                                   <img class="voyant" src="croix.png">
                                 </div>
+                                <div class="message"></div>
                             </div>
                             <div class="champs">
                                 <div><label for="prenom">Prenom:</label></div>
@@ -40,12 +39,28 @@
                                 </div>
                                 <div class="logo"></div>
                                 <div class="logo">
-                                    <img id="prenomKo" src="croix.png">
+                                    <img class="voyant" src="croix.png">
                                 </div>
+                                <div class="message"></div>
+                            </div>
+                            <div class="champs">
+                                <div><label for="nom">Mot de Passe :</label></div>
+                                <div class="input_icon"><i id="oeil" class="far fa-eye"></i></div>
+                                <div><input class="checkinput" name="mdp" type="password" pattern="[a-zA-Z '-]{3,}" required><div></div></div>
+                                <div class="infobulle">
+                                    <div class="infobulle-texte" id="aide-nom">Entrez ici votre nom de famille</div>
+                                    <div><img src="point.png" class="infobulle-icone"></div>
+                                    <div></div>
+                                </div>
+                                <div class="logo"></div>
+                                <div class="logo">
+                                    <img class="voyant" src="croix.png">
+                                </div>
+                                <div class="message"></div>
                             </div>
                             <div class="champs">
                                 <div><label for="cp">Code Postal:</label></div>
-                                <div><input class="checkinput" name="cp" type="text" pattern="\d{5}" required><div></div></div>
+                                <div><input class="checkinput" name="cp" type="text" pattern="\d{5}" maxlength="5" required><div></div></div>
                                 <div class="infobulle">
                                     <div class="infobulle-texte" id="aide-nom">Entrez ici votre code postal sur 5 chiffres</div>
                                     <div><img src="point.png" class="infobulle-icone"></div>
@@ -53,12 +68,13 @@
                                 </div>
                                 <div class="logo"></div>
                                 <div class="logo">
-                                    <img id="cpKo" src="croix.png">
+                                    <img class="voyant" src="croix.png">
                                 </div>
+                                <div class="message"></div>
                             </div>
                             <div class="champs">
                                 <div><label for="dateNaissance">Date de Naissance:</label></div>
-                                <div><input class="checkinput" name="dateNaissance" type="date" pattern="^[0-9]" required><div></div></div>
+                                <div><input class="checkinput" name="dateNaissance" type="date" pattern="[0123][0-9]{1}[/-]{1}[01][0-9]{1}[/-][0-9]{4}" required><div></div></div>
                                 <div class="infobulle">
                                     <div class="infobulle-texte" id="aide-nom">Entrez ici votre date de naissance</div>
                                     <div><img src="point.png" class="infobulle-icone"></div>
@@ -68,6 +84,7 @@
                                 <div class="logo">
                                     <img id="dateKo" src="croix.png">
                                 </div>
+                                <div class="message"></div>
                             </div>
                                 <div class="champs centre"><input id="submit" type="submit" value="Envoyer"></div>
                     </fieldset>
@@ -77,6 +94,7 @@
             <div></div>
         </div>
     </div>
+    <script src="https://kit.fontawesome.com/ce4feb7268.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>	

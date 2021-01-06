@@ -5,14 +5,17 @@ var infobulle=document.getElementsByClassName("infobulle-icone");
 var texteInfobulle=document.getElementsByClassName("infobulle-texte");
 var nom=inputs[0];
 var prenom=inputs[1];
-var cp=inputs[2];
-var dateNaissance=inputs[3];
+var mdp=inputs[2];
+var cp=inputs[3];
+var dateNaissance=inputs[4];
 var nomOk=document.getElementById("nomKo");
+var mdpOk=document.getElementById("mdpKo");
 var prenomOk=document.getElementById("prenomKo");
 var cpOk=document.getElementById("cpKo");
 var dateOk=document.getElementById("dateKo");
+var oeil=document.getElementById("oeil");
 var checkinput=document.getElementsByClassName("checkinput");
-var check=[false,false,false,false];
+var check={"nom":false,"prenom":false,"mdp":false,"cp":false,"dateNaissance":false};
 
 //Gestion des infos-bulles
 for(let i=0;i<infobulle.length;i++)
@@ -24,79 +27,56 @@ for(let i=0;i<infobulle.length;i++)
         texteInfobulle[i].style.display="none";
     });
 }
+nom.addEventListener("keyup",verif);
+prenom.addEventListener("keyup",verif);
+cp.addEventListener("keyup",verif);
+mdp.addEventListener("keyup",verif);
 
-nom.addEventListener("keyup",function(){
+function verif(event)
+{
     erreur.textContent="";
-    if(checkinput[0].checkValidity())
+    var moninput=event.target;
+    var parent=(moninput.parentNode).parentNode;
+    var voyant=parent.getElementsByClassName("voyant")[0];
+    var nom=moninput.getAttribute("name");
+    //console.log(nom);
+    
+    if(moninput.checkValidity())
     {
-        nomOk.setAttribute("src","coche.png");
-        check[0]=true;
+        voyant.setAttribute("src","coche.png");
+        check[nom]=true;
     }
     else{
-        nomOk.setAttribute("src","croix.png");
-        check[0]=false;
+        voyant.setAttribute("src","croix.png");
+        check[nom]=false;
     }
+    console.log(check);
     checkResult();
-});
-
-prenom.addEventListener("keyup",function(){
-    erreur.textContent="";
-    if(checkinput[1].checkValidity())
-    {
-        prenomOk.setAttribute("src","coche.png");
-        check[1]=true;
-    }
-    else{
-        prenomOk.setAttribute("src","croix.png");
-        check[1]=false;
-    }
-    checkResult();
-});
-
-cp.addEventListener("keyup",function(){
-    erreur.textContent="";
-    if(checkinput[2].checkValidity())
-    {
-        cpOk.setAttribute("src","coche.png");
-        check[2]=true;
-    }
-    else{
-        cpOk.setAttribute("src","croix.png");
-        check[2]=false;
-    }
-    checkResult();
-});
+}
 
 dateNaissance.addEventListener("change",function(){
     erreur.textContent="";
     var date = dateNaissance.value;
-    if(date.length<=10){
+    if(checkinput[4].checkValidity()){
         var aaaa = date.substring(0,4);
         var mm = date.substring(5,7);
         var jj = date.substring(8,10);
-        if(jj!="" & mm!="" & aaaa!="")
+        var dates = new Date(aaaa,mm-1,jj);
+        var dateActuelle=new Date();
+        if (dates>dateActuelle)
         {
-            var dates = new Date(aaaa,mm-1,jj);
-            var dateActuelle=new Date();
-            if (dates>dateActuelle)
-            {
-                erreur.textContent="La date de naissance est incorrecte";
-                dateOk.setAttribute("src","croix.png");
-                check[3]=false; 
-            } 
-            else{
-                dateOk.setAttribute("src","coche.png");
-                check[3]=true; 
-            } 
-        }
-        else{
+            erreur.textContent="La date de naissance est incorrecte";
             dateOk.setAttribute("src","croix.png");
-            check[3]=false;
-        }
+            check["dateNaissance"]=false; 
+        } 
+        else{
+            dateOk.setAttribute("src","coche.png");
+            check["dateNaissance"]=true; 
+        } 
     }
     else{
-        dateOk.setAttribute("src","croix.png");
-        check[3]=false;
+         dateOk.setAttribute("src","croix.png");
+        check["dateNaissance"]=false;
     }
     checkResult();
 });
@@ -104,8 +84,11 @@ dateNaissance.addEventListener("change",function(){
 function checkResult()
 {
     let erreur=false;
-    let i=0;
-    console.log(check);
+    for (var i in check)
+    {
+        console.logcheck[i];
+    }
+    /*let i=0;
     while(i<check.length&&erreur==false)
     {
         if(check[i]==false)
@@ -118,5 +101,12 @@ function checkResult()
     if(erreur==false)
     {
         submit.disabled=false;
-    }
+    }*/
+    
 }
+oeil.addEventListener("mousedown",function(){
+    mdp.setAttribute("type","text");
+})
+oeil.addEventListener("mouseup",function(){
+    mdp.setAttribute("type","password");
+})
