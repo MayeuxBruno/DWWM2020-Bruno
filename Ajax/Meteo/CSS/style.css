@@ -1,0 +1,93 @@
+﻿/*-----------------------------------GLOBAL-----------------------------------------*/
+body {
+	background-color: black;
+}
+
+img {
+	width: 100%;
+}
+
+#page {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: wheat;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+.colonne{
+	flex-direction:column;
+}
+#contenu {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	background-color: wheat;
+	justify-content: center;
+}
+.ligne{
+	display: flex;
+	justify-content: space-between;
+	padding : 1em;
+}
+
+.espaceHorizon {
+	height: 1vw;
+}
+.espaceVertical {
+	flex: 0.5;
+}
+#entete {
+	background-color: lightskyblue;
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+}
+
+#titre {
+	display: flex;
+	justify-content: space-between;
+	flex: 1.5;
+}
+
+#logo {
+	flex: 1;
+	padding:1em;
+}
+
+#titre_page {
+	display: flex;
+	flex: 5;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#divSousTitre{
+	justify-content: center;
+}
+.ville , .libelle ,.etat  {
+	flex: 1;
+}
+.dispo, .adresse, .nbMax{
+	flex: 1;
+	padding-left: 2vw;
+}
+.titreLigne{
+	font-weight: bold;
+}
+.detail{
+	display: flex;
+	justify-content: space-between;
+	background-color: darkgrey;
+	border:1px solid black;
+	padding:0.5em;
+	margin-bottom:1em;
+}
+div{
+	display:flex;
+	flex:1;
+}
+.ville,.libelle,.center{
+	justify-content:center;
+}
