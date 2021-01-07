@@ -11,6 +11,12 @@ req.onreadystatechange = function (event) {
             //on décode la réponse, pour obtenir un objet
             reponse = JSON.parse(this.responseText);
             enregs = reponse.records;
+            function sortByName(key1, key2){
+                return key1.fields.commune > key2.fields.commune;
+             }
+            enregs=enregs.sort(sortByName);
+            console.log(enregs);
+            console.log(enregs[0].fields.commune);
             for (let i = 0; i < enregs.length; i++) {
                 // on crée la ligne et les div internes
                 ligne = document.createElement("div");
@@ -37,9 +43,9 @@ req.onreadystatechange = function (event) {
                 // on ajoute un evenement sur ligne pour afficher le detail
                 ligne.addEventListener("click", afficheDetail);
             }
-            console.log("Réponse reçue: %s", this.responseText);
+            //console.log("Réponse reçue: %s", this.responseText);
         } else {
-            console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+            //console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
         }
     }
 };
@@ -49,6 +55,7 @@ function afficheDetail(e) {
     stationClique.removeEventListener("click", afficheDetail);
     detail = document.createElement("div");
     detail.setAttribute("class", "detail");
+    detail.setAttribute("ligne", stationClique.getAttribute("id"));
     adresse = document.createElement("div");
     adresse.setAttribute("class", "adresse");
     detail.appendChild(adresse);
@@ -68,11 +75,8 @@ function afficheDetail(e) {
 function masqueDetail(e)
 {
     e.target.parentNode.style.display="none";
-    var lignes=document.getElementsByClassName("ligne");
-    for (let i=0;i<lignes.length;i++)
-    {
-        lignes[i].addEventListener("click", afficheDetail);
-    }
+    var stationCllique=e.target.parentNode;
+    console.log(stationClique);
 }
 
 //on envoi la requête
