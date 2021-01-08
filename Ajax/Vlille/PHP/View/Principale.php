@@ -5,9 +5,10 @@
 </div>
 <div id="divContenu">
 	<div class="ligne titreLigne">
+		<div class="check"></div>
 		<div class="ville">Ville</div>
 		<div class="libelle">Nom de la Station</div>
-		<div class="dispo">Etat</div>
+		<div class="vdispo">Velos Disponibles</div>
+		<div class="pdispo">Places Disponibles</div>
 	</div>
-	<!--<div class="espaceHorizon"></div>-->
 </div>

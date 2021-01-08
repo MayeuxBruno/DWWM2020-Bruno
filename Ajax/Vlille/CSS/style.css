@@ -30,6 +30,7 @@ img {
 	display: flex;
 	justify-content: space-between;
 	padding : 1em;
+	border:white 0.1em solid;
 }
 
 .espaceHorizon {
@@ -84,10 +85,31 @@ img {
 	padding:0.5em;
 	margin-bottom:1em;
 }
+
+img{
+	width:100%;
+}
+
 div{
 	display:flex;
 	flex:1;
+	/*border: 1px dotted black;*/
 }
-.ville,.libelle,.center{
+
+.check
+{
+	flex:0.05;
+}
+.ville,.libelle,.center,
+.vdispo,.pdispo{
 	justify-content:center;
+}
+.rouge{
+	background-color:red;
+}
+.vert{
+	background-color:green;
+}
+.zero{
+	color:red;
 }
