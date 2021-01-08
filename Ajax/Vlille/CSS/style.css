@@ -12,9 +12,8 @@ img {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: wheat;
-	padding-left: 2%;
-	padding-right: 2%;
+	/*background-color: wheat;*/
+	background-color:lightgray;
 }
 .colonne{
 	flex-direction:column;
@@ -23,7 +22,7 @@ img {
 	display: flex;
 	flex-direction: column;
 	width: 80%;
-	background-color: wheat;
+	background-color:lightgray;
 	justify-content: center;
 }
 .ligne{
@@ -40,7 +39,9 @@ img {
 	flex: 0.5;
 }
 #entete {
-	background-color: lightskyblue;
+	/*background-color: lightskyblue;*/
+	background-image: url("../Images/vlille.jpg");
+	background-size:cover;
 	display: flex;
 	width: 100%;
 	flex-direction: column;
@@ -62,10 +63,24 @@ img {
 	flex: 5;
 	justify-content: center;
 	align-items: center;
+	color:white;
+	font-size:2em;
 	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+#titre_page h1{
+	background-color:red;
+	border-radius:0.2em;
+	padding:0.3em;
+}
+#nav{
+	width:100%;
+	color:white;
+	background-color:black;
+	justify-content:center;
+}
 #divSousTitre{
-	justify-content: center;
+	justify-content: flex-end;
+	padding:2em;
 }
 .ville , .libelle ,.etat  {
 	flex: 1;
@@ -86,16 +101,15 @@ img {
 	margin-bottom:1em;
 }
 
-img{
-	width:100%;
-}
-
 div{
 	display:flex;
 	flex:1;
-	/*border: 1px dotted black;*/
+	border: 1px dotted black;
 }
 
+nav{
+	background-color:black;
+}
 .check
 {
 	flex:0.05;

@@ -1,10 +1,11 @@
 // Utilisation de l'Ajax pour appeler l'API et récuperer les enregistrements
 var contenu = document.getElementById("contenu");
 var enregs; // contient la reponse de l'API
+var tabVille;
 // on définit une requete
 const req = new XMLHttpRequest();
 var sousTitre=document.getElementById("divSousTitre");
-var maj=0;
+var dateMaj;
 //fonction de tri du tableau
 function TriStations(a, b) {
     if (a.fields.commune<b.fields.commune)
@@ -41,10 +42,12 @@ req.onreadystatechange = function (event) {
             // la requete a abouti et a fournit une reponse
             //on décode la réponse, pour obtenir un objet
             reponse = JSON.parse(this.responseText);
+            tabVille=reponse.facet_groups[2].facets[1].path;// Récupère la liste des villes
             enregs = reponse.records;
             enregs=enregs.sort(TriStations);
-            console.log(enregs);
-            console.log(enregs[0].fields.commune);
+            dateMaj=DateMaj(new Date(enregs[0].record_timestamp));
+            sousTitre.textContent="Dernière Mise à jours : "+dateMaj;
+            //console.log(enregs[0].fields.commune);
             for (let i = 0; i < enregs.length; i++) {
                 // on crée la ligne et les div internes
                 ligne = document.createElement("div");
@@ -94,7 +97,7 @@ req.onreadystatechange = function (event) {
         }
     }
 };
-
+console.log(enregs);
 function afficheDetail(e) {
     stationClique = (e.target).parentNode;
     stationClique.removeEventListener("click", afficheDetail);
@@ -126,12 +129,24 @@ function masqueDetail(e)
 
 //on envoi la requête
 //req.send(null);
+MiseAjour();
 function MiseAjour()
 {
-    req.open('GET', 'https://opendata.lillemetropole.fr/api/records/1.0/search/?dataset=vlille-realtime&q=&rows=70&facet=libelle&facet=nom&facet=commune&facet=etat&facet=type&facet=etatconnexion', true);
+    req.open('GET', 'https://opendata.lillemetropole.fr/api/records/1.0/search/?dataset=vlille-realtime&q=&rows=50&facet=libelle&facet=nom&facet=commune&facet=etat&facet=type&facet=etatconnexion&timezone=Europe%2FParis', true);
     req.send(null);
-    sousTitre.textContent="Nombre de mises à jours : "+maj;
-    maj++;
-    console.log(maj);
 }
-var myVar = setInterval(MiseAjour,10000);
+
+function DateMaj(date)
+{
+    let dateTemp=date.getDate()+"/";
+    let mois=date.getMonth()+1;
+    if(mois<10){mois="0"+mois}
+    dateTemp+=mois+"/"+ date.getFullYear()+" à ";
+    let heures=date.getHours();
+    if(heures<10){heures="0"+heures}
+    let minutes=date.getMinutes();
+    if(minutes<10){minutes="0"+minutes}
+    dateTemp+=heures+" h "+minutes+" mns";
+    return dateTemp;
+}
+var myVar = setInterval(MiseAjour,300000);

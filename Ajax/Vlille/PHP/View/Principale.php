@@ -1,5 +1,4 @@
 ﻿<!-- Cette page est le contenu de la page principale du site; Elle présente la liste des parkings. -->
-
 <div id="divSousTitre">
 	<h3>Selectionnez une station</h3>
 </div>
