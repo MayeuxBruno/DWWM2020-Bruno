@@ -1,81 +1,71 @@
 // Utilisation de l'Ajax pour appeler l'API et récuperer les enregistrements
-var contenu = document.getElementById("contenu");
-var enregs; // contient la reponse de l'API
-// on définit une requete
-const req = new XMLHttpRequest();
-//on vérifie les changements d'états de la requête
-req.onreadystatechange = function (event) {
-    if (this.readyState === XMLHttpRequest.DONE) {
-        if (this.status === 200) {
-            // la requete a abouti et a fournit une reponse
-            //on décode la réponse, pour obtenir un objet
-            reponse = JSON.parse(this.responseText);
-            enregs = reponse.records;
-            for (let i = 0; i < enregs.length; i++) {
-                // on crée la ligne et les div internes
-                ligne = document.createElement("div");
-                ligne.setAttribute("class", "ligne");
-                ligne.id = i;
-                ville = document.createElement("div");
-                ville.setAttribute("class", "ville");
-                ligne.appendChild(ville);
-                libelle = document.createElement("div");
-                libelle.setAttribute("class", "libelle");
-                ligne.appendChild(libelle);
-                etat = document.createElement("div");
-                etat.setAttribute("class", "etat");
-                ligne.appendChild(etat);
-                contenu.appendChild(ligne);
-                espace = document.createElement("div");
-                espace.setAttribute("class","espaceHorizon");
-                contenu.appendChild(espace);
-                //on met à jour le contenu
-                ville.innerHTML = enregs[i].fields.commune;
-                libelle.innerHTML = enregs[i].fields.nom;
-                etat.innerHTML = enregs[i].fields.etat;
+//cle api:appid=4f00f8b80c9b221ffd12e64353e31667
+var element=document.getElementsByClassName("case colonne")[0];
+var ville="Isbergues";
+RecupTemp(ville);
 
-                // on ajoute un evenement sur ligne pour afficher le detail
-                ligne.addEventListener("click", afficheDetail);
-            }
-            console.log("Réponse reçue: %s", this.responseText);
-        } else {
-            console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
-        }
-    }
-};
+var inputVille=document.querySelector('#choixVille');
 
-function afficheDetail(e) {
-    stationClique = (e.target).parentNode;
-    stationClique.removeEventListener("click", afficheDetail);
-    detail = document.createElement("div");
-    detail.setAttribute("class", "detail");
-    adresse = document.createElement("div");
-    adresse.setAttribute("class", "adresse");
-    detail.appendChild(adresse);
-    dispo = document.createElement("div");
-    dispo.setAttribute("class", "dispo");
-    detail.appendChild(dispo);
-    nbMax = document.createElement("div");
-    nbMax.setAttribute("class", "max");
-    detail.appendChild(nbMax);
-    adresse.innerHTML = "Adresse : "+enregs[stationClique.id].fields.adresse;
-    dispo.innerHTML = "Nombre de vélos disponibles :  "+ enregs[stationClique.id].fields.nbvelosdispo;
-    nbMax.innerHTML= "Nombre de places disponibles :  " + enregs[stationClique.id].fields.nbplacesdispo;
-    contenu.insertBefore(detail, stationClique.nextSibling);
-    detail.addEventListener("click", masqueDetail);
-}
 
-function masqueDetail(e)
+function RecupTemp()
 {
-    e.target.parentNode.style.display="none";
-    var lignes=document.getElementsByClassName("ligne");
-    for (let i=0;i<lignes.length;i++)
-    {
-        lignes[i].addEventListener("click", afficheDetail);
-    }
+    // on définit une requete
+    const req = new XMLHttpRequest();
+    //on envoi la requête
+    req.open('GET','https://api.openweathermap.org/data/2.5/weather?q=' + ville + '&appid=4f00f8b80c9b221ffd12e64353e31667&lang=fr&units=metric');
+    req.send(null);
+    req.onreadystatechange = function (event) {
+        if (this.readyState === XMLHttpRequest.DONE) {
+            if (this.status === 200) {
+                reponse = JSON.parse(this.responseText);  
+                console.log(reponse);
+                let temperature = reponse.main.temp;
+                let tempMax=reponse.main.temp_max;
+                let tempMin=reponse.main.temp_min;
+                let pression=reponse.main.pressure;
+                let humidite = reponse.main.humidity;
+                let icone=reponse.weather[0].icon;
+                let leveSoleil=reponse.sys.sunrise;
+                console.log(new Date(leveSoleil*1000));
+                let description=reponse.weather[0].description;
+                document.querySelector('#icone').setAttribute("src","Images/"+icone+".png");
+                document.querySelector('#description').textContent = "Tendance de la journée : "+description;
+                document.querySelector('#tempMax').textContent = tempMax+"°C";
+                document.querySelector('#tempMin').textContent = tempMin+"°C";
+                document.querySelector('#pression').textContent = pression;
+                document.querySelector('#afficheTemp').textContent = temperature+"°C";
+                document.querySelector('#afficheHumid').textContent = humidite+"%"; 
+                document.querySelector('#afficheVille').textContent = ville;            
+                console.log("Réponse reçue: %s", this.responseText);
+            } else {
+                /*console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+                document.querySelector('#icone').setAttribute("src","Images/croix.png");
+                document.querySelector('#description').textContent = "";
+                document.querySelector('#tempMax').textContent = "";
+                document.querySelector('#tempMin').textContent = "";
+                document.querySelector('#pression').textContent = "";
+                document.querySelector('#afficheTemp').textContent = "";
+                document.querySelector('#afficheHumid').textContent = ""; 
+                document.querySelector('#afficheVille').textContent = "Cette ville n'existe pas."; */
+            }
+        }
+    };
 }
 
-//on envoi la requête
-req.open('GET', 'https://opendata.lillemetropole.fr/api/records/1.0/search/?dataset=vlille-realtime&q=&rows=60&facet=libelle&facet=nom&facet=commune&facet=etat&facet=type&facet=etatconnexion', true);
-//req.send(null);
-var myVar = setInterval(req.send(null),300000);
+function RecupHeure(date)
+{
+    let timeTemp=new Date(leveSoleil*1000)
+    let heures=timeTemp.getHours();
+    if(heures<10){heures="0"+heures}
+    let minutes=timeTemp.getMinutes();
+    if(minutes<10){minutes="0"+minutes}
+    affic+=heures+" h "+minutes+" mns";
+    return dateTemp;
+}
+
+inputVille.addEventListener("change",function(){
+    ville=inputVille.value;
+    RecupTemp(ville);
+});
+
+

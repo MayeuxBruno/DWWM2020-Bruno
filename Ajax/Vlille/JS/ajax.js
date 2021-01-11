@@ -236,11 +236,7 @@ function DateMaj(date)
 /******* Affiche le select de la barre de menu *********/  
 function createSelect(tab)
 {
-     /*select = document.createElement("select");
-     select.setAttribute("class", "select");
-     select.id = "selectVille";*/
      option = document.createElement("option");
-     //option.setAttribute("class", "vdispo");
      option.setAttribute("value"," ");
      option.textContent = "Toute la Métroplole";
      selectV.appendChild(option);
@@ -252,7 +248,6 @@ function createSelect(tab)
          option.textContent = tab[j].path;
          selectV.appendChild(option);
      }
-     //nav.appendChild(select);
 }
 
 
