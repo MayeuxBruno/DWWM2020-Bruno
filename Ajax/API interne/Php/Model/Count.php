@@ -5,5 +5,5 @@ include "../Controller/Parametre.Class.php";
 include "DbConnect.class.php";
 Parametre::init();
 DbConnect::init();
-echo json_encode(PersonneManager::count());
-//echo PersonneManager::count();
+//echo json_encode(PersonneManager::getList());
+echo PersonneManager::count();

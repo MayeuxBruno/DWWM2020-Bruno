@@ -49,11 +49,11 @@ class PersonneManager
 		
 		while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
 		{
-			$persos[] = new Personne($donnees);
+			//$persos[] = new Personne($donnees);
 			$json[]=$donnees;
 		}
 		
-		// return $persos;
+		//return $persos;
 		return $json;
 	}
 	
