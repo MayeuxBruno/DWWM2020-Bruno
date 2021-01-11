@@ -16,6 +16,7 @@
 				<div class="centre"><span>Pression :</span><span id="pression">Ici la pression</span></div>
 				<div class="centre"><span>Temp Max :</span><span id="tempMax">Ici la temperature maxi</span></div>
 				<div class="centre"><span>Temp Min :</span><span id="tempMin">Ici la temperature mini</span></div>
+				<div class="centre"><span>Levé su soleil :</span><span id="leveSoleil">Ici la temperature mini</span></div>
 			</div>
 		</div>
 		<div class="centre"><h3 id="description">Ici la temperature mini</h3></div>

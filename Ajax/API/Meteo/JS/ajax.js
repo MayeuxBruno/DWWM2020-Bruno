@@ -18,15 +18,16 @@ function RecupTemp()
         if (this.readyState === XMLHttpRequest.DONE) {
             if (this.status === 200) {
                 reponse = JSON.parse(this.responseText);  
-                console.log(reponse);
+                //console.log(reponse);
                 let temperature = reponse.main.temp;
                 let tempMax=reponse.main.temp_max;
                 let tempMin=reponse.main.temp_min;
                 let pression=reponse.main.pressure;
                 let humidite = reponse.main.humidity;
                 let icone=reponse.weather[0].icon;
-                let leveSoleil=reponse.sys.sunrise;
-                console.log(new Date(leveSoleil*1000));
+                RecupHeure(reponse.sys.sunrise);
+                RecupHeure(reponse.sys.sunset);
+                console.log(reponse);
                 let description=reponse.weather[0].description;
                 document.querySelector('#icone').setAttribute("src","Images/"+icone+".png");
                 document.querySelector('#description').textContent = "Tendance de la journée : "+description;
@@ -35,11 +36,11 @@ function RecupTemp()
                 document.querySelector('#pression').textContent = pression;
                 document.querySelector('#afficheTemp').textContent = temperature+"°C";
                 document.querySelector('#afficheHumid').textContent = humidite+"%"; 
-                document.querySelector('#afficheVille').textContent = ville;            
-                console.log("Réponse reçue: %s", this.responseText);
+                document.querySelector('#afficheVille').textContent = ville;           
+                //console.log("Réponse reçue: %s", this.responseText);
             } else {
-                /*console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
-                document.querySelector('#icone').setAttribute("src","Images/croix.png");
+                console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+                /*document.querySelector('#icone').setAttribute("src","Images/croix.png");
                 document.querySelector('#description').textContent = "";
                 document.querySelector('#tempMax').textContent = "";
                 document.querySelector('#tempMin').textContent = "";
@@ -54,13 +55,14 @@ function RecupTemp()
 
 function RecupHeure(date)
 {
-    let timeTemp=new Date(leveSoleil*1000)
+    let timeTemp=new Date(date*1000)
     let heures=timeTemp.getHours();
     if(heures<10){heures="0"+heures}
     let minutes=timeTemp.getMinutes();
     if(minutes<10){minutes="0"+minutes}
-    affic+=heures+" h "+minutes+" mns";
-    return dateTemp;
+    affichage=heures+" h "+minutes+" mns";
+    console.log(affichage);
+    return affichage;
 }
 
 inputVille.addEventListener("change",function(){
