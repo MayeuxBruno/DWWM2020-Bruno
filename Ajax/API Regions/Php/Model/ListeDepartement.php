@@ -1,4 +1,4 @@
 <?php
 //fichier pour appel AJAX
-$reg=$GET['idReg'];
-echo json_encode(DepartementsManager::getListByRegion(32));
+$reg=$_POST['idReg'];
+echo json_encode(DepartementsManager::getListByRegion($reg));
