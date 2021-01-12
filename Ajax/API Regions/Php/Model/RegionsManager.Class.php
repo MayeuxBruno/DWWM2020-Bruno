@@ -49,10 +49,10 @@ class RegionsManager
 			if($donnees != false)
 			{
 				$json[]=$donnees;
-				//$liste[] = new Regions($donnees);
+				$liste[] = new Regions($donnees);
 			}
 		}
-		//return $liste;
-		return $json;
+		return $liste;
+		//return $json;
 	}
 }

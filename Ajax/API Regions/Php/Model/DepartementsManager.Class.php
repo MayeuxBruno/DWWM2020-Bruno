@@ -56,4 +56,21 @@ class DepartementsManager
 		//return $liste;
 		return $json;
 	}
+
+	public static function getListByRegion($id)
+	{
+ 		$db=DbConnect::getDb();
+		$liste = [];
+		$q=$db->query("SELECT * FROM Departements WHERE idRegion =".$id);
+		while($donnees = $q->fetch(PDO::FETCH_ASSOC))
+		{
+			if($donnees != false)
+			{
+				$json[]=$donnees;
+				//$liste[] = new Departements($donnees);
+			}
+		}
+		//return $liste;
+		return $json;
+	}
 }
