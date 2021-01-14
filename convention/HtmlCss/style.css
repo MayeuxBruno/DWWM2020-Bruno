@@ -1,10 +1,10 @@
 /********* Global **********/
-html
+body
 {
     min-height:100%;
     background:var(--FondPage);
 }
-div, header,footer
+div,header,footer
 {
     display:flex;
     flex:1;
@@ -23,27 +23,58 @@ img
     justify-content:center;
     align-items:center;
 }
+.espaceHor
+{
+    flex:none;
+    height:1em;
+}
+/******* Boutons ********/
 .bouton
 {
     background-color: Transparent;
     background-repeat:no-repeat;
     border-radius:1em;
-    border:3px solid var(--VertClair);
+    border:2px solid var(--BordureBouton);
     cursor:pointer;
     padding:0.5em 1em;
-    color: var(--BlancCasse);
+    color: var(--CouleurTexte);
 }
 .bouton:hover
 {
-    border:3px solid var(--CouleurOmbre);
-    color: var(--VertClair);
-    padding:0.7em 1.2em;
-    font-size:1em;
+    border:2px solid var(--CouleurTexte);
+    color: var(--BordureBouton);
+    font-size:1.2em;
 }
+
+/********* input & Select *********/
+input,select
+{
+    border:1px solid var(--BordureBouton);
+    background-color: Transparent;
+    padding:0.5em 1em;
+    color: var(--CouleurTexte);
+}
+input:focus
+{
+    background-color: #aaa;
+    color:black;
+}
+
+select option 
+{
+    background-color:var(--FondPage);
+    border:1px solid var(--BordureBouton);
+    color:var(--CouleurTexte);
+}
+
 /******** Header ********/
 header,footer
 {
     box-shadow: -0.1em 0.1em 0.2em 0.2em var(--CouleurOmbre);
+}
+header
+{
+    margin-bottom:1em;
 }
 .logo,.connection
 {
