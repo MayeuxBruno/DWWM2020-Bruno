@@ -1,7 +1,7 @@
 <header>
     <div class="logo">
         <div class="logo"></div>
-        <div><img src="afpa.png" alt="logo Afpa"></div>
+        <div><img src="../IMG/afpa.png" alt="logo Afpa"></div>
         <div class="logo"></div>
     </div>
     <div class="titre centre">

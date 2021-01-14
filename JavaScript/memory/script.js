@@ -56,6 +56,7 @@ function retourne(e)
 {
     if (sens==true)
     {
+        e.target.removeEventListener("click",retourne);
         if(memoireRecto.length<2)
         {
             nbClicks++;
@@ -76,6 +77,7 @@ function retourne(e)
     else
     {   
         clearTimeout(myVar);
+        e.target.addEventListener("click",retourne);
         memoireRecto[0].style.display="flex";
         memoireRecto[1].style.display="flex";
         memoireVerso[0].style.display="none";

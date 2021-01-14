@@ -64,12 +64,9 @@ select option
 {
     background-color:var(--FondPage);
     border:1px solid var(--BordureBouton);
-    color:var(--CouleurTexte);
+    color:var(--CouleurTexte); 
 }
-select option::selection
-{
-    background-color:red;
-}
+
 
 /******** Header ********/
 header,footer
