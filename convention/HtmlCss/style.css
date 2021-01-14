@@ -1,0 +1,66 @@
+/********* Global **********/
+html
+{
+    min-height:100%;
+    background:var(--FondPage);
+}
+div, header,footer
+{
+    display:flex;
+    flex:1;
+    /*border:1px white dotted;*/
+}
+img
+{
+    width:100%;
+}
+.colonne
+{
+    flex-direction:column;
+}
+.centre
+{
+    justify-content:center;
+    align-items:center;
+}
+.bouton
+{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border-radius:1em;
+    border:3px solid var(--VertClair);
+    cursor:pointer;
+    padding:0.5em 1em;
+    color: var(--BlancCasse);
+}
+.bouton:hover
+{
+    border:3px solid var(--CouleurOmbre);
+    color: var(--VertClair);
+    padding:0.7em 1.2em;
+    font-size:1em;
+}
+/******** Header ********/
+header,footer
+{
+    box-shadow: -0.1em 0.1em 0.2em 0.2em var(--CouleurOmbre);
+}
+.logo,.connection
+{
+    flex:0.5;
+}
+.titre
+{
+    flex:2;
+    color:var(--CouleurTexte);
+}
+/******** Footer ******/
+footer{
+    margin-top: 1em;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width:99%;
+    bottom: 0.2em;
+    color:var(--CouleurTexte);
+}
