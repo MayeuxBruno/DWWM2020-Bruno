@@ -41,7 +41,7 @@ function texte($codeTexte)
 	return TexteManager::findByCodes($lang, $codeTexte);
 }
 
-function afficherPage($page)
+/*function afficherPage($page)
 {
 	$chemin=$page[0];
 	$nom=$page[1];
@@ -52,4 +52,22 @@ function afficherPage($page)
 	include 'PHP/VIEW/Nav.php';
 	include $chemin.$nom.'.php';
 	include 'PHP/VIEW/Footer.php';
+}*/
+
+function afficherPage($page)
+{
+	$chemin=$page[0];
+	$nom=$page[1];
+	$titre=$page[2];
+	if($page[3])
+	{
+		include $chemin.$nom.'.php';
+	}
+	else{
+		include 'PHP/VIEW/Head.php';
+		include 'PHP/VIEW/Header.php';
+		include 'PHP/VIEW/Nav.php';
+		include $chemin.$nom.'.php';
+		include 'PHP/VIEW/Footer.php';
+	}
 }

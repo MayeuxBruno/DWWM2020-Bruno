@@ -21,7 +21,9 @@ $lang=isset($_SESSION['lang']) ? $_SESSION['lang'] : 'FR';
 
 $routes=[
 	//"default"=>["PHP/VIEW/","Accueil","Accueil"],
-	"default"=>["PHP/VIEW/","RensStagiaires","Accueil"],
+	"default"=>["PHP/VIEW/","RensStagiaires","Accueil",false],
+	"SessionAPI"=>["PHP/MODEL/","SessionAPI","Accueil",true],
+	"ListeStagiairesAPI"=>["PHP/MODEL/","ListeStagiairesAPI","Accueil",true],
 	//STMANAGER/","TestanimationManager","Test de animation"],
 	//r"=>["PHP/MODEL/TESTMANAGER/","TestcomportementsprofessionnelsManager","Test de comportementsprofessionnels"],
 	//TESTMANAGER/","TestentreprisesManager","Test de entreprises"],
@@ -37,10 +39,11 @@ $routes=[
 	//MANAGER/","TesttuteursManager","Test de tuteurs"],
 	///TESTMANAGER/","TestutilisateursManager","Test de utilisateurs"],
 	//ANAGER/","TestvillesManager","Test de villes"],
-		
-	"FormConnexion" => ["PHP/VIEW/", "FormConnexion", "Identification"],
-	"ActionConnexion" => ["PHP/VIEW/", "ActionConnexion", "Identification"],
-	"ActionDeconnexion" => ["PHP/VIEW/", "ActionDeconnexion", "Identification"],
+	//"default" => ["PHP/VIEW/", "FormStagiaireInfos", "Identification",false],
+	"FormConnexion" => ["PHP/VIEW/", "FormConnexion", "Identification",false],
+	"ActionConnexion" => ["PHP/VIEW/", "ActionConnexion", "Identification",false],
+	"ActionDeconnexion" => ["PHP/VIEW/", "ActionDeconnexion", "Identification",false],
+
 ];
 
 if(isset($_GET["page"]))

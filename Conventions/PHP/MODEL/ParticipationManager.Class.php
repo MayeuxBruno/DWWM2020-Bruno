@@ -63,13 +63,30 @@ class ParticipationManager
     {
         $db = DbConnect::getDb();
         $id = (int) $idParticipation;
-        $liste = [];
+		$liste = [];
         $q = $db->query("SELECT * FROM Participation where idParticipation=$id");
         while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) {
             if ($donnees != false) {
-                $liste[] = new Participation($donnees);
+				$liste[] = new Participation($donnees);
             }
-        }return $liste;
+		}
+		return $liste;
+	}
 
+	public static function getByIdSession($idSession,$api)
+    {
+        $db = DbConnect::getDb();
+        $id = (int) $idSession;
+		$liste = [];
+		$json = [];
+        $q = $db->query("SELECT * FROM Participation where idSessionFormation=$idSession");
+        while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) {
+            if ($donnees != false) {
+				$json[]= $donnees;
+				$liste[] = new Participation($donnees);
+            }
+		}
+		if(!$api)return $liste;
+		return $json;
 	}
 }

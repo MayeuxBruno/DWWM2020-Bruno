@@ -59,17 +59,21 @@ class SessionformationManager
 		return $liste;
 	}
 	
-    public static function getByFormation($idFormation)
+    public static function getByFormation($idFormation,$api)
     {
         $db = DbConnect::getDb();
         $id = (int) $idFormation;
-        $liste = [];
+		$liste = [];
+		$json = [];
         $q = $db->query("SELECT * FROM Sessionformation where idFormation=$id");
         while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) {
             if ($donnees != false) {
-                $liste[] = new Sessionformation($donnees);
+				$liste[] = new Sessionformation($donnees);
+				$json[]=$donnees;
             }
-        }return $liste;
+		}
+		if(!$api)return $liste;
+		return $json;
 
 	}
 }
