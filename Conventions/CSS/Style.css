@@ -17,7 +17,7 @@ form {
     justify-content: center;
 }
 div{
-    border:1px dotted white;
+    /*border:1px dotted white;*/
 }
 img {
     width: 100%;
@@ -96,7 +96,7 @@ a {
 
 /********* input & Select *********/
 input,
-select {
+select,textarea,.case {
     border: 1px solid var(--BordureBouton);
     background-color: Transparent;
     padding: 0.5em 1em;

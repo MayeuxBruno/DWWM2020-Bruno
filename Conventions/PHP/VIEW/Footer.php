@@ -3,7 +3,7 @@
 <footer>
     <h3>&copy;DWWM 2020</h3>
 </footer>
-<script src="./JS/RensStagiaires.js"></script>
+<script src="./JS/GestionSessions.js"></script>
 <?php 
 if (isset($page))
 {

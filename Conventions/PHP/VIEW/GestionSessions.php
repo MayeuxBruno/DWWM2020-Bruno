@@ -30,14 +30,12 @@
 <div class="espaceHor"></div>
 <div>
     <div class="demi"></div>
-    <div class="bouton" id="Liste">Liste des stagiaires</div>
+    <div class="bouton" id="liste">Liste des stagiaires</div>
     <div class="demi"></div>
-    <div class="bouton" id="Objectifs">Objectifs P.A.E</div>
+    <div class="bouton" id="objectif">Objectifs P.A.E</div>
     <div class="demi"></div>
 </div>
 <div class="espaceHor"></div>
-<div class="colonne" id="Affichage">
-    <div>MAYEUX Bruno</div>
-    <div>MAYEUX Bruno</div>
+<div class="colonne" id="affichage">
 </div>
 </section>

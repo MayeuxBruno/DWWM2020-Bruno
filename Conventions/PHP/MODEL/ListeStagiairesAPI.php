@@ -1,6 +1,10 @@
 <?php
 $idSession=$_POST['idSession'];
-//echo json_encode(ParticipationManager::getByIdSession($idSession,true));
-$table=["Bruno","Emilie","Cléo"];
-echo json_encode($table);
+$tabStagiaires=[];
+$lesStagiaires=ParticipationManager::getByIdSession($idSession,false);
+foreach ($lesStagiaires as $unStagiaire)
+{
+    $tabStagiaires[]=StagiairesManager::findById($unStagiaire->getIdStagiaire(),true);
+}
+echo json_encode($tabStagiaires);
 ?>

@@ -33,7 +33,7 @@ class StagiairesManager
  		$db=DbConnect::getDb();
 		$db->exec("DELETE FROM Stagiaires WHERE idStagiaire=" .$obj->getIdStagiaire());
 	}
-	public static function findById($id)
+	public static function findById($id,$api)
 	{
  		$db=DbConnect::getDb();
 		$id = (int) $id;
@@ -41,7 +41,9 @@ class StagiairesManager
 		$results = $q->fetch(PDO::FETCH_ASSOC);
 		if($results != false)
 		{
-			return new Stagiaires($results);
+
+			if(!$api) return new Stagiaires($results);
+			return $results;
 		}
 		else
 		{
