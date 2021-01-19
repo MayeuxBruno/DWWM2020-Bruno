@@ -95,7 +95,7 @@ class StagiaireFormationManager
         $db = DbConnect::getDb();
         $liste = [];
         $json = [];
-        $q = $db->query("SELECT * FROM StagiaireFormation where idSessionFormation = " . $idSession);
+        $q = $db->query("SELECT DISTINCT idStagiaire, nomStagiaire,prenomStagiaire FROM StagiaireFormation where idSessionFormation = " . $idSession);
         while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
         {
             if ($donnees != false)
@@ -130,6 +130,21 @@ class StagiaireFormationManager
             }
         }
         return count($liste);
+    }
+    public static function getPeriodeBySession($idSessionFormation)
+    {
+        $db = DbConnect::getDb();
+        $liste = [];
+        $idSessionFormation = (int) $idSessionFormation;
+        $q = $db->query("SELECT DISTINCT idPeriode FROM StagiaireFormation WHERE idSessionFormation = ".$idSessionFormation);
+        while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
+        {
+            if ($donnees != false)
+            {
+                $liste[] = $donnees;
+            }
+        }
+        return $liste;
     }
 
 }

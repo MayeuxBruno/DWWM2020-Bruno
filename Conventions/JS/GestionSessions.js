@@ -164,11 +164,11 @@ function creationListe(liste)
         div.setAttribute("class","stagiaire");
         let div1=document.createElement("div");
         div1.setAttribute("class","case");
-        div1.innerHTML=liste[i].nomStagiaire;
+        div1.innerHTML=liste[i].nom;
         div.appendChild(div1);
         let div2=document.createElement("div");
         div2.setAttribute("class","case");
-        div2.innerHTML=liste[i].prenomStagiaire;
+        div2.innerHTML=liste[i].prenom;
         div.appendChild(div2);
         let div3=document.createElement("div");
         div3.innerHTML="";
