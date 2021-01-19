@@ -2,7 +2,6 @@
 body {
     min-height: 100%;
     background: var(--FondPage);
-    color:var(--CouleurTexte);
 }
 
 div,
@@ -16,9 +15,7 @@ form {
     flex: 1;
     justify-content: center;
 }
-div{
-    /*border:1px dotted white;*/
-}
+
 img {
     width: 100%;
 }
@@ -54,13 +51,17 @@ section {
 .demi {
     flex: 0.5;
 }
-
+.mini{
+    flex:0.2;
+}
 .double {
     flex: 2;
 }
-
+.triple{
+    flex: 3;
+}
 .info {
-    margin: 1.5em;
+    margin: 0.3em;
 }
 
 /******* Form ********/
@@ -94,15 +95,20 @@ a {
     color: var(--BordureBouton);
 }
 
+
 /********* input & Select *********/
 input,
-select,textarea,.case {
+select ,.case {
     border: 1px solid var(--BordureBouton);
     background-color: Transparent;
     padding: 0.5em 1em;
     color: var(--CouleurTexte);
 }
-
+.titreColonne {
+    border: 2px solid var(--CouleurTexte);
+    color: var(--BordureBouton);
+    font-size: 1.2em;
+}
 input:focus {
     background-color: #aaa;
     color: black;
@@ -143,8 +149,12 @@ footer {
     margin-top: 1em;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     width: 99%;
     bottom: 0.2em;
     color: var(--CouleurTexte);
+    background-color: var(--FondPage);
+}
+.container{
+    padding-bottom: 3.5em;
 }

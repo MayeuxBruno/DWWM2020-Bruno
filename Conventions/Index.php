@@ -22,8 +22,8 @@ $lang=isset($_SESSION['lang']) ? $_SESSION['lang'] : 'FR';
 $routes=[
 	//"default"=>["PHP/VIEW/","Accueil","Accueil"],
 	"default"=>["PHP/VIEW/","GestionSessions","Accueil",false],
-	"SessionAPI"=>["PHP/MODEL/","SessionAPI","Accueil",true],
-	"ListeStagiairesAPI"=>["PHP/MODEL/","ListeStagiairesAPI","Accueil",true],
+	"SessionAPI"=>["PHP/MODEL/API/","SessionAPI","Accueil",true],
+	"ListeStagiairesAPI"=>["PHP/MODEL/API/","ListeStagiairesAPI","Accueil",true],
 	"ObjectifAPI"=>["PHP/MODEL/","ObjectifAPI","Accueil",true],
 	//STMANAGER/","TestanimationManager","Test de animation"],
 	//r"=>["PHP/MODEL/TESTMANAGER/","TestcomportementsprofessionnelsManager","Test de comportementsprofessionnels"],
