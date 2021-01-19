@@ -2,7 +2,7 @@
 <div class="espaceHor"></div>
 <div>
 <?php
-        $idFormateur=1;
+        $idFormateur=6;
         $lesFormations=AnimationsManager::getByUtilisateur($idFormateur);
         echo'<div class="infos"><select id="selectFormation">';
         if (count($lesFormations)>1)

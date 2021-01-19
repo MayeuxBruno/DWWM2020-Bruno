@@ -1,11 +1,11 @@
 <?php
 $idSession=$_POST['idSession'];
-//$tabStagiaires=[];
-/*$lesStagiaires=ParticipationManager::getByIdSession($idSession,false);
-foreach ($lesStagiaires as $unStagiaire)
+$lesStagiaires=StagiaireFormationManager::getListBySession($idSession,false);
+$lesPeriodes=PeriodesStagesManager::getListBySession($idSession,false);
+foreach($lesStagiaires as $unStagiaire)
 {
-    $tabStagiaires[]=StagiairesManager::findById($unStagiaire->getIdStagiaire(),true);
+    $stage=StagesManager::getByStagiaire($unStagiaire->,$idPeriode)
 }
-echo json_encode($tabStagiaires);*/
-echo json_encode(StagiaireFormationManager::getListBySession($idSession,true))
+die(var_dump($lesPeriodes));
+//echo json_encode(StagiaireFormationManager::getListBySession($idSession,true));
 ?>

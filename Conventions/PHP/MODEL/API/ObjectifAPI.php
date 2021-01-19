@@ -1,5 +1,6 @@
 <?php
 $idSession=$_POST['idSession'];
-$objectif=SessionformationManager::findById($idSession)->getObjectifPAE();
+$objectif=PeriodesStagesManager::getListBySession($idSession,true);
+//die(var_dump($objectif));
 echo json_encode($objectif);
 ?>

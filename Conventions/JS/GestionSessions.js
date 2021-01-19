@@ -7,7 +7,6 @@ var btnListe=document.getElementById("liste");
 var btnObjectif=document.getElementById("objectif");
 var affichage=document.getElementById("affichage");
 var selectValue=selectFormation.value;
-console.log(btnObjectif);
 
 /*****************LISTENER ******************/
 selectFormation.addEventListener("change",changeFormation);
@@ -19,7 +18,6 @@ requ.onreadystatechange = function (event) {
         if (this.status === 200) {
             console.log("Réponse reçue: %s", this.responseText);
             reponse = JSON.parse(this.responseText);
-            console.log("Reponse après parse",reponse);
             ajoutSession(reponse)
         } else {
             console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
@@ -32,8 +30,8 @@ requ1.onreadystatechange = function (event) {
         if (this.status === 200) {
             console.log("Réponse reçue: %s", this.responseText);
             reponse1 = JSON.parse(this.responseText);
-            reponse1=reponse1.sort(TriParNom);
             console.log(reponse1);
+            reponse1=reponse1.sort(TriParNom);
             creationListe(reponse1);
         }else {
             console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
@@ -47,7 +45,6 @@ requ2.onreadystatechange = function (event) {
             console.log("Réponse reçue: %s", this.responseText);
             reponse2 = JSON.parse(this.responseText);
             creationObjectif(reponse2);
-            console.log(reponse2)
         } else {
             console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
         }
@@ -144,19 +141,19 @@ function creationListe(liste)
     affichage.innerHTML="";
     let div=document.createElement("div");
     let div1=document.createElement("div");
-    div1.setAttribute("class","case");
+    div1.setAttribute("class","titreColonne");
     div1.innerHTML="Nom";
     div.appendChild(div1);
     let div2=document.createElement("div");
-    div2.setAttribute("class","case");
+    div2.setAttribute("class","titreColonne");
     div2.innerHTML="Prenom";
     div.appendChild(div2);
     let div3=document.createElement("div");
-    div3.setAttribute("class","case");
+    div3.setAttribute("class","titreColonne");
     div3.innerHTML="Etat du stage";
     div.appendChild(div3);
     let div4=document.createElement("div");
-    div4.setAttribute("class","case");
+    div4.setAttribute("class","titreColonne");
     div4.innerHTML="";
     div.appendChild(div4);
     affichage.appendChild(div);
@@ -196,13 +193,13 @@ function affichageObjectif (e)
         requ2.send(args);
     }
 }
-function creationObjectif(objectif)
+function creationObjectif(reponse)
 {
     affichage.innerHTML="";
     let div=document.createElement("textarea");
     div.id="textObjectif";
     div.setAttribute("rows","25");
-    div.innerHTML=objectif;
+    div.innerHTML=reponse[0].objectifPAE;
     affichage.appendChild(div);
     div=document.createElement("div");
     div.setAttribute("class","espaceHor");

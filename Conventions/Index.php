@@ -24,7 +24,7 @@ $routes=[
 	"default"=>["PHP/VIEW/","GestionSessions","Accueil",false],
 	"SessionAPI"=>["PHP/MODEL/API/","SessionAPI","Accueil",true],
 	"ListeStagiairesAPI"=>["PHP/MODEL/API/","ListeStagiairesAPI","Accueil",true],
-	"ObjectifAPI"=>["PHP/MODEL/","ObjectifAPI","Accueil",true],
+	"ObjectifAPI"=>["PHP/MODEL/API/","ObjectifAPI","Accueil",true],
 	//STMANAGER/","TestanimationManager","Test de animation"],
 	//r"=>["PHP/MODEL/TESTMANAGER/","TestcomportementsprofessionnelsManager","Test de comportementsprofessionnels"],
 	//TESTMANAGER/","TestentreprisesManager","Test de entreprises"],

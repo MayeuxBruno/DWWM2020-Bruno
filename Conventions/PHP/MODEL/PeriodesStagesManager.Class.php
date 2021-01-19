@@ -60,4 +60,23 @@ class PeriodesStagesManager
 		}
 		return $liste;
 	}
+
+	public static function getListBySession($idSession,$api)
+	{
+		$db=DbConnect::getDb();
+		$id = (int) $idSession;
+		$liste = [];
+		$json=[];
+		$q = $db->query("SELECT * FROM periodesstages where idSessionFormation=".$id);
+		while($donnees = $q->fetch(PDO::FETCH_ASSOC))
+		{
+			if($donnees != false)
+			{
+				$liste[] = new PeriodesStages($donnees);
+				$json[] = $donnees;
+			}
+		}
+		if(!$api)return $liste;
+		return $json;
+	}
 }
