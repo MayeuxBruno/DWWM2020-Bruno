@@ -1,0 +1,38 @@
+body{
+    display:flex;
+    justify-content:center;
+    background-color:wheat;
+    padding:8vw;
+}
+div, input{
+    display:flex;
+    flex:1;
+    /*border:1px dotted black;*/
+}
+.titre{
+    justify-content:center;
+}
+.min{
+    flex:0.1;
+}
+.barrebouton{
+    justify-content:space-around;
+}
+.ligne{
+    padding:1em;
+}
+.colonne{
+    flex-direction:column;
+}
+.cadre{
+    border:1px solid lightskyblue;
+}
+.espacehor{
+    flex:none;
+    height:2em;
+}
+.message{
+    justify-content:center;
+    color:red;
+    font-weight:bold;
+}
