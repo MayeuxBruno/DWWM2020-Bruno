@@ -12,16 +12,12 @@ var selectValue=selectFormation.value;
 selectFormation.addEventListener("change",changeFormation);
 btnListe.addEventListener("click",affichageListe);
 btnObjectif.addEventListener("click",affichageObjectif);
-selectSession.addEventListener("change",function(){
-    affichage.innerHTML="";
-});
 
 requ.onreadystatechange = function (event) {
     if (this.readyState === XMLHttpRequest.DONE) {
         if (this.status === 200) {
             console.log("Réponse reçue: %s", this.responseText);
             reponse = JSON.parse(this.responseText);
-            console.log(reponse);
             ajoutSession(reponse)
         } else {
             console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
@@ -34,7 +30,8 @@ requ1.onreadystatechange = function (event) {
         if (this.status === 200) {
             console.log("Réponse reçue: %s", this.responseText);
             reponse1 = JSON.parse(this.responseText);
-            //reponse1=reponse1.sort(TriParNom);
+            console.log(reponse1);
+            reponse1=reponse1.sort(TriParNom);
             creationListe(reponse1);
         }else {
             console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
@@ -141,7 +138,6 @@ function affichageListe (e)
 /** Création de la liste des stagiaires **/
 function creationListe(liste)
 {
-    console.log(liste['fields'][0]['nomStagiaire']);
     affichage.innerHTML="";
     let div=document.createElement("div");
     let div1=document.createElement("div");
@@ -154,32 +150,33 @@ function creationListe(liste)
     div.appendChild(div2);
     let div3=document.createElement("div");
     div3.setAttribute("class","titreColonne");
-    div3.innerHTML="Etapes PAE";
+    div3.innerHTML="Etat du stage";
     div.appendChild(div3);
+    let div4=document.createElement("div");
+    div4.setAttribute("class","titreColonne");
+    div4.innerHTML="";
+    div.appendChild(div4);
     affichage.appendChild(div);
     for(let i=0;i<liste.length;i++)
     {
         let div=document.createElement("div");
-        div.id=0;
+        div.id=liste[i].idStagiaire;
         div.setAttribute("class","stagiaire");
         let div1=document.createElement("div");
         div1.setAttribute("class","case");
-        div1.innerHTML=liste['fields'][i]['nomStagiaire'];
+        div1.innerHTML=liste[i].nom;
         div.appendChild(div1);
         let div2=document.createElement("div");
         div2.setAttribute("class","case");
-        div2.innerHTML=liste['fields'][i]['prenomStagiaire'];
+        div2.innerHTML=liste[i].prenom;
         div.appendChild(div2);
-
         let div3=document.createElement("div");
+        div3.innerHTML="";
         div3.setAttribute("class","case");
-        for (let a = 0; a < liste[i].etape.length; a++) 
-        {
-            let div5=document.createElement("div");
-            div5.innerHTML=liste[i].etape[a];
-            div3.appendChild(div5);
-        }
-        div.appendChild(div3);   
+        div.appendChild(div3);
+        let div4=document.createElement("div");
+        div4.setAttribute("class","case");
+        div.appendChild(div4);
         affichage.appendChild(div);
     }
 }

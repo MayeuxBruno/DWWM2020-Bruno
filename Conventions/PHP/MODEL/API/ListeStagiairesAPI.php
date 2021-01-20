@@ -1,28 +1,38 @@
 <?php
 $idSession=$_POST['idSession'];
-$lesStagiaires=StagiaireFormationManager::getListBySession($idSession,false);
-$lesPeriodes=StagiaireFormationManager::getPeriodeBySession($idSession);
+//$idSession=5;
+$lesStagiaires=StagiaireFormationManager::getListBySession($idSession,false); // recupere la liste des stagiaires de la session
+$lesPeriodes=StagiaireFormationManager::getPeriodeBySession($idSession); // recupere les periodes de stages de la session
+$i=0;
 foreach($lesStagiaires as $unStagiaire)
 {
-    $stagiaire=array("id"=>$unStagiaire->getIdStagiaire(),"nom"=>$unStagiaire->getNomStagiaire(),"prenom"=>$unStagiaire->getPrenomStagiaire());
-    $i=1;
+   //$resultat="";
+   $resultat=[];
     foreach($lesPeriodes as $unePeriode)
     {
-        $index="periode".$i;
-        $etape=StagesManager::getByStagiaire(intval($unStagiaire->getIdStagiaire()),intval($unePeriode['idPeriode']));
+        
+        //Recupere les id des stages du stagioaire
+        $etape=StagesManager::getByStagiaire($unStagiaire->getIdStagiaire(),$unePeriode->getIdPeriode()); 
         if(!empty($etape))
         {
-            $tabetape=array($index=>$etape[0]->getEtape());
+            for ($j=0; $j < count($etape); $j++) { 
+                //$resultat.=$etape[$j]->getEtape();
+                $resultat[]=$etape[$j]->getEtape();
+           }
         }
-        else{
-            $tabetape=array($index=>0);
-        }
-        $stagiaire=$stagiaire+$tabetape;
-        $i++;
-    }   
-    $tab[]=$stagiaire;
-   
+    }  
+    $tab[$i]['i']=$i;
+    $tab[$i]['idStagiaire']=$unStagiaire->getIdStagiaire();
+    $tab[$i]['nomStagiaire']=$unStagiaire->getNomStagiaire();
+    $tab[$i]['prenomStagiaire']=$unStagiaire->getPrenomStagiaire();
+    $tab[$i]['etape']=$resultat; 
+    $i++;
 }
-die(var_dump($tab));
-//echo json_encode($tab);
+$reponse["nbPeriodes"]=count($lesPeriodes);
+for ($i=0; $i<count($lesPeriodes) ; $i   ++) { 
+    $reponse["dateDebut".$i]=$lesPeriodes[$i]->getDateDebutPAE();
+    $reponse["dateFin".$i]=$lesPeriodes[$i]->getDateFinPAE();
+}
+$reponse["fields"]=$tab;
+echo json_encode($reponse);
 ?>

@@ -95,12 +95,12 @@ class StagiaireFormationManager
         $db = DbConnect::getDb();
         $liste = [];
         $json = [];
-        $q = $db->query("SELECT DISTINCT idStagiaire FROM StagiaireFormation where idSessionFormation = " . $idSession);
+        $q = $db->query("SELECT DISTINCT idStagiaire, nomStagiaire,prenomStagiaire FROM StagiaireFormation where idSessionFormation = " . $idSession);
         while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
         {
             if ($donnees != false)
             {
-                $liste[] = StagiairesManager::findById($donnees['idStagiaire']);
+                $liste[] = new StagiaireFormation($donnees);
                 $json[]=$donnees;
             }
         }
@@ -136,12 +136,12 @@ class StagiaireFormationManager
         $db = DbConnect::getDb();
         $liste = [];
         $idSessionFormation = (int) $idSessionFormation;
-        $q = $db->query("SELECT DISTINCT idPeriode FROM StagiaireFormation WHERE idSessionFormation = ".$idSessionFormation." ORDER BY dateDebutPAE" );
+        $q = $db->query("SELECT DISTINCT idPeriode FROM StagiaireFormation WHERE idSessionFormation = ".$idSessionFormation);
         while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
         {
             if ($donnees != false)
             {
-                $liste[] = PeriodesStagesManager::findById($donnees['idPeriode']);
+                $liste[] = $donnees;
             }
         }
         return $liste;

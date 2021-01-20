@@ -44,10 +44,7 @@ $routes=[
 	"FormConnexion" => ["PHP/VIEW/", "FormConnexion", "Identification",false],
 	"ActionConnexion" => ["PHP/VIEW/", "ActionConnexion", "Identification",false],
 	"ActionDeconnexion" => ["PHP/VIEW/", "ActionDeconnexion", "Identification",false],
-	
-	
-	"test" => ["PHP/MODEL/TESTMANAGER/", "TestStagesManager", "Identification",false],
-	
+
 ];
 
 if(isset($_GET["page"]))
