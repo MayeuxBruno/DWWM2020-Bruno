@@ -36,6 +36,5 @@ for ($i=0; $i<count($lesPeriodes) ; $i   ++) {
     $reponse["dateFin".$i]=$lesPeriodes[$i]->getDateFinPAE();
 }
 $reponse["fields"]=$tab;
-//var_dump($reponse);
 echo json_encode($reponse);
 ?>

@@ -25,15 +25,13 @@
     ?>
     
     <div><select id="selectSession">
+    <option value="defaut">Aucune Session à Afficher</option>
     </select></div>
     </div>
 <div class="espaceHor"></div>
 <div>
-    <div class="demi"></div>
-    <div class="bouton" id="liste">Liste des stagiaires</div>
-    <div class="demi"></div>
-    <div class="bouton" id="objectif">Objectifs P.A.E</div>
-    <div class="demi"></div>
+    <div><a class="bouton" id="liste">Liste des stagiaires</a></div>
+    <div><a class="bouton" id="objectif">Objectifs P.A.E</a></div>
 </div>
 <div class="espaceHor"></div>
 <div class="colonne" id="affichage">

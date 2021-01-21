@@ -94,11 +94,13 @@ a {
     border: 2px solid var(--CouleurTexte);
     color: var(--BordureBouton);
 }
-
+button:disabled{
+    border: solid var(--CouleurOmbre) 2px;
+}
 
 /********* input & Select *********/
 input,
-select ,.case {
+select,textarea ,.case {
     border: 1px solid var(--BordureBouton);
     background-color: Transparent;
     padding: 0.5em 1em;
