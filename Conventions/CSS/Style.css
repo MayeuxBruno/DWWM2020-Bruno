@@ -160,3 +160,17 @@ footer {
 .container{
     padding-bottom: 3.5em;
 }
+/* A ajouter + textArea comme les inputs*/
+.pad{
+    padding:1em;
+}
+.indic{
+    flex:0.1;
+    padding:0.5em;
+    border-radius:2em;
+    border:1px solid var(--BordureBouton);
+}
+.bordure
+{
+    border:1px solid var(--CouleurTexte);
+}

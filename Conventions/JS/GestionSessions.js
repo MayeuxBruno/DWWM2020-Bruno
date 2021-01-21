@@ -159,6 +159,11 @@ function formDate(date)
     return(Jours+"/"+Mois+"/"+temp.getFullYear());
 }
 
+function downloadConvention(event) // Action à faire pour télécharger la convention de stage
+{
+    alert("Telechargement de la convention de stage");
+}
+
 /** Création de la liste des stagiaires **/
 function creationListe(liste)
 {
@@ -169,18 +174,18 @@ function creationListe(liste)
     affichage.innerHTML="";
     let div=document.createElement("div");
     let div1=document.createElement("div");
-    div1.setAttribute("class","titreColonne centerItem");
+    div1.setAttribute("class","case bordure centerItem");
     div1.innerHTML="Nom";
     div.appendChild(div1);
     let div2=document.createElement("div");
-    div2.setAttribute("class","titreColonne centerItem");
+    div2.setAttribute("class","case bordure centerItem");
     div2.innerHTML="Prenom";
     div.appendChild(div2);
-
+    // Affichage des colonnes des periodes de stages 
     for (let i = 0; i < liste.nbPeriodes; i++) {
         let div3=document.createElement("div");
-        div3.setAttribute("class","titreColonne");
-        div3.innerHTML=formDate(liste['dateDebut'+i])+"<br>"+formDate(liste['dateFin'+i]);
+        div3.setAttribute("class","case bordure mini");
+        div3.innerHTML="Période du "+formDate(liste['dateDebut'+i])+"<br>"+"Au "+formDate(liste['dateFin'+i]);
         formDate(liste['dateDebut'+i]);
         div.appendChild(div3);   
     }
@@ -193,21 +198,46 @@ function creationListe(liste)
         div.id=0;
         div.setAttribute("class","stagiaire");
         let div1=document.createElement("div");
-        div1.setAttribute("class","case");
+        div1.setAttribute("class","case centerItem");
         div1.innerHTML=tabStagiaires[i]['nomStagiaire'];
         div.appendChild(div1);
         let div2=document.createElement("div");
-        div2.setAttribute("class","case");
+        div2.setAttribute("class","case centerItem");
         div2.innerHTML=tabStagiaires[i]['prenomStagiaire'];
         div.appendChild(div2);
+        let color;
         for (let j = 0; j < liste.nbPeriodes; j++) {
-            let div3=document.createElement("div");
-            div3.setAttribute("class","case");
-            div.appendChild(div3);   
-            if(tabStagiaires[i].etape[j]!=".")
+            switch(tabStagiaires[i].etape[j]) // Détermine la couleur de l'indicateur en fonction de l'étape du stage
             {
-                div3.innerHTML=tabStagiaires[i].etape[j];
+                case "1":
+                    color="red";
+                    break;
+                case "2":
+                    color="orange";
+                    break;
+                case "3":
+                    color="green";
+                    break;
+                default:
+                    color="none";
             }
+            let div3=document.createElement("div");
+            div3.setAttribute("class","case pad mini");
+            let vide1=document.createElement("div");
+            vide1.setAttribute("class","triple");
+            div3.appendChild(vide1);
+            indic=document.createElement("div");
+            indic.setAttribute("class","indic");
+            indic.style.backgroundColor=color;
+            div3.appendChild(indic);
+            let vide2=document.createElement("div");
+            vide2.setAttribute("class","triple");
+            div3.appendChild(vide2);
+            div.appendChild(div3);  
+            if (color=="green") // Rend la case cliquable si le stage est à l'étape verte
+            {
+                div3.addEventListener("click",downloadConvention);
+            } 
         }
         affichage.appendChild(div);
     }
