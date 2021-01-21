@@ -189,9 +189,7 @@ function creationListe(liste)
         formDate(liste['dateDebut'+i]);
         div.appendChild(div3);   
     }
-
     affichage.appendChild(div);
-
     for(let i=0;i<tabStagiaires.length;i++)
     {
         let div=document.createElement("div");
@@ -207,7 +205,8 @@ function creationListe(liste)
         div.appendChild(div2);
         let color;
         for (let j = 0; j < liste.nbPeriodes; j++) {
-            switch(tabStagiaires[i].etape[j]) // Détermine la couleur de l'indicateur en fonction de l'étape du stage
+            let etape=tabStagiaires[i].etape[j];
+            switch(etape) // Détermine la couleur de l'indicateur en fonction de l'étape du stage
             {
                 case "1":
                     color="red";
@@ -234,7 +233,7 @@ function creationListe(liste)
             vide2.setAttribute("class","triple");
             div3.appendChild(vide2);
             div.appendChild(div3);  
-            if (color=="green") // Rend la case cliquable si le stage est à l'étape verte
+            if (etape==3) // Rend la case cliquable si le stage est à l'étape verte
             {
                 div3.addEventListener("click",downloadConvention);
             } 
@@ -259,7 +258,7 @@ function affichageObjectif (e)
 function sauvegardeObj(e) //Action quand on clique sur le bouton Sauvegarde
 {
     box=e.target.parentNode.parentNode;
-    e.target.disabled=true;
+    e.target.style.display="none";
     let idPeriode=box.id;
     let txtObjectif=box.getElementsByTagName("textarea")[0].value;
     requ3.open('POST', 'index.php?page=SetObjectifAPI', true);
@@ -271,7 +270,7 @@ function sauvegardeObj(e) //Action quand on clique sur le bouton Sauvegarde
 function modifChamp(e) //Action quand il y a un changement dans les inputs
 {
     let zone=e.target.parentNode;
-    zone.getElementsByTagName("button")[0].disabled=false;
+    zone.getElementsByTagName("button")[0].style.display="block";
 }
 
 function creationObjectif(reponse) //Creation de l'affichage des differentes périodes en Entreprise
@@ -284,9 +283,10 @@ function creationObjectif(reponse) //Creation de l'affichage des differentes pé
         // Creation de la case
         let div=document.createElement("div");
         div.id=tabPeriodes[i]['idPeriode'];
-        div.setAttribute("class","case colonne");
+        div.setAttribute("class","case colonne centre");
         // Creation du titre
         let titre=document.createElement("div");
+        titre.setAttribute("class"," colonne centre pad");
         titre.innerHTML="Objectif pour la période du "+formDate(tabPeriodes[i]['dateDebutPAE'])+" au "+formDate(tabPeriodes[i]['dateFinPAE']);
         div.appendChild(titre);
         // Div Vide
@@ -296,7 +296,8 @@ function creationObjectif(reponse) //Creation de l'affichage des differentes pé
         // Creation du textArea
         let divText=document.createElement("textarea");
         divText.id="textObjectif";
-        divText.setAttribute("rows","15");
+        divText.setAttribute("rows","10");
+        divText.style.width="90%";
         divText.innerHTML=tabPeriodes[i]['objectifPAE'];
         div.appendChild(divText);
         affichage.appendChild(div);
@@ -308,7 +309,7 @@ function creationObjectif(reponse) //Creation de l'affichage des differentes pé
         let bouton=document.createElement("div");
         let b2=document.createElement("button");
         b2.setAttribute("class","bouton sauvegarde");
-        b2.disabled=true;
+        b2.style.display="none";
         b2.textContent="Sauvegarder";
         bouton.appendChild(b2);
         div.appendChild(bouton);
