@@ -1,6 +1,19 @@
 <?php
 $idSession=$_POST['idSession'];
-$objectif=PeriodesStagesManager::getListBySession($idSession,true);
-die(var_dump($objectif));
-echo json_encode($objectif);
+//$idSession="5";
+$lesPeriodes=StagiaireFormationManager::getPeriodeBySession($idSession); // recupere les periodes de stages de la session
+$i=0;
+foreach($lesPeriodes as $unePeriode)
+{
+    $tab[$i]['idPeriode']=$unePeriode->getIdPeriode();
+    $tab[$i]['dateDebutPAE']=$unePeriode->getDateDebutPAE();
+    $tab[$i]['dateFinPAE']=$unePeriode->getDateFinPAE();
+    $tab[$i]['dateRapportSuivi']=$unePeriode->getDateRapportSuivi();
+    $tab[$i]['objectifPAE']=$unePeriode->getObjectifPAE();
+    $i++;
+}
+$reponse["nbPeriodes"]=count($lesPeriodes);
+$reponse["fields"]=$tab;
+//var_dump($reponse);
+echo json_encode($reponse);
 ?>

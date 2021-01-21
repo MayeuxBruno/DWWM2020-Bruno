@@ -21,7 +21,7 @@ requ.onreadystatechange = function (event) {
         if (this.status === 200) {
             console.log("Réponse reçue: %s", this.responseText);
             reponse = JSON.parse(this.responseText);
-            console.log(reponse);
+            //console.log(reponse);
             ajoutSession(reponse)
         } else {
             console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
@@ -137,11 +137,23 @@ function affichageListe (e)
         requ1.send(args);
     }
 }
+function formDate(date)
+{
+    let temp=new Date (date);
+    let Jours=temp.getDate();
+    let Mois=temp.getMonth();
+    if (Jours<10){Jours="0"+Jours};
+    if (Mois<10){Mois="0"+Mois};
+    return(Jours+"/"+Mois+"/"+temp.getFullYear());
+}
 
 /** Création de la liste des stagiaires **/
 function creationListe(liste)
 {
-    console.log(liste['fields'][0]['nomStagiaire']);
+    let tabStagiaires=liste.fields;
+    let nbPeriodes=liste.nbPeriodes;
+    console.log(nbPeriodes);
+    
     affichage.innerHTML="";
     let div=document.createElement("div");
     let div1=document.createElement("div");
@@ -152,34 +164,39 @@ function creationListe(liste)
     div2.setAttribute("class","titreColonne");
     div2.innerHTML="Prenom";
     div.appendChild(div2);
-    let div3=document.createElement("div");
-    div3.setAttribute("class","titreColonne");
-    div3.innerHTML="Etapes PAE";
-    div.appendChild(div3);
+
+    for (let i = 0; i < liste.nbPeriodes; i++) {
+        let div3=document.createElement("div");
+        div3.setAttribute("class","titreColonne");
+        div3.innerHTML=formDate(liste['dateDebut'+i])+"<br>"+formDate(liste['dateFin'+i]);
+        formDate(liste['dateDebut'+i]);
+        div.appendChild(div3);   
+    }
+
     affichage.appendChild(div);
-    for(let i=0;i<liste.length;i++)
+
+    for(let i=0;i<tabStagiaires.length;i++)
     {
         let div=document.createElement("div");
         div.id=0;
         div.setAttribute("class","stagiaire");
         let div1=document.createElement("div");
         div1.setAttribute("class","case");
-        div1.innerHTML=liste['fields'][i]['nomStagiaire'];
+        div1.innerHTML=tabStagiaires[i]['nomStagiaire'];
         div.appendChild(div1);
         let div2=document.createElement("div");
         div2.setAttribute("class","case");
-        div2.innerHTML=liste['fields'][i]['prenomStagiaire'];
+        div2.innerHTML=tabStagiaires[i]['prenomStagiaire'];
         div.appendChild(div2);
-
-        let div3=document.createElement("div");
-        div3.setAttribute("class","case");
-        for (let a = 0; a < liste[i].etape.length; a++) 
-        {
-            let div5=document.createElement("div");
-            div5.innerHTML=liste[i].etape[a];
-            div3.appendChild(div5);
+        for (let j = 0; j < liste.nbPeriodes; j++) {
+            let div3=document.createElement("div");
+            div3.setAttribute("class","case");
+            div.appendChild(div3);   
+            if(tabStagiaires[i].etape[j]!=".")
+            {
+                div3.innerHTML=tabStagiaires[i].etape[j];
+            }
         }
-        div.appendChild(div3);   
         affichage.appendChild(div);
     }
 }
@@ -199,28 +216,47 @@ function affichageObjectif (e)
 function creationObjectif(reponse)
 {
     affichage.innerHTML="";
-    let div=document.createElement("textarea");
-    div.id="textObjectif";
-    div.setAttribute("rows","25");
-    div.innerHTML=reponse[0].objectifPAE;
-    affichage.appendChild(div);
-    div=document.createElement("div");
-    div.setAttribute("class","espaceHor");
-    affichage.appendChild(div);
-    div=document.createElement("div");
-    let div1=document.createElement("div");
-    div1.innerHTML="Retour";
-    div1.setAttribute("class","bouton");
-    div.appendChild(div1);
-    div1=document.createElement("div");
-    div.appendChild(div1);
-    div1=document.createElement("div");
-    div1.innerHTML="Sauvegarder";
-    div1.setAttribute("class","bouton");
-    div.appendChild(div1);
-    affichage.appendChild(div);
+    let nbPeriodes=reponse.nbPeriodes;
+    let tabPeriodes=reponse.fields;
+    for(let i=0;i<nbPeriodes;i++)
+    {
+        // Creation de la case
+        let div=document.createElement("div");
+        div.id=tabPeriodes[i]['idPeriode'];
+        div.setAttribute("class","case colonne");
+        // Creation du titre
+        let titre=document.createElement("div");
+        titre.innerHTML="Objectif pour la période du "+formDate(tabPeriodes[i]['dateDebutPAE'])+" au "+formDate(tabPeriodes[i]['dateFinPAE']);
+        div.appendChild(titre);
+        // Div Vide
+        let vide=document.createElement("div");
+        vide.setAttribute("class","espaceHor");
+        div.appendChild(vide);
+        // Creation du textArea
+        let divText=document.createElement("textarea");
+        divText.id="textObjectif";
+        divText.setAttribute("rows","15");
+        divText.innerHTML=tabPeriodes[i]['objectifPAE'];
+        div.appendChild(divText);
+        affichage.appendChild(div);
+        // Div Vide
+        let vide2=document.createElement("div");
+        vide2.setAttribute("class","espaceHor");
+        div.appendChild(vide2);
+        // Creation du bouton
+        let bouton=document.createElement("button");
+        bouton.setAttribute("class","bouton");
+        bouton.innerHTML="Sauvegarder";
+        div.appendChild(bouton);
+        // Div Vide
+        let vide3=document.createElement("div");
+        vide3.setAttribute("class","espaceHor");
+        div.appendChild(vide3);
+        // Div interligne
+        let inter=document.createElement("div");
+        inter.setAttribute("class","espaceHor");
+        affichage.appendChild(inter);
+    }
 }
-/*********** Gestion Liste Stagiaires *************/
-
 changeFormation();
 

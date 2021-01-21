@@ -16,9 +16,11 @@ foreach($lesStagiaires as $unStagiaire)
         if(!empty($etape))
         {
             for ($j=0; $j < count($etape); $j++) { 
-                //$resultat.=$etape[$j]->getEtape();
                 $resultat[]=$etape[$j]->getEtape();
            }
+        }
+        else{
+            $resultat[]=".";
         }
     }  
     $tab[$i]['i']=$i;
@@ -34,5 +36,6 @@ for ($i=0; $i<count($lesPeriodes) ; $i   ++) {
     $reponse["dateFin".$i]=$lesPeriodes[$i]->getDateFinPAE();
 }
 $reponse["fields"]=$tab;
+//var_dump($reponse);
 echo json_encode($reponse);
 ?>
