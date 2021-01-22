@@ -28,6 +28,7 @@ foreach($lesStagiaires as $unStagiaire)
     $tab[$i]['nomStagiaire']=$unStagiaire->getNomStagiaire();
     $tab[$i]['prenomStagiaire']=$unStagiaire->getPrenomStagiaire();
     $tab[$i]['etape']=$resultat; 
+    //$tab[$i]['idStage']=$etape->getIdStage(); 
     $i++;
 }
 $reponse["nbPeriodes"]=count($lesPeriodes);

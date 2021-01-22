@@ -136,8 +136,9 @@ function ajoutSession(reponse)
         }
     }
 }
-
+/*************************************************************************/
 /**************** Gestion de la liste des stagiaires *********************/
+/*************************************************************************/
 function affichageListe (e)
 {
     if(selectSession.value!="default")
@@ -157,6 +158,11 @@ function formDate(date)
     if (Jours<10){Jours="0"+Jours};
     if (Mois<10){Mois="0"+Mois};
     return(Jours+"/"+Mois+"/"+temp.getFullYear());
+}
+
+function infoBulles(e)
+{
+    console.log(e.target.parentNode);
 }
 
 function downloadConvention(event) // Action à faire pour télécharger la convention de stage
@@ -193,7 +199,6 @@ function creationListe(liste)
     for(let i=0;i<tabStagiaires.length;i++)
     {
         let div=document.createElement("div");
-        div.id=0;
         div.setAttribute("class","stagiaire");
         let div1=document.createElement("div");
         div1.setAttribute("class","case centerItem");
@@ -206,43 +211,62 @@ function creationListe(liste)
         let color;
         for (let j = 0; j < liste.nbPeriodes; j++) {
             let etape=tabStagiaires[i].etape[j];
+            let classe="indic";
             switch(etape) // Détermine la couleur de l'indicateur en fonction de l'étape du stage
             {
                 case "1":
                     color="red";
+                    info="Adresse du tuteur Saisie";
                     break;
                 case "2":
                     color="orange";
+                    info="Informations de l'entreprise Saisie";
                     break;
                 case "3":
+                    color="yellow";
+                    info="Sujet de stage saisi";
+                    break;
+                case "4":
                     color="green";
+                    info="Convention signée";
+                    break;
+                case "5":
+                    color="none";
+                    classe="";
+                    info="Stage terminé";
+                    icone='<i class="far fa-check-circle"></i>';
                     break;
                 default:
                     color="none";
+                    info="Aucun Stage Saisie";
             }
             let div3=document.createElement("div");
             div3.setAttribute("class","case pad mini");
+            div3.setAttribute("textinfo",info);
             let vide1=document.createElement("div");
             vide1.setAttribute("class","triple");
             div3.appendChild(vide1);
             indic=document.createElement("div");
-            indic.setAttribute("class","indic");
+            indic.setAttribute("class",classe);
             indic.style.backgroundColor=color;
+            if(etape==5){indic.innerHTML=icone;indic.style.color="lightgreen"};
             div3.appendChild(indic);
             let vide2=document.createElement("div");
             vide2.setAttribute("class","triple");
             div3.appendChild(vide2);
             div.appendChild(div3);  
-            if (etape==3) // Rend la case cliquable si le stage est à l'étape verte
+            if (etape==4) // Rend la case cliquable si le stage est à l'étape verte
             {
-                div3.addEventListener("click",downloadConvention);
+                //div3.addEventListener("click",downloadConvention);
             } 
+            div3.addEventListener("mouseover",infoBulles);
         }
         affichage.appendChild(div);
     }
 }
-
+/*******************************************************************/
 /**************** Gestion des objectifs de PAE *********************/
+/*******************************************************************/
 function affichageObjectif (e)
 {
     if(selectSession.value!="default")
@@ -255,7 +279,8 @@ function affichageObjectif (e)
     }
 }
 
-function sauvegardeObj(e) //Action quand on clique sur le bouton Sauvegarde
+/** Action quand on clique sur le bouton Sauvegarde **/
+function sauvegardeObj(e) 
 {
     box=e.target.parentNode.parentNode;
     e.target.style.display="none";
@@ -267,13 +292,15 @@ function sauvegardeObj(e) //Action quand on clique sur le bouton Sauvegarde
     requ3.send(args);
 }
 
-function modifChamp(e) //Action quand il y a un changement dans les inputs
+/** Action quand il y a un changement dans les inputs **/
+function modifChamp(e) 
 {
     let zone=e.target.parentNode;
     zone.getElementsByTagName("button")[0].style.display="block";
 }
 
-function creationObjectif(reponse) //Creation de l'affichage des differentes périodes en Entreprise
+/**Creation de l'affichage des differentes périodes en Entreprise **/
+function creationObjectif(reponse) 
 {
     affichage.innerHTML="";
     let nbPeriodes=reponse.nbPeriodes;
@@ -310,7 +337,7 @@ function creationObjectif(reponse) //Creation de l'affichage des differentes pé
         let b2=document.createElement("button");
         b2.setAttribute("class","bouton sauvegarde");
         b2.style.display="none";
-        b2.textContent="Sauvegarder";
+        b2.innerHTML='<i class="far fa-save"></i>&nbsp;Sauvegarder';
         bouton.appendChild(b2);
         div.appendChild(bouton);
         // Div Vide
@@ -318,21 +345,16 @@ function creationObjectif(reponse) //Creation de l'affichage des differentes pé
         vide3.setAttribute("class","espaceHor");
         div.appendChild(vide3);
         
-        let icone=document.createElement("i");
-        icone.setAttribute("class","fa fa-floppy-o");
-        icone.setAttribute("aria-hidden","");
-        div.appendChild(icone);
-
         // Div interligne
         let inter=document.createElement("div");
         inter.setAttribute("class","espaceHor");
         affichage.appendChild(inter);
     }
-    var btnSauve=document.getElementsByClassName("sauvegarde");
+    var btnSauve=document.getElementsByClassName("sauvegarde"); // Ajoute l'evenement sur les boutons sauvegarde
     for (let k = 0; k < btnSauve.length; k++) {
         btnSauve[k].addEventListener("click",sauvegardeObj);
     }
-    var txt=document.getElementsByTagName("textarea");
+    var txt=document.getElementsByTagName("textarea"); //Ajoute l'evenement sur le text area pour afficher le bouton sauvegarde
     for (let k = 0; k < txt.length; k++) {
         txt[k].addEventListener("input",modifChamp);
     }

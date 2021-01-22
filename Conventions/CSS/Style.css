@@ -167,7 +167,7 @@ footer {
 .indic{
     flex:0.1;
     padding:0.5em;
-    border-radius:2em;
+    border-radius:10em;
     border:1px solid var(--BordureBouton);
 }
 .bordure
