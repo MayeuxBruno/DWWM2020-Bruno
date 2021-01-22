@@ -162,7 +162,8 @@ function formDate(date)
 
 function infoBulles(e)
 {
-    console.log(e.target.parentNode);
+    
+
 }
 
 function downloadConvention(event) // Action à faire pour télécharger la convention de stage
@@ -210,8 +211,8 @@ function creationListe(liste)
         div.appendChild(div2);
         let color;
         for (let j = 0; j < liste.nbPeriodes; j++) {
-            let etape=tabStagiaires[i].etape[j];
-            let classe="indic";
+            let etape=tabStagiaires[i].etape[j].etapeStage;
+            let idStage=tabStagiaires[i].etape[j].idStage;
             switch(etape) // Détermine la couleur de l'indicateur en fonction de l'étape du stage
             {
                 case "1":
@@ -220,7 +221,7 @@ function creationListe(liste)
                     break;
                 case "2":
                     color="orange";
-                    info="Informations de l'entreprise Saisie";
+                    info="Informations de l'entreprise Saisies";
                     break;
                 case "3":
                     color="yellow";
@@ -228,11 +229,10 @@ function creationListe(liste)
                     break;
                 case "4":
                     color="green";
-                    info="Convention signée";
+                    info="Convention signée.Double clique pour télécharger";
                     break;
                 case "5":
                     color="none";
-                    classe="";
                     info="Stage terminé";
                     icone='<i class="far fa-check-circle"></i>';
                     break;
@@ -241,25 +241,35 @@ function creationListe(liste)
                     info="Aucun Stage Saisie";
             }
             let div3=document.createElement("div");
-            div3.setAttribute("class","case pad mini");
+            div3.setAttribute("class","case mini relatif");
             div3.setAttribute("textinfo",info);
-            let vide1=document.createElement("div");
-            vide1.setAttribute("class","triple");
-            div3.appendChild(vide1);
+            div3.setAttribute("idStage",idStage);
+            if(etape==5){div3.innerHTML=icone;div3.style.color="lightgreen"}
+            else{
             indic=document.createElement("div");
-            indic.setAttribute("class",classe);
+            indic.setAttribute("class","indic");
             indic.style.backgroundColor=color;
-            if(etape==5){indic.innerHTML=icone;indic.style.color="lightgreen"};
             div3.appendChild(indic);
-            let vide2=document.createElement("div");
-            vide2.setAttribute("class","triple");
-            div3.appendChild(vide2);
+            };
+            let texteInfoBulle=document.createElement("div");
+            texteInfoBulle.setAttribute("class","texteInfoBulle");
+            texteInfoBulle.textContent="Test des infos bulles"; 
+            div3.appendChild(texteInfoBulle);
             div.appendChild(div3);  
             if (etape==4) // Rend la case cliquable si le stage est à l'étape verte
             {
-                //div3.addEventListener("click",downloadConvention);
+                div3.addEventListener("dblclick",downloadConvention);
             } 
-            div3.addEventListener("mouseover",infoBulles);
+            div3.addEventListener("mouseover",function(e){
+                let texte=e.target.getAttribute("textinfo");
+                let infobulle=e.target.getElementsByClassName("texteInfoBulle")[0];
+                infobulle.textContent=texte;
+                infobulle.style.display="flex";
+            });
+            div3.addEventListener("mouseout",function(e){
+                let infobulle=e.target.getElementsByClassName("texteInfoBulle")[0];
+                infobulle.style.display="none";
+            });
         }
         affichage.appendChild(div);
     }

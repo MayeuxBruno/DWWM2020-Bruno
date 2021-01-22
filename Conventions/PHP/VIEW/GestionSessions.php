@@ -4,7 +4,9 @@
 <?php
         $idFormateur=6;
         $lesFormations=AnimationsManager::getByUtilisateur($idFormateur);
-        echo'<div class="infos"><select id="selectFormation">';
+        echo'<div class="infos centre">
+        <label for="selectFormation">Formation&nbsp;:&nbsp;</label> 
+        <select name="selectFormation" id="selectFormation">';
         if (count($lesFormations)>1)
         {
             echo'<option value="default" selected>Selectionnez une formation</option>';
@@ -24,7 +26,9 @@
         echo'</select></div>';
     ?>
     
-    <div><select id="selectSession">
+    <div class="centre">
+        <label for="selectSession">Session&nbsp;:&nbsp;</label>
+        <select id="selectSession">
     <option value="defaut">Aucune Session à Afficher</option>
     </select></div>
     </div>

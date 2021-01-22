@@ -15,7 +15,9 @@ form {
     flex: 1;
     justify-content: center;
 }
-
+div{
+    /*border:1px dotted white;*/
+}
 img {
     width: 100%;
 }
@@ -97,7 +99,9 @@ a {
 button:disabled{
     border: solid var(--CouleurOmbre) 2px;
 }
-
+.relatif{
+    position: relative;
+}
 /********* input & Select *********/
 input,
 select,textarea ,.case {
@@ -161,11 +165,13 @@ footer {
     padding-bottom: 3.5em;
 }
 /* A ajouter + textArea comme les inputs*/
-.pad{
-    padding:1em;
+.noPad{
+    padding:0;
 }
+
 .indic{
-    flex:0.1;
+    /*flex:0.1;*/
+    flex:none;
     padding:0.5em;
     border-radius:10em;
     border:1px solid var(--BordureBouton);
@@ -173,4 +179,19 @@ footer {
 .bordure
 {
     border:1px solid var(--CouleurTexte);
+}
+
+.texteInfoBulle
+{
+    position:absolute;
+    top:0.5vh;
+    left:10vh;
+    font-size:0.8em;
+    display:none;
+    white-space:nowrap;
+    border-radius:2vh;
+    background-color:#aaa;
+    color:black;
+    padding:1vh;
+    z-index: 1;
 }
