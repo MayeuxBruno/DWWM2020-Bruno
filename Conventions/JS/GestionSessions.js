@@ -162,8 +162,14 @@ function formDate(date)
 
 function infoBulles(e)
 {
-    
-
+    let texte=e.target.getAttribute("textinfo");
+    let infobulle=e.target.getElementsByClassName("texteInfoBulle")[0];
+    infobulle.textContent=texte;
+    infobulle.style.display="flex";  
+    setTimeout(function()
+    {
+        infobulle.style.display="none"; 
+    }, 2000);  
 }
 
 function downloadConvention(event) // Action à faire pour télécharger la convention de stage
@@ -176,45 +182,43 @@ function creationListe(liste)
 {
     let tabStagiaires=liste.fields;
     let nbPeriodes=liste.nbPeriodes;
-    console.log(nbPeriodes);
-    
     affichage.innerHTML="";
-    let div=document.createElement("div");
-    let div1=document.createElement("div");
-    div1.setAttribute("class","case bordure centerItem");
-    div1.innerHTML="Nom";
-    div.appendChild(div1);
-    let div2=document.createElement("div");
-    div2.setAttribute("class","case bordure centerItem");
-    div2.innerHTML="Prenom";
-    div.appendChild(div2);
+    let ligne=document.createElement("div");
+    let nom=document.createElement("div");
+    nom.setAttribute("class","case bordure centerItem");
+    nom.innerHTML="Nom";
+    ligne.appendChild(nom);
+    let prenom=document.createElement("div");
+    prenom.setAttribute("class","case bordure centerItem");
+    prenom.innerHTML="Prenom";
+    ligne.appendChild(prenom);
     // Affichage des colonnes des periodes de stages 
-    for (let i = 0; i < liste.nbPeriodes; i++) {
-        let div3=document.createElement("div");
-        div3.setAttribute("class","case bordure mini");
-        div3.innerHTML="Période du "+formDate(liste['dateDebut'+i])+"<br>"+"Au "+formDate(liste['dateFin'+i]);
+    for (let i = 0; i < nbPeriodes; i++) {
+        let periode=document.createElement("div");
+        periode.setAttribute("class","case bordure mini centre");
+        periode.innerHTML="Période du "+formDate(liste['dateDebut'+i])+"<br>"+"Au "+formDate(liste['dateFin'+i]);
         formDate(liste['dateDebut'+i]);
-        div.appendChild(div3);   
+        ligne.appendChild(periode);   
     }
-    affichage.appendChild(div);
+    affichage.appendChild(ligne);
     for(let i=0;i<tabStagiaires.length;i++)
     {
-        let div=document.createElement("div");
-        div.setAttribute("class","stagiaire");
-        let div1=document.createElement("div");
-        div1.setAttribute("class","case centerItem");
-        div1.innerHTML=tabStagiaires[i]['nomStagiaire'];
-        div.appendChild(div1);
-        let div2=document.createElement("div");
-        div2.setAttribute("class","case centerItem");
-        div2.innerHTML=tabStagiaires[i]['prenomStagiaire'];
-        div.appendChild(div2);
+        let ligne=document.createElement("div");
+        ligne.setAttribute("class","stagiaire");
+        let nom=document.createElement("div");
+        nom.setAttribute("class","case centerItem");
+        nom.innerHTML=tabStagiaires[i]['nomStagiaire'];
+        ligne.appendChild(nom);
+        let prenom=document.createElement("div");
+        prenom.setAttribute("class","case centerItem");
+        prenom.innerHTML=tabStagiaires[i]['prenomStagiaire'];
+        ligne.appendChild(prenom);
         let color;
         for (let j = 0; j < liste.nbPeriodes; j++) {
-            let etape=tabStagiaires[i].etape[j].etapeStage;
-            let idStage=tabStagiaires[i].etape[j].idStage;
+            let etape=tabStagiaires[i].etape[j].etapeStage; //Récupère le l'étape du stage
+            let idStage=tabStagiaires[i].etape[j].idStage;  //Récupère l'id du stage
             switch(etape) // Détermine la couleur de l'indicateur en fonction de l'étape du stage
-            {
+            {             // Ainsi que le texte à afficher dans l'info bulle
                 case "1":
                     color="red";
                     info="Adresse du tuteur Saisie";
@@ -229,49 +233,42 @@ function creationListe(liste)
                     break;
                 case "4":
                     color="green";
-                    info="Convention signée.Double clique pour télécharger";
+                    info="Convention de stage signée. Double-cliquez pour télécharger";
                     break;
                 case "5":
                     color="none";
                     info="Stage terminé";
-                    icone='<i class="far fa-check-circle"></i>';
+                    icone='<i class="far fa-check-circle"></i>'; //icone F.A check
                     break;
                 default:
                     color="none";
                     info="Aucun Stage Saisie";
             }
-            let div3=document.createElement("div");
-            div3.setAttribute("class","case mini relatif");
-            div3.setAttribute("textinfo",info);
-            div3.setAttribute("idStage",idStage);
-            if(etape==5){div3.innerHTML=icone;div3.style.color="lightgreen"}
-            else{
-            indic=document.createElement("div");
+            // création des cases périodes avec les indicateurs de couleur
+            let periode=document.createElement("div");
+            periode.setAttribute("class","case mini relatif");
+            periode.setAttribute("textinfo",info);
+            periode.setAttribute("idStage",idStage);
+            if(etape==5){periode.innerHTML=icone;periode.style.color="lightgreen"} //Si le stage est à l'étape 5 on affiche l'icone check
+            else{ //si non on affiche la div avec la couleur de l'étape du stage
+            let indic=document.createElement("div");
             indic.setAttribute("class","indic");
             indic.style.backgroundColor=color;
-            div3.appendChild(indic);
+            periode.appendChild(indic);
             };
+            //Création des div pour les infos bulles
             let texteInfoBulle=document.createElement("div");
             texteInfoBulle.setAttribute("class","texteInfoBulle");
             texteInfoBulle.textContent="Test des infos bulles"; 
-            div3.appendChild(texteInfoBulle);
-            div.appendChild(div3);  
+            periode.appendChild(texteInfoBulle);
+            ligne.appendChild(periode);  
             if (etape==4) // Rend la case cliquable si le stage est à l'étape verte
             {
-                div3.addEventListener("dblclick",downloadConvention);
+                periode.addEventListener("dblclick",downloadConvention);
             } 
-            div3.addEventListener("mouseover",function(e){
-                let texte=e.target.getAttribute("textinfo");
-                let infobulle=e.target.getElementsByClassName("texteInfoBulle")[0];
-                infobulle.textContent=texte;
-                infobulle.style.display="flex";
-            });
-            div3.addEventListener("mouseout",function(e){
-                let infobulle=e.target.getElementsByClassName("texteInfoBulle")[0];
-                infobulle.style.display="none";
-            });
+            periode.addEventListener("click",infoBulles); //Evenement pour l'affichage des infos bulles.
         }
-        affichage.appendChild(div);
+        affichage.appendChild(ligne);
     }
 }
 /*******************************************************************/
@@ -318,43 +315,42 @@ function creationObjectif(reponse)
     for(let i=0;i<nbPeriodes;i++)
     {
         // Creation de la case
-        let div=document.createElement("div");
-        div.id=tabPeriodes[i]['idPeriode'];
-        div.setAttribute("class","case colonne centre");
+        let container=document.createElement("div");
+        container.id=tabPeriodes[i]['idPeriode'];
+        container.setAttribute("class","case colonne centre");
         // Creation du titre
         let titre=document.createElement("div");
         titre.setAttribute("class"," colonne centre pad");
         titre.innerHTML="Objectif pour la période du "+formDate(tabPeriodes[i]['dateDebutPAE'])+" au "+formDate(tabPeriodes[i]['dateFinPAE']);
-        div.appendChild(titre);
+        container.appendChild(titre);
         // Div Vide
         let vide=document.createElement("div");
         vide.setAttribute("class","espaceHor");
-        div.appendChild(vide);
+        container.appendChild(vide);
         // Creation du textArea
         let divText=document.createElement("textarea");
         divText.id="textObjectif";
         divText.setAttribute("rows","10");
         divText.style.width="90%";
         divText.innerHTML=tabPeriodes[i]['objectifPAE'];
-        div.appendChild(divText);
-        affichage.appendChild(div);
+        container.appendChild(divText);
         // Div Vide
         let vide2=document.createElement("div");
         vide2.setAttribute("class","espaceHor");
-        div.appendChild(vide2);
+        container.appendChild(vide2);
         // Creation du bouton de sauvegarde
-        let bouton=document.createElement("div");
-        let b2=document.createElement("button");
-        b2.setAttribute("class","bouton sauvegarde");
-        b2.style.display="none";
-        b2.innerHTML='<i class="far fa-save"></i>&nbsp;Sauvegarder';
-        bouton.appendChild(b2);
-        div.appendChild(bouton);
+        let zoneBouton=document.createElement("div");
+        let bouton=document.createElement("button");
+        bouton.setAttribute("class","bouton sauvegarde");
+        bouton.style.display="none";
+        bouton.innerHTML='<i class="far fa-save"></i>&nbsp;Sauvegarder';
+        zoneBouton.appendChild(bouton);
+        container.appendChild(zoneBouton);
         // Div Vide
         let vide3=document.createElement("div");
         vide3.setAttribute("class","espaceHor");
-        div.appendChild(vide3);
-        
+        container.appendChild(vide3);
+        affichage.appendChild(container);
         // Div interligne
         let inter=document.createElement("div");
         inter.setAttribute("class","espaceHor");

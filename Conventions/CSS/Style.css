@@ -110,6 +110,10 @@ select,textarea ,.case {
     padding: 0.5em 1em;
     color: var(--CouleurTexte);
 }
+textarea
+{
+    height: 25vh;
+}
 .titreColonne {
     border: 2px solid var(--CouleurTexte);
     color: var(--BordureBouton);
@@ -165,12 +169,7 @@ footer {
     padding-bottom: 3.5em;
 }
 /* A ajouter + textArea comme les inputs*/
-.noPad{
-    padding:0;
-}
-
 .indic{
-    /*flex:0.1;*/
     flex:none;
     padding:0.5em;
     border-radius:10em;
