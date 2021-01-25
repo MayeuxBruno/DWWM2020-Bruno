@@ -115,7 +115,7 @@ textarea
     height: 25vh;
 }
 .titreColonne {
-    border: 2px solid var(--CouleurTexte);
+    border: 1px solid var(--CouleurTexte);
     color: var(--BordureBouton);
     font-size: 1.2em;
 }
@@ -175,7 +175,7 @@ footer {
     border-radius:10em;
     border:1px solid var(--BordureBouton);
 }
-.bordure
+.bordureTitre
 {
     border:1px solid var(--CouleurTexte);
 }

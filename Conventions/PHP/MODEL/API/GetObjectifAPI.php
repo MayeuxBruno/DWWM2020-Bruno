@@ -14,6 +14,5 @@ foreach($lesPeriodes as $unePeriode)
 }
 $reponse["nbPeriodes"]=count($lesPeriodes);
 $reponse["fields"]=$tab;
-//var_dump($reponse);
 echo json_encode($reponse);
 ?>

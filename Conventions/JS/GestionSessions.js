@@ -172,7 +172,8 @@ function infoBulles(e)
     }, 2000);  
 }
 
-function downloadConvention(event) // Action à faire pour télécharger la convention de stage
+/******* Action à faire pour télécharger la convention de stage *********/
+function downloadConvention(event) 
 {
     alert("Telechargement de la convention de stage");
 }
@@ -185,17 +186,17 @@ function creationListe(liste)
     affichage.innerHTML="";
     let ligne=document.createElement("div");
     let nom=document.createElement("div");
-    nom.setAttribute("class","case bordure centerItem");
+    nom.setAttribute("class","case bordureTitre centerItem");
     nom.innerHTML="Nom";
     ligne.appendChild(nom);
     let prenom=document.createElement("div");
-    prenom.setAttribute("class","case bordure centerItem");
+    prenom.setAttribute("class","case bordureTitre centerItem");
     prenom.innerHTML="Prenom";
     ligne.appendChild(prenom);
     // Affichage des colonnes des periodes de stages 
     for (let i = 0; i < nbPeriodes; i++) {
         let periode=document.createElement("div");
-        periode.setAttribute("class","case bordure mini centre");
+        periode.setAttribute("class","case bordureTitre mini centre");
         periode.innerHTML="Période du "+formDate(liste['dateDebut'+i])+"<br>"+"Au "+formDate(liste['dateFin'+i]);
         formDate(liste['dateDebut'+i]);
         ligne.appendChild(periode);   
@@ -299,7 +300,7 @@ function sauvegardeObj(e)
     requ3.send(args);
 }
 
-/** Action quand il y a un changement dans les inputs **/
+/** Action quand il y a un changement dans les textarea PAE  **/
 function modifChamp(e) 
 {
     let zone=e.target.parentNode;
