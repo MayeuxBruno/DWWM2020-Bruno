@@ -256,6 +256,11 @@ function creationListe(liste)
             indic.setAttribute("class","indic");
             indic.style.backgroundColor=color;
             periode.appendChild(indic);
+            if (etape==4) // Rend la case cliquable si le stage est à l'étape verte
+            {
+                periode.addEventListener("dblclick",downloadConvention);
+                indic.addEventListener("dblclick",downloadConvention);
+            } 
             };
             //Création des div pour les infos bulles
             let texteInfoBulle=document.createElement("div");
@@ -263,10 +268,9 @@ function creationListe(liste)
             texteInfoBulle.textContent="Test des infos bulles"; 
             periode.appendChild(texteInfoBulle);
             ligne.appendChild(periode);  
-            if (etape==4) // Rend la case cliquable si le stage est à l'étape verte
-            {
-                periode.addEventListener("dblclick",downloadConvention);
-            } 
+            
+
+
             periode.addEventListener("click",infoBulles); //Evenement pour l'affichage des infos bulles.
         }
         affichage.appendChild(ligne);

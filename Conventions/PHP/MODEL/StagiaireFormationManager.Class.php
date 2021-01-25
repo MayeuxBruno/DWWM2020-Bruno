@@ -131,6 +131,7 @@ class StagiaireFormationManager
         }
         return count($liste);
     }
+    
     public static function getPeriodeBySession($idSessionFormation)
     {
         $db = DbConnect::getDb();
@@ -146,5 +147,4 @@ class StagiaireFormationManager
         }
         return $liste;
     }
-
 }

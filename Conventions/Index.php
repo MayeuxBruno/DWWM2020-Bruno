@@ -20,35 +20,56 @@ $lang=isset($_SESSION['lang']) ? $_SESSION['lang'] : 'FR';
 /******Fin des langues******/
 
 $routes=[
-	//"default"=>["PHP/VIEW/","Accueil","Accueil"],
-	"default"=>["PHP/VIEW/","InterfaceFormateur","Accueil",false],
+	/**** DEFAULT *****/
+	"default" => ["PHP/VIEW/", "FormConnexion", "Choisissez la catégorie a compléter :",false],
+	
+	"FormConnexion" => ["PHP/VIEW/", "FormConnexion", "Identification",false],
+	"ActionConnexion" => ["PHP/VIEW/", "ActionConnexion", "Identification",false],
+	"ActionDeconnexion" => ["PHP/VIEW/", "ActionDeconnexion", "Identification",false],
+	"FormAdmin" => ["PHP/VIEW/", "FormAdmin", "Identification",false],
+	"InterfaceFormateur" => ["PHP/VIEW/", "InterfaceFormateur", "Gestion des stages",false],
+	
+	/**** MENU ****/
+	"MenuFR" => ["PHP/VIEW/", "MenuFR", "Choisissez la catégorie a compléter :",false],
+
+	/**** Fiche de renseignements  ****/
+	"FormFRStagiaire" => ["PHP/VIEW/", "FormFRStagiaire", "Fiche de renseignements",false],
+	"FormFREntreprise" => ["PHP/VIEW/", "FormFREntreprise", "Fiche de renseignements",false],
+	"FormFRSujetStage" => ["PHP/VIEW/", "FormFRSujetStage", "Fiche de renseignements",false],
+	"FormFRCondition" => ["PHP/VIEW/", "FormFRCondition", "Fiche de renseignements",false],
+	"FormFREvaluation" => ["PHP/VIEW/", "FormFREvaluation", "Fiche de renseignements",false],
+	"ActionFormFRStagiaire" => ["PHP/VIEW/", "ActionFormFRStagiaire", "Fiche de renseignements",false],
+	
+	/***** CRUD ****/
+	"ListeFormations" => ["PHP/VIEW/", "ListeFormations", "Gestion des formations",false],
+	"FormFormation" => ["PHP/VIEW/", "FormFormation", "Gestion des formations",false],
+	"ActionFormation" => ["PHP/VIEW/", "ActionFormation", "Gestion des formations",false],
+
+	"ListeSessions" => ["PHP/VIEW/", "ListeSessions", "Gestion des sessions",false],
+	"FormSession" => ["PHP/VIEW/", "FormSession", "Gestion des sessions",false],
+	"FormPeriode" => ["PHP/VIEW/", "FormPeriode", "Gestion des périodes",false],
+	"ActionSession" => ["PHP/VIEW/", "ActionSession", "Gestion des sessions",false],
+
+	"ListeUtilisateurs" => ["PHP/VIEW/", "ListeUtilisateurs", "Gestion des Utilisateurs",false],
+	"FormUtilisateur" => ["PHP/VIEW/", "FormUtilisateur", "Gestion des Utilisateurs",false],
+	"ActionUtilisateur" => ["PHP/VIEW/", "ActionUtilisateur", "Gestion des Utilisateurs",false],
+
+	"ListeEntreprises" => ["PHP/VIEW/", "ListeEntreprises", "Gestion des Entreprises",false],
+	"FormEntreprise" => ["PHP/VIEW/", "FormEntreprise", "Gestion des Entreprises",false],
+	"ActionEntreprise" => ["PHP/VIEW/", "ActionEntreprise", "Gestion des Entreprises",false],
+
+	"ListeStagiaires" => ["PHP/VIEW/", "ListeStagiaires", "Gestion des Stagiaires",false],
+	"FormStagiaire" => ["PHP/VIEW/", "FormStagiaire", "Gestion des Stagiaires",false],
+	"ActionStagiaire" => ["PHP/VIEW/", "ActionStagiaire", "Gestion des Stagiaires",false],
+
+	/**** API ****/
+	"VillesAPI" => ["PHP/MODEL/API/", "VillesAPI", "Gestion des Entreprises",true],
 	"SessionAPI"=>["PHP/MODEL/API/","SessionAPI","Accueil",true],
 	"ListeStagiairesAPI"=>["PHP/MODEL/API/","ListeStagiairesAPI","Accueil",true],
 	"GetObjectifAPI"=>["PHP/MODEL/API/","GetObjectifAPI","Accueil",true],
 	"SetObjectifAPI"=>["PHP/MODEL/API/","SetObjectifAPI","Accueil",true],
-	//STMANAGER/","TestanimationManager","Test de animation"],
-	//r"=>["PHP/MODEL/TESTMANAGER/","TestcomportementsprofessionnelsManager","Test de comportementsprofessionnels"],
-	//TESTMANAGER/","TestentreprisesManager","Test de entreprises"],
-	//TESTMANAGER/","TestevaluationsManager","Test de evaluations"],
-	//ESTMANAGER/","TestformationsManager","Test de formations"],
-	//TMANAGER/","TesthorairesManager","Test de horaires"],
-	//L/TESTMANAGER/","TestparticipationManager","Test de participation"],
-	//NAGER/","TestrolesManager","Test de roles"],
-	//ODEL/TESTMANAGER/","TestsessionformationManager","Test de sessionformation"],
-	//ANAGER/","TeststagesManager","Test de stages"],
-	//ESTMANAGER/","TeststagiairesManager","Test de stagiaires"],
-	//ODEL/TESTMANAGER/","TesttravauxdangereuxManager","Test de travauxdangereux"],
-	//MANAGER/","TesttuteursManager","Test de tuteurs"],
-	///TESTMANAGER/","TestutilisateursManager","Test de utilisateurs"],
-	//ANAGER/","TestvillesManager","Test de villes"],
-	//"default" => ["PHP/VIEW/", "FormStagiaireInfos", "Identification",false],
-	"FormConnexion" => ["PHP/VIEW/", "FormConnexion", "Identification",false],
-	"ActionConnexion" => ["PHP/VIEW/", "ActionConnexion", "Identification",false],
-	"ActionDeconnexion" => ["PHP/VIEW/", "ActionDeconnexion", "Identification",false],
 	
-	
-	"test" => ["PHP/MODEL/TESTMANAGER/", "TestStagesManager", "Identification",false],
-	
+
 ];
 
 if(isset($_GET["page"]))

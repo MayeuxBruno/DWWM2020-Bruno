@@ -2,14 +2,14 @@
 <div class="espaceHor"></div>
 <div>
 <?php
-    if($_session['utilisateur']->getIdRole()=="1"||$_session['utilisateur']->getIdRole()=="2")
+    if($_SESSION['utilisateur']->getIdRole()=="1"||$_SESSION['utilisateur']->getIdRole()=="2")
     {
         if ($_SESSION['utilisateur']->getIdRole()=="1")
         {
             $lesFormations=FormationsManager::getList();
         }
         else{
-            $lesFormations=AnimationsManager::getByUtilisateur($_session['utilisateur']->getIdUtilisateur());
+            $lesFormations=AnimationsManager::getByUtilisateur($_SESSION['utilisateur']->getIdUtilisateur());
         }
          echo'<div class="infos centre">
          <label for="selectFormation">Formation&nbsp;:&nbsp;</label> 

@@ -3,7 +3,6 @@
 // if (isset($_SESSION["user"]) && $_SESSION["user"]->getIdRole() == 1) {
     $users = UtilisateursManager::getList();
 echo '<section class="colonne">
-    <h2 class="centre titre">Liste Utilisateurs</h2>
 
 
     <div class="centre"> 
@@ -18,14 +17,24 @@ echo '<section class="colonne">
     </div>
 
     <div class="espaceHor"></div>
-  
 
-    <div classe="triple>
-        <a href=""><button class="bouton"><i class="fas fa-plus-circle"></i> Ajouter</button></a>
+
+    <div class="zoneBouton">
+        <div class="grande">
+            <div><a href="index.php?page=FormUtilisateur&mode=ajouter"><button class="bouton"><i
+                            class="fas fa-plus-circle"></i> Ajouter</button></a></div>
+
+            <div><a href="index.php?page=FormAdmin"><button class="bouton"><i class="far fa-arrow-alt-circle-left"></i>
+                        Retour</button></a></div>
+        </div>
+        <div class="triple"></div>
     </div>
+
     <div class="espaceHor"></div>';
     foreach ($users as $unUser) 
     {
+        // var_dump($unUser);
+        // var_dump($unUser->getIdUtilisateur());
         $role= RolesManager::findById($unUser->getIdRole());
         
             echo '<div class="info ">
@@ -37,13 +46,13 @@ echo '<section class="colonne">
 
                 <div class="triple">
                     <div class="mini"></div>
-                    <a href=""><button class="bouton"><i class="fas fa-info-circle"></i> Détail</button></a>
+                    <a href="index.php?page=FormUtilisateur&mode=details&id='.$unUser->getIdUtilisateur().'"><button class="bouton"><i class="fas fa-info-circle"></i> Détail</button></a>
                     <div class="mini"></div>
                     <div class="mini"></div>
-                    <a href=""><button class="bouton"><i class="fas fa-edit"></i> Modifier</button></a>
+                    <a href="index.php?page=FormUtilisateur&mode=modifier&id='.$unUser->getIdUtilisateur().'"><button class="bouton"><i class="fas fa-edit"></i> Modifier</button></a>
                     <div class="mini"></div>
                     <div class="mini"></div>
-                    <a href=""><button class="bouton"><i class="fas fa-trash-alt"></i> Supprimer</button></a>
+                    <a href="index.php?page=FormUtilisateur&mode=supprimer&id='.$unUser->getIdUtilisateur().'"><button class="bouton"><i class="fas fa-trash-alt"></i> Supprimer</button></a>
                     <div class="mini"></div>
                 </div>';
 
@@ -53,21 +62,5 @@ echo '<section class="colonne">
         
     }
 
-    echo ' <div class="espaceHor"></div>
-            <div class="info">
-            <a href=""><button class="bouton"><i class="far fa-arrow-alt-circle-left"></i> Retour</button></a>
-          </div>
+    echo ' 
         </section>';
-// }
-?>
-<!-- <div class="grande"></div>
-
-<div class="mini"></div>
-<button></button>
-<div class="mini"></div>
-<a href=""></a>
-<div></div> -->
-<!-- <div>'.$unUser->getNomUtilisateur().'</div>
-<div>'.$unUser->getPrenomUtilisateur().'</div>
-<div>'.$role->getLibelleRole().'</div> -->
-<!-- <div class="bouton"><a class="centre size" href="index.php?page=FormulaireUsers&mode=modifier&id=' . '' . '">Ajouter</a></div> -->

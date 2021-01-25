@@ -1,0 +1,196 @@
+/********* Global **********/
+body {
+    min-height: 100%;
+    background: var(--FondPage);
+}
+
+div,
+header,
+footer,
+body,
+nav,
+section,
+form {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+div{
+    /*border:1px dotted white;*/
+}
+img {
+    width: 100%;
+}
+
+.colonne,
+form {
+    flex-direction: column;
+}
+
+.centre {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.espaceHor {
+    flex: none;
+    height: 1em;
+}
+
+.erreur {
+    text-align: center;
+    padding: 0.5em;
+    color: var(--Rouge);
+    text-shadow: 0.1em 0.1em 0.1em 0.1em var(--CouleurTexte);
+}
+
+.grande,
+section {
+    flex: 5;
+}
+
+.demi {
+    flex: 0.5;
+}
+.mini{
+    flex:0.2;
+}
+.double {
+    flex: 2;
+}
+.triple{
+    flex: 3;
+}
+.info {
+    margin: 0.3em;
+}
+
+/******* Form ********/
+label {
+    color: var(--CouleurTexte);
+    text-align: center;
+}
+
+.centerItem {
+    align-items: center;
+}
+
+a {
+    color: var(--CouleurTexte);
+    text-decoration: none
+}
+
+/******* Boutons ********/
+.bouton {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border-radius: 1em;
+    border: 2px solid var(--BordureBouton);
+    cursor: pointer;
+    padding: 0.5em 1em;
+    color: var(--CouleurTexte);
+}
+
+.bouton:hover {
+    border: 2px solid var(--CouleurTexte);
+    color: var(--BordureBouton);
+}
+button:disabled{
+    border: solid var(--CouleurOmbre) 2px;
+}
+.relatif{
+    position: relative;
+}
+/********* input & Select *********/
+input,
+select,textarea ,.case {
+    border: 1px solid var(--BordureBouton);
+    background-color: Transparent;
+    padding: 0.5em 1em;
+    color: var(--CouleurTexte);
+}
+textarea
+{
+    height: 25vh;
+}
+.titreColonne {
+    border: 1px solid var(--CouleurTexte);
+    color: var(--BordureBouton);
+    font-size: 1.2em;
+}
+input:focus {
+    background-color: #aaa;
+    color: black;
+}
+
+select option {
+    background-color: var(--FondPage);
+    border: 1px solid var(--BordureBouton);
+    color: var(--CouleurTexte);
+}
+
+select option::selection {
+    background-color: red;
+}
+
+/******** Header ********/
+header,
+footer {
+    box-shadow: -0.1em 0.1em 0.2em 0.2em var(--CouleurOmbre);
+}
+
+header {
+    margin-bottom: 1em;
+}
+
+.logo,
+.connection {
+    flex: 0.5;
+}
+
+.titre {
+    flex: 2;
+    color: var(--CouleurTexte);
+}
+
+/******** Footer ******/
+footer {
+    margin-top: 1em;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 99%;
+    bottom: 0.2em;
+    color: var(--CouleurTexte);
+    background-color: var(--FondPage);
+}
+.container{
+    padding-bottom: 3.5em;
+}
+/* A ajouter + textArea comme les inputs*/
+.indic{
+    flex:none;
+    padding:0.5em;
+    border-radius:10em;
+    border:1px solid var(--BordureBouton);
+}
+.bordureTitre
+{
+    border:1px solid var(--CouleurTexte);
+}
+
+.texteInfoBulle
+{
+    position:absolute;
+    top:0.5vh;
+    left:10vh;
+    font-size:0.8em;
+    display:none;
+    white-space:nowrap;
+    border-radius:2vh;
+    background-color:#aaa;
+    color:black;
+    padding:1vh;
+    z-index: 1;
+}
