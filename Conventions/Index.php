@@ -21,7 +21,8 @@ $lang=isset($_SESSION['lang']) ? $_SESSION['lang'] : 'FR';
 
 $routes=[
 	/**** DEFAULT *****/
-	"default" => ["PHP/VIEW/", "FormConnexion", "Choisissez la catégorie a compléter :",false],
+	"default" => ["PHP/VIEW/", "ConventionPdf", "Choisissez la catégorie a compléter :",false],
+	//"default" => ["PHP/VIEW/", "FormConnexion", "Choisissez la catégorie a compléter :",false],
 	
 	"FormConnexion" => ["PHP/VIEW/", "FormConnexion", "Identification",false],
 	"ActionConnexion" => ["PHP/VIEW/", "ActionConnexion", "Identification",false],
@@ -61,6 +62,8 @@ $routes=[
 	"ListeStagiaires" => ["PHP/VIEW/", "ListeStagiaires", "Gestion des Stagiaires",false],
 	"FormStagiaire" => ["PHP/VIEW/", "FormStagiaire", "Gestion des Stagiaires",false],
 	"ActionStagiaire" => ["PHP/VIEW/", "ActionStagiaire", "Gestion des Stagiaires",false],
+
+	"Pdf" => ["PHP/VIEW/", "Pdf", "Gestion des Stagiaires",false],
 
 	/**** API ****/
 	"VillesAPI" => ["PHP/MODEL/API/", "VillesAPI", "Gestion des Entreprises",true],

@@ -162,18 +162,26 @@ function formDate(date)
 
 function infoBulles(e)
 {
-    let texte=e.target.getAttribute("textinfo");
-    let infobulle=e.target.getElementsByClassName("texteInfoBulle")[0];
+    let element;
+    if(e.target.getAttribute("class")=="indic")
+    {
+        element=e.target.parentNode;
+    }
+    else{
+        element=e.target;
+    }
+    let texte=element.getAttribute("textinfo");
+    let infobulle=element.getElementsByClassName("texteInfoBulle")[0];
     infobulle.textContent=texte;
     infobulle.style.display="flex";  
     setTimeout(function()
     {
         infobulle.style.display="none"; 
-    }, 2000);  
+    }, 2000); 
 }
 
 /******* Action à faire pour télécharger la convention de stage *********/
-function downloadConvention(event) 
+function downloadConvention(e) 
 {
     alert("Telechargement de la convention de stage");
 }
@@ -259,18 +267,15 @@ function creationListe(liste)
             if (etape==4) // Rend la case cliquable si le stage est à l'étape verte
             {
                 periode.addEventListener("dblclick",downloadConvention);
-                indic.addEventListener("dblclick",downloadConvention);
             } 
-            };
+            indic.addEventListener("click",infoBulles); //Evenement pour l'affichage des infos Bulles sur l'indicateur de couleur
+            }
             //Création des div pour les infos bulles
             let texteInfoBulle=document.createElement("div");
             texteInfoBulle.setAttribute("class","texteInfoBulle");
             texteInfoBulle.textContent="Test des infos bulles"; 
             periode.appendChild(texteInfoBulle);
             ligne.appendChild(periode);  
-            
-
-
             periode.addEventListener("click",infoBulles); //Evenement pour l'affichage des infos bulles.
         }
         affichage.appendChild(ligne);
