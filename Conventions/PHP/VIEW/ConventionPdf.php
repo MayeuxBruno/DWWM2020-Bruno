@@ -66,7 +66,7 @@ $pdf->SetFont('Arial','B',9);
 
 /************* Le stagiaire ****************************/
 $pdf->Cell(88,5,"Le Stagiaire","LTB",0,"L");
-$pdf->Cell(88,5,"Le Stagiaire","RTB",1,"R");
+$pdf->Cell(0,5,$stagiaire->getNumBenefStagiaire(),"RTB",1,"R");
 $pdf->SetFont('Arial','',9);
 $pdf->Cell(88,5,utf8_decode("Identité "),"R",0,"R");
 $pdf->Cell(0,5,utf8_decode(" ".$stagiaire->getPrenomStagiaire()." ".strtoupper($stagiaire->getNomStagiaire())),0,1,"L");
