@@ -4,15 +4,12 @@ $idStage=3;
 $stage=StagesManager::findById($idStage);
 $stagiaire=StagiairesManager::findById($stage->getIdStagiaire());
 $infosSession=StagiaireFormationManager::getListByStagiaire($stagiaire->getIdStagiaire());
+$anim=AnimationsManager::getByFormation($infosSession[0]->getIdFormation());
+$formateur=UtilisateursManager::findById($anim[0]->getIdUtilisateur());
 $tuteur=TuteursManager::findById($stage->getIdTuteur());
 $entreprise=EntreprisesManager::findById($tuteur->getIdEntreprise());
 $ville=VillesManager::findById($entreprise->getIdVille());
-
-//var_dump($stagiaire);
-//var_dump($infosSession);
-//var_dump($stage);
-//var_dump($tuteur);
-//var_dump($entreprise);
+$horaires=ValeursHorairesManager::getListByStage($idStage);
 
 class PDF extends FPDF
 {
@@ -35,14 +32,23 @@ class PDF extends FPDF
 }
 
 
-function formatDate($date){
-    
+function formatDate($date)
+{    
     $annee = substr($date, 0, 4);
     $mois = substr($date, 5, 2);
     $jour = substr($date, 8, 2);
-
     return $jour.'/'.$mois.'/'.$annee;
+}
 
+function formatHeure($heure)
+{    
+    if($heure!=NULL)
+    {
+        $heures = substr($heure, 0, 2);
+        $minutes = substr($heure, 3, 2);
+        return $heures.'H'.$minutes;
+    }
+    return $heure;
 }
 
 function DiffDate($datea,$dateb)
@@ -55,9 +61,9 @@ function DiffDate($datea,$dateb)
     return $semaine;
 }
 
-function HoraireSemaine($idStage)
+function HoraireSemaine($horaires)
 {
-    $horaires=ValeursHorairesManager::getListByStage($idStage);
+    $tabHeures=[];
     $heure=0;
     for ($i=0;$i<6;$i++)
     {
@@ -65,28 +71,27 @@ function HoraireSemaine($idStage)
         $hFinJour=strtotime($horaires[$i+6]->getValeurHoraire());
         $hDebDej=strtotime($horaires[$i+12]->getValeurHoraire());
         $hFinDej=strtotime($horaires[$i+18]->getValeurHoraire());
-        $heureJour= $hFinJour-$hDebJour-($hFinDej-$hDebDej);
+        $pause=$hFinDej-$hDebDej;
+        $heureJour= $hFinJour-$hDebJour-$pause;
+        if($heureJour==0)
+        {
+            $tabHeures[$i+1]=NULL;  
+            $tabHeures[$i+7]=NULL;    
+        }
+        else{
+            $tabHeures[$i+1]=date("H:i",$heureJour);
+            $tabHeures[$i+7]=date("H:i",$pause);
+        }
         $heure+=$heureJour;
     }
     
     $nbHeures=date("d H:i",$heure);
     $valJours=intval(substr($nbHeures,0,2)-1);
     $valHeures=intval(substr($nbHeures,3,5));
-    $valMinutes=intval(substr($nbHeures,6,9));
-    $temp=$valJours*24+$valHeures;
-    switch ($temp)
-    {
-        case 35:
-            return "a";
-            break;
-        case 30:
-            return "b";
-            break;
-        default:
-            return $temp;
-    }
+    $tabHeures[0]=$valJours*24+$valHeures;
+    return $tabHeures;
 }
-
+//var_dump(HoraireSemaine($horaires));
 // On active la classe une fois pour toutes les pages suivantes
 // Format portrait (>P) ou paysage (>L), en mm (ou en points > pts), A4 (ou A5, etc.)
 $pdf = new FPDF('P','mm','A4');
@@ -266,6 +271,9 @@ $pdf->Cell(88,5,utf8_decode("Nom d'usage "),"R",0,"R");
 $pdf->Cell(0,5,utf8_decode(" ".strtoupper($stagiaire->getNomStagiaire())),0,1,"L");
 $pdf->Ln();
 /******** Precisions contexte sanitaire *********/
+
+$dureeJour=HoraireSemaine($horaires); //Retourne un tableau avec les durées quotidiennes et hebdomadaire
+
 $pdf->SetFont('Arial','BI',9);
 $pdf->Cell(0,5,"PRECISIONS DANS UN CONTEXTE DE CRISE SANITAIRE","LTBR",1,"L");
 $pdf->SetFont('Arial','I',9);
@@ -288,12 +296,16 @@ $nbSemaines=DiffDate($stage->getDateFin(),$stage->getDateDebut());
 $pdf->Write(5,utf8_decode("En application du programme de formation conventionné, la période en entreprise objet de la présente a une durée de ".$nbSemaines." semaines, soit ".($nbSemaines*35)." heures."));
 $pdf->Ln();
 $pdf->Write(5,utf8_decode("La durée de présence du stagiaire est de : "));
-$pdf->Image("./IMG/caseVide.png",85,210,3,3);
+
+//Coche les cases pour la durée de présence 30h 35h ou autre
+if($dureeJour[0]==35){$pdf->Image("./IMG/caseCocher.png",85,210,3,3);}else{$pdf->Image("./IMG/caseVide.png",85,210,3,3);}
 $pdf->Text(91,212.5,"35 Heures");
-$pdf->Image("./IMG/caseVide.png",110,210,3,3);
+if($dureeJour[0]==30){$pdf->Image("./IMG/caseCocher.png",110,210,3,3);}else{$pdf->Image("./IMG/caseVide.png",110,210,3,3);}
 $pdf->Text(116,212.5,"30 Heures");
-$pdf->Image("./IMG/caseVide.png",135,210,3,3);
-$pdf->Text(141,212.5,"Autre");
+if($dureeJour[0]<35 && $dureeJour[0]!=30){$pdf->Image("./IMG/caseCocher.png",135,210,3,3);$pdf->Text(141,212.5,"Autre ".$dureeJour[0]."H00");}else{$pdf->Image("./IMG/caseVide.png",135,210,3,3);$pdf->Text(141,212.5,"Autre");}
+
+
+//Tableau contenant les horaires de stage
 $pdf->Ln();
 $pdf->Write(5,utf8_decode("Les horaires de présence du stagiaire est de :"));
 $pdf->Ln();
@@ -309,61 +321,167 @@ $pdf->Cell(20,5,"Dimanche",1,1,"C");
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(50,5,utf8_decode("Début de journée"),1,0,"R");
 $pdf->SetFont('Arial','',9);
-$pdf->Cell(20,5,"Lundi",1,0,"C");
-$pdf->Cell(20,5,"Mardi",1,0,"C");
-$pdf->Cell(20,5,"Mercredi",1,0,"C");
-$pdf->Cell(20,5,"Jeudi",1,0,"C");
-$pdf->Cell(20,5,"Vendredi",1,0,"C");
-$pdf->Cell(20,5,"Samedi",1,0,"C");
-$pdf->Cell(20,5,"Dimanche","LTR",1,"C");
+$pdf->Cell(20,5,FormatHeure($horaires[0]->getValeurHoraire()),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($horaires[1]->getValeurHoraire()),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($horaires[2]->getValeurHoraire()),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($horaires[3]->getValeurHoraire()),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($horaires[4]->getValeurHoraire()),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($horaires[5]->getValeurHoraire()),1,0,"C");
+$pdf->Cell(20,5,"","LTR",1,"C");
 
-$pdf->Cell(50,5,"",1,0,"L");
-$pdf->Cell(20,5,"Lundi",1,0,"C");
-$pdf->Cell(20,5,"Mardi",1,0,"C");
-$pdf->Cell(20,5,"Mercredi",1,0,"C");
-$pdf->Cell(20,5,"Jeudi",1,0,"C");
-$pdf->Cell(20,5,"Vendredi",1,0,"C");
-$pdf->Cell(20,5,"Samedi",1,0,"C");
-$pdf->Cell(20,5,"Dimanche","LR",1,"C");
-$pdf->Cell(50,5,"",1,0,"L");
-$pdf->Cell(20,5,"Lundi",1,0,"C");
-$pdf->Cell(20,5,"Mardi",1,0,"C");
-$pdf->Cell(20,5,"Mercredi",1,0,"C");
-$pdf->Cell(20,5,"Jeudi",1,0,"C");
-$pdf->Cell(20,5,"Vendredi",1,0,"C");
-$pdf->Cell(20,5,"Samedi",1,0,"C");
-$pdf->Cell(20,5,"Dimanche","LR",1,"C");
-$pdf->Cell(50,5,"",1,0,"L");
-$pdf->Cell(20,5,"Lundi",1,0,"C");
-$pdf->Cell(20,5,"Mardi",1,0,"C");
-$pdf->Cell(20,5,"Mercredi",1,0,"C");
-$pdf->Cell(20,5,"Jeudi",1,0,"C");
-$pdf->Cell(20,5,"Vendredi",1,0,"C");
-$pdf->Cell(20,5,"Samedi",1,0,"C");
-$pdf->Cell(20,5,"Dimanche","LR",1,"C");
-$pdf->Cell(50,5,"",1,0,"L");
-$pdf->Cell(20,5,"Lundi",1,0,"C");
-$pdf->Cell(20,5,"Mardi",1,0,"C");
-$pdf->Cell(20,5,"Mercredi",1,0,"C");
-$pdf->Cell(20,5,"Jeudi",1,0,"C");
-$pdf->Cell(20,5,"Vendredi",1,0,"C");
-$pdf->Cell(20,5,"Samedi",1,0,"C");
-$pdf->Cell(20,5,"Dimanche","LR",1,"C");
-$pdf->Cell(50,5,"",1,0,"L");
-$pdf->Cell(20,5,"Lundi",1,0,"C");
-$pdf->Cell(20,5,"Mardi",1,0,"C");
-$pdf->Cell(20,5,"Mercredi",1,0,"C");
-$pdf->Cell(20,5,"Jeudi",1,0,"C");
-$pdf->Cell(20,5,"Vendredi",1,0,"C");
-$pdf->Cell(20,5,"Samedi",1,0,"C");
-$pdf->Cell(20,5,"Dimanche","LR",1,"C");
+$pdf->SetFont('Arial','B',9);
+$pdf->Cell(17,5,utf8_decode("Modalités"),"TLB",0,"C");
+$pdf->SetFont('Arial','I',9);
+$pdf->Cell(33,5,utf8_decode("(présence / télétravail)"),"TRB",0,"L");
+$pdf->SetFont('Arial','',9);
+$pdf->Cell(20,5,"",1,0,"C");
+$pdf->Cell(20,5,"",1,0,"C");
+$pdf->Cell(20,5,"",1,0,"C");
+$pdf->Cell(20,5,"",1,0,"C");
+$pdf->Cell(20,5,"",1,0,"C");
+$pdf->Cell(20,5,"",1,0,"C");
+$pdf->Cell(20,5,utf8_decode("Présence"),"LR",1,"C");
+
+$pdf->Cell(50,5,utf8_decode("Durée de la pause déjeuner"),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($dureeJour[7]),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($dureeJour[8]),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($dureeJour[9]),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($dureeJour[10]),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($dureeJour[11]),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($dureeJour[12]),1,0,"C");
+$pdf->Cell(20,5,"","LR",1,"C");
+
+$pdf->SetFont('Arial','B',9);
+$pdf->Cell(50,5,utf8_decode("Fin de journée"),1,0,"R");
+$pdf->SetFont('Arial','',9);
+$pdf->Cell(20,5,FormatHeure($horaires[6]->getValeurHoraire()),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($horaires[7]->getValeurHoraire()),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($horaires[8]->getValeurHoraire()),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($horaires[9]->getValeurHoraire()),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($horaires[10]->getValeurHoraire()),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($horaires[11]->getValeurHoraire()),1,0,"C");
+$pdf->Cell(20,5,utf8_decode("interdite"),"LR",1,"C");
+
+$pdf->SetFont('Arial','B',9);
+$pdf->Cell(17,5,utf8_decode("Modalités"),"TLB",0,"C");
+$pdf->SetFont('Arial','I',9);
+$pdf->Cell(33,5,utf8_decode("(présence / télétravail)"),"TRB",0,"L");
+$pdf->SetFont('Arial','',9);
+$pdf->Cell(20,5,"",1,0,"C");
+$pdf->Cell(20,5,"",1,0,"C");
+$pdf->Cell(20,5,"",1,0,"C");
+$pdf->Cell(20,5,"",1,0,"C");
+$pdf->Cell(20,5,"",1,0,"C");
+$pdf->Cell(20,5,"",1,0,"C");
+$pdf->Cell(20,5,"","LR",1,"C");
+
+$pdf->Cell(50,5,utf8_decode("Durée quotidienne"),1,0,"R");
+$pdf->Cell(20,5,FormatHeure($dureeJour[1]),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($dureeJour[2]),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($dureeJour[3]),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($dureeJour[4]),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($dureeJour[5]),1,0,"C");
+$pdf->Cell(20,5,FormatHeure($dureeJour[6]),1,0,"C");
+$pdf->Cell(20,5,utf8_decode("Infraction"),"LR",1,"C");
+
 $pdf->Cell(110,5,"",0,0,"L");
-$pdf->Cell(40,5,"Jeudi",1,0,"C");
-$pdf->Cell(20,5,"Samedi",1,0,"C");
-$pdf->Cell(20,5,"Dimanche","LBR",1,"C");
+$pdf->SetFont('Arial','B',9);
+$pdf->Cell(40,5,utf8_decode("Durée hebdomadaire"),1,0,"C");
+$pdf->SetFont('Arial','',9);
+$pdf->Cell(20,5,$dureeJour[0]."H00",1,0,"C");
+$pdf->Cell(20,5,"","LBR",1,"C");
 
+$pdf->AddPage();
+$pdf->SetFont('Arial','B',9);
+$pdf->Cell(0,5,"Article 17 - Moyens d'encadrement Afpa",1,1,"L");
+$pdf->SetFont('Arial','',9);
+$pdf->Ln();
+$pdf->Write(5,utf8_decode("La période en entreprise de déroule en lien avec l'équipe pédagogique qui comprend un(e) formateur(-trice) référent(e), un(e) assistant(e) technique, ainsi qu'un(e) manageur(e) de formation."));
+$pdf->Ln();
+$pdf->Cell(88,5,"Formateur ","R",0,"R");
+$pdf->Cell(0,5," ".strtoupper($formateur->getNomUtilisateur())." ".strtoupper($formateur->getPrenomUtilisateur()),0,1,"L");
+$pdf->Cell(88,5,"Tel ","R",0,"R");
+$pdf->Cell(0,5," ",0,1,"L");
+$pdf->Cell(88,5,"Mail ","R",0,"R");
+$pdf->Cell(0,5," ".strtoupper($formateur->getEmailUtilisateur()),0,1,"L");
+$pdf->Cell(88,5,"Assistant ","R",0,"R");
+$pdf->Cell(0,5," ANNE DISTANTI",0,1,"L");
+$pdf->Cell(88,5,"Tel ","R",0,"R");
+$pdf->Cell(0,5," 03 28 58 86 65",0,1,"L");
+$pdf->Cell(88,5,"Mail ","R",0,"R");
+$pdf->Cell(0,5," ANNE.DISTANTI@AFPA.FR",0,1,"L");
+$pdf->Cell(88,5,"Manager de formation ","R",0,"R");
+$pdf->Cell(0,5," FREDERIC DE LECLUSE",0,1,"L");
+$pdf->Cell(88,5,"Tel ","R",0,"R");
+$pdf->Cell(0,5," 06 08 75 45 93",0,1,"L");
+$pdf->Cell(88,5,"Mail ","R",0,"R");
+$pdf->Cell(0,5," FREDERIC.DELECLUSE@AFPA.FR",0,1,"L");
+$pdf->Ln();
+$pdf->SetFont('Arial','B',9);
+$pdf->Cell(0,5,"Article 18 - La Formation",1,1,"L");
+$pdf->SetFont('Arial','',9);
+$pdf->Ln();
+$pdf->Write(5,utf8_decode("Intitule ".$infosSession[0]->getLibelleFormation()));
+$pdf->Write(5,utf8_decode("Les objectifs de la formation sont :"));
+$pdf->Ln(10);
+$pdf->Write(5,utf8_decode("- Développer la partie front-end d’une application web ou web mobile en intégrant les recommandations de sécurité- Développer la partie back-end d’une application web ou web mobile en intégrant les recommandations de sécurité"));
+$pdf->Ln(10);
+$pdf->Write(5,utf8_decode("La finalite de la formation est :"));
+$pdf->Ln();
+
+/********************* FINALITE A COMPLETER *********************/
+$finalite=1;
+if($finalite==1){$pdf->Image("./IMG/caseCocher.png",15,130,3,3);}else{$pdf->Image("./IMG/caseVide.png",15,130,3,3);}
+$pdf->Text(21,132.5,utf8_decode("Développement des compétences"));
+if($finalite==2){$pdf->Image("./IMG/caseCocher.png",80,130,3,3);}else{$pdf->Image("./IMG/caseVide.png",80,130,3,3);}
+$pdf->Text(86,132.5,utf8_decode("Qualification professionnelle"));
+if($finalite==3){$pdf->Image("./IMG/caseCocher.png",136,130,3,3);}else{$pdf->Image("./IMG/caseVide.png",136,130,3,3);}
+$pdf->Text(142,132.5,utf8_decode("Certificat ou Titre professionnel"));
+
+$pdf->Ln(10);
+$pdf->SetFont('Arial','B',9);
+$pdf->Cell(0,5,utf8_decode("Article 19 - Les objectifs et activités à réaliser pendant la période en entreprise"),1,1,"L");
+$pdf->SetFont('Arial','',9);
+$pdf->Ln(10);
+$pdf->Write(5,utf8_decode("Les objectifs et activités à réaliser pendant la période en entreprise sont définis par le Formateur en lien avec le programme de formation et la progression personnelle du Stagiaire"));
+$pdf->Ln(10);
+$pdf->SetFont('Arial','B',9);
+$pdf->Write(5,utf8_decode("Informations portées à l'entreprise par le Formateur :"));
+$pdf->Ln(10);
+$pdf->Write(5,utf8_decode("Sur la base de la progression de la formation et des acquis du Stagiaire, les objectifs de la période en entreprise sont les suivants :"));
+$pdf->SetFont('Arial','',9);
+$pdf->Ln();
+$pdf->Write(5,utf8_decode("Le projet couvre obligatoirement les cométences suivantes:"));
+$pdf->Ln();
+$pdf->Write(5,utf8_decode($infosSession[0]->getObjectifPAE()));
+
+$pdf->AddPage();
+$pdf->SetFont('Arial','B',9);
+$pdf->Write(5,utf8_decode("En considération de quoi l'Entreprise d'Accueil fera réaliser au Stagiaire tout ou partie des activités et tâches suivantes :"));
+$pdf->SetFont('Arial','',9);
+$pdf->Ln(10);
+$pdf->Write(5,utf8_decode("Ces activités :"));
+$pdf->Ln();
+$pdf->Image("./IMG/puce.png",12,36.75,1,1);
+$pdf->Write(5,utf8_decode("     Demandent une attestation de formation règlementaire "));
+
+$attestation=$stage->getAttFormReglement();
+if($attestation==1){$pdf->Image("./IMG/caseCocher.png",65,43,3,3);$pdf->Text(65,50,"Precision : ".$stage->getLibelleAttFormReg());}else{$pdf->Image("./IMG/caseVide.png",65,43,3,3);}
+$pdf->Text(71,45.5,utf8_decode("OUI"));
+if($attestation==0){$pdf->Image("./IMG/caseCocher.png",130,43,3,3);}else{$pdf->Image("./IMG/caseVide.png",130,43,3,3);}
+$pdf->Text(136,45.5,utf8_decode("NON"));
+
+$pdf->Ln(20);
+$pdf->Image("./IMG/puce.png",12,56.75,1,1);
+$pdf->Write(5,utf8_decode("     Imposent une habilitation du Stagiaire par l'Entreprise d'accueil "));
+
+$habilitation=0;
+if($habilitation==1){$pdf->Image("./IMG/caseCocher.png",65,43,3,3);$pdf->Text(65,50,"Precision : ".$stage->getLibelleAttFormReg());}else{$pdf->Image("./IMG/caseVide.png",65,43,3,3);}
+$pdf->Text(71,45.5,utf8_decode("OUI"));
+if($habilitation==0){$pdf->Image("./IMG/caseCocher.png",130,43,3,3);}else{$pdf->Image("./IMG/caseVide.png",130,43,3,3);}
+$pdf->Text(136,45.5,utf8_decode("NON"));
+//Création du PDF
 $pdf->Output('F', './convention.pdf');
 header("location:convention.pdf");
-
 
 
