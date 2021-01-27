@@ -42,11 +42,28 @@ class ValeursHorairesManager
 			return false;
 		}
 	}
+	
 	public static function getList()
 	{
  		$db=DbConnect::getDb();
 		$liste = [];
 		$q = $db->query("SELECT * FROM Valeurshoraires");
+		while($donnees = $q->fetch(PDO::FETCH_ASSOC))
+		{
+			if($donnees != false)
+			{
+				$liste[] = new Valeurshoraires($donnees);
+			}
+		}
+		return $liste;
+	}
+
+	public static function getListByStage($idStage)
+	{
+		$db=DbConnect::getDb();
+		$id=(int)$idStage; 
+		$liste = [];
+		$q = $db->query("SELECT * FROM Valeurshoraires WHERE idStage =".$id);
 		while($donnees = $q->fetch(PDO::FETCH_ASSOC))
 		{
 			if($donnees != false)

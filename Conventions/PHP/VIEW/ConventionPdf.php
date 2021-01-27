@@ -44,8 +44,49 @@ function formatDate($date){
     return $jour.'/'.$mois.'/'.$annee;
 
 }
-//var_dump($stagiaire);
-//var_dump($infosSession);
+
+function DiffDate($datea,$dateb)
+{
+    $date1=new DateTime ($datea);
+    $date2= new DateTime ($dateb);
+    $diff= date_diff($date1,$date2);
+    $diff->format('%R%a days');
+    $semaine=round(($diff->days)/7);
+    return $semaine;
+}
+
+function HoraireSemaine($idStage)
+{
+    $horaires=ValeursHorairesManager::getListByStage($idStage);
+    $heure=0;
+    for ($i=0;$i<6;$i++)
+    {
+        $hDebJour=strtotime($horaires[$i]->getValeurHoraire());
+        $hFinJour=strtotime($horaires[$i+6]->getValeurHoraire());
+        $hDebDej=strtotime($horaires[$i+12]->getValeurHoraire());
+        $hFinDej=strtotime($horaires[$i+18]->getValeurHoraire());
+        $heureJour= $hFinJour-$hDebJour-($hFinDej-$hDebDej);
+        $heure+=$heureJour;
+    }
+    
+    $nbHeures=date("d H:i",$heure);
+    $valJours=intval(substr($nbHeures,0,2)-1);
+    $valHeures=intval(substr($nbHeures,3,5));
+    $valMinutes=intval(substr($nbHeures,6,9));
+    $temp=$valJours*24+$valHeures;
+    switch ($temp)
+    {
+        case 35:
+            return "a";
+            break;
+        case 30:
+            return "b";
+            break;
+        default:
+            return $temp;
+    }
+}
+
 // On active la classe une fois pour toutes les pages suivantes
 // Format portrait (>P) ou paysage (>L), en mm (ou en points > pts), A4 (ou A5, etc.)
 $pdf = new FPDF('P','mm','A4');
@@ -202,7 +243,7 @@ $pdf->Image("./IMG/UEFSE.jpg",65,45,20,15);
 $pdf->Image("./IMG/leuropesengage.png",90,45,20,15);
 $pdf->Image("./IMG/fondsParitaire.jpg",115,45,20,11);
 $pdf->Image("./IMG/UEJeune.jpg",140,45,13,13);
-$pdf->Ln(53);
+$pdf->Ln(43);
 $pdf->SetFont('Arial','B',16);
 $pdf->Cell(0,8,"OBJECTIFS ET ACTIVITES PARTICULIERES","LTR",1,"C");
 $pdf->Cell(0,5,"DE LA PERIODE EN ENTREPRISE","LR",1,"C");
@@ -230,11 +271,96 @@ $pdf->Cell(0,5,"PRECISIONS DANS UN CONTEXTE DE CRISE SANITAIRE","LTBR",1,"L");
 $pdf->SetFont('Arial','I',9);
 $pdf->Ln();
 $pdf->Write(5,utf8_decode("Dans le cadre des mesures règlementaires prises pour lutter contre la propagation du virus COVID-19, il est rappele aux parties à la conventions que les conventions de période en entreprise ne sont pas des contrats de travail. Les stagiaires ne font pas partie de la main d'oeuvre de l'entreprise et nepeuvent prendre part à un plan de continuité d'action en l'absence de leur Tuteur."));
-$pdf->Ln(10);
+$pdf->Ln();
 $pdf->Write(5,utf8_decode("Le télétravail n'est plus la norme, mais peut-être une solution à privilégier en cas de circulation active du virus COVID-19. Lorsque le télétravail est privilégié pour la réalisation de la période en entreprise,le centre Afpa s'assure préalablement de la possibilité effective pour le Stagiaire de réaliser le stage à distance dans le respect des objectifs pédagogiques."));
-$pdf->Ln(10);
+$pdf->Ln();
 $pdf->Write(5,utf8_decode("Lorsque l'atteinte des objectifs et la réalisation des activités par le Stagiaire impose sa présence dans les locaux ou sur les sites d'activités de l'Entreprise d'accueil, il appartient à l'Entreprise de fournir au Stagiaire un justificatif de déplacement dans les mêmes conditions que pour le Tuteur salarié"));
 $pdf->Ln(10);
+$pdf->SetFont('Arial','B',9);
+$pdf->Cell(0,5,utf8_decode("Article 16 - Organisation de la periode en entreprise"),1,1,"L");
+$pdf->SetFont('Arial','',9);
+$pdf->Ln();
+$pdf->Write(5,utf8_decode("Le premier jour de présence du (de la) Stagiaire est fixé au : ".formatDate($stage->getDateDebut())));
+$pdf->Ln();
+$pdf->Write(5,utf8_decode("Le dernier jour de présence du (de la) Stagiaire est fixé au : ".formatDate($stage->getDateFin())));
+$pdf->Ln();
+$nbSemaines=DiffDate($stage->getDateFin(),$stage->getDateDebut());
+$pdf->Write(5,utf8_decode("En application du programme de formation conventionné, la période en entreprise objet de la présente a une durée de ".$nbSemaines." semaines, soit ".($nbSemaines*35)." heures."));
+$pdf->Ln();
+$pdf->Write(5,utf8_decode("La durée de présence du stagiaire est de : "));
+$pdf->Image("./IMG/caseVide.png",85,210,3,3);
+$pdf->Text(91,212.5,"35 Heures");
+$pdf->Image("./IMG/caseVide.png",110,210,3,3);
+$pdf->Text(116,212.5,"30 Heures");
+$pdf->Image("./IMG/caseVide.png",135,210,3,3);
+$pdf->Text(141,212.5,"Autre");
+$pdf->Ln();
+$pdf->Write(5,utf8_decode("Les horaires de présence du stagiaire est de :"));
+$pdf->Ln();
+$pdf->Cell(50,5,"",0,0,"L");
+$pdf->Cell(20,5,"Lundi",1,0,"C");
+$pdf->Cell(20,5,"Mardi",1,0,"C");
+$pdf->Cell(20,5,"Mercredi",1,0,"C");
+$pdf->Cell(20,5,"Jeudi",1,0,"C");
+$pdf->Cell(20,5,"Vendredi",1,0,"C");
+$pdf->Cell(20,5,"Samedi",1,0,"C");
+$pdf->Cell(20,5,"Dimanche",1,1,"C");
+
+$pdf->SetFont('Arial','B',9);
+$pdf->Cell(50,5,utf8_decode("Début de journée"),1,0,"R");
+$pdf->SetFont('Arial','',9);
+$pdf->Cell(20,5,"Lundi",1,0,"C");
+$pdf->Cell(20,5,"Mardi",1,0,"C");
+$pdf->Cell(20,5,"Mercredi",1,0,"C");
+$pdf->Cell(20,5,"Jeudi",1,0,"C");
+$pdf->Cell(20,5,"Vendredi",1,0,"C");
+$pdf->Cell(20,5,"Samedi",1,0,"C");
+$pdf->Cell(20,5,"Dimanche","LTR",1,"C");
+
+$pdf->Cell(50,5,"",1,0,"L");
+$pdf->Cell(20,5,"Lundi",1,0,"C");
+$pdf->Cell(20,5,"Mardi",1,0,"C");
+$pdf->Cell(20,5,"Mercredi",1,0,"C");
+$pdf->Cell(20,5,"Jeudi",1,0,"C");
+$pdf->Cell(20,5,"Vendredi",1,0,"C");
+$pdf->Cell(20,5,"Samedi",1,0,"C");
+$pdf->Cell(20,5,"Dimanche","LR",1,"C");
+$pdf->Cell(50,5,"",1,0,"L");
+$pdf->Cell(20,5,"Lundi",1,0,"C");
+$pdf->Cell(20,5,"Mardi",1,0,"C");
+$pdf->Cell(20,5,"Mercredi",1,0,"C");
+$pdf->Cell(20,5,"Jeudi",1,0,"C");
+$pdf->Cell(20,5,"Vendredi",1,0,"C");
+$pdf->Cell(20,5,"Samedi",1,0,"C");
+$pdf->Cell(20,5,"Dimanche","LR",1,"C");
+$pdf->Cell(50,5,"",1,0,"L");
+$pdf->Cell(20,5,"Lundi",1,0,"C");
+$pdf->Cell(20,5,"Mardi",1,0,"C");
+$pdf->Cell(20,5,"Mercredi",1,0,"C");
+$pdf->Cell(20,5,"Jeudi",1,0,"C");
+$pdf->Cell(20,5,"Vendredi",1,0,"C");
+$pdf->Cell(20,5,"Samedi",1,0,"C");
+$pdf->Cell(20,5,"Dimanche","LR",1,"C");
+$pdf->Cell(50,5,"",1,0,"L");
+$pdf->Cell(20,5,"Lundi",1,0,"C");
+$pdf->Cell(20,5,"Mardi",1,0,"C");
+$pdf->Cell(20,5,"Mercredi",1,0,"C");
+$pdf->Cell(20,5,"Jeudi",1,0,"C");
+$pdf->Cell(20,5,"Vendredi",1,0,"C");
+$pdf->Cell(20,5,"Samedi",1,0,"C");
+$pdf->Cell(20,5,"Dimanche","LR",1,"C");
+$pdf->Cell(50,5,"",1,0,"L");
+$pdf->Cell(20,5,"Lundi",1,0,"C");
+$pdf->Cell(20,5,"Mardi",1,0,"C");
+$pdf->Cell(20,5,"Mercredi",1,0,"C");
+$pdf->Cell(20,5,"Jeudi",1,0,"C");
+$pdf->Cell(20,5,"Vendredi",1,0,"C");
+$pdf->Cell(20,5,"Samedi",1,0,"C");
+$pdf->Cell(20,5,"Dimanche","LR",1,"C");
+$pdf->Cell(110,5,"",0,0,"L");
+$pdf->Cell(40,5,"Jeudi",1,0,"C");
+$pdf->Cell(20,5,"Samedi",1,0,"C");
+$pdf->Cell(20,5,"Dimanche","LBR",1,"C");
 
 $pdf->Output('F', './convention.pdf');
 header("location:convention.pdf");

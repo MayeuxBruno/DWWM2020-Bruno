@@ -1,7 +1,8 @@
 /********* Global **********/
 body {
     min-height: 100%;
-    background: var(--FondPage);
+    /* background: var(--FondPage); */
+    
 }
 
 div,
@@ -207,6 +208,7 @@ footer {
 }
 .container{
     padding-bottom: 3.5em;
+    flex-direction:column;
 }
 
 .aideMdp {
