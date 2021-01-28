@@ -157,7 +157,7 @@ function formDate(date)
     let Mois=(temp.getMonth())+1;
     if (Jours<10){Jours="0"+Jours};
     if (Mois<10){Mois="0"+Mois};
-    return(Jours+" "+Mois+" "+temp.getFullYear());
+    return(Jours+"/"+Mois+"/"+temp.getFullYear());
 }
 
 function infoBulles(e)
