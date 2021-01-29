@@ -154,10 +154,10 @@ function formDate(date)
 {
     let temp=new Date (date);
     let Jours=temp.getDate();
-    let Mois=temp.getMonth();
+    let Mois=(temp.getMonth())+1;
     if (Jours<10){Jours="0"+Jours};
     if (Mois<10){Mois="0"+Mois};
-    return(Jours+"/"+Mois+"/"+temp.getFullYear());
+    return(Jours+"-"+Mois+"-"+temp.getFullYear());
 }
 
 function infoBulles(e)
