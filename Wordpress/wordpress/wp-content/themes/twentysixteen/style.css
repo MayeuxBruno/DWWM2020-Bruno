@@ -60,6 +60,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
  * Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
  */
 
+
 html {
 	font-family: sans-serif;
 	-webkit-text-size-adjust: 100%;
@@ -299,6 +300,28 @@ optgroup {
 /**
  * 3.0 - Typography
  */
+ /*@font-face {
+	font-family: 'pt-banana-split';
+	src: url('pt-banana-split.woff2') format('woff2'),
+		 url('pt-banana-split.woff') format('woff'),
+		 url('pt-banana-split.ttf')  format('truetype');
+  }*/
+
+  @font-face {
+	font-family: ‘pt-banana-split‘;
+	src: url(‘pt-banana-split.eot’);
+	src: url(‘pt-banana-split.eot?#iefix’) format(’embedded-opentype’),
+	url(‘pt-banana-split.woff2′) format(‘woff2’),
+	url(‘pt-banana-split.woff’) format(‘woff’),
+	url(‘pt-banana-split.ttf’) format(‘truetype’),
+	url(‘pt-banana-split.svg#svgwpf‘) format(‘svg’);
+	}
+  
+ h1, h2, h3, h4, h5, h6 {
+	font-family: ‘pt-banana-split’, Arial, sans-serif !important;
+	color:blue;
+	}
+
 
 body,
 button,
