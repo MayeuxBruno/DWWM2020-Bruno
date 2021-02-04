@@ -204,8 +204,8 @@ msgstr "Menu principal"
 
 #. translators: %s: WordPress
 #: footer.php:24
-msgid "Proudly powered by %s"
-msgstr "Fièrement propulsé par %s"
+msgid ""
+msgstr ""
 
 #: footer.php:21
 msgid "Semantic Personal Publishing Platform"

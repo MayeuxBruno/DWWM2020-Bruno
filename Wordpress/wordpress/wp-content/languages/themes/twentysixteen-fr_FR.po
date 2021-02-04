@@ -360,8 +360,8 @@ msgstr "Menu principal"
 
 #. translators: %s: WordPress
 #: footer.php:63
-msgid "Proudly powered by %s"
-msgstr "Fièrement propulsé par %s"
+msgid ""
+msgstr ""
 
 #: comments.php:71
 msgid "Comments are closed."

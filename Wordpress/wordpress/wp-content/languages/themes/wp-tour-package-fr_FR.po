@@ -150,7 +150,7 @@ msgstr "Trouvez de grandes vacances d’aventure et des activités autour de la 
 
 #: functions.php:636
 msgid " Powered by %s"
-msgstr " Propulsé par %s"
+msgstr " "
 
 #: functions.php:336
 msgid "Add email in header."

@@ -441,8 +441,8 @@ msgstr "Principal"
 
 #. translators: %s: WordPress.
 #: footer.php:28
-msgid "Proudly powered by %s."
-msgstr "Fièrement propulsé par %s."
+msgid ""
+msgstr ""
 
 #: comments.php:116
 msgid "Comments are closed."

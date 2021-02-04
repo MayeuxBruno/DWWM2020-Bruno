@@ -830,7 +830,7 @@ msgstr "https://fr.wordpress.org/"
 
 #: inc/template-functions.php:873
 msgid " Powered by %s"
-msgstr " Propulsé par %s"
+msgstr " "
 
 #: inc/template-functions.php:700
 msgid "Page"

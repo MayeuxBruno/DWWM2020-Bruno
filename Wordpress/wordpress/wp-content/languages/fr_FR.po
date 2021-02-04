@@ -12141,8 +12141,8 @@ msgstr "%1$s et %2$s"
 
 #. translators: 1: Blog name, 2: WordPress
 #: wp-includes/theme-compat/footer.php:26
-msgid "%1$s is proudly powered by %2$s"
-msgstr "%1$s est fièrement propulsé par %2$s"
+msgid ""
+msgstr ""
 
 #: wp-includes/theme-compat/comments.php:24
 msgid "This post is password protected. Enter the password to view comments."
@@ -13002,7 +13002,7 @@ msgstr "<strong>Erreur</strong> : veuillez saisir un identifiant ou une adresse
 
 #: wp-login.php:151
 msgid "Powered by WordPress"
-msgstr "Propulsé par WordPress"
+msgstr ""
 
 #. translators: 1: WordPress version number, 2: Minimum required MySQL version
 #. number.
