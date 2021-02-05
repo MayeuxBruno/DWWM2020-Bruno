@@ -117,7 +117,7 @@ function ajoutSession(reponse)
     {
         let defaut=document.createElement("option");
         defaut.setAttribute("value","default");
-        defaut.innerHTML="Acune Session à afficher";
+        defaut.innerHTML="Acune Offre à afficher";
         selectSession.appendChild(defaut);
     }
     else{
@@ -125,7 +125,7 @@ function ajoutSession(reponse)
         {
             let defaut=document.createElement("option");
             defaut.setAttribute("value","default");
-            defaut.innerHTML="Selectionnez une session";
+            defaut.innerHTML="Selectionnez une offre";
             selectSession.appendChild(defaut);
         }
         for (let i = 0; i < reponse.length; i++) { 
@@ -154,36 +154,39 @@ function formDate(date)
 {
     let temp=new Date (date);
     let Jours=temp.getDate();
-    let Mois=(temp.getMonth())+1;
+    let Mois=temp.getMonth()+1;
     if (Jours<10){Jours="0"+Jours};
     if (Mois<10){Mois="0"+Mois};
-    return(Jours+"-"+Mois+"-"+temp.getFullYear());
+    return(Jours+"/"+Mois+"/"+temp.getFullYear());
 }
 
 function infoBulles(e)
 {
-    let element;
-    if(e.target.getAttribute("class")=="indic")
+    let div=e.target;
+    if(e.target.getAttribute("class")!="case mini relatif")
     {
-        element=e.target.parentNode;
+        div=e.target.parentNode;
     }
-    else{
-        element=e.target;
-    }
-    let texte=element.getAttribute("textinfo");
-    let infobulle=element.getElementsByClassName("texteInfoBulle")[0];
+    let texte=div.getAttribute("textinfo");
+    let infobulle=div.getElementsByClassName("texteInfoBulle")[0];
     infobulle.textContent=texte;
     infobulle.style.display="flex";  
     setTimeout(function()
     {
-        infobulle.style.display="none"; 
-    }, 2000); 
+       infobulle.style.display="none"; 
+    }, 1000);  
 }
 
 /******* Action à faire pour télécharger la convention de stage *********/
 function downloadConvention(e) 
 {
-    alert("Telechargement de la convention de stage");
+    let div=e.target;
+    if(e.target.getAttribute("class")!="case mini relatif")
+    {
+        div=e.target.parentNode;
+    }
+    alert("Telechargement de la convention de stage id="+div.getAttribute("idStage"));
+    //console.log(e.target);
 }
 
 /** Création de la liste des stagiaires **/
@@ -258,27 +261,41 @@ function creationListe(liste)
             periode.setAttribute("class","case mini relatif");
             periode.setAttribute("textinfo",info);
             periode.setAttribute("idStage",idStage);
-            if(etape==5){periode.innerHTML=icone;periode.style.color="lightgreen"} //Si le stage est à l'étape 5 on affiche l'icone check
-            else{ //si non on affiche la div avec la couleur de l'étape du stage
-            let indic=document.createElement("div");
-            indic.setAttribute("class","indic");
-            indic.style.backgroundColor=color;
-            periode.appendChild(indic);
-            if (etape==4) // Rend la case cliquable si le stage est à l'étape verte
-            {
-                periode.addEventListener("dblclick",downloadConvention);
+            if(etape==5){ //Si le stage est à l'étape 5 on affiche l'icone check
+               periode.innerHTML=icone;
+               periode.style.color="lightgreen";
+               periode.addEventListener("click",infoBulles);
             } 
-            indic.addEventListener("click",infoBulles); //Evenement pour l'affichage des infos Bulles sur l'indicateur de couleur
-            }
+            else{ //si non on affiche la div avec la couleur de l'étape du stage
+                let indic=document.createElement("div");
+                indic.setAttribute("class","indic");
+                indic.style.backgroundColor=color;
+                if (etape==4) // Rend la case cliquable si le stage est à l'étape verte
+                {
+                    indic.addEventListener("dblclick",downloadConvention);
+                } 
+                indic.addEventListener("click",infoBulles);
+                periode.appendChild(indic);
+            };
             //Création des div pour les infos bulles
             let texteInfoBulle=document.createElement("div");
             texteInfoBulle.setAttribute("class","texteInfoBulle");
             texteInfoBulle.textContent="Test des infos bulles"; 
             periode.appendChild(texteInfoBulle);
             ligne.appendChild(periode);  
+            if (etape==4) // Rend la case cliquable si le stage est à l'étape verte
+            {
+                periode.addEventListener("dblclick",downloadConvention);
+            } 
             periode.addEventListener("click",infoBulles); //Evenement pour l'affichage des infos bulles.
         }
         affichage.appendChild(ligne);
+    }
+    //Ajoute les Evenements pour les infos bulles sur les icones check
+    let lesIcones=document.getElementsByTagName("i");
+    for(let i=0; i<lesIcones.length;i++)
+    {
+        lesIcones[i].addEventListener("click",infoBulles);
     }
 }
 /*******************************************************************/

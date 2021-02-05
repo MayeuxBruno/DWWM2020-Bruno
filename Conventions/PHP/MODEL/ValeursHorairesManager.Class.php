@@ -42,7 +42,6 @@ class ValeursHorairesManager
 			return false;
 		}
 	}
-	
 	public static function getList()
 	{
  		$db=DbConnect::getDb();
@@ -57,7 +56,6 @@ class ValeursHorairesManager
 		}
 		return $liste;
 	}
-
 	public static function getListByStage($idStage)
 	{
 		$db=DbConnect::getDb();
@@ -72,5 +70,21 @@ class ValeursHorairesManager
 			}
 		}
 		return $liste;
+	}
+	public static function getListByStageEtLibelle($idStage, $idLibelle)
+	{
+		$db=DbConnect::getDb();
+		$id=(int)$idStage; 
+		$liste = [];
+		$q = $db->query("SELECT * FROM Valeurshoraires WHERE idStage =".$id ." AND idLibelleHoraire = ". $idLibelle);
+		$results = $q->fetch(PDO::FETCH_ASSOC);
+		if($results != false)
+		{
+			return new Valeurshoraires($results);
+		}
+		else
+		{
+			return false;
+		}
 	}
 }

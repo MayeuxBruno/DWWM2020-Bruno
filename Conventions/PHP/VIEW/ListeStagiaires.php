@@ -6,7 +6,7 @@ $stagiaires=StagiairesManager::getList();
         <div class="grande">
             <div><a href="index.php?page=FormStagiaire&mode=ajouter"><button class="bouton"><i
                             class="fas fa-plus-circle"></i> Ajouter</button></a></div>
-
+                            <div><a href="Index.php?page=FormStagiaireMasse"><button class="bouton"><i class="fas fa-plus-circle"></i> Ajouter en masse</button></a></div>
             <div><a href="index.php?page=FormAdmin"><button class="bouton"><i class="far fa-arrow-alt-circle-left"></i>
                         Retour</button></a></div>
         </div>

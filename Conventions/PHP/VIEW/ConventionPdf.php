@@ -8,10 +8,8 @@ $anim=AnimationsManager::getByFormation($infosSession[0]->getIdFormation());
 $formateur=UtilisateursManager::findById($anim[0]->getIdUtilisateur());
 $tuteur=TuteursManager::findById($stage->getIdTuteur());
 $entreprise=EntreprisesManager::findById($tuteur->getIdEntreprise());
-$ville=VillesManager::findById($entreprise->getIdVille());
+$ville=VillesManager::findById($entreprise->getIdVille(),false);
 $horaires=ValeursHorairesManager::getListByStage($idStage);
-$tabIdTravauxD=ValeursTravauxDangereuxManager::getListByStage($idStage);
-
 
 class PDF extends FPDF
 {
@@ -478,107 +476,10 @@ $pdf->Image("./IMG/puce.png",12,56.75,1,1);
 $pdf->Write(5,utf8_decode("     Imposent une habilitation du Stagiaire par l'Entreprise d'accueil "));
 
 $habilitation=0;
-if($habilitation==1){$pdf->Image("./IMG/caseCocher.png",65,63,3,3);$pdf->Text(65,50,"Precision : ".$stage->getLibelleAttFormReg());}else{$pdf->Image("./IMG/caseVide.png",65,63,3,3);}
-$pdf->Text(71,65.5,utf8_decode("OUI"));
-if($habilitation==0){$pdf->Image("./IMG/caseCocher.png",130,63,3,3);}else{$pdf->Image("./IMG/caseVide.png",130,63,3,3);}
-$pdf->Text(136,65.5,utf8_decode("NON"));
-
-$pdf->Ln(20);
-$pdf->Image("./IMG/puce.png",12,76.75,1,1);
-$pdf->Write(5,utf8_decode("     Comportent des travaux dangereux "));
-
-if(count($tabIdTravauxD)>0){$pdf->Image("./IMG/caseCocher.png",65,83,3,3);$pdf->Text(65,50,"Precision : ".$stage->getLibelleAttFormReg());}else{$pdf->Image("./IMG/caseVide.png",65,83,3,3);}
-$pdf->Text(71,85.5,utf8_decode("OUI"));
-if(count($tabIdTravauxD)==0){$pdf->Image("./IMG/caseCocher.png",130,83,3,3);}else{$pdf->Image("./IMG/caseVide.png",130,83,3,3);}
-$pdf->Text(136,85.5,utf8_decode("NON"));
-
-
-if(in_array(1,$tabIdTravauxD)){$pdf->Image("./IMG/caseCocher.png",65,93,3,3);}else{$pdf->Image("./IMG/caseVide.png",65,93,3,3);}
-$pdf->Text(71,95.5,utf8_decode("Agents chimiques et dangereux"));
-if(in_array(2,$tabIdTravauxD)){$pdf->Image("./IMG/caseCocher.png",130,93,3,3);}else{$pdf->Image("./IMG/caseVide.png",130,93,3,3);}
-$pdf->Text(136,95.5,utf8_decode("Milieu confiné"));
-if(in_array(3,$tabIdTravauxD)){$pdf->Image("./IMG/caseCocher.png",65,98,3,3);}else{$pdf->Image("./IMG/caseVide.png",65,98,3,3);}
-$pdf->Text(71,100.5,utf8_decode("Agents biologiques"));
-if(in_array(4,$tabIdTravauxD)){$pdf->Image("./IMG/caseCocher.png",130,98,3,3);}else{$pdf->Image("./IMG/caseVide.png",130,98,3,3);}
-$pdf->Text(136,100.5,utf8_decode("vibrations mécaniques"));
-if(in_array(5,$tabIdTravauxD)){$pdf->Image("./IMG/caseCocher.png",65,103,3,3);}else{$pdf->Image("./IMG/caseVide.png",65,103,3,3);}
-$pdf->Text(71,105.5,utf8_decode("Rayonnements"));
-if(in_array(6,$tabIdTravauxD)){$pdf->Image("./IMG/caseCocher.png",130,103,3,3);}else{$pdf->Image("./IMG/caseVide.png",130,103,3,3);}
-$pdf->Text(136,105.5,utf8_decode("Manutention manuelles"));
-if(in_array(7,$tabIdTravauxD)){$pdf->Image("./IMG/caseCocher.png",65,108,3,3);}else{$pdf->Image("./IMG/caseVide.png",65,108,3,3);}
-$pdf->Text(71,110.5,utf8_decode("Milieu Hyperbare"));
-if(in_array(8,$tabIdTravauxD)){$pdf->Image("./IMG/caseCocher.png",130,108,3,3);}else{$pdf->Image("./IMG/caseVide.png",130,108,3,3);}
-$pdf->Text(136,110.5,utf8_decode("Risques électriques"));
-if(in_array(9,$tabIdTravauxD)){$pdf->Image("./IMG/caseCocher.png",65,113,3,3);}else{$pdf->Image("./IMG/caseVide.png",65,113,3,3);}
-$pdf->Text(71,115.5,utf8_decode("Températures extrêmes"));
-if(in_array(10,$tabIdTravauxD)){$pdf->Image("./IMG/caseCocher.png",130,113,3,3);}else{$pdf->Image("./IMG/caseVide.png",130,113,3,3);}
-$pdf->Text(136,115.5,utf8_decode("Utilisation de machines"));
-if(in_array(11,$tabIdTravauxD)){$pdf->Image("./IMG/caseCocher.png",65,118,3,3);}else{$pdf->Image("./IMG/caseVide.png",65,118,3,3);}
-$pdf->Text(71,120.5,utf8_decode("Effondrement et ensevelissement"));
-if(in_array(12,$tabIdTravauxD)){$pdf->Image("./IMG/caseCocher.png",130,118,3,3);}else{$pdf->Image("./IMG/caseVide.png",130,118,3,3);}
-$pdf->Text(136,120.5,utf8_decode("Travaux en hauteur"));
-if(in_array(13,$tabIdTravauxD)){$pdf->Image("./IMG/caseCocher.png",65,123,3,3);}else{$pdf->Image("./IMG/caseVide.png",65,123,3,3);}
-$pdf->Text(71,125.5,utf8_decode("Appareils sous tension"));
-if(in_array(14,$tabIdTravauxD)){$pdf->Image("./IMG/caseCocher.png",130,123,3,3);}else{$pdf->Image("./IMG/caseVide.png",130,123,3,3);}
-$pdf->Text(136,125.5,utf8_decode("Contact avec des animaux"));
-if(in_array(15,$tabIdTravauxD)){$pdf->Image("./IMG/caseCocher.png",65,128,3,3);}else{$pdf->Image("./IMG/caseVide.png",65,128,3,3);}
-$pdf->Text(71,130.5,utf8_decode("Travaux avec du verre ou du métal en fusion"));
-
-$pdf->Ln(58);
-$pdf->Cell(130,5,utf8_decode("Si le stagiaire est mineur, date de la déclaration de déroger éffectuée par l'entreprise "),"R",0,"R");
-$pdf->Cell(130,5,$stage->getDateDeclarationDerog(),0,1,"L");
-$pdf->Cell(130,5,utf8_decode("Auprès de l'inspection du travail de "),"R",0,"R"); /****** Inspection du travail  *********/
-$pdf->Cell(130,5,utf8_decode(" "),0,1,"L");
-$pdf->Ln();
-$pdf->SetFont('Arial','B',9);
-$pdf->Write(5,utf8_decode("Par convention, l'Entreprise d'accueil s'interdit d'affecter le Stagiaire à les activités soumises :"));
-$pdf->SetFont('Arial','',9);
-$pdf->Ln();
-$pdf->Image("./IMG/puce.png",12,154.75,1,1);
-$pdf->Write(5,utf8_decode("         à la délivrance d'une habilitation dont l'Afpa n'a pas été préalablement informée "));
-$pdf->Ln();
-$pdf->Image("./IMG/puce.png",12,159.75,1,1);
-$pdf->Write(5,utf8_decode("         à des obligations spéciales de sécurité pour lesquelles le Tuteur affecté au Stagiaire n'a pas une formation,une qualification, "));
-$pdf->Write(5,utf8_decode("         une attestionde capacité ou une habilitation à minima équivalente à celle qui devrait être délivrée au Stagiaire."));
-$pdf->Ln();
-$pdf->SetFont('Arial','B',9);
-$pdf->Write(5,utf8_decode("Toute activité au contact de l'amiante est interdite."));
-$pdf->Ln();
-$pdf->Ln();
-$pdf->SetFont('Arial','BI',9);
-$pdf->Cell(0,5,utf8_decode("Fait en 3 exemplaires originaux, dans le centre Afpa, à la date de signature par le directeur du centre"),1,1,"C");
-$pdf->SetFont('Arial','',9);
-$pdf->Ln(15);
-$pdf->Cell(47.5,5,utf8_decode("L'AFPA"),"LTR",0,"L");
-$pdf->Cell(47.5,5,utf8_decode("LE STAGIAIRE"),"LTR",0,"L");
-$pdf->Cell(47.5,5,utf8_decode("L'ENTREPRISE"),"LTR",0,"L");
-$pdf->Cell(47.5,5,utf8_decode("LE TUTEUR"),"LTR",1,"L");
-$pdf->Cell(47.5,30,utf8_decode(""),"LBR",0,"L");
-$pdf->Cell(47.5,30,utf8_decode(""),"LBR",0,"L");
-$pdf->Cell(47.5,30,utf8_decode(""),"LBR",0,"L");
-$pdf->Cell(47.5,30,utf8_decode(""),"LBR",1,"L");
-
-$pdf->AddPage();
-$pdf->SetMargins(17,10,10);
-$pdf->Image("./IMG/logoAfpa.jpg",160,18,26.5,14);
-$pdf->Write(5,utf8_decode("AFPA"));
-$pdf->Ln();
-$pdf->Write(5,utf8_decode("CENTRE DE FORMATION DE DUNKERQUE"));
-$pdf->Ln(15);
-$pdf->Cell(110,5,utf8_decode("407 Avenue de la Gironde"),0,0,"L");
-$pdf->SetFont('Arial','B',9);
-$pdf->Cell(0,5,utf8_decode(strtoupper($entreprise->getRaisonSociale())),0,1,"L");
-$pdf->SetFont('Arial','',9);
-$pdf->Cell(110,5,utf8_decode("59640 DUNKERQUE"),0,0,"L");
-$pdf->SetFont('Arial','B',9);
-$pdf->Cell(0,5,utf8_decode(strtoupper($entreprise->getAdresseEnt())),0,1,"L");
-$pdf->SetFont('Arial','',9);
-
-
-
-
-
-
+if($habilitation==1){$pdf->Image("./IMG/caseCocher.png",65,43,3,3);$pdf->Text(65,50,"Precision : ".$stage->getLibelleAttFormReg());}else{$pdf->Image("./IMG/caseVide.png",65,43,3,3);}
+$pdf->Text(71,45.5,utf8_decode("OUI"));
+if($habilitation==0){$pdf->Image("./IMG/caseCocher.png",130,43,3,3);}else{$pdf->Image("./IMG/caseVide.png",130,43,3,3);}
+$pdf->Text(136,45.5,utf8_decode("NON"));
 //Création du PDF
 $pdf->Output('F', './convention.pdf');
 header("location:convention.pdf");

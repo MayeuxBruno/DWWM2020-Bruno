@@ -27,7 +27,7 @@ if (!isset($_GET['idPeriode']) && $nbPeriodesStages > 1)
         $jourFin = substr($dateFin, 8, 2);
 
         echo '
-            <div class="colonne center">
+            <div class="colonne center titreColonne">
                 <div>Periode de stage ' . $j . '</div>
                 <div>Du ' . $jourDebut . '/' . $moisDebut . '/' . $anneeDebut . ' au  ' . $jourFin . '/' . $moisFin . '/' . $anneeFin . ' </div>
 
@@ -59,7 +59,7 @@ else
     }
     echo '
             <form action="index.php?page=ActionFormFRStagiaire" method="POST">
-                <div class="info centre colonne">
+                <div class="info centre colonne titreColonne">
                    <h1>Fiche d information pour la periode de stage</h1>
                     <h1>Du ' . $ListePeriodeStage[$indice]->getDateDebutPAE() . ' au ' . $ListePeriodeStage[$indice]->getDateFinPAE() . ' </h1>
                 </div>

@@ -34,9 +34,9 @@
             
             
             <div class="centre">
-                <label for="selectSession">Session&nbsp;:&nbsp;</label>
+                <label for="selectSession">N° Offre&nbsp;:&nbsp;</label>
                 <select id="selectSession">
-            <option value="defaut">Aucune Session à Afficher</option>
+            <option value="defaut">Aucune Offre à Afficher</option>
             </select></div>
             </div>
         <div class="espaceHor"></div>
