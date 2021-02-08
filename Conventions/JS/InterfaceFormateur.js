@@ -2,6 +2,8 @@ const requ=new XMLHttpRequest();
 const requ1=new XMLHttpRequest();
 const requ2=new XMLHttpRequest();
 const requ3=new XMLHttpRequest();
+const requ4=new XMLHttpRequest();
+
 var selectFormation=document.getElementById("selectFormation");
 var selectSession=document.getElementById("selectSession");
 var btnListe=document.getElementById("liste");
@@ -58,6 +60,17 @@ requ3.onreadystatechange = function (event) { //Requete SetObjectifAPI
     if (this.readyState === XMLHttpRequest.DONE) {
         if (this.status === 200) {
             console.log("Réponse reçue: %s", this.responseText);
+        } else {
+            console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+        }
+    }
+};
+
+requ4.onreadystatechange = function (event) { //Requete SetObjectifAPI
+    if (this.readyState === XMLHttpRequest.DONE) {
+        if (this.status === 200) {
+            //console.log("Réponse reçue: %s", this.responseText);
+            console.log("OK")
         } else {
             console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
         }
@@ -162,13 +175,10 @@ function formDate(date)
 
 function infoBulles(e)
 {
-    let element;
-    if(e.target.getAttribute("class")=="indic")
+    let element=e.target;
+    if(e.target.getAttribute("class")!="case mini relatif")
     {
         element=e.target.parentNode;
-    }
-    else{
-        element=e.target;
     }
     let texte=element.getAttribute("textinfo");
     let infobulle=element.getElementsByClassName("texteInfoBulle")[0];
@@ -183,7 +193,16 @@ function infoBulles(e)
 /******* Action à faire pour télécharger la convention de stage *********/
 function downloadConvention(e) 
 {
-    alert("Telechargement de la convention de stage");
+    let element=e.target;
+    if(e.target.getAttribute("class")=="indic")
+    {
+        element=e.target.parentNode;
+    }
+    let id=element.getAttribute("idStage");
+    requ4.open('POST', 'index.php?page=convention', true);
+    requ4.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    var args = "idStage=" + id;
+    requ4.send(args);
 }
 
 /** Création de la liste des stagiaires **/
@@ -279,6 +298,11 @@ function creationListe(liste)
             periode.addEventListener("click",infoBulles); //Evenement pour l'affichage des infos bulles.
         }
         affichage.appendChild(ligne);
+    }
+    var lesIcones=document.getElementsByTagName("i");
+    for (let i=0;i<lesIcones.length;i++)
+    {
+        lesIcones[i].addEventListener("click",infoBulles);
     }
 }
 /*******************************************************************/

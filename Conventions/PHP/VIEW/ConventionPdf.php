@@ -1,6 +1,6 @@
 <?php
 require "./FPDF/fpdf.php";
-$idStage=3;
+$idStage=$_POST['idStage'];
 $stage=StagesManager::findById($idStage);
 $stagiaire=StagiairesManager::findById($stage->getIdStagiaire());
 $infosSession=StagiaireFormationManager::getListByStagiaire($stagiaire->getIdStagiaire());
@@ -16,7 +16,11 @@ class PDF extends FPDF
 // En-tête
     function Header()
     {
+        $this->SetFont('Arial','B',15);
+        //Décalage à droite
+        $this->Cell(80);
         $this->Cell(30,10,'Test Entete',1,0,'C');
+        $this->Ln(20);
     }
 
     // Pied de page
@@ -28,6 +32,7 @@ class PDF extends FPDF
         $this->SetFont('Arial','I',8);
         // Numéro de page
         $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
+
     }
 }
 
@@ -481,7 +486,8 @@ $pdf->Text(71,45.5,utf8_decode("OUI"));
 if($habilitation==0){$pdf->Image("./IMG/caseCocher.png",130,43,3,3);}else{$pdf->Image("./IMG/caseVide.png",130,43,3,3);}
 $pdf->Text(136,45.5,utf8_decode("NON"));
 //Création du PDF
-$pdf->Output('F', './convention.pdf');
-header("location:convention.pdf");
+$nomStagiaire=$stagiaire->getNomStagiaire().$stagiaire->getPrenomStagiaire();
+$pdf->Output('./convention'.$stagiaire->getNomStagiaire().$stagiaire->getPrenomStagiaire().'.pdf','F');
+//header("location:./convention.pdf");
 
 
