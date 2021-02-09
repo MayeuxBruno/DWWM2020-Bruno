@@ -9,9 +9,7 @@ switch ($mode) {
         if ($uti != false && ($uti->getDatePeremption() == null || new DateTime($uti->getDatePeremption()) > new DateTime("NOW"))) {
             //echo "motBDD ".$uti->getMdpUtilisateur()."  saisi". $_POST['motDePasse']. "crypte   ".crypte($_POST['motDePasse'])."<br>";
             if ($_POST['motDePasse'] == $uti->getMdpUtilisateur()) {
-                echo 'connection reussie';
                 $_SESSION['utilisateur'] = $uti;
-                var_dump($uti->getIdRole());
                 switch ($uti->getIdRole()) {
                     case "1":
                         header("location: index.php?page=FormAdmin");
@@ -37,18 +35,19 @@ switch ($mode) {
                 }
 
             } else {
-                echo 'le mot de passe ou eMail est incorrect ';
-                header("refresh:3;url=index.php?page=FormConnexion");
+                echo '
+                <div class="titreColonne zoneBouton">le mot de passe ou eMail est incorrect</div>
+                ';header("refresh:3;url=index.php?page=FormConnexion");
             }
         } else {
-            echo 'l\'utilisateur n\'existe pas ';
-            header("refresh:3;url=index.php?page=FormConnexion");
+            echo '
+            <div class="titreColonne zoneBouton">l\'utilisateur n\'existe pas</div>
+            ';header("refresh:3;url=index.php?page=FormConnexion");
         }
         break;
 
     case 'logout':
         session_destroy();
-        echo "ok";
         header("location: index.php?page=FormConnexion");
         break;
 }

@@ -1,7 +1,8 @@
 <?php
 require "./FPDF/fpdf.php";
-//$idStage=$_POST['idStage'];
-$idStage="1";
+require "./phpqrcode/qrlib.php"; // Bibliotheque qr code
+$idStage=$_POST['idStage'];
+//$idStage="1";
 $stage=StagesManager::findById($idStage);
 $stagiaire=StagiairesManager::findById($stage->getIdStagiaire());
 $infosSession=StagiaireFormationManager::getListByStagiaire($stagiaire->getIdStagiaire());
@@ -11,6 +12,21 @@ $tuteur=TuteursManager::findById($stage->getIdTuteur());
 $entreprise=EntreprisesManager::findById($tuteur->getIdEntreprise());
 $ville=VillesManager::findById($entreprise->getIdVille(),false);
 $horaires=ValeursHorairesManager::getListByStage($idStage);
+$villeStagiaire=VillesManager::findById($stagiaire->getIdVilleHabitation(),false);
+$tablePae=PeriodesStagesManager::getListBySession($infosSession[0]->getIdSessionFormation());
+
+//Récupère le numero de PAE
+for($i=0;$i<count($tablePae);$i++)
+{
+    if($tablePae[$i]->getDateDebutPAE()==$stage->getDateDebut())
+    {
+        $numPae=$i+1;
+    }
+}
+
+//Generation du QR code
+//QRcode :: png ($stagiaire->getNumBenefStagiaire()."|".$infosSession[0]->getNumOffreFormation()."|CONVENTION PAE|".$numPae."|59011|97015200336|335|", 'filename.png'); // crée le fichier
+//QRcode :: png ('some othertext 1234'); // crée une image de code et la sort directement dans le navigateur
 
 class PDF extends FPDF
 {
@@ -106,6 +122,7 @@ $pdf->AliasNbPages();
 // CONVENTION DE PERIODE EN ENTREPRISE
 $pdf->AddPage();
 $pdf->SetMargins(10,20,10);
+$pdf->Image("./filename.png",18,15,25,25);
 $pdf->Image("./IMG/logoAfpa.jpg",160,25,26.5,14);
 $pdf->SetFont('Arial','B',9);
 $pdf->Text(55,27,utf8_decode("AFPA"));
@@ -147,7 +164,7 @@ $pdf->Cell(0,5,utf8_decode(" ".$stagiaire->getPrenomStagiaire()." ".strtoupper($
 $pdf->Cell(88,5,utf8_decode("Nom d'usage "),"R",0,"R");
 $pdf->Cell(0,5,utf8_decode(" ".strtoupper($stagiaire->getNomStagiaire())),0,1,"L");
 $pdf->Cell(88,5,utf8_decode("Né(e) le "),"R",0,"R");
-$pdf->Cell(0,5,utf8_decode(" ".formatDate($stagiaire->getDateNaissanceStagiaire())),0,1,"L");
+$pdf->Cell(0,5,utf8_decode(" ".formatDate($stagiaire->getDateNaissanceStagiaire())." à ".$stagiaire->getVilleNaissance()),0,1,"L");
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(88,5,utf8_decode("Inscrit en formation "),"R",0,"R");
 $pdf->SetFont('Arial','',9);
@@ -157,15 +174,15 @@ $pdf->Cell(0,5,utf8_decode(" ".formatDate($infosSession[0]->getDateDebut())),0,1
 $pdf->Ln();
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(0,5,utf8_decode("Domiciliation pour la durée de la période en entreprise"),1,1,"L");
-$pdf->SetFont('Arial','',9);
+$pdf->SetFont('Arial',"",9);
 $pdf->Cell(88,5,utf8_decode("Adresse "),"R",0,"R");
-$pdf->Cell(0,5," ",0,1,"L");
-$pdf->Cell(88,5,utf8_decode("Ville "),"R",0,"R");
-$pdf->Cell(0,5," ",0,1,"L");
-$pdf->Cell(88,5,utf8_decode("Code Postal "),"R",0,"R");
-$pdf->Cell(0,5," ",0,1,"L");
+$pdf->Cell(0,5,$stagiaire->getAdresse(),0,1,"L");
+$pdf->Cell(88,5," ".utf8_decode("Ville "),"R",0,"R");
+$pdf->Cell(0,5,$villeStagiaire->getNomVille(),0,1,"L");
+$pdf->Cell(88,5," ".utf8_decode("Code Postal "),"R",0,"R");
+$pdf->Cell(0,5,$villeStagiaire->getCodePostal(),0,1,"L");
 $pdf->Cell(88,5,utf8_decode("Téléphone "),"R",0,"R");
-$pdf->Cell(0,5," ",0,1,"L");
+$pdf->Cell(0,5," ".$stagiaire->getTelStagiaire(),0,1,"L");
 $pdf->Cell(88,5,utf8_decode("Mail "),"R",0,"R");
 $pdf->Cell(0,5,utf8_decode(" ".$stagiaire->getEmailStagiaire()),0,1,"L");
 $pdf->Ln();
@@ -578,7 +595,7 @@ $pdf->Cell(47.5,30,utf8_decode(""),"LBR",0,"L");
 $pdf->Cell(47.5,30,utf8_decode(""),"LBR",1,"L");
 
 $pdf->AddPage();
-$pdf->SetMargins(17,10,10);
+//$pdf->SetMargins(17,10,10);
 $pdf->Image("./IMG/logoAfpa.jpg",160,18,26.5,14);
 $pdf->Write(5,utf8_decode("AFPA"));
 $pdf->Ln();
@@ -595,10 +612,58 @@ $pdf->SetFont('Arial','',9);
 $pdf->Ln(10);
 $pdf->Cell(90,5,utf8_decode("Tel : 03 28 58 86 65"),0,0,"L");
 $pdf->SetFont('Arial','B',9);
-$pdf->Cell(0,5,utf8_decode(strtoupper($entreprise->getAdresseEnt())),0,1,"L");
+$pdf->Cell(0,5,utf8_decode(strtoupper($ville->getCodePostal()." ".$ville->getNomVille())),0,1,"L");
 $pdf->SetFont('Arial','',9);
-$pdf->Cell(90,5,utf8_decode("59640 DUNKERQUE"),0,1,"L");
+$pdf->Cell(90,5,utf8_decode("Fax : 03 28 58 86 89"),0,1,"L");
+$pdf->SetFont('Arial','U',9);
+$pdf->Write(5,utf8_decode("www.afpa.fr"));
+$pdf->SetFont('Arial','I',9);
+$pdf->Ln(10);
+$pdf->SetLeftMargin(10);
+$pdf->Cell(90,5,utf8_decode("Affaire suivie par : Frédéric DELESCLUSE"),0,0,"L");
+$pdf->SetFont('Arial','',9);
+setlocale(LC_TIME,"fr_FR","French");
+$date=date('d-m-Y');
 
+$date1 = utf8_encode(strftime("%d %B %Y",strtotime($date)));
+
+$pdf->Cell(0,5,utf8_decode("Dunkerque le, ".$date1),0,1,"L");
+$pdf->Write(5,utf8_decode("Tél : 03 28 58 86 65"));
+$pdf->Ln();
+$pdf->Write(5,utf8_decode("Fax : 03 28 58 86 89"));
+$pdf->Ln(10);
+$pdf->Write(5,utf8_decode("OBJET : Conventions de stage en entreprise."));
+$pdf->Ln(10);
+$pdf->Write(5,utf8_decode("Madame, Monsieur"));
+$pdf->Ln(10);
+$pdf->Write(5,utf8_decode("Je vous prie de bien vouloir trouver ci-joint:"));
+$pdf->Ln(10);
+$pdf->Write(5,utf8_decode("     Une convention pour la période d'application en entreprise, en 3 exemplaires. Vous voudrez bien me retourner 2 des exemplaires, dûment signés et revêtus de votre cachet, avant le début du stage"));
+$pdf->Ln(10);
+$pdf->SetFont('Arial','B',9);
+$pdf->Write(5,utf8_decode("     Des feuilles de présence en entreprise à remplir (suivant modèle joint) et à nous retourner "));
+$pdf->SetFont('Arial','BI',9);
+$pdf->Write(5,utf8_decode("impérativement "));
+$pdf->SetFont('Arial','B',9);
+$pdf->Write(5,utf8_decode(" chaque vendredi au plus tard le lundi suivant, par fax (03.28.58.86.89) ou par mail (anne.distanti@afpa.fr), afin d'établir la paie du stagiaire."));
+$pdf->SetFont('Arial','',9);
+$pdf->Ln(10);
+$pdf->Write(5,utf8_decode("Concernant"));
+$pdf->Ln(10);
+$pdf->SetFont('Arial','B',9);
+$pdf->Write(5,utf8_decode($stagiaire->getNomStagiaire()." ".$stagiaire->getPrenomStagiaire()));
+$pdf->SetFont('Arial','',9);
+$pdf->Ln(10);
+$pdf->Write(5,utf8_decode("qui effectue sa période d'application en entreprise, du ".formatDate($stage->getDateDebut())." au ".formatDate($stage->getDateFin())."."));
+$pdf->Ln(10);
+$pdf->Write(5,utf8_decode("     En lien avec la crise sanitaire, un arrêt de la PAE par l'entreprise est toujours possible en cas de confinement de l'entreprise ou d'accentuation des mesures sanitaires sans que cela ne contrevienne à la convention de stage. Par ailleurs, la mise en oeuvre de période en entreprise à distance reste possible pour les activités compatibles avec cette modalité, sous réserve de l'encadrement effectif des stagiaires et d'équipements adaptés."));
+$pdf->Ln(10);
+$pdf->Write(5,utf8_decode("Veuillez agréer, Madame, Monsieur, mes salutations les meilleures."));
+$pdf->Ln(20);
+$pdf->Cell(106,5,utf8_decode(""),0,0,"L");
+$pdf->Cell(0,5,utf8_decode("Frédéric DELESCLUSE"),0,1,"L");
+$pdf->Cell(106,5,utf8_decode(""),0,0,"L");
+$pdf->Cell(0,5,utf8_decode("Manager de Formation"),0,1,"L");
 
 $nomStagiaire=$stagiaire->getNomStagiaire().$stagiaire->getPrenomStagiaire();
 $pdf->Output('F','convention'.$stagiaire->getNomStagiaire().$stagiaire->getPrenomStagiaire().'.pdf');
