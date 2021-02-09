@@ -495,8 +495,8 @@ msgid "Desktop Horizontal Menu"
 msgstr "Menu horizontal grand écrans"
 
 #: footer.php:33
-msgid "Powered by WordPress"
-msgstr "Propulsé par WordPress"
+msgid ""
+msgstr ""
 
 #: comments.php:127
 msgid "Comments are closed."

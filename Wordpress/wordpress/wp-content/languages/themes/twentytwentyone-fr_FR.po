@@ -687,8 +687,8 @@ msgstr "Très petit"
 
 #. translators: %s: WordPress.
 #: footer.php:60
-msgid "Proudly powered by %s."
-msgstr "Fièrement propulsé par %s"
+msgid ""
+msgstr ""
 
 #: functions.php:77 inc/starter-content.php:165 footer.php:24
 msgid "Secondary menu"

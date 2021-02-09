@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.6.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-01-28 05:50:50+0000\n"
+"PO-Revision-Date: 2021-01-28 19:28:29+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,13 +29,13 @@ msgstr "Continuer"
 
 #. translators: %s: The server PHP version.
 #: wp-admin/includes/dashboard.php:1758
-msgid "Your site is running an outdated version of PHP (%s), and should be updated."
-msgstr "Votre site utilise une version obsolète de PHP (%s) et devrait être mis à jour."
+msgid "Your site is running an outdated version of PHP (%s), which should be updated."
+msgstr "Votre site utilise une version obsolète de PHP (%s), qui devrait être mise à jour."
 
 #. translators: %s: The server PHP version.
 #: wp-admin/includes/dashboard.php:1752
-msgid "Your site is running an insecure version of PHP (%s), and should be updated."
-msgstr "Votre site utilise une version non sécurisée de PHP (%s), et devrait être mis à jour."
+msgid "Your site is running an insecure version of PHP (%s), which should be updated."
+msgstr "Votre site utilise une version non sécurisée de PHP (%s), qui devrait être mise à jour."
 
 #: wp-admin/includes/dashboard.php:42
 msgid "PHP Update Recommended"
@@ -2031,7 +2031,7 @@ msgstr "Tourner vers la droite"
 msgid "Rotate left"
 msgstr "Tourner vers la gauche"
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:145
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:147
 msgid "All automatic updates are disabled."
 msgstr "Toutes les mises à jour automatiques sont désactivées."
 
@@ -3028,102 +3028,102 @@ msgid "We were unable to check if any new versions of WordPress are available."
 msgstr "Nous n’avons pas pu vérifier si de nouvelles versions de WordPress sont disponibles."
 
 #. translators: %s: Name of the filter used.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:447
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:449
 msgid "WordPress security and maintenance releases are blocked by the %s filter."
 msgstr "Les mises à jour de sécurité et de maintenance sont bloquées par le filtre %s."
 
 #. translators: %s: Name of the constant used.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:435
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:437
 msgid "WordPress security and maintenance releases are blocked by %s."
 msgstr "Les mises à jour de sécurité et de maintenance sont bloquées par %s."
 
 #. translators: %s: Name of the filter used.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:415
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:417
 msgid "WordPress development updates are blocked by the %s filter."
 msgstr "Les mises à jour de développement WordPress sont bloquées par le filtre %s."
 
 #. translators: %s: Name of the constant used.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:403
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:405
 msgid "WordPress development updates are blocked by the %s constant."
 msgstr "Les mises à jour de développement WordPress sont bloquées par la constante %s."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:379
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:381
 msgid "All of your WordPress files are writable."
 msgstr "Tous vos fichiers WordPress sont accessibles en écriture."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:374
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:376
 msgid "Some files are not writable by WordPress:"
 msgstr "Certains fichiers ne sont pas accessibles par WordPress :"
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:348
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:350
 msgid "This could mean that connections are failing to WordPress.org."
 msgstr "Cela peut signifier que les connexions à WordPress.org ne fonctionnent pas."
 
 #. translators: %s: WordPress version.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:345
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:347
 msgid "Couldn't retrieve a list of the checksums for WordPress %s."
 msgstr "Impossible de récupérer une liste des checksums pour WordPress %s."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:293
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:295
 msgid "Your installation of WordPress doesn't require FTP credentials to perform updates."
 msgstr "Votre installation de WordPress ne nécessite pas d’identifiants FTP pour effectuer les mises à jour."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:284
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:286
 msgid "(Your site is performing updates over FTP due to file ownership. Talk to your hosting company.)"
 msgstr "(Votre site effectue les mises à jour par FTP en raison de la propriété du fichier. Parlez-en à votre hébergeur.)"
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:283
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:285
 msgid "Your installation of WordPress prompts for FTP credentials to perform updates."
 msgstr "Votre installation de WordPress demande des informations d’identification FTP pour effectuer les mises à jour."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:261
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:263
 msgid "No version control systems were detected."
 msgstr "Aucun système de contrôle de version n’a été détecté."
 
 #. translators: 1: Folder name. 2: Version control directory.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:252
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:254
 msgid "The folder %1$s was detected as being under version control (%2$s)."
 msgstr "Le dossier %1$s a été détecté comme disposant d’un système de contrôle de version (%2$s)."
 
 #. translators: 1: Folder name. 2: Version control directory. 3: Filter name.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:239
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:241
 msgid "The folder %1$s was detected as being under version control (%2$s), but the %3$s filter is allowing updates."
 msgstr "Le dossier %1$s a été détecté comme disposant d’un système de contrôle de version (%2$s), mais le filtre %3$s autorise les mises à jour."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:184
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:186
 msgid "We'll try again with the next release."
 msgstr "Nous réessayerons avec la prochaine version."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:179
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:181
 msgid "A previous automatic background update could not occur."
 msgstr "Une précédente mise à jour automatique en arrière-plan n’a pu être effectuée."
 
 #. translators: %s: Code of error shown.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:170
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:187
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:172
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:189
 msgid "The error code was %s."
 msgstr "Le code d’erreur était %s."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:167
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:169
 msgid "When you've been able to update using the \"Update Now\" button on Dashboard > Updates, we'll clear this error for future update attempts."
 msgstr "Lorsque vous avez pu mettre à jour en utilisant le bouton \"Mettre à jour maintenant\" dans Tableau de bord > Mises à jour, nous effacerons cette erreur pour de futures tentatives de mise à jour."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:166
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:181
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:168
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:183
 msgid "You would have received an email because of this."
 msgstr "Vous auriez reçu un courriel à cause de cela."
 
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:165
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:167
 msgid "A previous automatic background update ended with a critical failure, so updates are now disabled."
 msgstr "Une précédente mise à jour automatique en arrière-plan s'est terminée par un échec critique, les mises à jour sont désormais désactivées."
 
 #. translators: %s: Name of the filter used.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:118
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:120
 msgid "The %s filter is enabled."
 msgstr "Le filtre %s est activé."
 
 #. translators: %s: Name of the filter used.
-#: wp-admin/includes/class-wp-site-health-auto-updates.php:97
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:99
 msgid "A plugin has prevented updates by disabling %s."
 msgstr "Une extension a empêché les mises à jour en désactivant %s."
 

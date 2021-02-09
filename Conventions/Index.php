@@ -28,6 +28,7 @@ $routes=[
 	"ActionDeconnexion" => ["PHP/VIEW/", "ActionDeconnexion", "Identification",false],
 	"FormAdmin" => ["PHP/VIEW/", "FormAdmin", "Identification",false],
 	"InterfaceFormateur" => ["PHP/VIEW/", "InterfaceFormateur", "Gestion des stages",false],
+	"convention"=>["PHP/VIEW/", "ConventionPdf", "Gestion des stages",false],
 	
 	/**** MENU ****/
 	"MenuFR" => ["PHP/VIEW/", "MenuFR", "Choisissez la catégorie a compléter :",false],

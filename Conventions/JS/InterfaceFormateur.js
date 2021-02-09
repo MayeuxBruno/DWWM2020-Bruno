@@ -2,6 +2,8 @@ const requ=new XMLHttpRequest();
 const requ1=new XMLHttpRequest();
 const requ2=new XMLHttpRequest();
 const requ3=new XMLHttpRequest();
+const requ4=new XMLHttpRequest();
+
 var selectFormation=document.getElementById("selectFormation");
 var selectSession=document.getElementById("selectSession");
 var btnListe=document.getElementById("liste");
@@ -58,6 +60,17 @@ requ3.onreadystatechange = function (event) { //Requete SetObjectifAPI
     if (this.readyState === XMLHttpRequest.DONE) {
         if (this.status === 200) {
             console.log("Réponse reçue: %s", this.responseText);
+        } else {
+            console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+        }
+    }
+};
+
+requ4.onreadystatechange = function (event) { //Requete SetObjectifAPI
+    if (this.readyState === XMLHttpRequest.DONE) {
+        if (this.status === 200) {
+            //console.log("Réponse reçue: %s", this.responseText);
+            console.log("OK")
         } else {
             console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
         }
@@ -154,7 +167,7 @@ function formDate(date)
 {
     let temp=new Date (date);
     let Jours=temp.getDate();
-    let Mois=temp.getMonth()+1;
+    let Mois=(temp.getMonth()+1);
     if (Jours<10){Jours="0"+Jours};
     if (Mois<10){Mois="0"+Mois};
     return(Jours+"/"+Mois+"/"+temp.getFullYear());
@@ -162,31 +175,35 @@ function formDate(date)
 
 function infoBulles(e)
 {
-    let div=e.target;
+    let element=e.target;
     if(e.target.getAttribute("class")!="case mini relatif")
     {
-        div=e.target.parentNode;
+        element=e.target.parentNode;
     }
-    let texte=div.getAttribute("textinfo");
-    let infobulle=div.getElementsByClassName("texteInfoBulle")[0];
+    let texte=element.getAttribute("textinfo");
+    let infobulle=element.getElementsByClassName("texteInfoBulle")[0];
     infobulle.textContent=texte;
     infobulle.style.display="flex";  
     setTimeout(function()
     {
        infobulle.style.display="none"; 
-    }, 1000);  
+    }, 1000); 
 }
 
 /******* Action à faire pour télécharger la convention de stage *********/
 function downloadConvention(e) 
 {
-    let div=e.target;
-    if(e.target.getAttribute("class")!="case mini relatif")
+    let element=e.target;
+    if(e.target.getAttribute("class")=="indic")
     {
-        div=e.target.parentNode;
+        element=e.target.parentNode;
     }
-    alert("Telechargement de la convention de stage id="+div.getAttribute("idStage"));
-    //console.log(e.target);
+    let id=element.getAttribute("idStage");
+    requ4.open('POST', 'index.php?page=convention', true);
+    requ4.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    var args = "idStage=" + id;
+    requ4.send(args);
+    
 }
 
 /** Création de la liste des stagiaires **/
@@ -270,10 +287,6 @@ function creationListe(liste)
                 let indic=document.createElement("div");
                 indic.setAttribute("class","indic");
                 indic.style.backgroundColor=color;
-                if (etape==4) // Rend la case cliquable si le stage est à l'étape verte
-                {
-                    indic.addEventListener("dblclick",downloadConvention);
-                } 
                 indic.addEventListener("click",infoBulles);
                 periode.appendChild(indic);
             };
@@ -291,9 +304,8 @@ function creationListe(liste)
         }
         affichage.appendChild(ligne);
     }
-    //Ajoute les Evenements pour les infos bulles sur les icones check
-    let lesIcones=document.getElementsByTagName("i");
-    for(let i=0; i<lesIcones.length;i++)
+    var lesIcones=document.getElementsByTagName("i");
+    for (let i=0;i<lesIcones.length;i++)
     {
         lesIcones[i].addEventListener("click",infoBulles);
     }

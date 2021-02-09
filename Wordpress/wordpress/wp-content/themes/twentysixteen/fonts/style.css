@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'pt-banana-split';
+  src: url('/path-to/pt-banana-split.woff2') format('woff2'),
+       url('/path-to/pt-banana-split.woff') format('woff'),
+       url('/path-to/pt-banana-split.ttf')  format('truetype');
+}
+
+body {
+  font-family: 'pt-banana-split', sans-serif;
+}
