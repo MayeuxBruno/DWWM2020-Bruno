@@ -667,4 +667,5 @@ $pdf->Cell(0,5,utf8_decode("Manager de Formation"),0,1,"L");
 
 $nomStagiaire=$stagiaire->getNomStagiaire().$stagiaire->getPrenomStagiaire();
 $pdf->Output('F','convention'.$stagiaire->getNomStagiaire().$stagiaire->getPrenomStagiaire().'.pdf');
-header("location:./convention".$stagiaire->getNomStagiaire().$stagiaire->getPrenomStagiaire().".pdf");
+//header("location:./convention".$stagiaire->getNomStagiaire().$stagiaire->getPrenomStagiaire().".pdf");
+header("Refresh:1; url=convention".$stagiaire->getNomStagiaire().$stagiaire->getPrenomStagiaire().".pdf");
