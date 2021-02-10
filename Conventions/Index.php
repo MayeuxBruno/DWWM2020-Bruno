@@ -28,7 +28,6 @@ $routes=[
 	"ActionDeconnexion" => ["PHP/VIEW/", "ActionDeconnexion", "Identification",false],
 	"FormAdmin" => ["PHP/VIEW/", "FormAdmin", "Identification",false],
 	"InterfaceFormateur" => ["PHP/VIEW/", "InterfaceFormateur", "Gestion des stages",false],
-	"convention"=>["PHP/VIEW/", "ConventionPdf", "Gestion des stages",false],
 	
 	/**** MENU ****/
 	"MenuFR" => ["PHP/VIEW/", "MenuFR", "Choisissez la catégorie a compléter :",false],
@@ -46,6 +45,7 @@ $routes=[
 	"ActionFormFREvaluation" => ["PHP/VIEW/", "ActionFormFREvaluation", "Fiche de renseignements",false],
 	"ChoixStagiaireTuteur" => ["PHP/VIEW/", "ChoixStagiaireTuteur", "Choisissez le Stagiaire :",false],
 	"FormFRInfosStagiaire" => ["PHP/VIEW/", "FormFRInfosStagiaire", "Identification",false],
+	"ConventionPdf" => ["PHP/VIEW/", "ConventionPdf", "Identification",false],
 	
 	/***** CRUD ****/
 	"ListeFormations" => ["PHP/VIEW/", "ListeFormations", "Gestion des formations",false],
