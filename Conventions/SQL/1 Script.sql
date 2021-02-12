@@ -79,7 +79,12 @@ CREATE TABLE Stagiaires(
         numSecuStagiaire       Varchar (15)  ,
         numBenefStagiaire      Varchar (15) NOT NULL ,
         dateNaissanceStagiaire Date NOT NULL,
-        emailStagiaire Varchar (50) NOT NULL 
+        emailStagiaire Varchar (50) NOT NULL,
+        adresse Varchar (100) NOT NULL,
+        idVilleHabitation int(5) NOT NULL,
+        villeNaissance Varchar(100) NOT NULL,
+        telStagiaire Varchar (10) NOT NULL,
+        UNIQUE KEY `email` (`emailStagiaire`) 
 )ENGINE=InnoDB, CHARSET = UTF8;
 
 
@@ -89,7 +94,9 @@ CREATE TABLE Stagiaires(
 
 CREATE TABLE Formations(
         idFormation      Int  Auto_increment  NOT NULL PRIMARY KEY,
-        libelleFormation Varchar (200) NOT NULL
+        libelleFormation Varchar (200) NOT NULL,
+        grn int(4) NOT NULL,
+        finaliteFormation Varchar (250) NOT NULL
 )ENGINE=InnoDB, CHARSET = UTF8;
 
 
@@ -124,7 +131,9 @@ CREATE TABLE Entreprises(
         fctRepresentant    Varchar (50) NOT NULL ,
         telRepresentant    Varchar (10) NOT NULL ,
         mailRepresentant   Varchar (100) NOT NULL,
-        idVille            Int  NOT NULL
+        idVille            Int  NOT NULL,
+        UNIQUE KEY `email` (`mailRepresentant`),
+        UNIQUE KEY `numSiret` (`numSiretEnt`)
 
 )ENGINE=InnoDB, CHARSET = UTF8;
 
@@ -140,7 +149,8 @@ CREATE TABLE Tuteurs(
         fonctionTuteur Varchar (100)  ,
         telTuteur      Varchar (10)  ,
         emailTuteur     Varchar (100) NOT NULL ,
-        idEntreprise   Int 
+        idEntreprise   Int ,
+        UNIQUE KEY `email` (`emailTuteur`) 
 )ENGINE=InnoDB, CHARSET = UTF8;
 
 #------------------------------------------------------------
@@ -186,12 +196,15 @@ CREATE TABLE Animations
 # Table: Participations
 #------------------------------------------------------------
 
+
 CREATE TABLE Participations
 (
     idParticipation INT Auto_increment NOT NULL PRIMARY KEY,
+    dateDebut DATE NOT NULL, 
+    dateFin DATE NOT NULL,
     idSessionFormation INT NOT NULL, 
     idStagiaire INT NOT NULL
-)ENGINE=InnoDB, CHARSET = UTF8;  
+)ENGINE=InnoDB, CHARSET = UTF8; 
 
 
 #------------------------------------------------------------
@@ -384,6 +397,11 @@ ALTER TABLE ValeursAcquis
 ADD CONSTRAINT FK_ValeurAcquis_Stages
 FOREIGN KEY (idStage)
 REFERENCES Stages(idStage);
+
+ALTER TABLE Stagiaires
+ADD CONSTRAINT FK_Stagiaires_VillesHabitation
+FOREIGN KEY (idVilleHabitation)
+REFERENCES Villes(idVille);
 
 
 CREATE VIEW  stagiaireFormation as

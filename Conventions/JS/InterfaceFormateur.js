@@ -199,7 +199,7 @@ function downloadConvention(e)
         element=e.target.parentNode;
     }
     let id=element.getAttribute("idStage");
-    requ4.open('POST', 'index.php?page=convention', true);
+    requ4.open('POST', 'index.php?page=ConventionPdf', true);
     requ4.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     var args = "idStage=" + id;
     requ4.send(args);

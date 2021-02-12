@@ -25,8 +25,8 @@ for($i=0;$i<count($tablePae);$i++)
 }
 
 //Generation du QR code
-//QRcode :: png ($stagiaire->getNumBenefStagiaire()."|".$infosSession[0]->getNumOffreFormation()."|CONVENTION PAE|".$numPae."|59011|97015200336|335|", 'filename.png'); // crée le fichier
-//QRcode :: png ('some othertext 1234'); // crée une image de code et la sort directement dans le navigateur
+QRcode :: png ($stagiaire->getNumBenefStagiaire()."|".$infosSession[0]->getNumOffreFormation()."|CONVENTION PAE|".$numPae."|59011|97015200336|335|", 'filename.png'); // crée le fichier
+QRcode :: png ('some othertext 1234'); // crée une image de code et la sort directement dans le navigateur
 
 class PDF extends FPDF
 {

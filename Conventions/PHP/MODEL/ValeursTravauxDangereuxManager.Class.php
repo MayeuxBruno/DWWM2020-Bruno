@@ -56,7 +56,6 @@ class ValeursTravauxDangereuxManager
 		}
 		return $liste;
 	}
-	
 	public static function getListByStage($idStage)
 	{
 		$db=DbConnect::getDb();
